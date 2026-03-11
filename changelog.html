@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Changelog — Callahan CI</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--bg:#080a0f;--bg1:#0d1117;--bg2:#111620;--line:rgba(255,255,255,0.07);--line2:rgba(255,255,255,0.12);--text:#e8eaf0;--text2:#8892a4;--text3:#545f72;--accent:#00d4ff;--green:#00e5a0;--orange:#ff6b2b;--red:#ff4455;--yellow:#f5c542;--mono:'IBM Plex Mono',monospace;--sans:'Figtree',sans-serif;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7;overflow-x:hidden;}
+    body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:0;mask-image:radial-gradient(ellipse 80% 40% at 50% 0%,black 20%,transparent 100%);}
+    *{position:relative;z-index:1;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(8,10,15,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--line2);}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .logo-mark{width:28px;height:28px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;}
+    .logo-name{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--text);letter-spacing:-0.02em;}
+    .logo-name span{color:var(--accent);}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:6px;font-family:var(--sans);font-size:13px;font-weight:600;text-decoration:none;border:none;transition:all 0.15s;cursor:pointer;}
+    .btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--line2);}
+    .btn-ghost:hover{color:var(--text);border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.04);}
+    .btn-accent{background:var(--accent);color:#000;font-weight:700;}
+
+    main{max-width:720px;margin:0 auto;padding:100px 40px 100px;}
+    .eyebrow{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;}
+    h1{font-size:40px;font-weight:900;letter-spacing:-0.04em;color:#fff;line-height:1.05;margin-bottom:12px;}
+    .sub{font-size:16px;color:var(--text2);margin-bottom:64px;}
+
+    .release{display:grid;grid-template-columns:160px 1fr;gap:32px;padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid var(--line);}
+    .release:last-child{border-bottom:none;}
+    .release-meta{padding-top:4px;}
+    .release-version{font-family:var(--mono);font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;}
+    .release-date{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:0.04em;}
+    .release-badge{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;letter-spacing:0.04em;}
+    .badge-latest{background:rgba(0,229,160,0.1);border:1px solid rgba(0,229,160,0.25);color:var(--green);}
+    .badge-beta{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.25);color:var(--accent);}
+
+    .release-title{font-size:22px;font-weight:700;letter-spacing:-0.02em;color:#fff;margin-bottom:12px;}
+    .release-desc{font-size:14px;color:var(--text2);margin-bottom:20px;line-height:1.7;}
+
+    .change-group{margin-bottom:16px;}
+    .change-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;}
+    .label-new{color:var(--green);}
+    .label-fix{color:var(--accent);}
+    .label-break{color:var(--red);}
+    .label-improve{color:var(--yellow);}
+
+    .change-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+    .change-list li{font-size:13.5px;color:var(--text2);display:flex;gap:10px;align-items:flex-start;line-height:1.6;}
+    .change-list li::before{content:'—';color:var(--text3);flex-shrink:0;margin-top:1px;}
+
+    @media(max-width:640px){.release{grid-template-columns:1fr;gap:16px;}main{padding:88px 20px 60px;}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-mark"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" fill="#000"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#000" opacity="0.5"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#000" opacity="0.5"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#000"/></svg></div>
+    <span class="logo-name">callahan<span>/ci</span></span>
+  </a>
+  <div style="display:flex;gap:10px;">
+    <a href="/docs" class="btn btn-ghost">Docs</a>
+    <a href="https://github.com/callahan-ci/callahan" class="btn btn-ghost" target="_blank">GitHub</a>
+    <a href="/#quickstart" class="btn btn-accent">Get Started</a>
+  </div>
+</nav>
+
+<main>
+  <p class="eyebrow">Changelog</p>
+  <h1>What's new</h1>
+  <p class="sub">All releases, fixes, and improvements — newest first.</p>
+
+  <!-- v1.0.0 -->
+  <div class="release">
+    <div class="release-meta">
+      <div class="release-version">v1.0.0</div>
+      <div class="release-date">JAN 2025</div>
+      <span class="release-badge badge-latest">LATEST</span>
+    </div>
+    <div>
+      <div class="release-title">Initial Release — The one that started it all</div>
+      <div class="release-desc">The first public release of Callahan CI. Everything is new. This is the foundation — AI-native pipelines, serverless execution, and a complete built-in toolchain. No plugins required.</div>
+
+      <div class="change-group">
+        <div class="change-label label-new">New</div>
+        <ul class="change-list">
+          <li>Serverless pipeline execution engine — every job runs in a fresh ephemeral container, cold start under 2 seconds</li>
+          <li>Callahanfile.yaml — GitHub Actions-compatible YAML with AI extensions (<code style="font-family:var(--mono);font-size:12px;background:var(--bg2);padding:1px 6px;border-radius:3px;color:var(--green);">ai.review</code>, <code style="font-family:var(--mono);font-size:12px;background:var(--bg2);padding:1px 6px;border-radius:3px;color:var(--green);">ai.explain-failures</code>, <code style="font-family:var(--mono);font-size:12px;background:var(--bg2);padding:1px 6px;border-radius:3px;color:var(--green);">ai.security-scan</code>)</li>
+          <li>Unified LLM layer — supports Anthropic Claude, OpenAI, Groq, Mistral, and Ollama (local, offline)</li>
+          <li>Pipeline Architect agent — generate full pipelines from plain English descriptions</li>
+          <li>Build Debugger agent — chat interface inside failing builds with AI root cause analysis</li>
+          <li>Code Reviewer agent — automatic AI review comments posted to GitHub, GitLab, Bitbucket, and Gitea PRs</li>
+          <li>Security Analyst agent — Trivy, Semgrep, and gitleaks built-in with AI-powered triage and fix suggestions</li>
+          <li>Auto language detection — Node.js, Python, Go, Rust, Java, .NET, PHP, Ruby detected automatically</li>
+          <li>Dependency caching — npm, pip, cargo, Maven, Go modules cached and reused across runs</li>
+          <li>Matrix builds — run jobs across multiple language versions or OS targets in parallel</li>
+          <li>Secrets management — encrypted storage, injected as environment variables at runtime</li>
+          <li>Built-in deployment steps — Fly.io, Vercel, Netlify, Kubernetes, Helm, Terraform, AWS Lambda, Railway, Render</li>
+          <li>SBOM generation — software bill of materials produced on every build</li>
+          <li>Dashboard — real-time build logs, pipeline visual editor, AI insights, command palette (⌘K)</li>
+          <li>REST API + WebSocket — full programmatic access to all platform features</li>
+          <li>Single-command install — <code style="font-family:var(--mono);font-size:12px;background:var(--bg2);padding:1px 6px;border-radius:3px;color:var(--green);">curl -fsSL https://callahanci.com | sh</code></li>
+          <li>Docker Compose support — full stack up in one command</li>
+          <li>SQLite with WAL mode — persistent pipeline state, no external database required</li>
+          <li>Example pipelines — Next.js, Python FastAPI, Go, Rust, Java Spring Boot</li>
+          <li>MIT License — free to use, modify, and distribute forever</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding-top:16px;">
+    <p style="font-size:13px;color:var(--text3);font-family:var(--mono);">More releases coming soon. <a href="https://github.com/callahan-ci/callahan" style="color:var(--accent);text-decoration:none;" target="_blank">Watch the repo →</a></p>
+  </div>
+</main>
+</body>
+</html>

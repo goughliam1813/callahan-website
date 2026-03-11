@@ -2,9 +2,11 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/terms",   "destination": "/terms.html"   },
-    { "source": "/docs",    "destination": "/docs.html"    }
+    { "source": "/docs",      "destination": "/docs.html" },
+    { "source": "/changelog", "destination": "/changelog.html" },
+    { "source": "/license",   "destination": "/license.html" },
+    { "source": "/privacy",   "destination": "/privacy.html" },
+    { "source": "/terms",     "destination": "/terms.html" }
   ],
   "headers": [
     {
