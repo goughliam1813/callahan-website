@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Callahan CI — AI-Native CI/CD. Runs on your machine.</title>
+  <meta name="description" content="Open-source, AI-native, serverless CI/CD platform. No cloud. No agents. No plugin hell. Runs entirely on your machine in under 10 seconds."/>
+  <meta property="og:title" content="Callahan CI"/>
+  <meta property="og:description" content="AI-native CI/CD that runs on your machine. No cloud, no agents, no plugin hell."/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080a0f;
+      --bg1:       #0d1117;
+      --bg2:       #111620;
+      --bg3:       #161c2c;
+      --line:      rgba(255,255,255,0.07);
+      --line2:     rgba(255,255,255,0.12);
+      --text:      #e8eaf0;
+      --text2:     #8892a4;
+      --text3:     #545f72;
+      --accent:    #00d4ff;
+      --accent2:   #0099cc;
+      --green:     #00e5a0;
+      --orange:    #ff6b2b;
+      --red:       #ff4455;
+      --yellow:    #f5c542;
+      --mono:      'IBM Plex Mono', monospace;
+      --sans:      'Figtree', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── GRID BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+      z-index: 0;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%);
+    }
+
+    /* ── TOP GLOW ── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(0,212,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    * { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(8,10,15,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line2);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-mark svg { display: block; }
+
+    .logo-name {
+      font-family: var(--mono);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-name span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text2);
+      text-decoration: none;
+      transition: color 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text2);
+      border: 1px solid var(--line2);
+    }
+    .btn-ghost:hover {
+      color: var(--text);
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+    }
+    .btn-accent:hover {
+      background: #33ddff;
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(0,212,255,0.35);
+    }
+
+    .btn-lg {
+      padding: 13px 24px;
+      font-size: 14px;
+      border-radius: 8px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line2);
+    }
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 100px;
+      padding: 5px 14px 5px 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      margin-bottom: 32px;
+      animation: fadeUp 0.5s ease both;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--green);
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%,100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero-title {
+      font-family: var(--sans);
+      font-size: clamp(44px, 7vw, 88px);
+      font-weight: 900;
+      line-height: 0.97;
+      letter-spacing: -0.04em;
+      color: #fff;
+      max-width: 860px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.5s 0.08s ease both;
+    }
+
+    .hero-title-dim { color: var(--text2); }
+
+    .hero-title-glow {
+      color: var(--accent);
+      text-shadow: 0 0 60px rgba(0,212,255,0.4);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text2);
+      max-width: 480px;
+      line-height: 1.65;
+      font-weight: 400;
+      margin-bottom: 40px;
+      animation: fadeUp 0.5s 0.16s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 56px;
+      animation: fadeUp 0.5s 0.24s ease both;
+    }
+
+    /* ── TERMINAL ── */
+    .terminal {
+      width: 100%;
+      max-width: 640px;
+      background: var(--bg1);
+      border: 1px solid var(--line2);
+      border-radius: 10px;
+      overflow: hidden;
+      animation: fadeUp 0.5s 0.32s ease both;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .t-dots { display: flex; gap: 6px; }
+
+    .t-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .t-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.04em;
+    }
+
+    .t-copy {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text3);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 3px 8px;
+      border-radius: 4px;
+      transition: all 0.15s;
+      letter-spacing: 0.04em;
+    }
+    .t-copy:hover { color: var(--accent); background: rgba(0,212,255,0.08); }
+
+    .terminal-body {
+      padding: 20px 20px 24px;
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.9;
+      text-align: left;
+    }
+
+    .t-line { display: flex; gap: 0; }
+    .t-prompt { color: var(--text3); user-select: none; margin-right: 10px; }
+    .t-cmd { color: var(--text); }
+    .t-comment { color: var(--text3); font-style: italic; }
+    .t-ok { color: var(--green); }
+    .t-info { color: var(--accent); }
+    .t-warn { color: var(--yellow); }
+    .t-url { color: var(--accent); text-decoration: underline; }
+    .t-blank { height: 8px; }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin: 0 0 100px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 48px;
+      border-right: 1px solid var(--line);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: var(--mono);
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .stat-num span { color: var(--accent); }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text3);
+      font-weight: 500;
+      line-height: 1.4;
+      max-width: 80px;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 100px;
+    }
+
+    .section-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--sans);
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--text2);
+      max-width: 480px;
+      line-height: 1.65;
+    }
+
+    /* ── BENTO GRID ── */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+      margin-top: 56px;
+    }
+
+    .bento-card {
+      background: var(--bg1);
+      border: 1px solid var(--line2);
+      border-radius: 10px;
+      padding: 28px;
+      transition: border-color 0.2s, background 0.2s;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(0,212,255,0.04), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .bento-card:hover { border-color: rgba(0,212,255,0.25); }
+    .bento-card:hover::before { opacity: 1; }
+
+    .bc-1  { grid-column: span 5; }
+    .bc-2  { grid-column: span 7; }
+    .bc-3  { grid-column: span 4; }
+    .bc-4  { grid-column: span 4; }
+    .bc-5  { grid-column: span 4; }
+    .bc-6  { grid-column: span 6; }
+    .bc-7  { grid-column: span 6; }
+
+    .bento-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
+    .tag-blue   { background: rgba(0,212,255,0.1);  color: var(--accent); }
+    .tag-green  { background: rgba(0,229,160,0.1);  color: var(--green); }
+    .tag-orange { background: rgba(255,107,43,0.1); color: var(--orange); }
+    .tag-purple { background: rgba(160,120,255,0.1); color: #a078ff; }
+    .tag-red    { background: rgba(255,68,85,0.1);  color: var(--red); }
+
+    .bento-title {
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .bento-desc {
+      font-size: 13.5px;
+      color: var(--text2);
+      line-height: 1.65;
+    }
+
+    /* ── PIPELINE YAML PREVIEW ── */
+    .yaml-preview {
+      margin-top: 18px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 14px 16px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      line-height: 1.8;
+      color: var(--text2);
+    }
+
+    .yaml-key   { color: var(--accent); }
+    .yaml-val   { color: var(--green); }
+    .yaml-str   { color: #ff9f6a; }
+    .yaml-cmt   { color: var(--text3); }
+
+    /* ── LLM PILL ROW ── */
+    .llm-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+
+    .llm-pill {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg2);
+      border: 1px solid var(--line2);
+      color: var(--text2);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── BUILD LOG PREVIEW ── */
+    .log-lines {
+      margin-top: 16px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      line-height: 2;
+    }
+
+    .log-ok     { color: var(--green); }
+    .log-run    { color: var(--accent); }
+    .log-warn   { color: var(--yellow); }
+    .log-err    { color: var(--red); }
+    .log-dim    { color: var(--text3); }
+    .log-ai     { color: #a078ff; }
+
+    /* ── METRICS ── */
+    .metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 18px;
+    }
+
+    .metric {
+      background: var(--bg);
+      padding: 16px;
+      text-align: center;
+    }
+
+    .metric-val {
+      font-family: var(--mono);
+      font-size: 24px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .metric-val span { color: var(--accent); }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── AI SECTION ── */
+    .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 56px;
+    }
+
+    .ai-card {
+      background: var(--bg1);
+      border: 1px solid var(--line2);
+      border-radius: 10px;
+      padding: 28px;
+      transition: border-color 0.2s;
+    }
+
+    .ai-card:hover { border-color: rgba(0,212,255,0.2); }
+
+    .ai-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+
+    .ai-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .ai-desc {
+      font-size: 13.5px;
+      color: var(--text2);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .ai-example {
+      background: var(--bg);
+      border-left: 2px solid var(--accent);
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+
+    .ai-example .ai-label {
+      font-size: 10px;
+      color: var(--text3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    /* ── QUICKSTART ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 56px;
+    }
+
+    .step-card {
+      background: var(--bg1);
+      border: 1px solid var(--line2);
+      border-radius: 10px;
+      padding: 24px;
+    }
+
+    .step-n {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .step-cmd {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      padding: 8px 12px;
+      color: var(--green);
+      word-break: break-all;
+    }
+
+    /* ── COMPARISON TABLE ── */
+    .compare-wrap {
+      margin-top: 56px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+
+    th {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text3);
+      letter-spacing: 0.08em;
+      text-align: left;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--line2);
+      background: var(--bg1);
+    }
+
+    th.callahan-col {
+      color: var(--accent);
+      background: rgba(0,212,255,0.05);
+      border-left: 1px solid rgba(0,212,255,0.2);
+      border-right: 1px solid rgba(0,212,255,0.2);
+    }
+
+    td {
+      padding: 13px 20px;
+      border-bottom: 1px solid var(--line);
+      color: var(--text2);
+      vertical-align: middle;
+    }
+
+    td:first-child {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    td.callahan-col {
+      background: rgba(0,212,255,0.03);
+      border-left: 1px solid rgba(0,212,255,0.12);
+      border-right: 1px solid rgba(0,212,255,0.12);
+      color: var(--text);
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    tr:hover td.callahan-col { background: rgba(0,212,255,0.06); }
+
+    .yes { color: var(--green); font-size: 14px; }
+    .no  { color: var(--text3); font-size: 14px; }
+    .partial { color: var(--yellow); font-size: 13px; }
+
+    /* ── CTA ── */
+    .cta-section {
+      border-top: 1px solid var(--line);
+      margin-top: 100px;
+    }
+
+    .cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 100px 40px;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .cta-sub {
+      font-size: 16px;
+      color: var(--text2);
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 48px 40px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .footer-brand-text {
+      font-size: 13px;
+      color: var(--text3);
+      line-height: 1.65;
+      margin-top: 14px;
+      margin-bottom: 20px;
+    }
+
+    .footer-mit {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(0,229,160,0.08);
+      border: 1px solid rgba(0,229,160,0.15);
+      color: var(--green);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-col-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text2);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 40px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--text3);
+      font-family: var(--mono);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom a {
+      color: var(--text3);
+      text-decoration: none;
+    }
+    .footer-bottom a:hover { color: var(--text2); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .bento { grid-template-columns: 1fr; }
+      .bc-1,.bc-2,.bc-3,.bc-4,.bc-5,.bc-6,.bc-7 { grid-column: span 1; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .ai-grid { grid-template-columns: 1fr; }
+      .stat-item { padding: 18px 24px; }
+      footer { grid-template-columns: 1fr 1fr; padding: 40px 20px; }
+      .section { padding: 0 20px 72px; }
+      .cta-inner { padding: 72px 20px; }
+    }
+
+    @media (max-width: 560px) {
+      .steps { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr; }
+      .stats-bar { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--line); width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="/" class="logo">
+      <div class="logo-mark">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="2" y="2" width="5" height="5" rx="1" fill="#000"/>
+          <rect x="9" y="2" width="5" height="5" rx="1" fill="#000" opacity="0.5"/>
+          <rect x="2" y="9" width="5" height="5" rx="1" fill="#000" opacity="0.5"/>
+          <rect x="9" y="9" width="5" height="5" rx="1" fill="#000"/>
+        </svg>
+      </div>
+      <span class="logo-name">callahan<span>/ci</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#ai">AI Agents</a></li>
+      <li><a href="#compare">Compare</a></li>
+      <li><a href="#quickstart">Quickstart</a></li>
+      <li><a href="https://github.com/callahan-ci/callahan" target="_blank">Docs</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <a href="https://github.com/callahan-ci/callahan" class="btn btn-ghost" target="_blank">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <a href="#quickstart" class="btn btn-accent">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    v1.0.0 — open source · MIT
+  </div>
+
+  <h1 class="hero-title">
+    CI/CD that<br/>
+    <span class="hero-title-glow">thinks for itself.</span>
+  </h1>
+
+  <p class="hero-sub">
+    AI-native, serverless pipelines that run entirely on your machine. No cloud bill. No agent clusters. No plugin graveyard.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#quickstart" class="btn btn-accent btn-lg">Get Started Free →</a>
+    <a href="https://github.com/callahan-ci/callahan" class="btn btn-outline btn-lg" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      Star on GitHub
+    </a>
+  </div>
+
+  <div class="terminal">
+    <div class="terminal-bar">
+      <div class="t-dots">
+        <div class="t-dot" style="background:#ff5f56;"></div>
+        <div class="t-dot" style="background:#ffbd2e;"></div>
+        <div class="t-dot" style="background:#27c93f;"></div>
+      </div>
+      <span class="t-title">bash — ~/projects</span>
+      <button class="t-copy" onclick="copyCmd(this, 'curl -fsSL https://callahanci.com | sh')">copy</button>
+    </div>
+    <div class="terminal-body">
+      <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">curl -fsSL https://callahanci.com | sh</span></div>
+      <div class="t-blank"></div>
+      <div class="t-line"><span class="t-ok">✔</span>&nbsp;<span class="t-info">Callahan CI v1.0.0</span></div>
+      <div class="t-line"><span class="t-ok">✔</span>&nbsp;<span style="color:var(--text2)">Detected: macOS arm64 · Docker 26.1</span></div>
+      <div class="t-line"><span class="t-ok">✔</span>&nbsp;<span style="color:var(--text2)">Backend started on :8080 (329ms)</span></div>
+      <div class="t-line"><span class="t-ok">✔</span>&nbsp;<span style="color:var(--text2)">Dashboard started on :3000 (1.2s)</span></div>
+      <div class="t-blank"></div>
+      <div class="t-line"><span class="t-info">→</span>&nbsp;<span class="t-url">http://localhost:3000</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar reveal">
+  <div class="stat-item">
+    <div>
+      <div class="stat-num">&lt;<span>2</span>s</div>
+      <div class="stat-label">cold pipeline start</div>
+    </div>
+  </div>
+  <div class="stat-item">
+    <div>
+      <div class="stat-num"><span>0</span></div>
+      <div class="stat-label">plugins required</div>
+    </div>
+  </div>
+  <div class="stat-item">
+    <div>
+      <div class="stat-num"><span>10</span>+</div>
+      <div class="stat-label">LLM providers supported</div>
+    </div>
+  </div>
+  <div class="stat-item">
+    <div>
+      <div class="stat-num"><span>50</span></div>
+      <div class="stat-label">concurrent jobs on a laptop</div>
+    </div>
+  </div>
+  <div class="stat-item">
+    <div>
+      <div class="stat-num">MIT</div>
+      <div class="stat-label">free forever, open source</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES BENTO -->
+<div class="section reveal" id="features">
+  <p class="section-eyebrow">// capabilities</p>
+  <h2 class="section-title">Everything your pipeline needs.<br/>Nothing you have to install.</h2>
+  <p class="section-sub">Jenkins took 20 plugins to do what Callahan does out of the box. We counted.</p>
+
+  <div class="bento">
+    <!-- Card 1: Pipeline YAML -->
+    <div class="bento-card bc-1">
+      <span class="bento-tag tag-blue">Pipeline</span>
+      <div class="bento-title">Human-readable pipelines</div>
+      <div class="bento-desc">GitHub Actions–compatible YAML with an AI extension. Or just describe it in English — Callahan writes the YAML for you.</div>
+      <div class="yaml-preview">
+<span class="yaml-key">name</span>: <span class="yaml-str">production</span>
+<span class="yaml-key">on</span>: [<span class="yaml-val">push</span>, <span class="yaml-val">pull_request</span>]
+
+<span class="yaml-key">jobs</span>:
+  <span class="yaml-key">build-and-scan</span>:
+    <span class="yaml-key">runs-on</span>: <span class="yaml-str">callahan:latest</span>
+    <span class="yaml-key">ai</span>:
+      <span class="yaml-key">review</span>: <span class="yaml-val">true</span>
+      <span class="yaml-key">explain-failures</span>: <span class="yaml-val">true</span></div>
+    </div>
+
+    <!-- Card 2: Execution metrics -->
+    <div class="bento-card bc-2">
+      <span class="bento-tag tag-green">Execution Engine</span>
+      <div class="bento-title">Serverless. Ephemeral. Stupid fast.</div>
+      <div class="bento-desc">Every job gets a fresh container. Auto-caches npm, pip, cargo, Maven, Go. Parallel execution limited only by your CPU cores.</div>
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric-val">&lt;<span>2</span>s</div>
+          <div class="metric-label">cold start</div>
+        </div>
+        <div class="metric">
+          <div class="metric-val"><span>300</span>ms</div>
+          <div class="metric-label">warm cache</div>
+        </div>
+        <div class="metric">
+          <div class="metric-val"><span>50</span></div>
+          <div class="metric-label">parallel jobs</div>
+        </div>
+        <div class="metric">
+          <div class="metric-val"><span>0</span>$</div>
+          <div class="metric-label">cloud spend</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: LLM providers -->
+    <div class="bento-card bc-3">
+      <span class="bento-tag tag-purple">AI Layer</span>
+      <div class="bento-title">Any LLM. Swap anytime.</div>
+      <div class="bento-desc">Bring your own key or run fully offline with Ollama. Switch per project, per step.</div>
+      <div class="llm-pills">
+        <span class="llm-pill">claude</span>
+        <span class="llm-pill">gpt-4o</span>
+        <span class="llm-pill">gemini</span>
+        <span class="llm-pill">grok</span>
+        <span class="llm-pill">mistral</span>
+        <span class="llm-pill">groq</span>
+        <span class="llm-pill">ollama</span>
+        <span class="llm-pill">+ local</span>
+      </div>
+    </div>
+
+    <!-- Card 4: Security -->
+    <div class="bento-card bc-4">
+      <span class="bento-tag tag-red">Security</span>
+      <div class="bento-title">Scans built-in, not bolted on.</div>
+      <div class="bento-desc">Trivy, Semgrep, gitleaks, OWASP, SBOM. All pre-configured.</div>
+      <div class="log-lines">
+        <div class="log-ok">✔ trivy image scan — 0 critical</div>
+        <div class="log-ok">✔ semgrep — no issues found</div>
+        <div class="log-ok">✔ gitleaks — no secrets</div>
+        <div class="log-ok">✔ sbom generated</div>
+        <div class="log-ai">✦ AI triage: all clear</div>
+      </div>
+    </div>
+
+    <!-- Card 5: Deploy targets -->
+    <div class="bento-card bc-5">
+      <span class="bento-tag tag-orange">Deploy</span>
+      <div class="bento-title">Every deploy target covered.</div>
+      <div class="bento-desc">K8s, Helm, Terraform, Lambda, Fly.io, Vercel, Netlify, Railway, Render — zero config.</div>
+      <div class="llm-pills" style="margin-top:16px;">
+        <span class="llm-pill">kubernetes</span>
+        <span class="llm-pill">fly.io</span>
+        <span class="llm-pill">vercel</span>
+        <span class="llm-pill">lambda</span>
+        <span class="llm-pill">helm</span>
+        <span class="llm-pill">terraform</span>
+      </div>
+    </div>
+
+    <!-- Card 6: Build log -->
+    <div class="bento-card bc-6">
+      <span class="bento-tag tag-blue">Live Logs</span>
+      <div class="bento-title">Real-time build output. AI explain on every failure.</div>
+      <div class="bento-desc">Stream logs live. One click to get a plain-English explanation of why a step failed.</div>
+      <div class="log-lines">
+        <div class="log-run">▶ step[1] — install dependencies</div>
+        <div class="log-ok">✔ npm ci (12.3s, cached)</div>
+        <div class="log-run">▶ step[2] — run tests</div>
+        <div class="log-ok">✔ 142 passed, 0 failed (8.1s)</div>
+        <div class="log-run">▶ step[3] — build</div>
+        <div class="log-err">✖ Error: ENOMEM — out of memory</div>
+        <div class="log-ai">✦ AI: increase Node --max-old-space-size</div>
+      </div>
+    </div>
+
+    <!-- Card 7: GitOps -->
+    <div class="bento-card bc-7">
+      <span class="bento-tag tag-green">GitOps</span>
+      <div class="bento-title">Full PR workflow out of the box.</div>
+      <div class="bento-desc">AI review comments on every PR. Status checks that block merge. Auto-merge on green. Works with GitHub, GitLab, Bitbucket, Gitea.</div>
+      <div class="log-lines" style="margin-top:16px;">
+        <div class="log-ai">✦ AI Review: possible N+1 query on line 84</div>
+        <div class="log-ok">✔ Status check: build passed</div>
+        <div class="log-ok">✔ Status check: security passed</div>
+        <div class="log-ok">✔ Auto-merged: all checks green</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI AGENTS -->
+<div class="section reveal" id="ai">
+  <p class="section-eyebrow">// ai agents</p>
+  <h2 class="section-title">Four agents.<br/>Always running.</h2>
+  <p class="section-sub">Not chatbots. Not integrations. Agents woven into the platform that take real action on your code and pipelines.</p>
+
+  <div class="ai-grid">
+    <div class="ai-card">
+      <div class="ai-num">AGENT 01 / PIPELINE ARCHITECT</div>
+      <div class="ai-title">Describe it. Get a pipeline.</div>
+      <div class="ai-desc">Type what you want in plain English. The Architect writes your entire Callahanfile.yaml — build steps, test runners, security scans, deploy targets — and commits it to your repo.</div>
+      <div class="ai-example">
+        <div class="ai-label">Prompt</div>
+        "Build my Next.js app, run Playwright tests,<br/>scan with Trivy, deploy to Fly.io on green PRs"
+      </div>
+    </div>
+
+    <div class="ai-card">
+      <div class="ai-num">AGENT 02 / BUILD DEBUGGER</div>
+      <div class="ai-title">Failing build? Ask why.</div>
+      <div class="ai-desc">When a step fails, the Debugger reads your full log context, identifies the root cause, and gives you an exact fix — not a generic suggestion. Available in a live chat panel inside any build.</div>
+      <div class="ai-example">
+        <div class="ai-label">Diagnosis</div>
+        "Step 3 failed: the container exposes port 8080<br/>but your test expects 3000. Fix: add PORT=8080 env."
+      </div>
+    </div>
+
+    <div class="ai-card">
+      <div class="ai-num">AGENT 03 / CODE REVIEWER</div>
+      <div class="ai-title">AI review on every PR. Automatically.</div>
+      <div class="ai-desc">Every pull request gets a structured AI review posted as a comment — bugs, performance issues, security concerns. Configurable strictness. Works with GitHub, GitLab, Bitbucket, and Gitea.</div>
+      <div class="ai-example">
+        <div class="ai-label">Review comment</div>
+        "Line 47: user input passed directly to SQL query.<br/>Possible injection. Use parameterised statements."
+      </div>
+    </div>
+
+    <div class="ai-card">
+      <div class="ai-num">AGENT 04 / SECURITY ANALYST</div>
+      <div class="ai-title">CVEs in plain English. Fixes included.</div>
+      <div class="ai-desc">Trivy and Semgrep findings are parsed, prioritised, and explained by the Analyst. Critical issues block the pipeline. Common CVEs get auto-generated fix suggestions with code.</div>
+      <div class="ai-example">
+        <div class="ai-label">Finding</div>
+        "CVE-2024-1234 (Critical) in <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="573b383336243f1763796660796567">[email&#160;protected]</a>.<br/>Upgrade to 4.17.21. Here is the patch diff."
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE -->
+<div class="section reveal" id="compare">
+  <p class="section-eyebrow">// comparison</p>
+  <h2 class="section-title">How it stacks up.</h2>
+  <p class="section-sub">Everything else either needs the cloud, needs a PhD to configure, or needs a credit card. Usually all three.</p>
+
+  <div class="compare-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th class="callahan-col">Callahan CI</th>
+          <th>Jenkins</th>
+          <th>GitHub Actions</th>
+          <th>Dagger</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Self-hosted / local-first</td>
+          <td class="callahan-col"><span class="yes">✔ Yes</span></td>
+          <td><span class="yes">✔ Yes</span></td>
+          <td><span class="no">✖ Cloud</span></td>
+          <td><span class="yes">✔ Yes</span></td>
+        </tr>
+        <tr>
+          <td>Zero config for most projects</td>
+          <td class="callahan-col"><span class="yes">✔ Yes</span></td>
+          <td><span class="no">✖ No</span></td>
+          <td><span class="partial">~ Partial</span></td>
+          <td><span class="no">✖ No</span></td>
+        </tr>
+        <tr>
+          <td>Built-in AI agents</td>
+          <td class="callahan-col"><span class="yes">✔ Yes</span></td>
+          <td><span class="no">✖ No</span></td>
+          <td><span class="no">✖ No</span></td>
+          <td><span class="no">✖ No</span></td>
+        </tr>
+        <tr>
+          <td>Natural language pipeline creation</td>
+          <td class="callahan-col"><span class="yes">✔ Yes</span></td>
+          <td><span class="no">✖ No</span></td>
+          <td><span class="no">✖ No</span></td>
+          <td><span class="no">✖ No</span></td>
+        </tr>
+        <tr>
+          <td>Built-in security scanning</td>
+          <td class="callahan-col"><span class="yes">✔ Trivy, Semgrep, gitleaks</span></td>
+          <td><span class="no">✖ Plugin only</span></td>
+          <td><span class="no">✖ Action only</span></td>
+          <td><span class="no">✖ No</span></td>
+        </tr>
+        <tr>
+          <td>Dashboard UI</td>
+          <td class="callahan-col"><span class="yes">✔ Built-in</span></td>
+          <td><span class="partial">~ Basic</span></td>
+          <td><span class="yes">✔ Cloud UI</span></td>
+          <td><span class="no">✖ No</span></td>
+        </tr>
+        <tr>
+          <td>Cold start time</td>
+          <td class="callahan-col"><span class="yes">✔ &lt; 2s</span></td>
+          <td><span class="partial">~ 15–60s</span></td>
+          <td><span class="partial">~ 20–45s</span></td>
+          <td><span class="yes">✔ Fast</span></td>
+        </tr>
+        <tr>
+          <td>Works offline</td>
+          <td class="callahan-col"><span class="yes">✔ Fully</span></td>
+          <td><span class="yes">✔ Yes</span></td>
+          <td><span class="no">✖ No</span></td>
+          <td><span class="yes">✔ Yes</span></td>
+        </tr>
+        <tr>
+          <td>License</td>
+          <td class="callahan-col"><span style="color:var(--green); font-family:var(--mono); font-size:12px;">MIT</span></td>
+          <td><span style="color:var(--text2); font-family:var(--mono); font-size:12px;">MIT</span></td>
+          <td><span style="color:var(--text3); font-family:var(--mono); font-size:12px;">Proprietary</span></td>
+          <td><span style="color:var(--text2); font-family:var(--mono); font-size:12px;">Apache 2.0</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- QUICKSTART -->
+<div class="section reveal" id="quickstart">
+  <p class="section-eyebrow">// get started</p>
+  <h2 class="section-title">Running in under 5 minutes.</h2>
+  <p class="section-sub">Mac, Linux, and Windows WSL2. Requires Docker Desktop or Go 1.22+.</p>
+
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-n">STEP 01</div>
+      <div class="step-title">Install</div>
+      <div class="step-desc">One command downloads the binary and sets everything up.</div>
+      <div class="step-cmd">curl -fsSL https://callahanci.com | sh</div>
+    </div>
+    <div class="step-card">
+      <div class="step-n">STEP 02</div>
+      <div class="step-title">Start</div>
+      <div class="step-desc">Auto-detects Docker or falls back to native Go mode.</div>
+      <div class="step-cmd">cd callahan && ./start.sh</div>
+    </div>
+    <div class="step-card">
+      <div class="step-n">STEP 03</div>
+      <div class="step-title">Open</div>
+      <div class="step-desc">Connect your first repo and run a build.</div>
+      <div class="step-cmd">open http://localhost:3000</div>
+    </div>
+    <div class="step-card">
+      <div class="step-n">STEP 04 / OPTIONAL</div>
+      <div class="step-title">Add AI</div>
+      <div class="step-desc">Drop in an API key to unlock all AI agents. Or use Ollama for offline mode.</div>
+      <div class="step-cmd">ANTHROPIC_API_KEY=sk-ant-... ./start.sh</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section reveal">
+  <div class="cta-inner">
+    <h2 class="cta-title">Ship with confidence.<br/>Start today.</h2>
+    <p class="cta-sub">Free, open source, and runs entirely on your machine. No credit card. No cloud. No catch.</p>
+    <div class="cta-actions">
+      <a href="#quickstart" class="btn btn-accent btn-lg">Get Started Free →</a>
+      <a href="https://github.com/callahan-ci/callahan" class="btn btn-outline btn-lg" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        View Source
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <a href="/" class="logo" style="margin-bottom:0;">
+      <div class="logo-mark">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" fill="#000"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#000" opacity="0.5"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#000" opacity="0.5"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#000"/></svg>
+      </div>
+      <span class="logo-name">callahan<span>/ci</span></span>
+    </a>
+    <p class="footer-brand-text">AI-native, serverless CI/CD that runs entirely on your machine. Open source since day one.</p>
+    <span class="footer-mit">MIT LICENSE</span>
+  </div>
+  <div>
+    <div class="footer-col-title">Product</div>
+    <ul class="footer-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#ai">AI Agents</a></li>
+      <li><a href="#compare">Compare</a></li>
+      <li><a href="#quickstart">Quickstart</a></li>
+      <li><a href="https://github.com/callahan-ci/callahan">Changelog</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Community</div>
+    <ul class="footer-links">
+      <li><a href="https://github.com/callahan-ci/callahan" target="_blank">GitHub</a></li>
+      <li><a href="https://github.com/callahan-ci/callahan/discussions" target="_blank">Discussions</a></li>
+      <li><a href="https://github.com/callahan-ci/callahan/issues" target="_blank">Issues</a></li>
+      <li><a href="/contributing">Contributing</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Legal</div>
+    <ul class="footer-links">
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms of Service</a></li>
+      <li><a href="/license">MIT License</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="footer-bottom">
+  <span>© 2025 Callahan CI Contributors</span>
+  <span>
+    <a href="/privacy">Privacy</a> &nbsp;·&nbsp;
+    <a href="/terms">Terms</a> &nbsp;·&nbsp;
+    <a href="https://github.com/callahan-ci/callahan" target="_blank">GitHub</a>
+  </span>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function copyCmd(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'copied!';
+      btn.style.color = 'var(--green)';
+      setTimeout(() => {
+        btn.textContent = 'copy';
+        btn.style.color = '';
+      }, 1800);
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('vis
