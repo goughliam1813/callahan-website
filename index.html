@@ -891,6 +891,10 @@
       opacity: 1;
       transform: translateY(0);
     }
+    /* Fallback: if JS fails or observer doesn't fire, always show content */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; }
+    }
 
     /* ── MOBILE ── */
     @media (max-width: 900px) {
@@ -1400,7 +1404,28 @@
     });
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('vis
+  // Reveal sections on scroll — with hard fallback so nothing stays hidden
+  const reveals = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.01 });
+    reveals.forEach(el => observer.observe(el));
+  } else {
+    // Browser doesn't support IntersectionObserver — show everything
+    reveals.forEach(el => el.classList.add('visible'));
+  }
+
+  // Hard fallback — force show everything after 1.5s regardless
+  setTimeout(() => {
+    reveals.forEach(el => el.classList.add('visible'));
+  }, 1500);
+</script>
+</body>
+</html>
