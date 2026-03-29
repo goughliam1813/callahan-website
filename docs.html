@@ -151,34 +151,33 @@
     </div>
 
     <h2 id="installation">Installation</h2>
-    <p>Callahan runs on Linux, macOS, and Windows (WSL2). The only requirement is <strong>Docker Desktop</strong> or <strong>Go 1.22+</strong>.</p>
+    <p>Callahan runs on Linux, macOS, and Windows (WSL2). Requirements: <strong>Go 1.22+</strong> and <strong>Node 18+</strong>. Docker is optional (for container-based execution).</p>
 
-    <h3>One-line installer</h3>
-    <pre><code><span class="c-cmt"># Downloads binary, sets permissions, and starts Callahan</span>
-<span class="c-cmd">curl -fsSL https://callahanci.com | sh</span></code></pre>
-
-    <h3>Docker Compose</h3>
-    <pre><code><span class="c-cmd">git clone https://github.com/goughliam1813/callahan
-cd callahan
-docker compose up</span></code></pre>
-
-    <h3>From source</h3>
-    <pre><code><span class="c-cmd">git clone https://github.com/goughliam1813/callahan
-cd callahan/backend
+    <h3>Recommended: From source</h3>
+    <pre><code><span class="c-cmd">git clone https://github.com/goughliam1813/Callahan.git
+cd Callahan/backend
 go mod tidy
 go run ./cmd/callahan</span>
 
 <span class="c-cmt"># In a second terminal:</span>
-<span class="c-cmd">cd callahan/frontend
+<span class="c-cmd">cd Callahan/frontend
 npm install
 npm run dev</span></code></pre>
+
+    <h3>Docker Compose</h3>
+    <pre><code><span class="c-cmd">git clone https://github.com/goughliam1813/Callahan.git
+cd Callahan
+docker compose up</span></code></pre>
+
+    <h3>From source (alternative)</h3>
+    <p>Same as above — see the recommended install method.</p>
 
     <h2 id="quickstart">Quickstart</h2>
     <p>Once installed, open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a> in your browser. You'll see the Callahan dashboard.</p>
     <ol>
-      <li>Click <strong>Connect Repository</strong> and paste your Git repo URL</li>
+      <li>Click the <strong>+</strong> button in the sidebar and paste your Git repo URL with a Personal Access Token</li>
       <li>Callahan auto-detects your language and suggests a pipeline</li>
-      <li>Click <strong>Run Build</strong> — your first pipeline executes in an ephemeral container</li>
+      <li>Click <strong>Run Build</strong> — your first pipeline executes</li>
       <li>Add an LLM API key in Settings to unlock all AI agents</li>
     </ol>
 

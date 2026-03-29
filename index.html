@@ -983,10 +983,10 @@
         <div class="t-dot" style="background:#27c93f;"></div>
       </div>
       <span class="t-title">bash — ~/projects</span>
-      <button class="t-copy" onclick="copyCmd(this, 'curl -fsSL https://callahanci.com | sh')">copy</button>
+      <button class="t-copy" onclick="copyCmd(this, 'git clone https://github.com/goughliam1813/Callahan.git')">copy</button>
     </div>
     <div class="terminal-body">
-      <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">curl -fsSL https://callahanci.com | sh</span></div>
+      <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">git clone https://github.com/goughliam1813/Callahan.git</span></div>
       <div class="t-blank"></div>
       <div class="t-line"><span class="t-ok">✔</span>&nbsp;<span class="t-info">Callahan CI v1.0.0</span></div>
       <div class="t-line"><span class="t-ok">✔</span>&nbsp;<span style="color:var(--text2)">Detected: macOS arm64 · Docker 26.1</span></div>
@@ -1059,20 +1059,20 @@
     <!-- Card 2: Execution metrics -->
     <div class="bento-card bc-2">
       <span class="bento-tag tag-green">Execution Engine</span>
-      <div class="bento-title">Serverless. Ephemeral. Stupid fast.</div>
-      <div class="bento-desc">Every job gets a fresh container. Auto-caches npm, pip, cargo, Maven, Go. Parallel execution limited only by your CPU cores.</div>
+      <div class="bento-title">Local-first. Lightweight. Stupid fast.</div>
+      <div class="bento-desc">Runs directly on your machine — no agents, no VMs, no waiting. Docker container mode coming soon. Parallel execution limited only by your CPU cores.</div>
       <div class="metrics">
         <div class="metric">
-          <div class="metric-val">&lt;<span>2</span>s</div>
-          <div class="metric-label">cold start</div>
+          <div class="metric-val">&lt;<span>5</span>s</div>
+          <div class="metric-label">first build</div>
         </div>
         <div class="metric">
-          <div class="metric-val"><span>300</span>ms</div>
-          <div class="metric-label">warm cache</div>
+          <div class="metric-val"><span>1</span>cmd</div>
+          <div class="metric-label">to install</div>
         </div>
         <div class="metric">
-          <div class="metric-val"><span>50</span></div>
-          <div class="metric-label">parallel jobs</div>
+          <div class="metric-val"><span>∞</span></div>
+          <div class="metric-label">builds / month</div>
         </div>
         <div class="metric">
           <div class="metric-val"><span>0</span>$</div>
@@ -1115,8 +1115,8 @@
     <!-- Card 5: Deploy targets -->
     <div class="bento-card bc-5">
       <span class="bento-tag tag-orange">Deploy</span>
-      <div class="bento-title">Every deploy target covered.</div>
-      <div class="bento-desc">K8s, Helm, Terraform, Lambda, Fly.io, Vercel, Netlify, Railway, Render — zero config.</div>
+      <div class="bento-title">Deploy anywhere.</div>
+      <div class="bento-desc">Run any deploy command as a pipeline step. Shell scripts, Docker push, kubectl, Fly.io CLI — if it runs in your terminal, it runs in Callahan.</div>
       <div class="llm-pills" style="margin-top:16px;">
         <span class="llm-pill">kubernetes</span>
         <span class="llm-pill">fly.io</span>
@@ -1297,20 +1297,20 @@
 <div class="section reveal" id="quickstart">
   <p class="section-eyebrow">// get started</p>
   <h2 class="section-title">Running in under 5 minutes.</h2>
-  <p class="section-sub">Mac, Linux, and Windows WSL2. Requires Docker Desktop or Go 1.22+.</p>
+  <p class="section-sub">Mac, Linux, and Windows WSL2. Requires Go 1.22+ and Node 18+.</p>
 
   <div class="steps">
     <div class="step-card">
       <div class="step-n">STEP 01</div>
-      <div class="step-title">Install</div>
-      <div class="step-desc">One command downloads the binary and sets everything up.</div>
-      <div class="step-cmd">curl -fsSL https://callahanci.com | sh</div>
+      <div class="step-title">Clone</div>
+      <div class="step-desc">Grab the repo. Requires Go 1.22+ and Node 18+.</div>
+      <div class="step-cmd">git clone https://github.com/goughliam1813/Callahan.git</div>
     </div>
     <div class="step-card">
       <div class="step-n">STEP 02</div>
       <div class="step-title">Start</div>
-      <div class="step-desc">Auto-detects Docker or falls back to native Go mode.</div>
-      <div class="step-cmd">cd callahan && ./start.sh</div>
+      <div class="step-desc">Backend and frontend in two terminals.</div>
+      <div class="step-cmd">cd Callahan/backend && go run ./cmd/callahan</div>
     </div>
     <div class="step-card">
       <div class="step-n">STEP 03</div>
