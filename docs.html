@@ -1,310 +1,445 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Docs — Callahan CI</title>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{
-      --bg:#080a0f;--bg1:#0d1117;--bg2:#111620;--line:rgba(255,255,255,0.07);
-      --line2:rgba(255,255,255,0.12);--text:#e8eaf0;--text2:#8892a4;--text3:#545f72;
-      --accent:#00d4ff;--green:#00e5a0;--orange:#ff6b2b;--mono:'IBM Plex Mono',monospace;--sans:'Figtree',sans-serif;
-    }
-    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7;overflow-x:hidden;}
-    body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:0;mask-image:radial-gradient(ellipse 80% 40% at 50% 0%,black 20%,transparent 100%);}
-    *{position:relative;z-index:1;}
-    nav{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(8,10,15,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--line2);}
-    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-    .logo-mark{width:28px;height:28px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;}
-    .logo-name{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--text);letter-spacing:-0.02em;}
-    .logo-name span{color:var(--accent);}
-    .nav-right{display:flex;align-items:center;gap:10px;}
-    .btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:6px;font-family:var(--sans);font-size:13px;font-weight:600;text-decoration:none;border:none;transition:all 0.15s;cursor:pointer;}
-    .btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--line2);}
-    .btn-ghost:hover{color:var(--text);border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.04);}
-    .btn-accent{background:var(--accent);color:#000;font-weight:700;}
-    .btn-accent:hover{background:#33ddff;}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+<link rel="alternate icon" href="assets/favicon.svg"/>
+<title>Docs — Callahan CI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style id="callahan-tokens">
+/* Callahan CI — design tokens */
+:root {
+  /* Light (default) — bone + ink */
+  --bg: #f5f3ee;
+  --bg-elev: #ffffff;
+  --bg-sunk: #ece9e2;
+  --ink: #0a0a0a;
+  --ink-2: #2a2a28;
+  --ink-3: #5a5a55;
+  --ink-4: #8a8a82;
+  --rule: #d8d4c9;
+  --rule-2: #b8b4a9;
+  --accent: oklch(0.88 0.17 110);      /* chartreuse signal */
+  --accent-ink: #1a1a0a;
+  --ok: oklch(0.62 0.14 150);
+  --warn: oklch(0.72 0.16 60);
+  --err: oklch(0.58 0.20 25);
+  --sans: 'Geist', 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
 
-    .layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh;padding-top:56px;}
+html[data-theme="dark"] {
+  --bg: #0c0c0b;
+  --bg-elev: #141413;
+  --bg-sunk: #060605;
+  --ink: #f2efe6;
+  --ink-2: #d8d4c7;
+  --ink-3: #9a968a;
+  --ink-4: #6a675e;
+  --rule: #272623;
+  --rule-2: #3a3834;
+  --accent: oklch(0.88 0.17 110);
+  --accent-ink: #0a0a05;
+}
 
-    /* SIDEBAR */
-    .sidebar{position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;padding:32px 20px;border-right:1px solid var(--line2);background:var(--bg1);}
-    .sidebar-section{margin-bottom:28px;}
-    .sidebar-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;padding:0 8px;}
-    .sidebar-links{list-style:none;display:flex;flex-direction:column;gap:2px;}
-    .sidebar-links a{display:block;padding:7px 10px;border-radius:5px;font-size:13px;color:var(--text2);text-decoration:none;transition:all 0.15s;border:1px solid transparent;}
-    .sidebar-links a:hover{color:var(--text);background:rgba(255,255,255,0.04);}
-    .sidebar-links a.active{color:var(--accent);background:rgba(0,212,255,0.08);border-color:rgba(0,212,255,0.15);}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* CONTENT */
-    .content{padding:56px 72px 100px;max-width:800px;}
-    .doc-eyebrow{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;}
-    h1{font-size:40px;font-weight:900;letter-spacing:-0.04em;color:#fff;line-height:1.05;margin-bottom:16px;}
-    h2{font-size:22px;font-weight:700;letter-spacing:-0.02em;color:#fff;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--line);}
-    h2:first-of-type{margin-top:40px;}
-    h3{font-size:16px;font-weight:600;color:var(--text);margin:28px 0 10px;}
-    p{color:var(--text2);margin-bottom:16px;line-height:1.75;}
-    ul,ol{color:var(--text2);margin:0 0 16px 22px;line-height:1.75;}
-    li{margin-bottom:6px;}
-    a{color:var(--accent);text-decoration:none;}
-    a:hover{text-decoration:underline;}
-    strong{color:var(--text);font-weight:600;}
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  font-feature-settings: "ss01", "ss02", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+img, svg { display: block; max-width: 100%; }
 
-    code{font-family:var(--mono);font-size:12.5px;background:var(--bg2);border:1px solid var(--line2);border-radius:4px;padding:2px 7px;color:var(--green);}
+::selection { background: var(--accent); color: var(--accent-ink); }
 
-    pre{background:var(--bg1);border:1px solid var(--line2);border-radius:8px;padding:20px;margin:16px 0 24px;overflow-x:auto;}
-    pre code{background:none;border:none;padding:0;font-size:13px;line-height:1.8;color:var(--text2);}
-    .c-key{color:var(--accent);}
-    .c-val{color:var(--green);}
-    .c-str{color:#ff9f6a;}
-    .c-cmt{color:var(--text3);}
-    .c-ok{color:var(--green);}
-    .c-cmd{color:#fff;}
+/* Utility */
+.mono { font-family: var(--mono); font-feature-settings: "ss01", "cv01", "cv02"; }
+.rule { height: 1px; background: var(--rule); width: 100%; }
+.hair { border: 0; border-top: 1px solid var(--rule); }
+.tick { color: var(--ink-4); font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
 
-    .callout{background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);border-radius:8px;padding:16px 20px;margin:20px 0;font-size:13.5px;color:var(--text2);}
-    .callout strong{color:var(--accent);}
+/* Container with ruled gutters */
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+@media (max-width: 720px) { .container { padding: 0 18px; } }
 
-    .callout-warn{background:rgba(245,197,66,0.06);border-color:rgba(245,197,66,0.2);}
-    .callout-warn strong{color:#f5c542;}
+/* Blueprint grid background — very subtle */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: -1px -1px;
+}
 
-    .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;}
-    .tag{font-family:var(--mono);font-size:11px;padding:3px 9px;border-radius:4px;background:var(--bg2);border:1px solid var(--line2);color:var(--text2);}
+/* Corner brackets — used on cards to reinforce schematic vibe */
+.brackets { position: relative; }
+.brackets::before, .brackets::after {
+  content: ""; position: absolute; width: 10px; height: 10px;
+  border: 1px solid var(--ink);
+}
+.brackets::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.brackets::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
 
-    @media(max-width:768px){
-      .layout{grid-template-columns:1fr;}
-      .sidebar{display:none;}
-      .content{padding:32px 20px 80px;}
-    }
-  </style>
+</style>
+<style>
+  .nav { position: sticky; top: 0; z-index: 100; background: color-mix(in oklab, var(--bg) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+  .nav-inner { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 40px; height: 56px; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-mark {
+    width: 26px; height: 26px; display: inline-block; flex-shrink: 0;
+    color: var(--ink);
+    --logo-fg: var(--bg-elev);
+    --logo-accent: var(--accent);
+  }
+  .brand-mark svg { display: block; width: 100%; height: 100%; }
+  .brand-name {
+    font-family: var(--sans, "Inter Tight", system-ui, sans-serif);
+    font-size: 15px; font-weight: 500;
+    letter-spacing: -0.025em; color: var(--ink); line-height: 1;
+  }
+  .brand-name .sl { color: var(--accent); font-weight: 600; margin: 0 1px; }
+  .brand-name .ci { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink-2); }
+  .nav-links { display: flex; gap: 28px; font-size: 13.5px; color: var(--ink-3); }
+  .nav-links a:hover { color: var(--ink); }
+  .btn { display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border:1px solid var(--ink); font-size:13px; font-weight:500; color:var(--ink); font-family:var(--mono); }
+  .btn:hover { background: var(--ink); color: var(--bg); }
+  .btn-accent { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn-accent:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+  .doc-strip { display:grid; grid-template-columns: 1fr auto 1fr; padding: 10px 0; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.04em; text-transform: uppercase; }
+  .doc-strip > :nth-child(2) { justify-self: center; }
+  .doc-strip > :nth-child(3) { justify-self: end; }
+
+  .layout { display: grid; grid-template-columns: 240px 1fr 200px; gap: 48px; padding: 48px 0 96px; align-items: start; }
+  @media (max-width: 1060px) { .layout { grid-template-columns: 220px 1fr; } .toc-col { display: none; } }
+  @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } .side-col { display: none; } }
+
+  .side-col { position: sticky; top: 80px; }
+  .side-col h5 { font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase; margin: 20px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .side-col h5:first-child { margin-top: 0; }
+  .side-col ul { list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; }
+  .side-col a { display: block; padding: 4px 10px; margin-left: -10px; color: var(--ink-3); border-left: 2px solid transparent; }
+  .side-col a.on { color: var(--ink); border-left-color: var(--accent); background: color-mix(in oklab, var(--accent) 18%, transparent); }
+  .side-col a:hover { color: var(--ink); }
+
+  .toc-col { position: sticky; top: 80px; font-size: 13px; }
+  .toc-col h6 { font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .toc-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .toc-col a { color: var(--ink-3); }
+  .toc-col a:hover { color: var(--ink); }
+
+  article.doc { min-width: 0; }
+  .crumb { font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; }
+  .crumb span { color: var(--ink); }
+  article.doc h1 { font-family: var(--sans); font-weight: 500; letter-spacing: -0.03em; font-size: clamp(36px, 4vw, 54px); line-height: 1.02; margin-bottom: 16px; }
+  article.doc h1 .serif { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; }
+  article.doc .lede { color: var(--ink-2); font-size: 17px; line-height: 1.6; max-width: 60ch; margin-bottom: 36px; }
+  article.doc h2 { font-family: var(--sans); font-weight: 500; letter-spacing: -0.02em; font-size: 26px; margin: 48px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); scroll-margin-top: 80px; }
+  article.doc h3 { font-family: var(--sans); font-weight: 500; font-size: 17px; margin: 28px 0 10px; color: var(--ink); letter-spacing: -0.01em; }
+  article.doc p { color: var(--ink-2); font-size: 15px; line-height: 1.7; margin-bottom: 14px; max-width: 68ch; }
+  article.doc p b { color: var(--ink); font-weight: 500; }
+  article.doc ul { margin: 0 0 18px 0; padding: 0; list-style: none; }
+  article.doc ul li { position: relative; padding-left: 22px; color: var(--ink-2); font-size: 14.5px; line-height: 1.7; margin-bottom: 4px; }
+  article.doc ul li::before { content: "—"; position: absolute; left: 0; color: var(--ink-4); font-family: var(--mono); }
+  article.doc code { font-family: var(--mono); font-size: 0.88em; background: var(--bg-sunk); padding: 1px 6px; border: 1px solid var(--rule-2); color: var(--ink); }
+  article.doc pre { font-family: var(--mono); font-size: 13px; line-height: 1.75; background: var(--bg-elev); border: 1px solid var(--ink); padding: 16px 18px; margin: 14px 0 22px; overflow-x: auto; position: relative; }
+  article.doc pre::before { content: attr(data-lang); position:absolute; top:0; right:0; font-size:10px; letter-spacing:0.1em; padding: 4px 10px; color: var(--ink-4); background: var(--bg-sunk); border-left: 1px solid var(--ink); border-bottom: 1px solid var(--ink); text-transform: uppercase; }
+  .k { color: color-mix(in oklab, var(--accent) 80%, black); }
+  .c { color: var(--ink-4); }
+
+  .callout { border-left: 2px solid var(--accent); background: var(--bg-elev); padding: 14px 18px; margin: 18px 0; font-size: 14px; display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; }
+  .callout .lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); padding-top: 2px; white-space: nowrap; }
+  .callout p { margin: 0; color: var(--ink-2); }
+
+  .spec-table { width: 100%; border: 1px solid var(--ink); border-collapse: collapse; font-size: 13.5px; background: var(--bg-elev); margin: 14px 0 24px; }
+  .spec-table th, .spec-table td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--rule); }
+  .spec-table th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); background: var(--bg-sunk); border-bottom: 1px solid var(--ink); }
+  .spec-table td:first-child { font-family: var(--mono); font-size: 12.5px; color: var(--ink); }
+  .spec-table tr:last-child td { border-bottom: 0; }
+
+  footer { padding: 48px 0; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 11px; color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.06em; display: flex; justify-content: space-between; }
+  footer a { color: var(--ink-3); }
+  .theme-toggle { width: 28px; height: 28px; border: 1px solid var(--rule-2); display: grid; place-items: center; color: var(--ink-3); background: transparent; }
+  .theme-toggle:hover { color: var(--ink); border-color: var(--ink); }
+</style>
 </head>
 <body>
-<nav>
-  <a href="/" class="logo">
-    <div class="logo-mark"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" fill="#000"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#000" opacity="0.5"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#000" opacity="0.5"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#000"/></svg></div>
-    <span class="logo-name">callahan<span>/ci</span></span>
-  </a>
-  <div class="nav-right">
-    <a href="https://github.com/goughliam1813/callahan" class="btn btn-ghost" target="_blank">GitHub</a>
-    <a href="/#quickstart" class="btn btn-accent">Get Started</a>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 88 88"><rect width="88" height="88" rx="4" fill="currentColor"/><g fill="var(--logo-fg)"><rect x="18" y="38" width="6" height="20"/><rect x="28" y="30" width="6" height="28"/><rect x="52" y="34" width="6" height="24"/><rect x="62" y="40" width="6" height="16"/></g><rect x="40" y="24" width="6" height="40" fill="var(--logo-accent)" transform="rotate(-10 43 44)"/></svg></span><span class="brand-name">callahan<span class="sl">/</span><span class="ci">CI</span></span></a>
+    <div class="nav-links">
+      <a href="index.html#spec">Spec</a>
+      <a href="index.html#agents">Agents</a>
+      <a href="index.html#compare">Compare</a>
+      <a href="docs.html" style="color:var(--ink);">Docs</a>
+      <a href="changelog.html">Changelog</a>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7" cy="7" r="2.5"/><path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.8 2.8l1 1M10.2 10.2l1 1M2.8 11.2l1-1M10.2 3.8l1-1"/></svg>
+      </button>
+      <a href="https://github.com/goughliam1813/callahan" class="btn">GitHub ↗</a>
+    </div>
   </div>
 </nav>
 
-<div class="layout">
-  <aside class="sidebar">
-    <div class="sidebar-section">
-      <div class="sidebar-label">Getting Started</div>
-      <ul class="sidebar-links">
-        <li><a href="/docs" class="active">Introduction</a></li>
-        <li><a href="/docs#installation">Installation</a></li>
-        <li><a href="/docs#quickstart">Quickstart</a></li>
-        <li><a href="/docs#configuration">Configuration</a></li>
+<div class="container">
+  <div class="doc-strip">
+    <span>DOC · handbook / 0.2</span>
+    <span>v1.1.0</span>
+    <span>LAST UPDATED · 2026.05.04</span>
+  </div>
+
+  <div class="layout">
+    <aside class="side-col">
+      <h5>Get started</h5>
+      <ul>
+        <li><a href="#intro" class="on">Introduction</a></li>
+        <li><a href="#install">Installation</a></li>
+        <li><a href="#first-build">Your first build</a></li>
       </ul>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-label">Pipeline</div>
-      <ul class="sidebar-links">
-        <li><a href="/docs#callahanfile">Callahanfile.yaml</a></li>
-        <li><a href="/docs#jobs">Jobs &amp; Steps</a></li>
-        <li><a href="/docs#caching">Caching</a></li>
-        <li><a href="/docs#matrix">Matrix Builds</a></li>
-        <li><a href="/docs#secrets">Secrets</a></li>
+      <h5>Pipelines</h5>
+      <ul>
+        <li><a href="#yaml">Callahanfile.yaml</a></li>
+        <li><a href="#webhooks">Webhooks</a></li>
+        <li><a href="#secrets">Secrets</a></li>
       </ul>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-label">AI Agents</div>
-      <ul class="sidebar-links">
-        <li><a href="/docs#llm-setup">LLM Setup</a></li>
-        <li><a href="/docs#pipeline-architect">Pipeline Architect</a></li>
-        <li><a href="/docs#build-debugger">Build Debugger</a></li>
-        <li><a href="/docs#code-reviewer">Code Reviewer</a></li>
-        <li><a href="/docs#security-analyst">Security Analyst</a></li>
+      <h5>AI</h5>
+      <ul>
+        <li><a href="#ai-config">Configuration</a></li>
+        <li><a href="#ai-providers">Providers</a></li>
+        <li><a href="#ai-offline">Offline mode</a></li>
       </ul>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-label">Deployment</div>
-      <ul class="sidebar-links">
-        <li><a href="/docs#deploy-docker">Docker</a></li>
-        <li><a href="/docs#deploy-k8s">Kubernetes</a></li>
-        <li><a href="/docs#deploy-flyio">Fly.io</a></li>
-        <li><a href="/docs#deploy-vercel">Vercel</a></li>
+      <h5>Security</h5>
+      <ul>
+        <li><a href="#scanners">Scanners</a></li>
       </ul>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-label">Reference</div>
-      <ul class="sidebar-links">
-        <li><a href="/docs#api">REST API</a></li>
-        <li><a href="/docs#env-vars">Env Variables</a></li>
-        <li><a href="/changelog">Changelog</a></li>
+      <h5>Reference</h5>
+      <ul>
+        <li><a href="#env">Environment</a></li>
+        <li><a href="#api">HTTP API</a></li>
       </ul>
-    </div>
-  </aside>
+    </aside>
 
-  <main class="content">
-    <p class="doc-eyebrow">Documentation</p>
-    <h1>Callahan CI</h1>
-    <p>Callahan CI is an open-source, AI-native, serverless CI/CD platform that runs entirely on your machine. No cloud account. No Kubernetes cluster. No plugin graveyard. One command and you're building.</p>
+    <article class="doc">
+      <div class="crumb">DOCS / <span>INTRODUCTION</span></div>
+      <h1>Callahan CI <span class="serif">handbook.</span></h1>
+      <p class="lede">A practical guide to running Callahan. Read top-to-bottom on first install; come back later for the reference sections.</p>
 
-    <div class="callout">
-      <strong>New to Callahan?</strong> Jump straight to <a href="/docs#installation">Installation</a> — you'll be running a pipeline in under 5 minutes.
-    </div>
+      <section id="intro">
+        <h2>Introduction</h2>
+        <p>Callahan is a CI/CD tool that runs on your machine. A Go binary handles the API, pipeline execution, and webhook intake. A Next.js dashboard is the UI. State is one SQLite file. Four AI features — <b>Architect</b>, <b>Debugger</b>, <b>Reviewer</b>, <b>Analyst</b> — run on each build.</p>
 
-    <h2 id="installation">Installation</h2>
-    <p>Callahan runs on Linux, macOS, and Windows (WSL2). Requirements: <strong>Go 1.22+</strong> and <strong>Node 18+</strong>. Docker is optional (for container-based execution).</p>
+        <div class="callout"><span class="lbl">SPEC</span><p>Go 1.22 backend · Next.js 15 dashboard · SQLite (WAL) · GitHub-Actions-compatible YAML with an <code>ai:</code> extension block.</p></div>
+      </section>
 
-    <h3>Recommended: From source</h3>
-    <pre><code><span class="c-cmd">git clone https://github.com/goughliam1813/Callahan.git
-cd Callahan/backend
-go mod tidy
-go run ./cmd/callahan</span>
+      <section id="install">
+        <h2>Installation</h2>
+        <p>macOS, Linux, and WSL2. Requires Go 1.22+ and Node 18+.</p>
+        <pre data-lang="shell"><span class="c"># clone</span>
+git clone github.com/goughliam1813/callahan
+cd callahan
 
-<span class="c-cmt"># In a second terminal:</span>
-<span class="c-cmd">cd Callahan/frontend
-npm install
-npm run dev</span></code></pre>
+<span class="c"># start backend (:8080) and dashboard (:3000)</span>
+./start.sh dev</pre>
+        <p>Stop with <kbd>Ctrl+C</kbd> — the script's trap kills both processes. For two-terminal manual mode, run <code>go run ./cmd/callahan</code> in one and <code>npm run dev</code> in <code>frontend/</code> in the other.</p>
+      </section>
 
-    <h3>Docker Compose</h3>
-    <pre><code><span class="c-cmd">git clone https://github.com/goughliam1813/Callahan.git
-cd Callahan
-docker compose up</span></code></pre>
+      <section id="first-build">
+        <h2>Your first build</h2>
+        <p>Open <code>http://localhost:3000</code>. Click the <b>+</b> in the sidebar, paste your repo URL, and add a personal access token. Callahan auto-detects the language from <code>go.mod</code>, <code>package.json</code>, <code>Cargo.toml</code>, etc., and offers a starter Callahanfile.</p>
+        <p>Click <b>Run Build</b>. Logs stream live over WebSocket. If a step fails, the <em>AI Explain Failure</em> button on the failed job returns a plain-English root cause.</p>
+      </section>
 
-    <h3>From source (alternative)</h3>
-    <p>Same as above — see the recommended install method.</p>
+      <section id="yaml">
+        <h2>Callahanfile.yaml</h2>
+        <p>Place a <code>Callahanfile.yaml</code> at the repo root. The schema is GitHub-Actions-compatible — most existing workflows run as-is. The top-level <code>ai:</code> and <code>deploy:</code> blocks are Callahan extensions.</p>
+        <pre data-lang="yaml"><span class="k">name:</span> my-app
+<span class="k">on:</span> [push, pull_request]
 
-    <h2 id="quickstart">Quickstart</h2>
-    <p>Once installed, open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a> in your browser. You'll see the Callahan dashboard.</p>
-    <ol>
-      <li>Click the <strong>+</strong> button in the sidebar and paste your Git repo URL with a Personal Access Token</li>
-      <li>Callahan auto-detects your language and suggests a pipeline</li>
-      <li>Click <strong>Run Build</strong> — your first pipeline executes</li>
-      <li>Add an LLM API key in Settings to unlock all AI agents</li>
-    </ol>
+<span class="k">jobs:</span>
+  test:
+    <span class="k">runs-on:</span> local
+    <span class="k">steps:</span>
+      - <span class="k">name:</span> Test
+        <span class="k">run:</span> go test ./...
 
-    <h2 id="configuration">Configuration</h2>
-    <p>Callahan is configured via environment variables. Copy <code>.env.example</code> to <code>.env</code> and fill in your values.</p>
-    <pre><code><span class="c-cmt"># LLM providers — add at least one</span>
-<span class="c-key">ANTHROPIC_API_KEY</span>=sk-ant-...
-<span class="c-key">OPENAI_API_KEY</span>=sk-...
-<span class="c-key">GROQ_API_KEY</span>=gsk_...
+  build:
+    <span class="k">runs-on:</span> local
+    <span class="k">needs:</span> [test]
+    <span class="k">steps:</span>
+      - <span class="k">name:</span> Build
+        <span class="k">run:</span> go build ./cmd/myapp
 
-<span class="c-cmt"># Or use local Ollama (no API key needed)</span>
-<span class="c-key">OLLAMA_HOST</span>=http://localhost:11434
-<span class="c-key">DEFAULT_MODEL</span>=llama3
+<span class="k">ai:</span>
+  <span class="k">review:</span> true            <span class="c"># AI code review on every build</span>
+  <span class="k">security-scan:</span> true     <span class="c"># Trivy/Semgrep + AI fallback</span>
+  <span class="k">explain-failures:</span> true  <span class="c"># AI Explain button on failed jobs</span>
 
-<span class="c-cmt"># Storage</span>
-<span class="c-key">DATA_DIR</span>=./data
-<span class="c-key">PORT</span>=8080</code></pre>
+<span class="k">deploy:</span>
+  - <span class="k">name:</span> dev
+    <span class="k">auto:</span> true
+    <span class="k">steps:</span>
+      - <span class="k">run:</span> ./scripts/deploy.sh</pre>
+      </section>
 
-    <h2 id="callahanfile">Callahanfile.yaml</h2>
-    <p>Pipelines are defined in a <code>Callahanfile.yaml</code> at the root of your repository. The syntax is a superset of GitHub Actions — if you know Actions, you already know 90% of it.</p>
-    <pre><code><span class="c-key">name</span>: <span class="c-str">my-pipeline</span>
-<span class="c-key">on</span>: [<span class="c-val">push</span>, <span class="c-val">pull_request</span>]
+      <section id="webhooks">
+        <h2>Webhooks</h2>
+        <p>Trigger builds from GitHub or GitLab by pointing a webhook at:</p>
+        <pre data-lang="shell"><span class="c"># GitHub</span>
+POST https://your-host:8080/api/v1/webhook/github
 
-<span class="c-key">jobs</span>:
-  <span class="c-key">build</span>:
-    <span class="c-key">runs-on</span>: <span class="c-str">callahan:latest</span>
-    <span class="c-key">steps</span>:
-      - <span class="c-key">name</span>: <span class="c-str">Install</span>
-        <span class="c-key">run</span>: <span class="c-str">npm ci</span>
+<span class="c"># GitLab</span>
+POST https://your-host:8080/api/v1/webhook/gitlab</pre>
+        <p>For GitHub, set the secret in the webhook config — Callahan verifies <code>X-Hub-Signature-256</code> with HMAC-SHA256. For GitLab, set the same value as the project's webhook token (it arrives in <code>X-Gitlab-Token</code>). Set <code>CALLAHAN_WEBHOOK_SECRET</code> in <code>.env</code> to enable verification; leave empty for dev.</p>
+        <p><b>push</b> events build the configured branch only. <b>pull_request</b> / <b>merge_request</b> events build the source branch and post a single markdown comment back to the PR with the AI review and the security scan summary.</p>
+      </section>
 
-      - <span class="c-key">name</span>: <span class="c-str">Test</span>
-        <span class="c-key">run</span>: <span class="c-str">npm test</span>
+      <section id="secrets">
+        <h2>Secrets</h2>
+        <p>Add secrets in the dashboard under <b>Project → Secrets</b>. They're XOR-obfuscated at rest in the SQLite file and decrypted in memory only when injected into a step or used for <code>git clone</code>. The <code>GIT_TOKEN</code> secret is special — it's used as the PAT when cloning the repo and when posting PR comments back.</p>
+        <pre data-lang="yaml">- <span class="k">name:</span> Deploy
+  <span class="k">run:</span> flyctl deploy --remote-only
+  <span class="k">env:</span>
+    <span class="k">FLY_API_TOKEN:</span> ${{ secrets.FLY_API_TOKEN }}</pre>
+      </section>
 
-      - <span class="c-key">name</span>: <span class="c-str">Build</span>
-        <span class="c-key">run</span>: <span class="c-str">npm run build</span>
+      <section id="ai-config">
+        <h2>AI configuration</h2>
+        <p>Configure the LLM in the <b>Configure AI / LLM</b> page or via environment variables in <code>.env</code>. Settings are stored in SQLite (API keys obfuscated), so the UI selection persists across restarts.</p>
+        <pre data-lang="shell"><span class="c"># pick one provider</span>
+ANTHROPIC_API_KEY=sk-ant-…
+OPENAI_API_KEY=sk-…
+GROQ_API_KEY=gsk_…
 
-    <span class="c-cmt"># Callahan AI extensions</span>
-    <span class="c-key">ai</span>:
-      <span class="c-key">review</span>: <span class="c-val">true</span>
-      <span class="c-key">explain-failures</span>: <span class="c-val">true</span>
-      <span class="c-key">security-scan</span>: <span class="c-val">true</span></code></pre>
+<span class="c"># or run Ollama locally — no key needed</span>
+OLLAMA_URL=http://localhost:11434
 
-    <h2 id="llm-setup">LLM Setup</h2>
-    <p>Callahan supports any major LLM provider. It tries them in this order: Anthropic → OpenAI → Groq → Ollama. The first one with a valid API key is used.</p>
-    <div class="tag-row">
-      <span class="tag">claude</span><span class="tag">gpt-4o</span><span class="tag">gemini</span>
-      <span class="tag">grok</span><span class="tag">mistral</span><span class="tag">groq</span>
-      <span class="tag">ollama</span><span class="tag">lm-studio</span>
-    </div>
-    <div class="callout-warn callout">
-      <strong>Offline mode:</strong> Install <a href="https://ollama.ai" target="_blank">Ollama</a> locally and set <code>OLLAMA_HOST</code> — all AI features work with no internet connection and no API costs.
-    </div>
+LLM_PROVIDER=anthropic
+LLM_MODEL=claude-sonnet-4-5</pre>
+      </section>
 
-    <h2 id="pipeline-architect">Pipeline Architect</h2>
-    <p>The Pipeline Architect agent generates a complete <code>Callahanfile.yaml</code> from a plain English description. Access it from the dashboard by clicking <strong>Callahan AI</strong> in the sidebar.</p>
-    <p>Example prompt: <em>"Build my Next.js app, run Playwright end-to-end tests, scan with Trivy, and deploy to Fly.io on green PRs."</em></p>
+      <section id="ai-providers">
+        <h2>Providers</h2>
+        <p>Four providers are wired into the LLM client:</p>
+        <ul>
+          <li><b>Anthropic</b> — Claude Opus 4.5, Sonnet 4.5, Haiku 4.5</li>
+          <li><b>OpenAI</b> — GPT-4o, GPT-4o-mini, o1-mini</li>
+          <li><b>Groq</b> — Llama 3.3 70B, Llama 3 8B, Gemma 2 9B</li>
+          <li><b>Ollama</b> — anything you've pulled locally (Llama 3.2, Mistral, CodeLlama, Phi3…)</li>
+        </ul>
+        <p>If no API key is set, Callahan falls back to Ollama on <code>localhost:11434</code>.</p>
+      </section>
 
-    <h2 id="build-debugger">Build Debugger</h2>
-    <p>When a build step fails, click the <strong>AI Explain</strong> button next to the failed step. The Debugger reads your full log context and returns a plain-English diagnosis plus a suggested fix.</p>
+      <section id="ai-offline">
+        <h2>Offline mode</h2>
+        <p>Install <a href="https://ollama.ai" style="color:var(--ink); text-decoration:underline;">Ollama</a>, pull a model (<code>ollama pull llama3.2</code>), and set <code>OLLAMA_URL=http://localhost:11434</code>. Pick Ollama in the settings page. AI features then work with no API key and no outbound network traffic.</p>
+      </section>
 
-    <h2 id="code-reviewer">Code Reviewer</h2>
-    <p>Enable code review in your <code>Callahanfile.yaml</code> with <code>ai.review: true</code>. On every pull request, Callahan posts structured review comments to your Git provider — bugs, security issues, performance concerns.</p>
-    <p>Supports: GitHub, GitLab, Bitbucket, Gitea.</p>
+      <section id="scanners">
+        <h2>Scanners</h2>
+        <p>Two scanners are run when their binary is on the runner's <code>$PATH</code>. Both are invoked with <code>--format json</code> and the output is parsed into a structured <code>SecurityScanResult</code>:</p>
+        <ul>
+          <li><b>trivy</b> — filesystem and dependency vulnerabilities, plus secret detection</li>
+          <li><b>semgrep</b> — SAST with auto-config rule packs</li>
+        </ul>
+        <p>If neither is installed, the Security Analyst falls back to an LLM-only source review. Findings are reported but do not, by themselves, fail the build — add <code>trivy fs --exit-code 1 --severity CRITICAL</code> as a regular step if you want a critical finding to fail the pipeline.</p>
+      </section>
 
-    <h2 id="security-analyst">Security Analyst</h2>
-    <p>Enable with <code>ai.security-scan: true</code>. Runs Trivy (container/dependency scanning), Semgrep (SAST), and gitleaks (secret detection). Findings are explained in plain English. Critical findings block the pipeline.</p>
+      <section id="env">
+        <h2>Environment variables</h2>
+        <table class="spec-table">
+          <thead><tr><th>Variable</th><th>Default</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>PORT</td><td>8080</td><td>API server port</td></tr>
+            <tr><td>DB_PATH</td><td>./callahan.db</td><td>SQLite file</td></tr>
+            <tr><td>DATA_DIR</td><td>./data</td><td>Working dir for clones and artifacts</td></tr>
+            <tr><td>LLM_PROVIDER</td><td>anthropic</td><td>anthropic · openai · groq · ollama</td></tr>
+            <tr><td>LLM_MODEL</td><td>claude-sonnet-4-5</td><td>Default model for the chosen provider</td></tr>
+            <tr><td>ANTHROPIC_API_KEY</td><td>—</td><td>Claude API key</td></tr>
+            <tr><td>OPENAI_API_KEY</td><td>—</td><td>OpenAI API key</td></tr>
+            <tr><td>GROQ_API_KEY</td><td>—</td><td>Groq API key</td></tr>
+            <tr><td>OLLAMA_URL</td><td>http://localhost:11434</td><td>Local Ollama endpoint</td></tr>
+            <tr><td>CALLAHAN_API_TOKEN</td><td>—</td><td>Bearer token for API auth. Empty disables auth (dev).</td></tr>
+            <tr><td>CALLAHAN_WEBHOOK_SECRET</td><td>—</td><td>HMAC secret for inbound webhooks. Empty skips verification.</td></tr>
+          </tbody>
+        </table>
+      </section>
 
-    <h2 id="secrets">Secrets</h2>
-    <p>Add secrets in the dashboard under <strong>Project → Secrets</strong>. They are stored encrypted and injected as environment variables at runtime. Reference them in your pipeline:</p>
-    <pre><code>- <span class="c-key">name</span>: <span class="c-str">Deploy</span>
-  <span class="c-key">run</span>: <span class="c-str">flyctl deploy</span>
-  <span class="c-key">env</span>:
-    <span class="c-key">FLY_API_TOKEN</span>: <span class="c-str">${{ secrets.FLY_API_TOKEN }}</span></code></pre>
+      <section id="api">
+        <h2>HTTP API</h2>
+        <p>JSON over HTTP at <code>http://localhost:8080/api/v1</code>. If <code>CALLAHAN_API_TOKEN</code> is set, send it as <code>Authorization: Bearer &lt;token&gt;</code>.</p>
+        <pre data-lang="shell"><span class="c"># projects</span>
+GET    /api/v1/projects
+POST   /api/v1/projects
+GET    /api/v1/projects/:id
 
-    <h2 id="deploy-flyio">Deploy to Fly.io</h2>
-    <pre><code>- <span class="c-key">name</span>: <span class="c-str">Deploy to Fly.io</span>
-  <span class="c-key">uses</span>: <span class="c-str">callahan/deploy-fly@v1</span>
-  <span class="c-key">with</span>:
-    <span class="c-key">app</span>: <span class="c-str">my-app-name</span>
-    <span class="c-key">token</span>: <span class="c-str">${{ secrets.FLY_API_TOKEN }}</span></code></pre>
+<span class="c"># builds</span>
+POST   /api/v1/projects/:id/builds       <span class="c"># trigger</span>
+GET    /api/v1/builds/:id
+WS     /api/v1/builds/:id/logs           <span class="c"># live stream</span>
+POST   /api/v1/builds/:id/explain        <span class="c"># AI failure analysis</span>
 
-    <h2 id="deploy-vercel">Deploy to Vercel</h2>
-    <pre><code>- <span class="c-key">name</span>: <span class="c-str">Deploy to Vercel</span>
-  <span class="c-key">uses</span>: <span class="c-str">callahan/deploy-vercel@v1</span>
-  <span class="c-key">with</span>:
-    <span class="c-key">token</span>: <span class="c-str">${{ secrets.VERCEL_TOKEN }}</span></code></pre>
+<span class="c"># pipelines</span>
+GET    /api/v1/projects/:id/pipeline
+PUT    /api/v1/projects/:id/pipeline     <span class="c"># commits Callahanfile</span>
 
-    <h2 id="env-vars">Environment Variables Reference</h2>
-    <div style="overflow-x:auto;">
-      <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;">
-        <thead>
-          <tr>
-            <th style="text-align:left;padding:10px 14px;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:0.06em;">Variable</th>
-            <th style="text-align:left;padding:10px 14px;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:0.06em;">Default</th>
-            <th style="text-align:left;padding:10px 14px;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:0.06em;">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td style="padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--accent);">PORT</td><td style="padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--text3);">8080</td><td style="padding:10px 14px;border-bottom:1px solid var(--line);color:var(--text2);">API server port</td></tr>
-          <tr><td style="padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--accent);">DATA_DIR</td><td style="padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--text3);">./data</td><td style="padding:10px 14px;border-bottom:1px solid var(--line);color:var(--text2);">SQLite database and artifact storage</td></tr>
-          <tr><td style="padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--accent);">ANTHROPIC_API_KEY</td><td style="padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--text3);">—</td><td style="padding:10px 14px;border-bottom:1px solid var(--line);color:var(--text2);">Anthropic Claude API key</td></tr>
-          <tr><td style="padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--accent);">OPENAI_API_KEY</td><td style="padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--text3);">—</td><td style="padding:10px 14px;border-bottom:1px solid var(--line);color:var(--text2);">OpenAI API key</td></tr>
-          <tr><td style="padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--accent);">OLLAMA_HOST</td><td style="padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--text3);">—</td><td style="padding:10px 14px;border-bottom:1px solid var(--line);color:var(--text2);">Ollama endpoint for local AI</td></tr>
-          <tr><td style="padding:10px 14px;font-family:var(--mono);font-size:12px;color:var(--accent);">DOCKER_SOCK</td><td style="padding:10px 14px;font-family:var(--mono);font-size:12px;color:var(--text3);">/var/run/docker.sock</td><td style="padding:10px 14px;color:var(--text2);">Docker socket path</td></tr>
-        </tbody>
-      </table>
-    </div>
+<span class="c"># inbound webhooks</span>
+POST   /api/v1/webhook/github
+POST   /api/v1/webhook/gitlab
 
-    <h2 id="api">REST API</h2>
-    <p>Callahan exposes a full REST API at <code>http://localhost:8080/api/v1</code>. All endpoints return JSON.</p>
-    <pre><code><span class="c-cmt"># List all projects</span>
-<span class="c-cmd">GET  /api/v1/projects</span>
+<span class="c"># LLM</span>
+GET    /api/v1/settings/llm
+PUT    /api/v1/settings/llm
+POST   /api/v1/settings/llm/test</pre>
+        <div class="callout"><span class="lbl">NEXT</span><p>Missing something? Open a <a href="https://github.com/goughliam1813/callahan/discussions" style="color:var(--ink); text-decoration:underline;">discussion</a> — this handbook follows the code.</p></div>
+      </section>
+    </article>
 
-<span class="c-cmt"># Trigger a build</span>
-<span class="c-cmd">POST /api/v1/projects/:id/builds</span>
+    <aside class="toc-col">
+      <h6>On this page</h6>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#install">Installation</a></li>
+        <li><a href="#first-build">First build</a></li>
+        <li><a href="#yaml">Callahanfile.yaml</a></li>
+        <li><a href="#webhooks">Webhooks</a></li>
+        <li><a href="#secrets">Secrets</a></li>
+        <li><a href="#ai-config">AI config</a></li>
+        <li><a href="#scanners">Scanners</a></li>
+        <li><a href="#env">Environment</a></li>
+        <li><a href="#api">HTTP API</a></li>
+      </ul>
+    </aside>
+  </div>
 
-<span class="c-cmt"># Stream build logs (WebSocket)</span>
-<span class="c-cmd">WS   /api/v1/builds/:id/logs</span>
-
-<span class="c-cmt"># AI explain a failed build</span>
-<span class="c-cmd">POST /api/v1/builds/:id/explain</span></code></pre>
-
-    <div style="margin-top:56px;padding-top:32px;border-top:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;">
-      <a href="https://github.com/goughliam1813/callahan" class="btn btn-ghost" target="_blank">View on GitHub →</a>
-      <a href="https://github.com/goughliam1813/callahan/issues" class="btn btn-ghost" target="_blank">Report an Issue →</a>
-    </div>
-  </main>
+  <footer>
+    <span>© 2026 Callahan CI · MIT</span>
+    <span><a href="index.html">← Back to home</a></span>
+  </footer>
 </div>
+
+<script>
+  const tt = document.getElementById('themeToggle');
+  function setTheme(v) { document.documentElement.setAttribute('data-theme', v); try { localStorage.setItem('cc-theme', v); } catch(e){} }
+  tt.addEventListener('click', () => setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+  try { const t = localStorage.getItem('cc-theme'); if (t) setTheme(t); } catch(e){}
+</script>
 </body>
 </html>

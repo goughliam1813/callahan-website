@@ -1,0 +1,979 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Callahan/CI · Logo Explorations</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sans: "Inter Tight", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --serif: "Instrument Serif", serif;
+    --accent: oklch(0.88 0.17 220); /* cobalt to match site */
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--sans); }
+  a { color: inherit; }
+
+  /* Shared logo system */
+  .logo-tile {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 100%;
+  }
+  .lockup {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--sans); font-weight: 500; letter-spacing: -0.02em;
+  }
+  .lockup .name { font-size: 22px; color: #111; }
+  .lockup .name em { font-style: normal; color: #888; }
+  .lockup.dark .name { color: #f4f2ed; }
+  .lockup.dark .name em { color: #8a8680; }
+
+  /* ─────────── MARK 1 — OFF-AXIS "/" CAMERA CUT (monogram)
+     The slash from "Callahan/CI" rotated ~12° inside a square — a
+     precise engineered tile with one playful angle. Reads as "C/" */
+  .m1 {
+    position: relative; width: 88px; height: 88px;
+    background: #0a0a09; border-radius: 4px; overflow: hidden;
+  }
+  .m1::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(transparent 49.5%, rgba(255,255,255,0.05) 49.5% 50.5%, transparent 50.5%),
+      linear-gradient(90deg, transparent 49.5%, rgba(255,255,255,0.05) 49.5% 50.5%, transparent 50.5%);
+  }
+  .m1 .c {
+    position: absolute; left: 14px; top: 10px;
+    font-family: var(--sans); font-weight: 500; font-size: 62px;
+    color: #f4f2ed; letter-spacing: -0.06em; line-height: 1;
+  }
+  .m1 .slash {
+    position: absolute; right: 12px; top: 50%;
+    width: 4px; height: 70px;
+    background: var(--accent);
+    transform: translateY(-50%) rotate(18deg);
+    transform-origin: center;
+  }
+  .m1 .ci {
+    position: absolute; right: 10px; bottom: 8px;
+    font-family: var(--mono); font-size: 10px; color: #8a8680;
+    letter-spacing: 0.12em;
+  }
+
+  /* ─────────── MARK 2 — AGENT QUAD (pipeline glyph)
+     Four dots at corners, one rotated = the "renegade agent". */
+  .m2 {
+    position: relative; width: 88px; height: 88px;
+    background: #0a0a09; border-radius: 4px; overflow: hidden;
+    display: grid; place-items: center;
+  }
+  .m2 .quad {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 8px; width: 52px; height: 52px;
+  }
+  .m2 .d {
+    width: 22px; height: 22px; background: #f4f2ed;
+    border-radius: 2px;
+  }
+  .m2 .d.accent { background: var(--accent); transform: rotate(18deg); }
+  .m2 .wire {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+
+  /* ─────────── MARK 3 — C WITH CUT (apple-inspired bite)
+     A solid geometric C where the opening IS a rotated slash — a
+     single confident iconic shape. */
+  .m3 { width: 88px; height: 88px; display: grid; place-items: center;
+        background: #0a0a09; border-radius: 4px; }
+
+  /* ─────────── MARK 4 — TERMINAL BRACKET
+     [C] with one bracket tilted. Reads as "code in a box". */
+  .m4 {
+    position: relative; width: 88px; height: 88px;
+    background: #f4f2ed; border-radius: 4px; display: grid; place-items: center;
+    color: #0a0a09;
+  }
+  .m4 .lb, .m4 .rb {
+    position: absolute; top: 50%; width: 3px; height: 56px;
+    background: currentColor; transform: translateY(-50%);
+  }
+  .m4 .lb { left: 14px; border-left: none; }
+  .m4 .lb::before, .m4 .lb::after {
+    content: ""; position: absolute; left: 0; width: 12px; height: 3px; background: currentColor;
+  }
+  .m4 .lb::before { top: 0; }
+  .m4 .lb::after { bottom: 0; }
+  .m4 .rb { right: 14px; transform: translateY(-50%) rotate(8deg); transform-origin: center; }
+  .m4 .rb::before, .m4 .rb::after {
+    content: ""; position: absolute; right: 0; width: 12px; height: 3px; background: currentColor;
+  }
+  .m4 .rb::before { top: 0; }
+  .m4 .rb::after { bottom: 0; }
+  .m4 .cl {
+    font-family: var(--sans); font-weight: 500; font-size: 38px;
+    letter-spacing: -0.04em;
+  }
+
+  /* ─────────── MARK 5 — SCHEMATIC NODE (wordmark-forward)
+     Wordmark-first: "callahan/CI" with the / drawn as an accent bar. */
+  .m5-wrap {
+    display: inline-flex; align-items: baseline; gap: 0;
+    font-family: var(--sans); letter-spacing: -0.035em;
+  }
+  .m5-wrap .lo { font-weight: 500; font-size: 44px; color: #0a0a09; }
+  .m5-wrap .sl {
+    display: inline-block; width: 6px; height: 40px;
+    background: var(--accent); margin: 0 6px;
+    transform: translateY(4px) rotate(16deg);
+  }
+  .m5-wrap .ci {
+    font-family: var(--mono); font-size: 16px; font-weight: 500;
+    color: #0a0a09; letter-spacing: 0.02em;
+  }
+
+  /* ─────────── MARK 6 — THE PLAY BAR (pipeline as stages) */
+  .m6 {
+    position: relative; width: 88px; height: 88px;
+    background: #0a0a09; border-radius: 4px; display: grid; place-items: center;
+  }
+  .m6 .rail {
+    display: flex; gap: 3px; align-items: center;
+  }
+  .m6 .rail span {
+    display: block; width: 8px; height: 28px; background: #f4f2ed;
+  }
+  .m6 .rail span:nth-child(3) { background: var(--accent); height: 42px; transform: rotate(-9deg); }
+  .m6 .rail span:nth-child(1) { height: 18px; }
+  .m6 .rail span:nth-child(5) { height: 22px; }
+  .m6 .rail span:nth-child(2) { height: 24px; }
+
+  /* Artboard frames for the canvas */
+  .frame {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 100%;
+  }
+  .frame.dark { background: #0a0a09; }
+  .frame.light { background: #f5f3ee; }
+  .frame.paper { background: #fffdf8; }
+  .frame.accent { background: var(--accent); }
+
+  /* Favicon test */
+  .fav { width: 20px; height: 20px; display: inline-grid; place-items: center; }
+  .fav .m1, .fav .m2, .fav .m3, .fav .m4, .fav .m6 { width: 20px; height: 20px; border-radius: 1px; }
+  .fav .m1 .c { font-size: 14px; left: 3px; top: 1px; }
+  .fav .m1 .slash { width: 1.5px; height: 16px; right: 3px; }
+  .fav .m1 .ci { display: none; }
+  .fav .m1::before { display: none; }
+  .fav .m2 .quad { width: 12px; height: 12px; gap: 2px; }
+  .fav .m2 .d { width: 5px; height: 5px; border-radius: 0.5px; }
+  .fav .m4 .cl { font-size: 10px; }
+  .fav .m4 .lb, .fav .m4 .rb { height: 14px; width: 1.5px; }
+  .fav .m4 .lb { left: 3px; }
+  .fav .m4 .rb { right: 3px; }
+  .fav .m4 .lb::before, .fav .m4 .lb::after, .fav .m4 .rb::before, .fav .m4 .rb::after { width: 3px; height: 1.5px; }
+  .fav .m6 .rail { gap: 1px; }
+  .fav .m6 .rail span { width: 2px; height: 6px; }
+  .fav .m6 .rail span:nth-child(3) { height: 10px; }
+  .fav .m6 .rail span:nth-child(1) { height: 4px; }
+  .fav .m6 .rail span:nth-child(5) { height: 5px; }
+  .fav .m6 .rail span:nth-child(2) { height: 5px; }
+
+  /* Browser tab chrome for favicon demo */
+  .tabstrip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 12px; background: #e4e1db; border-radius: 6px 6px 0 0;
+    font-family: var(--mono); font-size: 11px; color: #5c5954;
+  }
+
+  /* Card label */
+  .cap {
+    font-family: var(--mono); font-size: 11px; color: rgba(60,50,40,0.7);
+    letter-spacing: 0.03em; text-transform: uppercase;
+  }
+
+  /* How the mark sits in the site nav — pill */
+  .nav-preview {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px; background: #f5f3ee;
+    border: 1px solid #e4e1db; border-radius: 4px;
+    font-family: var(--mono); font-size: 13px; color: #111;
+  }
+  .nav-preview .m-s {
+    width: 22px; height: 22px; display: grid; place-items: center;
+    position: relative; overflow: hidden; border-radius: 1px;
+  }
+
+  /* ─────────── Small marks used in nav-preview */
+  .m-s.m1-s { background: #0a0a09; }
+  .m-s.m1-s::after { content: "C"; color: #f4f2ed; font-family: var(--sans); font-weight: 500; font-size: 15px; position: absolute; left: 2px; top: -3px; }
+  .m-s.m1-s::before { content: ""; position: absolute; right: 4px; top: 3px; width: 1.5px; height: 16px; background: var(--accent); transform: rotate(18deg); }
+  .m-s.m2-s { background: #0a0a09; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; padding: 4px; }
+  .m-s.m2-s i { background: #f4f2ed; display: block; }
+  .m-s.m2-s i.a { background: var(--accent); transform: rotate(18deg); }
+  .m-s.m4-s { background: #f4f2ed; color: #0a0a09; font-family: var(--sans); font-weight: 500; font-size: 13px; position: relative; }
+  .m-s.m4-s::before { content: "["; position: absolute; left: 1px; top: 0; font-weight: 600; }
+  .m-s.m4-s::after { content: "]"; position: absolute; right: 1px; top: 0; font-weight: 600; transform: rotate(8deg); transform-origin: center; color: #0a0a09; }
+
+  /* react script container */
+  #root { height: 100vh; }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+
+// DesignCanvas.jsx — Figma-ish design canvas wrapper
+// Warm gray grid bg + Sections + Artboards + PostIt notes.
+// No assets, no deps.
+
+const DC = {
+  bg: '#f0eee9',
+  grid: 'rgba(0,0,0,0.06)',
+  label: 'rgba(60,50,40,0.7)',
+  title: 'rgba(40,30,20,0.85)',
+  subtitle: 'rgba(60,50,40,0.6)',
+  postitBg: '#fef4a8',
+  postitText: '#5a4a2a',
+  font: '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif',
+};
+
+// ─────────────────────────────────────────────────────────────
+// Main canvas — transform-based pan/zoom viewport
+//
+// Input mapping (Figma-style):
+//   • trackpad pinch  → zoom   (ctrlKey wheel; Safari gesture* events)
+//   • trackpad scroll → pan    (two-finger)
+//   • mouse wheel     → zoom   (notched; distinguished from trackpad scroll)
+//   • middle-drag / primary-drag-on-bg → pan
+//
+// Transform state lives in a ref and is written straight to the DOM
+// (translate3d + will-change) so wheel ticks don't go through React —
+// keeps pans at 60fps on dense canvases.
+// ─────────────────────────────────────────────────────────────
+function DesignCanvas({ children, minScale = 0.1, maxScale = 8, style = {} }) {
+  const vpRef = React.useRef(null);
+  const worldRef = React.useRef(null);
+  const tf = React.useRef({ x: 0, y: 0, scale: 1 });
+
+  const apply = React.useCallback(() => {
+    const { x, y, scale } = tf.current;
+    const el = worldRef.current;
+    if (el) el.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
+  }, []);
+
+  React.useEffect(() => {
+    const vp = vpRef.current;
+    if (!vp) return;
+
+    const zoomAt = (cx, cy, factor) => {
+      const r = vp.getBoundingClientRect();
+      const px = cx - r.left, py = cy - r.top;
+      const t = tf.current;
+      const next = Math.min(maxScale, Math.max(minScale, t.scale * factor));
+      const k = next / t.scale;
+      // keep the world point under the cursor fixed
+      t.x = px - (px - t.x) * k;
+      t.y = py - (py - t.y) * k;
+      t.scale = next;
+      apply();
+    };
+
+    // Mouse-wheel vs trackpad-scroll heuristic. A physical wheel sends
+    // line-mode deltas (Firefox) or large integer pixel deltas with no X
+    // component (Chrome/Safari, typically multiples of 100/120). Trackpad
+    // two-finger scroll sends small/fractional pixel deltas, often with
+    // non-zero deltaX. ctrlKey is set by the browser for trackpad pinch.
+    const isMouseWheel = (e) =>
+      e.deltaMode !== 0 ||
+      (e.deltaX === 0 && Number.isInteger(e.deltaY) && Math.abs(e.deltaY) >= 40);
+
+    const onWheel = (e) => {
+      e.preventDefault();
+      if (isGesturing) return; // Safari: gesture* owns the pinch — discard concurrent wheels
+      if (e.ctrlKey) {
+        // trackpad pinch (or explicit ctrl+wheel)
+        zoomAt(e.clientX, e.clientY, Math.exp(-e.deltaY * 0.01));
+      } else if (isMouseWheel(e)) {
+        // notched mouse wheel — fixed-ratio step per click
+        zoomAt(e.clientX, e.clientY, Math.exp(-Math.sign(e.deltaY) * 0.18));
+      } else {
+        // trackpad two-finger scroll — pan
+        tf.current.x -= e.deltaX;
+        tf.current.y -= e.deltaY;
+        apply();
+      }
+    };
+
+    // Safari sends native gesture* events for trackpad pinch with a smooth
+    // e.scale; preferring these over the ctrl+wheel fallback gives a much
+    // better feel there. No-ops on other browsers. Safari also fires
+    // ctrlKey wheel events during the same pinch — isGesturing makes
+    // onWheel drop those entirely so they neither zoom nor pan.
+    let gsBase = 1;
+    let isGesturing = false;
+    const onGestureStart = (e) => { e.preventDefault(); isGesturing = true; gsBase = tf.current.scale; };
+    const onGestureChange = (e) => {
+      e.preventDefault();
+      zoomAt(e.clientX, e.clientY, (gsBase * e.scale) / tf.current.scale);
+    };
+    const onGestureEnd = (e) => { e.preventDefault(); isGesturing = false; };
+
+    // Drag-pan: middle button anywhere, or primary button starting on the
+    // canvas background (not inside an artboard).
+    let drag = null;
+    const onPointerDown = (e) => {
+      const onBg = e.target === vp || e.target === worldRef.current;
+      if (!(e.button === 1 || (e.button === 0 && onBg))) return;
+      e.preventDefault();
+      vp.setPointerCapture(e.pointerId);
+      drag = { id: e.pointerId, lx: e.clientX, ly: e.clientY };
+      vp.style.cursor = 'grabbing';
+    };
+    const onPointerMove = (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      tf.current.x += e.clientX - drag.lx;
+      tf.current.y += e.clientY - drag.ly;
+      drag.lx = e.clientX; drag.ly = e.clientY;
+      apply();
+    };
+    const onPointerUp = (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      vp.releasePointerCapture(e.pointerId);
+      drag = null;
+      vp.style.cursor = '';
+    };
+
+    vp.addEventListener('wheel', onWheel, { passive: false });
+    vp.addEventListener('gesturestart', onGestureStart, { passive: false });
+    vp.addEventListener('gesturechange', onGestureChange, { passive: false });
+    vp.addEventListener('gestureend', onGestureEnd, { passive: false });
+    vp.addEventListener('pointerdown', onPointerDown);
+    vp.addEventListener('pointermove', onPointerMove);
+    vp.addEventListener('pointerup', onPointerUp);
+    vp.addEventListener('pointercancel', onPointerUp);
+    return () => {
+      vp.removeEventListener('wheel', onWheel);
+      vp.removeEventListener('gesturestart', onGestureStart);
+      vp.removeEventListener('gesturechange', onGestureChange);
+      vp.removeEventListener('gestureend', onGestureEnd);
+      vp.removeEventListener('pointerdown', onPointerDown);
+      vp.removeEventListener('pointermove', onPointerMove);
+      vp.removeEventListener('pointerup', onPointerUp);
+      vp.removeEventListener('pointercancel', onPointerUp);
+    };
+  }, [apply, minScale, maxScale]);
+
+  const gridSvg = `url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M120 0H0v120' fill='none' stroke='${encodeURIComponent(DC.grid)}' stroke-width='1'/%3E%3C/svg%3E")`;
+  return (
+    <div
+      ref={vpRef}
+      className="design-canvas"
+      style={{
+        height: '100vh', width: '100vw',
+        background: DC.bg,
+        overflow: 'hidden',
+        overscrollBehavior: 'none',
+        touchAction: 'none',
+        position: 'relative',
+        fontFamily: DC.font,
+        boxSizing: 'border-box',
+        ...style,
+      }}
+    >
+      <div
+        ref={worldRef}
+        style={{
+          position: 'absolute', top: 0, left: 0,
+          transformOrigin: '0 0',
+          willChange: 'transform',
+          width: 'max-content', minWidth: '100%',
+          minHeight: '100%',
+          padding: '60px 0 80px',
+          backgroundImage: gridSvg,
+          backgroundSize: '120px 120px',
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Section — title + subtitle + h-stack of artboards (no wrap)
+// ─────────────────────────────────────────────────────────────
+function DCSection({ title, subtitle, children, gap = 48 }) {
+  return (
+    <div style={{ marginBottom: 80, position: 'relative' }}>
+      <div style={{ padding: '0 60px 36px' }}>
+        <div style={{
+          fontSize: 22, fontWeight: 600, color: DC.title,
+          letterSpacing: -0.3, marginBottom: 4,
+        }}>{title}</div>
+        {subtitle && (
+          <div style={{
+            fontSize: 14, fontWeight: 400, color: DC.subtitle,
+          }}>{subtitle}</div>
+        )}
+      </div>
+      {/* h-stack — clips offscreen, never wraps */}
+      <div style={{
+        display: 'flex', gap, padding: '0 60px',
+        alignItems: 'flex-start', width: 'max-content',
+      }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Artboard — labeled card
+// ─────────────────────────────────────────────────────────────
+function DCArtboard({ label, children, width, height, style = {} }) {
+  return (
+    <div style={{ position: 'relative', flexShrink: 0 }}>
+      {label && (
+        <div style={{
+          position: 'absolute', bottom: '100%', left: 0,
+          paddingBottom: 8,
+          fontSize: 12, fontWeight: 500, color: DC.label,
+          whiteSpace: 'nowrap',
+        }}>{label}</div>
+      )}
+      <div style={{
+        borderRadius: 2,
+        boxShadow: '0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06)',
+        overflow: 'hidden',
+        width, height,
+        background: '#fff',
+        ...style,
+      }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Post-it — absolute-positioned sticky note
+// ─────────────────────────────────────────────────────────────
+function DCPostIt({ children, top, left, right, bottom, rotate = -2, width = 180 }) {
+  return (
+    <div style={{
+      position: 'absolute', top, left, right, bottom, width,
+      background: DC.postitBg, padding: '14px 16px',
+      fontFamily: '"Comic Sans MS", "Marker Felt", "Segoe Print", cursive',
+      fontSize: 14, lineHeight: 1.4, color: DC.postitText,
+      boxShadow: '0 2px 8px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08)',
+      transform: `rotate(${rotate}deg)`,
+      zIndex: 5,
+    }}>{children}</div>
+  );
+}
+
+Object.assign(window, { DesignCanvas, DCSection, DCArtboard, DCPostIt });
+
+
+
+// logo-marks.jsx — six Callahan/CI mark explorations as SVG components.
+// Each accepts size + theme ('dark' | 'light') + accent color.
+// Marks are designed to be precise / engineered with one off-axis move.
+
+const ACCENT = 'oklch(0.88 0.17 220)';
+
+// ─── MARK 1 — Slash monogram (C with a tilted /)
+// Single-shape iconic: a solid C beside an accent slash rotated ~16°.
+function Mark1({ size = 88, theme = 'dark', accent = ACCENT }) {
+  const bg = theme === 'dark' ? '#0a0a09' : '#f5f3ee';
+  const fg = theme === 'dark' ? '#f4f2ed' : '#0a0a09';
+  return (
+    <svg viewBox="0 0 88 88" width={size} height={size} aria-label="Callahan/CI">
+      <rect width="88" height="88" rx="4" fill={bg} />
+      {/* C — geometric, constructed from two concentric arcs */}
+      <path
+        d="M54 22 A22 22 0 1 0 54 66 L54 56 A12 12 0 1 1 54 32 Z"
+        fill={fg}
+      />
+      {/* tilted slash = the "/" in callahan/CI */}
+      <rect x="62" y="14" width="5" height="60" rx="0" fill={accent}
+        transform="rotate(16 64.5 44)" />
+    </svg>
+  );
+}
+
+// ─── MARK 2 — Agent quad (four nodes, one rotated)
+// Speaks to "4 AI agents". Three aligned squares + one off-axis accent square.
+function Mark2({ size = 88, theme = 'dark', accent = ACCENT }) {
+  const bg = theme === 'dark' ? '#0a0a09' : '#f5f3ee';
+  const fg = theme === 'dark' ? '#f4f2ed' : '#0a0a09';
+  return (
+    <svg viewBox="0 0 88 88" width={size} height={size} aria-label="Callahan/CI">
+      <rect width="88" height="88" rx="4" fill={bg} />
+      {/* subtle connector wires */}
+      <g stroke={fg} strokeWidth="0.6" opacity="0.25">
+        <line x1="30" y1="32" x2="58" y2="32" />
+        <line x1="30" y1="56" x2="58" y2="56" />
+        <line x1="30" y1="32" x2="30" y2="56" />
+        <line x1="58" y1="32" x2="58" y2="56" />
+      </g>
+      {/* three aligned squares */}
+      <rect x="22" y="24" width="16" height="16" fill={fg} />
+      <rect x="50" y="24" width="16" height="16" fill={fg} />
+      <rect x="22" y="48" width="16" height="16" fill={fg} />
+      {/* the off-axis renegade */}
+      <rect x="50" y="48" width="16" height="16" fill={accent}
+        transform="rotate(14 58 56)" />
+    </svg>
+  );
+}
+
+// ─── MARK 3 — Apple-inspired: C with a bite
+// A confident single geometric shape. The opening of the C IS a rotated
+// wedge — reads as a bite or an agent leaving the pipeline.
+function Mark3({ size = 88, theme = 'dark', accent = ACCENT }) {
+  const bg = theme === 'dark' ? '#0a0a09' : '#f5f3ee';
+  const fg = theme === 'dark' ? '#f4f2ed' : '#0a0a09';
+  return (
+    <svg viewBox="0 0 88 88" width={size} height={size} aria-label="Callahan/CI">
+      <rect width="88" height="88" rx="4" fill={bg} />
+      <defs>
+        <mask id="bite3">
+          <rect width="88" height="88" fill="white" />
+          {/* the bite — a tilted rectangle punched out */}
+          <rect x="52" y="30" width="30" height="28" fill="black"
+            transform="rotate(12 67 44)" />
+        </mask>
+      </defs>
+      {/* donut C */}
+      <g mask="url(#bite3)">
+        <circle cx="44" cy="44" r="26" fill={fg} />
+        <circle cx="44" cy="44" r="14" fill={bg} />
+      </g>
+      {/* accent dot — the "bitten" agent */}
+      <circle cx="72" cy="26" r="4" fill={accent} />
+    </svg>
+  );
+}
+
+// ─── MARK 4 — Bracket [C]
+// The C sits between terminal brackets. Right bracket tilts — the
+// "playful" move. Clean, technical, legible at any size.
+function Mark4({ size = 88, theme = 'light', accent = ACCENT }) {
+  const bg = theme === 'dark' ? '#0a0a09' : '#f5f3ee';
+  const fg = theme === 'dark' ? '#f4f2ed' : '#0a0a09';
+  return (
+    <svg viewBox="0 0 88 88" width={size} height={size} aria-label="Callahan/CI">
+      <rect width="88" height="88" rx="4" fill={bg} />
+      {/* left bracket */}
+      <path d="M22 22 L14 22 L14 66 L22 66"
+        fill="none" stroke={fg} strokeWidth="3.5" strokeLinecap="square" />
+      {/* right bracket (tilted) */}
+      <g transform="rotate(10 71 44)">
+        <path d="M66 22 L74 22 L74 66 L66 66"
+          fill="none" stroke={accent} strokeWidth="3.5" strokeLinecap="square" />
+      </g>
+      {/* Centered C */}
+      <text x="44" y="58" textAnchor="middle"
+        fontFamily='"Inter Tight", sans-serif' fontWeight="500"
+        fontSize="42" letterSpacing="-2" fill={fg}>C</text>
+    </svg>
+  );
+}
+
+// ─── MARK 5 — Pipeline bars
+// Five vertical bars of varying height (= pipeline stages). The middle
+// bar is the accent, rotated — the AI stage.
+function Mark5({ size = 88, theme = 'dark', accent = ACCENT }) {
+  const bg = theme === 'dark' ? '#0a0a09' : '#f5f3ee';
+  const fg = theme === 'dark' ? '#f4f2ed' : '#0a0a09';
+  const bars = [
+    { x: 18, y: 38, h: 20 },
+    { x: 28, y: 30, h: 28 },
+    { x: 40, y: 24, h: 40, accent: true },
+    { x: 52, y: 34, h: 24 },
+    { x: 62, y: 40, h: 16 },
+  ];
+  return (
+    <svg viewBox="0 0 88 88" width={size} height={size} aria-label="Callahan/CI">
+      <rect width="88" height="88" rx="4" fill={bg} />
+      {bars.map((b, i) => (
+        <rect key={i}
+          x={b.x} y={b.y} width="6" height={b.h}
+          fill={b.accent ? accent : fg}
+          transform={b.accent ? `rotate(-10 ${b.x + 3} ${b.y + b.h / 2})` : ''}
+        />
+      ))}
+    </svg>
+  );
+}
+
+// ─── MARK 6 — Split-slash wordmark-only tile
+// No icon — "c/" in bold sans, the / replaced with an accent bar.
+// For use at very small sizes as a favicon/avatar.
+function Mark6({ size = 88, theme = 'dark', accent = ACCENT }) {
+  const bg = theme === 'dark' ? '#0a0a09' : '#f5f3ee';
+  const fg = theme === 'dark' ? '#f4f2ed' : '#0a0a09';
+  return (
+    <svg viewBox="0 0 88 88" width={size} height={size} aria-label="Callahan/CI">
+      <rect width="88" height="88" rx="4" fill={bg} />
+      <text x="12" y="66" fontFamily='"Inter Tight", sans-serif'
+        fontWeight="600" fontSize="56" letterSpacing="-4" fill={fg}>c</text>
+      <rect x="50" y="14" width="6" height="60" rx="0" fill={accent}
+        transform="rotate(16 53 44)" />
+      <text x="60" y="66" fontFamily='"Inter Tight", sans-serif'
+        fontWeight="600" fontSize="56" letterSpacing="-4" fill={fg}>i</text>
+    </svg>
+  );
+}
+
+// ─── Wordmark lockup component used with each mark
+function Lockup({ mark: Mark, size = 28, theme = 'light', accent = ACCENT, showTag = true }) {
+  const nameColor = theme === 'dark' ? '#f4f2ed' : '#0a0a09';
+  const tagColor = theme === 'dark' ? '#8a8680' : '#5c5954';
+  return (
+    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+      <Mark size={size} theme={theme} accent={accent} />
+      <div style={{
+        fontFamily: '"Inter Tight", sans-serif',
+        fontWeight: 500,
+        fontSize: size * 0.62,
+        letterSpacing: '-0.025em',
+        color: nameColor,
+        lineHeight: 1,
+      }}>
+        callahan<span style={{ color: accent, margin: '0 1px', fontWeight: 600 }}>/</span>
+        <span style={{
+          fontFamily: '"JetBrains Mono", monospace',
+          fontSize: size * 0.40,
+          letterSpacing: '0.02em',
+          fontWeight: 500,
+        }}>CI</span>
+      </div>
+    </div>
+  );
+}
+
+// ─── Wordmark-only (no icon) lockups for the canvas
+function WordmarkOnly({ size = 56, theme = 'light', accent = ACCENT, variant = 'plain' }) {
+  const fg = theme === 'dark' ? '#f4f2ed' : '#0a0a09';
+  if (variant === 'slashbar') {
+    return (
+      <div style={{
+        fontFamily: '"Inter Tight", sans-serif', fontWeight: 500,
+        letterSpacing: '-0.035em', fontSize: size, color: fg, lineHeight: 1,
+        display: 'inline-flex', alignItems: 'baseline', gap: 0,
+      }}>
+        callahan
+        <span style={{
+          display: 'inline-block', width: size * 0.1, height: size * 0.82,
+          background: accent, margin: `0 ${size * 0.1}px`,
+          transform: `translateY(${size * 0.05}px) rotate(16deg)`,
+        }} />
+        <span style={{
+          fontFamily: '"JetBrains Mono", monospace',
+          fontSize: size * 0.42, fontWeight: 500, letterSpacing: '0.02em',
+        }}>CI</span>
+      </div>
+    );
+  }
+  if (variant === 'stack') {
+    return (
+      <div style={{
+        fontFamily: '"Inter Tight", sans-serif', fontWeight: 500,
+        letterSpacing: '-0.035em', color: fg, lineHeight: 0.88,
+        display: 'inline-block',
+      }}>
+        <div style={{ fontSize: size }}>callahan</div>
+        <div style={{
+          fontFamily: '"JetBrains Mono", monospace',
+          fontSize: size * 0.24, letterSpacing: '0.18em', textTransform: 'uppercase',
+          color: theme === 'dark' ? '#8a8680' : '#5c5954',
+          marginTop: size * 0.1,
+        }}>
+          <span style={{ color: accent }}>/</span>CI · CONTINUOUS INTEGRATION
+        </div>
+      </div>
+    );
+  }
+  return null;
+}
+
+Object.assign(window, {
+  Mark1, Mark2, Mark3, Mark4, Mark5, Mark6,
+  Lockup, WordmarkOnly, ACCENT,
+});
+
+
+// app.jsx — Canvas layout of all six Callahan/CI logo explorations.
+// (Marks + DesignCanvas components already defined above in this script.)
+
+const MARKS = [
+  {
+    id: 1, Mark: Mark1,
+    name: "C with an accent slash",
+    pitch: "Geometric C + the '/' from the wordmark, rotated 16°. One iconic shape; reads as both 'C' and 'C/' at any size.",
+  },
+  {
+    id: 2, Mark: Mark2,
+    name: "Agent quad",
+    pitch: "Four nodes = the four AI agents. Three aligned, one rotated — the 'renegade' agent that does the thinking.",
+  },
+  {
+    id: 3, Mark: Mark3,
+    name: "C with a bite",
+    pitch: "Apple-inspired negative-space cut. The bitten dot floats off — representing an agent dispatched from the pipeline.",
+  },
+  {
+    id: 4, Mark: Mark4,
+    name: "Bracket C",
+    pitch: "C inside terminal brackets. The right bracket tilts — technical feel + one playful move. Reads as 'code in a box'.",
+  },
+  {
+    id: 5, Mark: Mark5,
+    name: "Pipeline stages",
+    pitch: "Five bars of varying height = pipeline stages. The middle bar is the accent, rotated — the AI stage driving the run.",
+  },
+  {
+    id: 6, Mark: Mark6,
+    name: "Wordmark tile: c/i",
+    pitch: "Pure typographic: 'c' + accent slash + 'i'. Big feel at small sizes. No icon to draw badly.",
+  },
+];
+
+const BROWSER_BAR = '#e4e1db';
+
+function FaviconTab({ Mark, label }) {
+  return (
+    <div style={{
+      display: 'inline-flex', alignItems: 'center', gap: 8,
+      padding: '7px 12px', background: BROWSER_BAR,
+      borderRadius: '6px 6px 0 0', minWidth: 180,
+      fontFamily: '"JetBrains Mono", monospace', fontSize: 11, color: '#5c5954',
+    }}>
+      <Mark size={16} theme="dark" />
+      <span style={{ letterSpacing: 0.2 }}>{label}</span>
+      <span style={{ marginLeft: 'auto', color: '#9e9a93' }}>×</span>
+    </div>
+  );
+}
+
+function NavPill({ Mark }) {
+  return (
+    <div style={{
+      display: 'inline-flex', alignItems: 'center', gap: 10,
+      padding: '10px 14px', background: '#f5f3ee',
+      border: '1px solid #0a0a09',
+      fontFamily: '"JetBrains Mono", monospace', fontSize: 13, color: '#0a0a09',
+      letterSpacing: '-0.005em',
+    }}>
+      <Mark size={22} theme="dark" />
+      <span>callahan<span style={{ color: '#8a8680' }}>/CI</span></span>
+    </div>
+  );
+}
+
+function Caption({ children }) {
+  return (
+    <div style={{
+      fontFamily: '"JetBrains Mono", monospace',
+      fontSize: 11, color: 'rgba(60,50,40,0.7)',
+      letterSpacing: '0.05em', textTransform: 'uppercase',
+      marginTop: 8, marginBottom: 4,
+    }}>{children}</div>
+  );
+}
+
+// A single row: the mark in all the relevant contexts
+function MarkRow({ spec }) {
+  const { id, Mark, name, pitch } = spec;
+  return (
+    <DCSection
+      title={`0${id} · ${name}`}
+      subtitle={pitch}
+      gap={28}
+    >
+      {/* Hero — dark bg, big */}
+      <DCArtboard label="Primary — 240px" width={320} height={320}>
+        <div style={{
+          width: '100%', height: '100%', background: '#0a0a09',
+          display: 'grid', placeItems: 'center',
+        }}>
+          <Mark size={240} theme="dark" />
+        </div>
+      </DCArtboard>
+
+      {/* Light bg */}
+      <DCArtboard label="Light background — 240px" width={320} height={320}>
+        <div style={{
+          width: '100%', height: '100%', background: '#f5f3ee',
+          display: 'grid', placeItems: 'center',
+        }}>
+          <Mark size={240} theme="light" />
+        </div>
+      </DCArtboard>
+
+      {/* Lockups */}
+      <DCArtboard label="Horizontal lockup" width={440} height={320}>
+        <div style={{
+          width: '100%', height: '100%', background: '#fffdf8',
+          display: 'flex', flexDirection: 'column', justifyContent: 'center',
+          gap: 36, padding: '0 40px',
+        }}>
+          <div>
+            <Caption>Light</Caption>
+            <Lockup mark={Mark} size={44} theme="light" />
+          </div>
+          <div style={{
+            margin: '0 -40px', padding: '28px 40px', background: '#0a0a09',
+          }}>
+            <div style={{ fontFamily: '"JetBrains Mono", monospace',
+              fontSize: 10, color: 'rgba(244,242,237,0.5)',
+              letterSpacing: '0.1em', textTransform: 'uppercase',
+              marginBottom: 10 }}>Dark</div>
+            <Lockup mark={Mark} size={44} theme="dark" />
+          </div>
+        </div>
+      </DCArtboard>
+
+      {/* Favicon at 16px */}
+      <DCArtboard label="Browser tab · 16px favicon" width={280} height={320}>
+        <div style={{
+          width: '100%', height: '100%', background: '#c9c4bc',
+          padding: '28px 24px 0', display: 'flex',
+          flexDirection: 'column', gap: 4,
+        }}>
+          <FaviconTab Mark={Mark} label="callahan/ci" />
+          <div style={{ flex: 1, background: '#fffdf8', padding: 20,
+            display: 'flex', alignItems: 'center', gap: 10 }}>
+            <Mark size={14} theme="dark" />
+            <div style={{ fontFamily: '"JetBrains Mono", monospace',
+              fontSize: 10, color: '#5c5954' }}>
+              callahan.ci / docs
+            </div>
+          </div>
+        </div>
+      </DCArtboard>
+
+      {/* Nav pill + button states */}
+      <DCArtboard label="In-nav use" width={380} height={320}>
+        <div style={{
+          width: '100%', height: '100%', background: '#fffdf8',
+          padding: 28, display: 'flex', flexDirection: 'column',
+          justifyContent: 'center', gap: 20,
+        }}>
+          <Caption>Site navigation</Caption>
+          <NavPill Mark={Mark} />
+          <Caption>Reversed</Caption>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+            padding: '10px 14px', background: '#0a0a09', color: '#f4f2ed',
+            fontFamily: '"JetBrains Mono", monospace', fontSize: 13,
+            alignSelf: 'flex-start',
+          }}>
+            <Mark size={22} theme="dark" />
+            <span>callahan<span style={{ color: '#8a8680' }}>/CI</span></span>
+          </div>
+        </div>
+      </DCArtboard>
+
+      {/* Sticker / product use */}
+      <DCArtboard label="Product sticker" width={280} height={320}>
+        <div style={{
+          width: '100%', height: '100%',
+          background: 'linear-gradient(135deg, #c9c4bc, #a8a39c)',
+          display: 'grid', placeItems: 'center',
+        }}>
+          <div style={{
+            width: 200, height: 200, background: '#0a0a09',
+            borderRadius: 24, display: 'grid', placeItems: 'center',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.05)',
+          }}>
+            <Mark size={140} theme="dark" />
+          </div>
+        </div>
+      </DCArtboard>
+    </DCSection>
+  );
+}
+
+function App() {
+  return (
+    <DesignCanvas>
+      <div style={{ padding: '0 60px 40px', maxWidth: 1400 }}>
+        <div style={{
+          fontFamily: '"Instrument Serif", serif',
+          fontStyle: 'italic', fontSize: 44, letterSpacing: '-0.02em',
+          color: '#2a2218', marginBottom: 8,
+        }}>callahan<span style={{ fontStyle: 'normal', fontFamily: '"Inter Tight", sans-serif', fontWeight: 500 }}>/CI</span></div>
+        <div style={{
+          fontFamily: '"Inter Tight", sans-serif', fontSize: 18,
+          color: 'rgba(60,50,40,0.75)', maxWidth: 620, lineHeight: 1.5,
+        }}>
+          Six logo explorations. All share a system: <b>serious, engineered base</b> with a single
+          off-axis move (rotation) that carries the energy — echoing the AI-agent angle.
+          Accent color is the cobalt from the landing page.
+        </div>
+        <div style={{
+          fontFamily: '"JetBrains Mono", monospace', fontSize: 11,
+          color: 'rgba(60,50,40,0.6)', marginTop: 16, letterSpacing: '0.05em',
+          textTransform: 'uppercase',
+        }}>
+          Pan: drag · Zoom: ⌘+scroll or pinch · Scroll canvas for all options
+        </div>
+      </div>
+
+      {MARKS.map(spec => <MarkRow key={spec.id} spec={spec} />)}
+
+      {/* Comparison strip at the bottom — all 6 side-by-side for direct A/B */}
+      <DCSection title="Side-by-side" subtitle="All six at the same scale, same dark background." gap={14}>
+        {MARKS.map(spec => (
+          <DCArtboard key={spec.id} label={`0${spec.id}`} width={160} height={160}>
+            <div style={{
+              width: '100%', height: '100%', background: '#0a0a09',
+              display: 'grid', placeItems: 'center',
+            }}>
+              <spec.Mark size={100} theme="dark" />
+            </div>
+          </DCArtboard>
+        ))}
+      </DCSection>
+
+      {/* Wordmark-only variants */}
+      <DCSection title="Wordmark-only variants" subtitle="No icon — the wordmark itself carries the mark.">
+        <DCArtboard label="Slash bar (hero use)" width={520} height={200}>
+          <div style={{
+            width: '100%', height: '100%', background: '#fffdf8',
+            display: 'grid', placeItems: 'center', padding: '0 40px',
+          }}>
+            <WordmarkOnly size={56} theme="light" variant="slashbar" />
+          </div>
+        </DCArtboard>
+        <DCArtboard label="Stacked w/ descriptor" width={520} height={200}>
+          <div style={{
+            width: '100%', height: '100%', background: '#0a0a09',
+            display: 'grid', placeItems: 'center', padding: '0 40px',
+          }}>
+            <WordmarkOnly size={56} theme="dark" variant="stack" />
+          </div>
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+</script>
+
+</body>
+</html>
