@@ -214,6 +214,43 @@ img, svg { display: block; max-width: 100%; }
 
   /* ───────── HERO (variant B — TERMINAL) ───────── */
   .hero-terminal { display: block; }
+
+  /* Brand stamp — logo + callahan/CI wordmark at hero scale */
+  .hero-brand-stamp {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-bottom: 28px;
+    color: var(--ink);
+    --logo-fg: var(--bg-elev);
+    --logo-accent: var(--accent);
+  }
+  .hero-brand-stamp .hbs-mark {
+    width: 36px; height: 36px; flex-shrink: 0;
+  }
+  .hero-brand-stamp .hbs-mark svg { display: block; width: 100%; height: 100%; }
+  .hero-brand-stamp .hbs-name {
+    font-family: var(--sans); font-size: 18px; font-weight: 500;
+    letter-spacing: -0.03em; line-height: 1;
+  }
+  .hero-brand-stamp .hbs-name .sl { color: var(--accent); font-weight: 600; margin: 0 1px; }
+  .hero-brand-stamp .hbs-name .ci { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink-2); }
+
+  /* "AI NATIVE CI/CD" — the big headline */
+  .hero-ai-native {
+    font-family: var(--sans); font-weight: 600;
+    font-size: clamp(56px, 9.5vw, 120px);
+    letter-spacing: -0.045em; line-height: 0.9;
+    margin-bottom: 32px; color: var(--ink);
+  }
+  .hero-ai-native .word-ai {
+    display: inline-block;
+    background: var(--accent); color: var(--accent-ink);
+    padding: 0 0.06em;
+    margin-right: 0.02em;
+  }
+  @media (max-width: 640px) {
+    .hero-ai-native { font-size: clamp(42px, 13vw, 80px); }
+  }
+
   .term-heading {
     font-family: var(--sans); font-weight: 400; letter-spacing: -0.03em;
     font-size: clamp(40px, 5.8vw, 72px); line-height: 1.02;
@@ -579,7 +616,7 @@ img, svg { display: block; max-width: 100%; }
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <svg id="ic-sun" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7" cy="7" r="2.5"/><path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.8 2.8l1 1M10.2 10.2l1 1M2.8 11.2l1-1M10.2 3.8l1-1"/></svg>
       </button>
-      <a href="https://github.com/goughliam1813/callahan" class="btn">GitHub ↗</a>
+      <a href="https://github.com/Callahan-ci/Callahan" class="btn">GitHub ↗</a>
       <a href="#quickstart" class="btn btn-accent">Install →</a>
     </div>
   </div>
@@ -599,7 +636,7 @@ img, svg { display: block; max-width: 100%; }
     <!-- VARIANT A: SPEC SHEET -->
     <div class="hero-specsheet">
       <div>
-        <div class="eyebrow">CI/CD · local-first · v1.1.0</div>
+        <div class="eyebrow">AI NATIVE CI/CD · local-first · v1.1.0</div>
         <h1 class="display">
           Your pipeline,<br/>
           <span class="serif">on your machine.</span><br/>
@@ -610,7 +647,7 @@ img, svg { display: block; max-width: 100%; }
         </p>
         <div class="hero-ctas">
           <a href="#quickstart" class="btn btn-accent">Get started — free →</a>
-          <a href="https://github.com/goughliam1813/callahan" class="btn">★ Star on GitHub</a>
+          <a href="https://github.com/Callahan-ci/Callahan" class="btn">★ Star on GitHub</a>
           <span class="mono" style="font-size:11px;color:var(--ink-4);margin-left:8px;">git clone &amp;&amp; go run ./cmd/callahan</span>
         </div>
 
@@ -655,8 +692,19 @@ img, svg { display: block; max-width: 100%; }
 
     <!-- VARIANT B: TERMINAL-FIRST -->
     <div class="hero-terminal">
-      <div class="eyebrow">AI-NATIVE CI/CD</div>
 
+      <!-- Brand identity row -->
+      <div class="hero-brand-stamp" aria-label="callahan/CI">
+        <span class="hbs-mark" aria-hidden="true"><svg viewBox="0 0 88 88"><rect width="88" height="88" rx="4" fill="currentColor"/><g fill="var(--logo-fg)"><rect x="18" y="38" width="6" height="20"/><rect x="28" y="30" width="6" height="28"/><rect x="52" y="34" width="6" height="24"/><rect x="62" y="40" width="6" height="16"/></g><rect x="40" y="24" width="6" height="40" fill="var(--logo-accent)" transform="rotate(-10 43 44)"/></svg></span>
+        <span class="hbs-name">callahan<span class="sl">/</span><span class="ci">CI</span></span>
+      </div>
+
+      <!-- Main headline -->
+      <h1 class="hero-ai-native" aria-label="AI Native CI/CD">
+        <span class="word-ai">AI</span> NATIVE<br/>CI/CD
+      </h1>
+
+      <!-- Agent badges -->
       <div class="agent-badges" aria-label="Four AI agents included">
         <span class="agent-badge"><span class="ab-n">01</span>Architect</span>
         <span class="agent-badge"><span class="ab-n">02</span>Debugger</span>
@@ -665,16 +713,12 @@ img, svg { display: block; max-width: 100%; }
         <span class="agent-badge ab-tail">4 agents · onboard</span>
       </div>
 
-      <h1 class="term-heading">
-        Four <span class="hl-ai">AI agents</span><br/>
-        in one binary, <span class="serif" style="font-family:'Instrument Serif',serif;font-style:italic;">on your laptop.</span>
-      </h1>
       <p class="lede">
-        <b>Callahan</b> runs CI/CD pipelines locally and reviews the diff on every build. The <b>Architect</b> writes your YAML from a description, the <b>Debugger</b> explains failures, the <b>Reviewer</b> posts a structured review on every PR, the <b>Analyst</b> parses Trivy and Semgrep findings into plain English.
+        <b>Callahan</b> runs CI/CD pipelines locally and reviews the diff on every build. The <b>Architect</b> writes your YAML, the <b>Debugger</b> explains failures, the <b>Reviewer</b> posts structured findings on every PR, the <b>Analyst</b> parses Trivy and Semgrep into plain English.
       </p>
       <div class="hero-ctas">
         <a href="#quickstart" class="btn btn-accent">Install →</a>
-        <a href="https://github.com/goughliam1813/callahan" class="btn">Source on GitHub</a>
+        <a href="https://github.com/Callahan-ci/Callahan" class="btn">Source on GitHub</a>
       </div>
 
       <div class="term-shell">
@@ -709,7 +753,7 @@ img, svg { display: block; max-width: 100%; }
         </p>
         <div class="hero-ctas">
           <a href="#quickstart" class="btn btn-accent">Install →</a>
-          <a href="https://github.com/goughliam1813/callahan" class="btn">GitHub</a>
+          <a href="https://github.com/Callahan-ci/Callahan" class="btn">GitHub</a>
         </div>
         <div style="margin-top:40px; font-family:var(--mono); font-size:11px; color:var(--ink-3); letter-spacing:0.05em; text-transform:uppercase; line-height:2;">
           <div style="display:grid;grid-template-columns:auto 1fr; gap:16px;">
@@ -1022,16 +1066,23 @@ img, svg { display: block; max-width: 100%; }
     <div class="section-head">
       <div class="mark">§ 06 · INSTALL</div>
       <div>
-        <h2>Five minutes. <span class="serif">Four commands.</span></h2>
-        <p>macOS, Linux, and Windows WSL2. Requires Go 1.22+ and Node 18+. Everything else is optional.</p>
+        <h2>Two ways in. <span class="serif">Pick one.</span></h2>
+        <p>macOS, Linux, and WSL2. Docker is the quickest path if you just want to run it.</p>
       </div>
     </div>
-    <div class="quickstart">
+
+    <div style="display:flex;gap:0;margin-bottom:32px;border:1px solid var(--rule);">
+      <button id="qs-tab-src" onclick="showQS('src')" style="flex:1;padding:11px 18px;font-family:var(--mono);font-size:12px;letter-spacing:0.04em;text-transform:uppercase;border:0;border-right:1px solid var(--rule);cursor:pointer;background:var(--ink);color:var(--bg);">From source<br/><span style="font-size:10px;opacity:0.6;">Go 1.22+ · Node 18+</span></button>
+      <button id="qs-tab-docker" onclick="showQS('docker')" style="flex:1;padding:11px 18px;font-family:var(--mono);font-size:12px;letter-spacing:0.04em;text-transform:uppercase;border:0;cursor:pointer;background:var(--bg);color:var(--ink-3);">Docker Compose<br/><span style="font-size:10px;opacity:0.6;">Docker 24+</span></button>
+    </div>
+
+    <!-- Track: from source -->
+    <div class="quickstart" id="qs-src">
       <div class="qs">
         <div class="n">STEP 01 · CLONE</div>
         <h4>Grab the repo</h4>
         <p>Go + Next.js source. Everything runs from this one directory.</p>
-        <code>git clone github.com/goughliam1813/callahan</code>
+        <code>git clone https://github.com/Callahan-ci/Callahan</code>
       </div>
       <div class="qs">
         <div class="n">STEP 02 · KEY (OPTIONAL)</div>
@@ -1043,13 +1094,41 @@ img, svg { display: block; max-width: 100%; }
         <div class="n">STEP 03 · START</div>
         <h4>Boot both processes</h4>
         <p>Backend on :8080, Next.js on :3000. Tail both in one terminal.</p>
-        <code>cd callahan &amp;&amp; ./start.sh dev</code>
+        <code>cd Callahan &amp;&amp; ./start.sh dev</code>
       </div>
       <div class="qs">
         <div class="n">STEP 04 · OPEN</div>
         <h4>Run a build</h4>
         <p>Add a repo, paste a personal access token, click Run.</p>
         <code>open http://localhost:3000</code>
+      </div>
+    </div>
+
+    <!-- Track: Docker -->
+    <div class="quickstart" id="qs-docker" style="display:none">
+      <div class="qs">
+        <div class="n">STEP 01 · CLONE</div>
+        <h4>Grab the repo</h4>
+        <p>Clone and copy the environment template to get started.</p>
+        <code>git clone https://github.com/Callahan-ci/Callahan &amp;&amp; cd Callahan &amp;&amp; cp .env.example .env</code>
+      </div>
+      <div class="qs">
+        <div class="n">STEP 02 · CONFIGURE</div>
+        <h4>Set an LLM key</h4>
+        <p>Open <code>.env</code> and add at least one provider key. Anthropic or Groq are easiest. Skip for Ollama.</p>
+        <code>ANTHROPIC_API_KEY=sk-ant-…</code>
+      </div>
+      <div class="qs">
+        <div class="n">STEP 03 · LAUNCH</div>
+        <h4>Build and run</h4>
+        <p>Builds the Go binary + Next.js static files into one container. First build takes ~3 min.</p>
+        <code>docker compose up --build</code>
+      </div>
+      <div class="qs">
+        <div class="n">STEP 04 · OPEN</div>
+        <h4>Dashboard ready</h4>
+        <p>Everything — dashboard, API, and WebSocket — is on one port.</p>
+        <code>open http://localhost:8080</code>
       </div>
     </div>
   </section>
@@ -1064,13 +1143,13 @@ img, svg { display: block; max-width: 100%; }
         </div>
         <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
           <div class="mono" style="font-size:12px;opacity:0.7;">
-            $ git clone github.com/goughliam1813/callahan<br/>
+            $ git clone github.com/Callahan-ci/Callahan<br/>
             $ cd callahan &amp;&amp; ./start.sh dev<br/>
             $ open http://localhost:3000
           </div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
             <a href="#quickstart" class="btn btn-accent">Quickstart →</a>
-            <a href="https://github.com/goughliam1813/callahan" class="btn">View source</a>
+            <a href="https://github.com/Callahan-ci/Callahan" class="btn">View source</a>
           </div>
         </div>
       </div>
@@ -1101,10 +1180,10 @@ img, svg { display: block; max-width: 100%; }
       <div class="foot-col">
         <h5>Community</h5>
         <ul>
-          <li><a href="https://github.com/goughliam1813/callahan">GitHub</a></li>
-          <li><a href="https://github.com/goughliam1813/callahan/discussions">Discussions</a></li>
-          <li><a href="https://github.com/goughliam1813/callahan/issues">Issues</a></li>
-          <li><a href="https://github.com/goughliam1813/callahan/blob/main/CONTRIBUTING.md">Contributing</a></li>
+          <li><a href="https://github.com/Callahan-ci/Callahan">GitHub</a></li>
+          <li><a href="https://github.com/Callahan-ci/Callahan/discussions">Discussions</a></li>
+          <li><a href="https://github.com/Callahan-ci/Callahan/issues">Issues</a></li>
+          <li><a href="https://github.com/Callahan-ci/Callahan/blob/main/CONTRIBUTING.md">Contributing</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -1226,6 +1305,19 @@ img, svg { display: block; max-width: 100%; }
   applyTheme(TWEAK_DEFAULS.theme);
   applyHero(TWEAK_DEFAULS.hero);
   applyAccent(TWEAK_DEFAULS.accentHue);
+
+  // Quickstart track switcher
+  function showQS(track) {
+    ['src','docker'].forEach(t => {
+      const el = document.getElementById('qs-'+t);
+      const tab = document.getElementById('qs-tab-'+t);
+      if (!el || !tab) return;
+      const active = t === track;
+      el.style.display = active ? '' : 'none';
+      tab.style.background = active ? 'var(--ink)' : 'var(--bg)';
+      tab.style.color = active ? 'var(--bg)' : 'var(--ink-3)';
+    });
+  }
 </script>
 </body>
 </html>

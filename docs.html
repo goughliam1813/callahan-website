@@ -194,7 +194,7 @@ img, svg { display: block; max-width: 100%; }
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7" cy="7" r="2.5"/><path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.8 2.8l1 1M10.2 10.2l1 1M2.8 11.2l1-1M10.2 3.8l1-1"/></svg>
       </button>
-      <a href="https://github.com/goughliam1813/callahan" class="btn">GitHub ↗</a>
+      <a href="https://github.com/Callahan-ci/Callahan" class="btn">GitHub ↗</a>
     </div>
   </div>
 </nav>
@@ -251,10 +251,20 @@ img, svg { display: block; max-width: 100%; }
 
       <section id="install">
         <h2>Installation</h2>
-        <p>macOS, Linux, and WSL2. Requires Go 1.22+ and Node 18+.</p>
-        <pre data-lang="shell"><span class="c"># clone</span>
-git clone github.com/goughliam1813/callahan
-cd callahan
+
+        <h3 style="font-size:14px;font-weight:600;margin:20px 0 10px;letter-spacing:-0.01em;">Docker (quickest)</h3>
+        <p>Prerequisites: Docker 24+. Everything runs on a single port — no separate frontend dev server needed.</p>
+        <pre data-lang="shell">git clone https://github.com/Callahan-ci/Callahan
+cd Callahan
+cp .env.example .env
+<span class="c"># Edit .env — set ANTHROPIC_API_KEY or another LLM key</span>
+docker compose up --build</pre>
+        <p>Open <code>http://localhost:8080</code>. The Go binary serves both the API and the bundled Next.js static files.</p>
+
+        <h3 style="font-size:14px;font-weight:600;margin:24px 0 10px;letter-spacing:-0.01em;">From source</h3>
+        <p>Requires Go 1.22+ and Node 18+. Gives you hot-reload on both processes.</p>
+        <pre data-lang="shell">git clone https://github.com/Callahan-ci/Callahan
+cd Callahan
 
 <span class="c"># start backend (:8080) and dashboard (:3000)</span>
 ./start.sh dev</pre>
@@ -408,7 +418,7 @@ POST   /api/v1/webhook/gitlab
 GET    /api/v1/settings/llm
 PUT    /api/v1/settings/llm
 POST   /api/v1/settings/llm/test</pre>
-        <div class="callout"><span class="lbl">NEXT</span><p>Missing something? Open a <a href="https://github.com/goughliam1813/callahan/discussions" style="color:var(--ink); text-decoration:underline;">discussion</a> — this handbook follows the code.</p></div>
+        <div class="callout"><span class="lbl">NEXT</span><p>Missing something? Open a <a href="https://github.com/Callahan-ci/Callahan/discussions" style="color:var(--ink); text-decoration:underline;">discussion</a> — this handbook follows the code.</p></div>
       </section>
     </article>
 
