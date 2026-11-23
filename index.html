@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
 <link rel="alternate icon" href="assets/favicon.svg"/>
-<title>Callahan CI — local-first CI/CD with AI agents</title>
+<title>Callahan CI — AI-native CI/CD and AI testing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -593,6 +593,15 @@ img, svg { display: block; max-width: 100%; }
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
   }
+
+  /* products */
+  .products { display:grid; grid-template-columns:repeat(2,1fr); gap:0; margin-top:40px; border-top:1px solid var(--rule); border-left:1px solid var(--rule); }
+  .product { padding:32px 32px 28px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); display:flex; flex-direction:column; gap:14px; }
+  .product h3 { font-size:28px; font-weight:500; letter-spacing:-0.02em; margin:0; }
+  .product p { margin:0; color:var(--ink-3); line-height:1.55; }
+  .product ul { margin:0; padding-left:18px; color:var(--ink-3); line-height:1.7; }
+  .product .product-ctas { display:flex; gap:10px; flex-wrap:wrap; margin-top:auto; padding-top:10px; }
+  @media (max-width: 800px) { .products { grid-template-columns:1fr; } }
 </style>
 </head>
 <body data-hero="a">
@@ -605,6 +614,7 @@ img, svg { display: block; max-width: 100%; }
       <span class="brand-name">callahan<span class="sl">/</span><span class="ci">CI</span></span>
     </a>
     <div class="nav-links">
+      <a href="#products">Products</a>
       <a href="#spec">Spec</a>
       <a href="#pipeline">Pipeline</a>
       <a href="#agents">Agents</a>
@@ -796,6 +806,42 @@ img, svg { display: block; max-width: 100%; }
   </section>
 
   <!-- ───────── HOW IT WORKS — PIPELINE DIAGRAM ───────── -->
+  <!-- ───────── PRODUCTS ───────── -->
+  <section id="products">
+    <div class="eyebrow">TWO PRODUCTS · one idea: AI that proves its work</div>
+    <h2 style="margin-top:16px;">Build it. <span class="serif">Then prove it works.</span></h2>
+    <div class="products">
+      <div class="product">
+        <div class="tick">01 · CALLAHAN CI</div>
+        <h3>AI-native CI/CD</h3>
+        <p>A single Go binary that runs your pipelines on your own machine, reads diffs as they are built, and posts AI review and security findings back to your pull requests.</p>
+        <ul>
+          <li>Local-first: no cloud, one binary, one port</li>
+          <li>Four agents: Architect, Debugger, Reviewer, Analyst</li>
+          <li>Open source, MIT</li>
+        </ul>
+        <div class="product-ctas">
+          <a href="#quickstart" class="btn btn-accent">Get started →</a>
+          <a href="https://github.com/Callahan-ci/Callahan" class="btn">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="product">
+        <div class="tick">02 · QUARTET QE</div>
+        <h3>AI test framework</h3>
+        <p>Write a user story in plain English and get end-to-end tests that run across the whole stack, native apps included. The AI records each test once; every rerun replays it with no AI, and a person approves the result.</p>
+        <ul>
+          <li>APIs, Kafka, Postgres and MongoDB, web, phone browsers, native Android</li>
+          <li>Runs as a Claude plugin or desktop extension, or from the command line</li>
+          <li>Open source, MIT, with checksummed releases and build provenance</li>
+        </ul>
+        <div class="product-ctas">
+          <a href="https://github.com/Callahan-ci/quartet-qe#install" class="btn btn-accent">Install Quartet QE →</a>
+          <a href="https://github.com/Callahan-ci/quartet-qe" class="btn">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="pipeline">
     <div class="section-head">
       <div class="mark">§ 02 · PIPELINE</div>
@@ -1170,6 +1216,8 @@ img, svg { display: block; max-width: 100%; }
       <div class="foot-col">
         <h5>Product</h5>
         <ul>
+          <li><a href="#products">Callahan CI and Quartet QE</a></li>
+          <li><a href="https://github.com/Callahan-ci/quartet-qe">Quartet QE</a></li>
           <li><a href="#spec">Features</a></li>
           <li><a href="#agents">AI Agents</a></li>
           <li><a href="#compare">Compare</a></li>
