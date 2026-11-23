@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+<title>Quartet QE — the AI test framework, native apps included | Callahan</title>
+<meta name="description" content="Write a user story and get end-to-end tests for APIs, Kafka, databases, websites, phone browsers and native Android apps. Recorded once, replayed with no AI, approved by a person."/>
+<meta property="og:title" content="Quartet QE — the AI test framework, native apps included | Callahan"/>
+<meta property="og:description" content="Write a user story and get end-to-end tests for APIs, Kafka, databases, websites, phone browsers and native Android apps. Recorded once, replayed with no AI, approved by a person."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css"/>
+</head>
+<body>
+<nav class="nav"><div class="container nav-inner">
+  <a href="index.html" class="brand" aria-label="Callahan home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 88 88"><rect width="88" height="88" rx="4" fill="currentColor"/><g fill="var(--logo-fg)"><rect x="18" y="38" width="6" height="20"/><rect x="28" y="30" width="6" height="28"/><rect x="52" y="34" width="6" height="24"/><rect x="62" y="40" width="6" height="16"/></g><rect x="40" y="24" width="6" height="40" fill="var(--logo-accent)" transform="rotate(-10 43 44)"/></svg></span><span class="brand-name">callahan</span></a>
+  <div class="nav-links"><a href="#how">How it works</a><a href="#tests">What it tests</a><a href="#reports">Reports</a><a href="#install">Install</a><a href="#security">Security</a></div>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7" cy="7" r="2.5"/><path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.8 2.8l1 1M10.2 10.2l1 1M2.8 11.2l1-1M10.2 3.8l1-1"/></svg></button>
+    <a href="callahan-ci.html" class="btn">Callahan CI</a>
+    <a href="https://github.com/Callahan-ci/quartet-qe#install" class="btn btn-accent">Install →</a>
+  </div>
+</div></nav>
+
+<main class="container">
+  <section class="co-hero">
+    <div>
+      <div class="eyebrow">QUARTET QE · AI TEST FRAMEWORK · by Callahan</div>
+      <h1 class="display">Write the story.<br/><span class="serif">Get tests</span><br/><span class="hl">you can trust.</span></h1>
+      <p class="lede">Quartet QE turns a user story into end-to-end tests across your whole stack, <b>native apps included</b>. The AI records each test once. Every rerun replays it with no AI, and a person approves the result.</p>
+      <div class="hero-ctas"><a href="https://github.com/Callahan-ci/quartet-qe#install" class="btn btn-accent">Install Quartet QE →</a><a href="#how" class="btn">How it works</a><a href="https://github.com/Callahan-ci/quartet-qe" class="btn">★ GitHub</a></div>
+      <div class="strip"><span class="chip">Claude plugin</span><span class="chip">Desktop extension</span><span class="chip">Open source · MIT</span></div>
+    </div>
+    <div class="term-shell reveal">
+      <div class="term-shell-head"><span>~/my-tests · claude</span><span>illustrative run</span></div>
+      <div><span class="prompt">›</span><span class="cmd">test the checkout story on our staging site</span></div>
+      <div class="muted">─────────────────────────────────────────────</div>
+      <div><span class="ok">✔</span> story read · questions raised and answered</div>
+      <div><span class="ok">✔</span> context read · contracts, telemetry, principles</div>
+      <div><span class="ok">✔</span> tests written and validated</div>
+      <div class="muted">─────────────────────────────────────────────</div>
+      <div><span class="ai">◆ review</span> independent review · traceability matrix</div>
+      <div><span class="ok">✔</span> replay · <span class="hl">no AI</span> · report with screenshots</div>
+      <div class="muted">─────────────────────────────────────────────</div>
+      <div><span class="muted">→</span> <span class="cmd">a person approves. the AI never merges.</span></div>
+      <div style="margin-top:8px;"><span class="prompt">▋</span></div>
+    </div>
+  </section>
+
+  <section id="native">
+    <div class="sec-head reveal"><div class="eyebrow">NATIVE APPS</div>
+      <h2>Not just websites. <span class="serif">Your Android app too.</span></h2>
+      <p>Quartet QE drives native Android apps as well as websites and phone browsers, from the same plain-English story. One story can also check the APIs, queues and databases behind the screen, so a test follows the work all the way through.</p></div>
+  </section>
+
+  <section id="how">
+    <div class="sec-head reveal"><div class="eyebrow">HOW IT WORKS</div>
+      <h2>A story in. <span class="serif">Proof out.</span></h2></div>
+    <div class="grid4 reveal">
+      <div class="cell"><div class="n">01 · STORY</div><h4>Write it in English</h4><p>Type it, point at a file, or pull a ticket from Jira, Azure DevOps, GitHub or GitLab. No selectors, no scripts.</p></div>
+      <div class="cell"><div class="n">02 · TESTS</div><h4>The AI writes the tests</h4><p>It reads your contracts, telemetry and engineering principles first, reuses the steps you already have, then validates what it wrote.</p></div>
+      <div class="cell"><div class="n">03 · REPLAY</div><h4>Record once, replay free</h4><p>The recording is the test. Reruns, in CI or on your laptop, replay it with no AI at all.</p></div>
+      <div class="cell hot"><div class="n">04 · APPROVE</div><h4>A person decides</h4><p>An independent review and a traceability matrix go to a review page. You approve; the AI never merges.</p></div>
+    </div>
+    <div class="versus reveal" style="margin-top:24px;">
+      <div><div class="tick">THE FIRST RUN</div><h4>The AI works</h4><ul><li>Reads the story, context and source</li><li>Writes and validates the tests</li><li>Records what it did, step by step</li></ul></div>
+      <div><div class="tick">EVERY RUN AFTER</div><h4>The recording works</h4><ul><li>Replays the same steps, no model needed</li><li>Same result for the same system</li><li>Screenshots and a step trace in the report</li></ul></div>
+    </div>
+  </section>
+
+  <section id="tests">
+    <div class="sec-head reveal"><div class="eyebrow">WHAT IT TESTS</div>
+      <h2>The whole stack, <span class="serif">in one place.</span></h2></div>
+    <div class="grid4 reveal">
+      <div class="cell"><div class="n">UI</div><h4>Websites</h4><p>Real browser runs with screenshots at every step.</p></div>
+      <div class="cell"><div class="n">UI</div><h4>Phone browsers</h4><p>The same story on mobile browsers, not a resized desktop window.</p></div>
+      <div class="cell hot"><div class="n">UI</div><h4>Native Android apps</h4><p>Taps, typing and checks inside the app itself.</p></div>
+      <div class="cell"><div class="n">SERVICE</div><h4>APIs</h4><p>Calls checked against your API descriptions, not invented endpoints.</p></div>
+      <div class="cell"><div class="n">SERVICE</div><h4>Kafka</h4><p>Publish and consume, then check what arrived.</p></div>
+      <div class="cell"><div class="n">DATA</div><h4>Postgres and MongoDB</h4><p>Check the data a feature left behind.</p></div>
+      <div class="cell"><div class="n">WORK</div><h4>Trackers</h4><p>Stories from Jira, Azure DevOps, GitHub and GitLab.</p></div>
+      <div class="cell"><div class="n">CI</div><h4>Jenkins</h4><p>Reports publish into your Jenkins build page.</p></div>
+    </div>
+  </section>
+
+  <section id="reports">
+    <div class="sec-head reveal"><div class="eyebrow">REPORTS</div>
+      <h2>Evidence you can <span class="serif">hand to anyone.</span></h2>
+      <p>Every run produces a branded, self-contained report. Open it in a browser, attach it to a ticket, or publish it from Jenkins.</p></div>
+    <div class="grid3 reveal">
+      <div class="cell"><div class="n">RESULTS</div><h4>What passed and why</h4><p>Each test against the story it came from, in a traceability matrix.</p></div>
+      <div class="cell"><div class="n">SCREENSHOTS</div><h4>A picture of every step</h4><p>Per-step screenshots for each target, so a failure shows you what the user would have seen.</p></div>
+      <div class="cell"><div class="n">REVIEW</div><h4>An independent check</h4><p>A separate review reads the tests before they run and flags what it would not sign off.</p></div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="sec-head reveal"><div class="eyebrow">INSTALL</div>
+      <h2>Pick how you <span class="serif">want to run it.</span></h2></div>
+    <div class="grid3 reveal">
+      <div class="cell"><div class="n">OPTION 1 · CLAUDE PLUGIN</div><h4>Claude Code</h4><p style="margin-bottom:14px;">Add the marketplace, install, then fill in your tracker and Jenkins details in the settings dialog.</p><div class="codeblock"><span class="g">/plugin</span> marketplace add Callahan-ci/quartet-qe
+<span class="g">/plugin</span> install quartet-qe@quartet-qe</div></div>
+      <div class="cell"><div class="n">OPTION 2 · DESKTOP EXTENSION</div><h4>Claude desktop app</h4><p style="margin-bottom:14px;">Download the bundle for your computer from the latest release and open it in the app.</p><a href="https://github.com/Callahan-ci/quartet-qe/releases/latest" class="btn btn-accent">Latest release ↗</a></div>
+      <div class="cell"><div class="n">OPTION 3 · FROM SOURCE</div><h4>Build it yourself</h4><p style="margin-bottom:14px;">Clone the repository and follow the getting-started guide. Needs Java.</p><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/GETTING-STARTED.md" class="btn">Getting started ↗</a></div>
+    </div>
+  </section>
+
+  <section id="security">
+    <div class="sec-head reveal"><div class="eyebrow">SECURITY AND PRIVACY</div>
+      <h2>It runs on your machine, <span class="serif">with limits.</span></h2></div>
+    <div class="rows reveal">
+      <div class="row"><div class="k">Where it runs</div><div class="v">On your computer. No account, no server of ours, no usage tracking.</div></div>
+      <div class="row"><div class="k">Tools</div><div class="v">Every tool is labelled read-only, destructive or open-world, so the app can ask you before anything risky.</div></div>
+      <div class="row"><div class="k">Files</div><div class="v">File access is confined, symlinks are checked, and credential files are refused.</div></div>
+      <div class="row"><div class="k">Secrets</div><div class="v">Tokens go in the extension or plugin settings, or a private file. They never go through the chat.</div></div>
+      <div class="row"><div class="k">Releases</div><div class="v">SHA-256 checksums, a software bill of materials and verifiable build provenance on every release.</div></div>
+    </div>
+    <div class="hero-ctas" style="margin-top:24px;"><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md" class="btn">Security review ↗</a><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/PRIVACY.md" class="btn">Privacy ↗</a></div>
+  </section>
+
+  <section class="compact" style="border-top:0;">
+    <div class="cta-end"><div class="cta-end-inner">
+      <div><div class="eyebrow" style="color:var(--accent);">→ START</div>
+        <h2 style="margin-top:16px;">Your first story<br/><span class="serif">is the hardest part.</span></h2></div>
+      <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
+        <div class="mono" style="font-size:12px;opacity:.75;line-height:1.9;">/plugin marketplace add Callahan-ci/quartet-qe<br/>/plugin install quartet-qe@quartet-qe</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;"><a href="https://github.com/Callahan-ci/quartet-qe#install" class="btn btn-accent">Install →</a><a href="callahan-ci.html" class="btn">Also: Callahan CI</a></div>
+      </div></div></div>
+  </section>
+</main>
+<footer><div class="container">
+  <div class="foot-grid">
+    <div class="foot-col">
+      <a href="index.html" class="brand" style="margin-bottom:16px;"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 88 88"><rect width="88" height="88" rx="4" fill="currentColor"/><g fill="var(--logo-fg)"><rect x="18" y="38" width="6" height="20"/><rect x="28" y="30" width="6" height="28"/><rect x="52" y="34" width="6" height="24"/><rect x="62" y="40" width="6" height="16"/></g><rect x="40" y="24" width="6" height="40" fill="var(--logo-accent)" transform="rotate(-10 43 44)"/></svg></span><span class="brand-name">callahan</span></a>
+      <p>Callahan builds open-source AI agents for engineering teams. They run on your machine, show their work, and leave the final call to a person.</p>
+      <div class="mono" style="font-size:11px;color:var(--ink-4);letter-spacing:.06em;text-transform:uppercase;">MIT · open source · 2026</div>
+    </div>
+    <div class="foot-col"><h5>Products</h5><ul>
+      <li><a href="quartet.html">Quartet QE</a></li>
+      <li><a href="callahan-ci.html">Callahan CI</a></li>
+      <li><a href="docs.html">Callahan CI docs</a></li>
+      <li><a href="changelog.html">Changelog</a></li></ul></div>
+    <div class="foot-col"><h5>Quartet QE</h5><ul>
+      <li><a href="https://github.com/Callahan-ci/quartet-qe#install">Install</a></li>
+      <li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li>
+      <li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/PRIVACY.md">Privacy</a></li>
+      <li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
+    <div class="foot-col"><h5>Callahan</h5><ul>
+      <li><a href="https://github.com/Callahan-ci">GitHub</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="license.html">MIT License</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Callahan</span><span>callahanci.com</span></div>
+</div></footer>
+<script>
+(function(){
+  var r=document.documentElement;
+  try{var t=localStorage.getItem('cc-theme');if(t)r.setAttribute('data-theme',t);}catch(e){}
+  document.getElementById('themeToggle').addEventListener('click',function(){
+    var n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);
+    try{localStorage.setItem('cc-theme',n);}catch(e){}
+  });
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+</body></html>
