@@ -10,7 +10,7 @@
   --ink-4: #8a8a82;
   --rule: #d8d4c9;
   --rule-2: #b8b4a9;
-  --accent: oklch(0.88 0.17 110);      /* chartreuse signal */
+  --accent: oklch(0.88 0.17 220);      /* chartreuse signal */
   --accent-ink: #1a1a0a;
   --ok: oklch(0.62 0.14 150);
   --warn: oklch(0.72 0.16 60);
@@ -29,7 +29,7 @@ html[data-theme="dark"] {
   --ink-4: #6a675e;
   --rule: #272623;
   --rule-2: #3a3834;
-  --accent: oklch(0.88 0.17 110);
+  --accent: oklch(0.88 0.17 220);
   --accent-ink: #0a0a05;
 }
 
@@ -649,3 +649,5 @@ img, svg { display: block; max-width: 100%; }
 .versus li::before { content: "·"; margin-right: 10px; color: var(--ink-4); }
 @media (max-width: 700px) { .versus { grid-template-columns: 1fr; } .versus > div + div { border-left: 0; border-top: 1px solid var(--ink); } }
 .nav-links a.on { color: var(--ink); }
+
+.brand-logo { width: 30px; height: 30px; border-radius: 6px; object-fit: cover; flex-shrink: 0; }
