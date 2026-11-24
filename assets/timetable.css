@@ -79,7 +79,7 @@ html { scrollbar-color: var(--ink) var(--paper-2); }
 .board .mode b.noai { background: var(--board-ink); color: var(--board); border-color: var(--board-ink); }
 .board .trend { display: inline-flex; gap: 3px; vertical-align: middle; }
 .board .trend i { width: 5px; height: 16px; background: var(--board-ink); opacity: .9; }
-.board .trend i.fail { background: var(--red); opacity: 1; }
+.board .trend i.fail { background: #ff5a6a; opacity: 1; }
 .board .tg { display: inline-block; padding: 2px 7px; margin-right: 5px; border: 1px solid var(--board-line); font-size: 15px; }
 .board .m-chip { display: none; margin-left: 8px; padding: 1px 6px; border: 1px solid var(--board-dim); color: var(--board-ink); font-size: 12px; font-weight: 600; }
 .board .m-chip.noai { background: var(--board-ink); color: var(--board); border-color: var(--board-ink); }
@@ -139,7 +139,7 @@ html { scrollbar-color: var(--ink) var(--paper-2); }
 .tt .line .ico { width: 24px; height: 24px; }
 .tt .icons { display: flex; gap: 8px; align-items: center; }
 .tt td.ex { color: var(--ink-2); }
-.tt tr.feature .line { color: var(--red); }
+.tt tr.feature .line { color: var(--ink); }
 @media (max-width: 640px) { .tt td:first-child { width: auto; } .tt td { display: block; padding: 8px 0; border: 0; } .tt tr { display: block; padding: 14px 0; border-bottom: 1px solid var(--rule); } .tt thead { display: none; } }
 
 /* callahan ci: the four agents as a roster */
