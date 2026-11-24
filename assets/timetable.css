@@ -42,7 +42,7 @@ html { scrollbar-color: var(--ink) var(--paper-2); }
 .nav { border-bottom: 2px solid var(--ink); background: var(--paper); position: sticky; top: 0; z-index: 40; }
 .nav .wrap { display: flex; align-items: center; gap: 32px; height: 72px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: 22px; letter-spacing: -.03em; text-decoration: none; }
-.brand img { width: 34px; height: 34px; }
+.brand img { width: 36px; height: 36px; }
 .nav-links { display: flex; gap: 28px; margin-left: 24px; font-weight: 500; font-size: 16px; }
 .nav-links a { text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; transition: border-color .15s var(--ease); }
 @media (hover: hover) { .nav-links a:hover { border-color: var(--ink); } }
