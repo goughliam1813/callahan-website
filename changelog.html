@@ -1,238 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="icon" type="image/png" href="assets/favicon.png"/>
-<title>Changelog — Callahan CI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Callahan CI changelog | Callahan</title>
+<meta name="description" content="Every public release of Callahan CI.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:title" content="Callahan CI changelog | Callahan">
+<meta property="og:description" content="Every public release of Callahan CI.">
+<meta property="og:image" content="https://callahanci.com/assets/callahan-logo.png">
+<link rel="icon" type="image/svg+xml" href="assets/callahan-mark.svg">
+<link rel="alternate icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<style id="callahan-tokens">
-/* Callahan CI — design tokens */
-:root {
-  /* Light (default) — bone + ink */
-  --bg: #f5f3ee;
-  --bg-elev: #ffffff;
-  --bg-sunk: #ece9e2;
-  --ink: #0a0a0a;
-  --ink-2: #2a2a28;
-  --ink-3: #5a5a55;
-  --ink-4: #8a8a82;
-  --rule: #d8d4c9;
-  --rule-2: #b8b4a9;
-  --accent: oklch(0.88 0.17 220);      /* chartreuse signal */
-  --accent-ink: #1a1a0a;
-  --ok: oklch(0.62 0.14 150);
-  --warn: oklch(0.72 0.16 60);
-  --err: oklch(0.58 0.20 25);
-  --sans: 'Geist', 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-}
-
-html[data-theme="dark"] {
-  --bg: #0c0c0b;
-  --bg-elev: #141413;
-  --bg-sunk: #060605;
-  --ink: #f2efe6;
-  --ink-2: #d8d4c7;
-  --ink-3: #9a968a;
-  --ink-4: #6a675e;
-  --rule: #272623;
-  --rule-2: #3a3834;
-  --accent: oklch(0.88 0.17 220);
-  --accent-ink: #0a0a05;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { -webkit-text-size-adjust: 100%; }
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-size: 15px;
-  line-height: 1.55;
-  font-feature-settings: "ss01", "ss02", "cv11";
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-a { color: inherit; text-decoration: none; }
-button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
-img, svg { display: block; max-width: 100%; }
-
-::selection { background: var(--accent); color: var(--accent-ink); }
-
-/* Utility */
-.mono { font-family: var(--mono); font-feature-settings: "ss01", "cv01", "cv02"; }
-.rule { height: 1px; background: var(--rule); width: 100%; }
-.hair { border: 0; border-top: 1px solid var(--rule); }
-.tick { color: var(--ink-4); font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
-
-/* Container with ruled gutters */
-.container {
-  max-width: 1360px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
-@media (max-width: 720px) { .container { padding: 0 18px; } }
-
-/* Blueprint grid background — very subtle */
-.grid-bg {
-  background-image:
-    linear-gradient(var(--rule) 1px, transparent 1px),
-    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
-  background-size: 48px 48px;
-  background-position: -1px -1px;
-}
-
-/* Corner brackets — used on cards to reinforce schematic vibe */
-.brackets { position: relative; }
-.brackets::before, .brackets::after {
-  content: ""; position: absolute; width: 10px; height: 10px;
-  border: 1px solid var(--ink);
-}
-.brackets::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
-.brackets::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
-
-</style>
-<style>
-  .nav { position: sticky; top: 0; z-index: 100; background: color-mix(in oklab, var(--bg) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
-  .nav-inner { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 40px; height: 56px; }
-  .brand { display: flex; align-items: center; gap: 10px; }
-  .brand-mark {
-    width: 26px; height: 26px; display: inline-block; flex-shrink: 0;
-    color: var(--ink);
-    --logo-fg: var(--bg-elev);
-    --logo-accent: var(--accent);
-  }
-  .brand-mark svg { display: block; width: 100%; height: 100%; }
-  .brand-name {
-    font-family: var(--sans, "Inter Tight", system-ui, sans-serif);
-    font-size: 15px; font-weight: 500;
-    letter-spacing: -0.025em; color: var(--ink); line-height: 1;
-  }
-  .brand-name .sl { color: var(--accent); font-weight: 600; margin: 0 1px; }
-  .brand-name .ci { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink-2); }
-  .nav-links { display: flex; gap: 28px; font-size: 13.5px; color: var(--ink-3); }
-  .nav-links a:hover { color: var(--ink); }
-  .btn { display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border:1px solid var(--ink); font-size:13px; font-family:var(--mono); color: var(--ink); }
-  .btn:hover { background: var(--ink); color: var(--bg); }
-  .theme-toggle { width: 28px; height: 28px; border: 1px solid var(--rule-2); display: grid; place-items: center; color: var(--ink-3); background: transparent; }
-  .theme-toggle:hover { color: var(--ink); border-color: var(--ink); }
-
-  .doc-strip { display:grid; grid-template-columns: 1fr auto 1fr; padding: 10px 0; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.04em; text-transform: uppercase; }
-  .doc-strip > :nth-child(2) { justify-self: center; }
-  .doc-strip > :nth-child(3) { justify-self: end; }
-
-  .head { padding: 64px 0 56px; }
-  .crumb { font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; }
-  .crumb span { color: var(--ink); }
-  h1 { font-family: var(--sans); font-weight: 500; letter-spacing: -0.03em; font-size: clamp(40px, 5vw, 64px); line-height: 1.02; margin-bottom: 18px; }
-  h1 .serif { font-family: "Instrument Serif", serif; font-style: italic; }
-  .lede { color: var(--ink-2); font-size: 17px; line-height: 1.6; max-width: 58ch; }
-  .lede a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
-
-  .releases { padding: 0 0 96px; display: grid; grid-template-columns: 200px 1fr; gap: 48px; }
-  @media (max-width: 760px) { .releases { grid-template-columns: 1fr; } .filter { display:none; } }
-  .filter { position: sticky; top: 80px; align-self: start; }
-  .filter h6 { font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
-  .filter ul { list-style: none; display: flex; flex-direction: column; gap: 4px; font-family: var(--mono); font-size: 12px; }
-  .filter a { display: flex; justify-content: space-between; color: var(--ink-3); padding: 4px 0; }
-  .filter a:hover, .filter a.on { color: var(--ink); }
-  .filter a span { color: var(--ink-4); }
-
-  .release { display: grid; grid-template-columns: 180px 1fr; gap: 32px; padding: 32px 0; border-top: 1px solid var(--ink); align-items: start; }
-  .release:first-of-type { border-top: 0; padding-top: 0; }
-  .release-meta { font-family: var(--mono); font-size: 12px; color: var(--ink-3); letter-spacing: 0.04em; }
-  .release-meta .v { font-family: var(--sans); font-size: 34px; font-weight: 500; letter-spacing: -0.03em; color: var(--ink); line-height: 1; margin-bottom: 4px; display: block; }
-  .release-meta .date { display: block; margin-bottom: 8px; }
-  .release-meta .tag { display: inline-block; padding: 3px 8px; border: 1px solid var(--rule-2); background: var(--bg-sunk); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
-  .release-meta .tag.ga { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-  .release-meta .tag.rc { background: var(--bg-elev); }
-
-  .release-body h2 { font-family: var(--sans); font-weight: 500; letter-spacing: -0.02em; font-size: 26px; margin-bottom: 14px; color: var(--ink); }
-  .release-body h2 .serif { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; }
-  .release-body p { font-size: 15px; color: var(--ink-2); line-height: 1.65; margin-bottom: 14px; max-width: 62ch; }
-
-  .change-list { list-style: none; padding: 0; margin: 16px 0 8px; }
-  .change-list li { display: grid; grid-template-columns: 78px 1fr; gap: 12px; padding: 10px 0; border-top: 1px dashed var(--rule); font-size: 14px; line-height: 1.55; color: var(--ink-2); }
-  .change-list li:first-child { border-top: 0; }
-  .change-list .kind { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; align-self: start; justify-self: start; }
-  .kind.added { background: color-mix(in oklab, var(--ok) 22%, var(--bg-elev)); color: var(--ok); }
-  .kind.fixed { background: color-mix(in oklab, var(--accent) 28%, var(--bg-elev)); color: var(--ink); }
-  .kind.changed { background: var(--bg-sunk); border: 1px solid var(--rule-2); color: var(--ink-2); }
-  .kind.deprecated { background: color-mix(in oklab, var(--warn) 20%, var(--bg-elev)); color: var(--warn); }
-  .kind.security { background: color-mix(in oklab, var(--err) 18%, var(--bg-elev)); color: var(--err); }
-
-  .change-list li code { font-family: var(--mono); font-size: 0.88em; background: var(--bg-sunk); padding: 1px 6px; border: 1px solid var(--rule-2); color: var(--ink); }
-  .release-footer { margin-top: 16px; font-family: var(--mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.04em; display: flex; gap: 16px; flex-wrap: wrap; }
-  .release-footer a { color: var(--ink-3); }
-  .release-footer a:hover { color: var(--ink); }
-
-  footer.foot { padding: 48px 0; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 11px; color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.06em; display: flex; justify-content: space-between; }
-  footer.foot a { color: var(--ink-3); }
-.brand-logo{width:30px;height:30px;border-radius:6px;object-fit:cover;flex-shrink:0}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/timetable.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<nav class="nav">
-  <div class="container nav-inner">
-    <a href="index.html" class="brand"><img class="brand-logo" src="assets/callahan-emblem.png" alt="" width="30" height="30"/><span class="brand-name">callahan</span></a>
-    <div class="nav-links">
-      <a href="quartet.html">Quartet QE</a>
-      <a href="callahan-ci.html">Callahan CI</a>
-      <a href="docs.html">Docs</a>
-      <a href="changelog.html" style="color:var(--ink);">Changelog</a>
-    </div>
-    <div style="display:flex; gap:10px; align-items:center;">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7" cy="7" r="2.5"/><path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.8 2.8l1 1M10.2 10.2l1 1M2.8 11.2l1-1M10.2 3.8l1-1"/></svg>
-      </button>
-      <a href="https://github.com/Callahan-ci/Callahan/releases" class="btn">Releases ↗</a>
-    </div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark.svg" alt="" width="36" height="36">Callahan</a>
+  <nav class="nav-links" aria-label="Main">
+    <a href="quartet.html">Quartet QE</a>
+    <a href="callahan-ci.html">Callahan CI</a>
+    <a href="index.html#build">Build with us</a>
+    <a href="docs.html">Docs</a>
+  </nav>
+  <div class="nav-end">
+    <a class="gh" href="https://github.com/Callahan-ci">GitHub</a>
+    <a class="btn red sm" href="quartet.html#install">Install Quartet QE</a>
   </div>
-</nav>
+</div></header>
 
-<div class="container">
-  <div class="doc-strip">
-    <span>DOC · changelog</span>
-    <span>KEEP-A-CHANGELOG 1.1</span>
-    <span>LAST ENTRY · 2026.05.04</span>
-  </div>
-
-  <section class="head">
-    <div class="crumb">DOCS / <span>CHANGELOG</span></div>
-    <h1>What changed, <span class="serif">and when.</span></h1>
-    <p class="lede">Every public release. Breaking changes are labelled. For full diffs, follow the GitHub release link on each entry.</p>
-  </section>
-
-  <section class="releases">
-    <aside class="filter">
-      <h6>Versions</h6>
+<main id="main">
+<section class="page-head" aria-labelledby="page-h"><div class="wrap">
+  <h1 id="page-h">What changed, and when.</h1>
+  <p class="lede">Every public release. Breaking changes are labelled. For full diffs, follow the GitHub release link on each entry.</p>
+</div></section>
+<div class="wrap grid doc-grid changelog">
+  <nav class="toc" aria-label="On this page"><h2>Versions</h2>
       <ul>
-        <li><a href="#v1-1-0" class="on">v1.1.0 <span>may 04</span></a></li>
-        <li><a href="#v1-0-0">v1.0.0 <span>jan 2026</span></a></li>
-      </ul>
-      <h6 style="margin-top:24px;">Filter by kind</h6>
-      <ul>
-        <li><a href="#">all</a></li>
-        <li><a href="#">added</a></li>
-        <li><a href="#">fixed</a></li>
-        <li><a href="#">changed</a></li>
-        <li><a href="#">security</a></li>
-      </ul>
-    </aside>
-
-    <div>
+        <li><a href="#v1-1-0">v1.1.0, may 04</a></li>
+        <li><a href="#v1-0-0">v1.0.0, jan 2026</a></li>
+      </ul></nav>
+  <article class="doc">
       <article class="release" id="v1-1-0">
         <div class="release-meta">
           <span class="v">1.1.0</span>
           <span class="date">May 4, 2026</span>
-          <span class="tag ga">LATEST</span>
+          <span class="tag">Latest</span>
         </div>
         <div class="release-body">
-          <h2>1.1 — <span class="serif">webhooks, scans, PR comments.</span></h2>
+          <h2>1.1 — webhooks, scans, PR comments.</h2>
           <p>Inbound webhooks trigger pipelines on push and pull-request events. Trivy and Semgrep output is parsed into structured findings. AI review and scan results post back to the originating PR as a single comment.</p>
           <ul class="change-list">
             <li><span class="kind added">added</span><div>Webhook handler at <code>/api/v1/webhook/:provider</code> for GitHub <code>push</code> / <code>pull_request</code> and GitLab Push / MR hooks.</div></li>
@@ -245,7 +65,7 @@ img, svg { display: block; max-width: 100%; }
             <li><span class="kind fixed">fixed</span><div>LLM test endpoint now receives provider/model/key from the UI — was posting an empty body and always returning "No provider selected".</div></li>
           </ul>
           <div class="release-footer">
-            <span>BRANCH · main</span><a href="https://github.com/Callahan-ci/Callahan/releases/tag/v1.1.0">GitHub release ↗</a>
+            <a href="https://github.com/Callahan-ci/Callahan/releases/tag/v1.1.0">GitHub release </a>
           </div>
         </div>
       </article>
@@ -254,10 +74,10 @@ img, svg { display: block; max-width: 100%; }
         <div class="release-meta">
           <span class="v">1.0.0</span>
           <span class="date">January 2026</span>
-          <span class="tag ga">GA · STABLE</span>
+          <span class="tag">Ga, stable</span>
         </div>
         <div class="release-body">
-          <h2>1.0 — <span class="serif">the first public cut.</span></h2>
+          <h2>1.0 — the first public cut.</h2>
           <p>First open-source release. A single Go binary that runs pipelines on your laptop, stores state in SQLite, and serves a Next.js dashboard. AI features are opt-in via the <code>ai:</code> block in your Callahanfile.</p>
           <ul class="change-list">
             <li><span class="kind added">added</span><div>Callahanfile.yaml — GitHub-Actions-compatible YAML with an <code>ai:</code> extension for review, security-scan, and explain-failures.</div></li>
@@ -275,24 +95,24 @@ img, svg { display: block; max-width: 100%; }
             <li><span class="kind added">added</span><div>Example Callahanfiles for Next.js, Python FastAPI, Go, Rust, and Java Spring.</div></li>
           </ul>
           <div class="release-footer">
-            <span>LICENSE · MIT</span><a href="https://github.com/Callahan-ci/Callahan/releases/tag/v1.0.0">GitHub release ↗</a>
+            <span>LICENSE · MIT</span><a href="https://github.com/Callahan-ci/Callahan/releases/tag/v1.0.0">GitHub release </a>
           </div>
         </div>
       </article>
-    </div>
-  </section>
-
-  <footer class="foot">
-    <span>© 2026 Callahan CI · MIT</span>
-    <span><a href="index.html">← Back to home</a></span>
-  </footer>
+    </article>
 </div>
+</main>
 
-<script>
-  const tt = document.getElementById('themeToggle');
-  function setTheme(v) { document.documentElement.setAttribute('data-theme', v); try { localStorage.setItem('cc-theme', v); } catch(e){} }
-  tt.addEventListener('click', () => setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
-  try { const t = localStorage.getItem('cc-theme'); if (t) setTheme(t); } catch(e){}
-</script>
+<footer class="foot"><div class="wrap">
+  <div class="grid">
+    <div class="foot-brand"><a class="brand" href="index.html"><img src="assets/callahan-mark.svg" alt="" width="36" height="36">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
+    <div class="foot-col"><h3>Products</h3><ul><li><a href="quartet.html">Quartet QE</a></li><li><a href="callahan-ci.html">Callahan CI</a></li><li><a href="docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
+    <div class="foot-col"><h3>Quartet QE</h3><ul><li><a href="quartet.html#install">Install</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
+    <div class="foot-col"><h3>Company</h3><ul><li><a href="index.html#build">Build with us</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li></ul></div>
+    <div class="foot-col"><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
+  </div>
+  <div class="foot-legal"><span>Copyright 2026 Callahan</span><span>callahanci.com</span></div>
+</div></footer>
+<script src="assets/timetable.js" defer></script>
 </body>
 </html>
