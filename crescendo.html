@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crescendo: the AI performance-testing agent | Callahan</title>
+<meta name="description" content="Crescendo is an AI performance-testing agent. It writes reviewable Gatling simulations, runs them across many injectors and reports an SLO verdict. Coming soon.">
+<meta name="theme-color" content="#f8eee8">
+<meta property="og:title" content="Crescendo: the AI performance-testing agent | Callahan">
+<meta property="og:description" content="Crescendo is an AI performance-testing agent. It writes reviewable Gatling simulations, runs them across many injectors and reports an SLO verdict. Coming soon.">
+<meta property="og:image" content="https://callahanci.com/assets/callahan-logo.png">
+<link rel="icon" type="image/svg+xml" href="assets/callahan-mark-orange.svg">
+<link rel="alternate icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/studio.css">
+<link rel="stylesheet" href="assets/studio-pages.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <nav class="pills" aria-label="Main"><a class="pill" href="quartet.html">Quartet QE</a><a class="pill" href="callahan-ci.html">Callahan CI</a><a class="pill" href="crescendo.html" aria-current="page">Crescendo</a><a class="pill" href="docs.html">Docs</a></nav>
+  <a class="wordmark" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a>
+  <div class="top-end">
+    <small>Open source, MIT<br>macOS and Linux</small>
+    <a class="talk" href="quartet.html#install">Install<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero phero" aria-labelledby="hero-h"><div class="wrap grid">
+  <div class="hero-copy">
+    <img class="pmark" src="assets/crescendo-mark-orange.svg" alt="" width="64" height="64">
+    <p class="soon-tag">Coming soon</p>
+    <h1 id="hero-h">Crescendo.</h1>
+    <p class="sub">The performance-testing agent. Say "load test the catalog API" and it writes a Gatling simulation you can read, runs it across as many injectors as the load needs, and tells you whether you met your SLOs.</p>
+    <div class="acts">
+      <a class="btn" href="#how">How it works<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a>
+      <a class="tlink" href="#soon">When can I use it?</a>
+    </div>
+    <p class="facts"><span>Gatling is the engine</span><span>Many injectors</span><span>SLO verdict</span><span>A person reviews</span></p>
+  </div>
+  <div class="board-wrap">
+    <div class="board sheet live" data-live="perf" aria-label="An example Crescendo load test, animated">
+      <div class="board-head"><h2><img class="bmark" src="assets/crescendo-mark-white.svg" alt="" width="28" height="28">Load test</h2><span class="clock live-phase">demo-catalog</span></div>
+      <table>
+        <caption class="visually-hidden">An example load test: each step runs in turn and reports what it did.</caption>
+        <thead><tr><th scope="col">Step</th><th scope="col">What happened</th><th scope="col">Result</th></tr></thead>
+        <tbody>
+          <tr class="lv" data-say="environment, SLOs and traffic model found in context"><td class="n">Ask</td><td class="story">"Load test the catalog API"<small>Only what is missing is asked</small></td><td class="res"><span class="r-ok" role="img" aria-label="Done"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="principles, contract and SLOs read"><td class="n">Read</td><td class="story">Context read<small>Allowlist, SLOs, traffic model</small></td><td class="res"><span class="r-ok" role="img" aria-label="Done"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="one scenario per journey at its share of the rate"><td class="n">Write</td><td class="story">Gatling Java drafted<small>From the OpenAPI contract</small></td><td class="res"><span class="r-ok" role="img" aria-label="Done"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="principles checked, compiled, allowlisted"><td class="n">Check</td><td class="story">Simulation validated<small>Open model, warm-up, no secrets</small></td><td class="res"><span class="r-ok" role="img" aria-label="Done"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="smoke first, then the load split across injectors"><td class="n">Run</td><td class="story">Load across 2 injectors<small>Histograms merged every second</small></td><td class="res"><span class="r-ok" role="img" aria-label="Done"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="SLO verdict, knee and bottleneck analysis"><td class="n">Report</td><td class="story">One-page report<small>A person reviews it</small></td><td class="res"><span class="r-go">Review</span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+        </tbody>
+      </table>
+      <p class="board-foot live-log" aria-live="off">Report ready for review. Example run.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="how" aria-labelledby="how-h"><div class="wrap grid">
+  <div class="sec-h"><h2 id="how-h">Ask, write, run, report.</h2><p>The same shape as Quartet QE. Crescendo finds what it needs in your team's context, asks only for what is missing, and never sends load itself: Gatling does.</p></div>
+  <div class="sec-b">
+    <div class="route six">
+      <div class="stop"><h3>Ask</h3><p>"How much can the order pipeline take?" in plain words.</p></div>
+      <div class="stop"><h3>Read</h3><p>Environments, contracts, SLOs, traffic models and principles.</p></div>
+      <div class="stop"><h3>Write</h3><p>A plain Gatling Java simulation you can review.</p></div>
+      <div class="stop"><h3>Check</h3><p>Compiled and checked against the principles and the allowlist.</p></div>
+      <div class="stop"><h3>Run</h3><p>Smoke first, then the profile split across N injectors.</p></div>
+      <div class="stop go"><h3>Report</h3><p>SLO verdict, the knee, and what moved with latency.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="simulation" aria-labelledby="sim-h"><div class="wrap grid">
+  <div class="sec-h"><h2 id="sim-h">Ordinary Gatling.</h2><p>Drafts are plain Gatling Java. Crescendo adds four calls: named targets instead of URLs, a 1/N share for each injector, arrivals counted with a kill switch, and latency recorded into HDR histograms.</p></div>
+  <div class="sec-b">
+    <div class="code"><div class="code-bar"><b>DemoCatalogLoadSimulation.java (excerpt)</b><span>Drafted from OpenAPI</span></div><pre><code><span class="c">// No URLs in tests: the allowlist and container routing work</span>
+HttpProtocolBuilder protocol = http.baseUrl(<span class="a">Targets.url</span>(<span class="s">"demo-catalog"</span>));
+
+ChainBuilder placeOrder = <span class="a">Crescendo.timed</span>(http(<span class="s">"place order"</span>)
+        .post(<span class="s">"/orders"</span>)
+        .check(status().is(200)), <span class="s">"place order"</span>);
+
+ScenarioBuilder buyJourney = scenario(<span class="s">"buy"</span>)
+        .exec(<span class="a">Crescendo.start</span>())
+        .feed(data)
+        .exec(listProducts)
+        .pause(Duration.ofMillis(300), Duration.ofMillis(1500))
+        .exec(getProduct)
+        .pause(Duration.ofMillis(300), Duration.ofMillis(1500))
+        .exec(placeOrder);
+
+<span class="c">// buy: 15% of journeys. Each injector takes 1/N of the rate</span>
+buyJourney.injectOpen(
+    rampUsersPerSec(<span class="a">Shard.rate</span>(0.0)).to(<span class="a">Shard.rate</span>(18.0)).during(Duration.ofSeconds(15)),
+    constantUsersPerSec(<span class="a">Shard.rate</span>(18.0)).during(Duration.ofSeconds(45)))</code></pre></div>
+  </div>
+</div></section>
+
+<section class="sec" id="types" aria-labelledby="ty-h"><div class="wrap grid">
+  <div class="sec-h"><h2 id="ty-h">Pick the test by the question.</h2><p>Seven test types, each with a default open-model profile built from your traffic model's peak rate. Every new simulation starts with a smoke run.</p></div>
+  <div class="sec-b">
+    <div class="ledger">
+      <div><b>Smoke</b><span>Does the script work and is the system up? Its numbers are the no-load baseline.</span></div>
+      <div><b>Load</b><span>Do we meet the SLOs at the expected peak? Judged on the steady state, after the warm-up.</span></div>
+      <div><b>Stress</b><span>What happens above the peak, and do we degrade gracefully?</span></div>
+      <div><b>Spike</b><span>Do we survive a sudden burst and recover? Flash sales, push notifications, retry storms.</span></div>
+      <div><b>Soak</b><span>Do we stay healthy for hours? Leaks, pool exhaustion, GC drift.</span></div>
+      <div><b>Breakpoint</b><span>At what rate do we stop meeting SLOs? Expect it to abort: that is the answer.</span></div>
+      <div><b>Scalability</b><span>Does throughput rise with load, and where is the knee?</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="sources" aria-labelledby="so-h"><div class="wrap grid">
+  <div class="sec-h"><h2 id="so-h">APIs, sites and event streams.</h2><p>Crescendo drafts a simulation from what your team already has, then the AI edits it.</p></div>
+  <div class="sec-b">
+    <div class="roster">
+      <div><b>OpenAPI</b><span>One scenario per journey at its share of the rate, with think time and unique data.</span><p class="ex">browse 60%, search 25%, buy 15%</p></div>
+      <div><b>Recorded journey</b><span>A browser journey recorded as HAR becomes protocol load, while a few real Chromium browsers capture Web Vitals under that load.</span><p class="ex">TTFB, FCP, LCP, CLS and load time</p></div>
+      <div><b>Kafka</b><span>Each arriving user produces one message. Produce latency, end-to-end latency and consumer lag are recorded.</span><p class="ex">order-events through the order enricher</p></div>
+      <div><b>WebSocket and gRPC</b><span>Drafts for both; gRPC uses Gatling's gRPC plugin and your stubs.</span><p class="ex">Same rules, same report</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="injectors" aria-labelledby="in-h"><div class="wrap grid">
+  <div class="sec-h"><h2 id="in-h">Load from anywhere.</h2><p>Each injector runs 1/N of the profile and sends its histograms to the coordinator every second, so the combined p99 is the true p99 of every request, never an average of p99s.</p></div>
+  <div class="sec-b table-scroll">
+    <table class="compare">
+      <thead><tr><th scope="col">Backend</th><th scope="col">How it runs</th><th scope="col" class="us">Status</th></tr></thead>
+      <tbody>
+        <tr><td>Local</td><td>One JVM per injector on this machine</td><td class="us">Run end to end</td></tr>
+        <tr><td>Docker</td><td>One container per injector</td><td class="us">Run end to end</td></tr>
+        <tr><td>Kubernetes</td><td>One Indexed Job with N pods</td><td class="us">In testing</td></tr>
+        <tr><td>ECS Fargate</td><td>One task per shard</td><td class="us">In testing</td></tr>
+        <tr><td>Cloud Run</td><td>One job execution with N tasks</td><td class="us">In testing</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+
+<section class="sec" id="report" aria-labelledby="re-h"><div class="wrap grid">
+  <div class="sec-h"><h2 id="re-h">One page, verdict first.</h2><p>The report correlates the run with your metrics, logs and traces, and writes a JUnit file so CI can gate on the SLOs.</p></div>
+  <div class="sec-b">
+    <div class="ledger">
+      <div><b>SLO verdict</b><span>Judged by percentiles on the steady state after the warm-up. Never averages.</span></div>
+      <div><b>Timeline</b><span>Load, p50, p95, p99, errors and every server metric on one shared time axis.</span></div>
+      <div><b>The knee</b><span>The highest rate where throughput still follows load.</span></div>
+      <div><b>Baseline</b><span>Compared with the last run a person reviewed and saved.</span></div>
+      <div><b>Observability</b><span>Prometheus, Loki, Elasticsearch, OpenSearch, Splunk, Datadog, Tempo, Jaeger and Grafana annotations.</span></div>
+      <div><b>Bottleneck analysis</b><span>The AI's reading of which series moved with latency, for a person to check.</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="rules" aria-labelledby="ru-h"><div class="wrap grid">
+  <div class="sec-h"><h2 id="ru-h">Guard rails, not guesswork.</h2><p>Load is a tool you can hurt yourself with. Crescendo is built so the AI cannot.</p></div>
+  <div class="sec-b">
+    <div class="ledger">
+      <div><b>Allowlisted targets</b><span>Load only goes to hosts you own and listed. Production needs a sign-off file a person wrote.</span></div>
+      <div><b>Kill switch</b><span>One command stops every injector. Runs abort on their own when errors or p99 pass your thresholds.</span></div>
+      <div><b>No secrets for the AI</b><span>You save them with ./crescendo secret NAME. They are redacted from everything the AI sees.</span></div>
+      <div><b>A person reviews</b><span>Nothing is pushed or merged. Context and tool output are data, never instructions.</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="soon" aria-labelledby="sn-h"><div class="wrap grid">
+  <div class="sec-h"><h2 id="sn-h">Coming soon.</h2><p>Crescendo is in testing now. Follow Callahan on GitHub to hear when it is ready.</p></div>
+  <div class="sec-b">
+    <div class="acts"><a class="btn" href="https://github.com/Callahan-ci">Follow Callahan on GitHub<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a><a class="tlink" href="quartet.html">Meanwhile, meet Quartet QE</a></div>
+  </div>
+</div></section>
+</main>
+
+<footer class="foot">
+  <div class="grid">
+    <div><a class="wordmark" href="index.html"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
+    <div><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
+    <div><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
+    <div><h3>Crescendo</h3><ul><li><a href="crescendo.html">Overview</a></li><li><a href="crescendo.html#soon">Coming soon</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="https://github.com/Callahan-ci">GitHub</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
+    <div><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
+  </div>
+  <div class="foot-legal"><span>Copyright 2026 Callahan</span><span>callahanci.com</span></div>
+</footer>
+<script src="assets/timetable.js" defer></script>
+</body>
+</html>

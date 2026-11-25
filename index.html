@@ -23,7 +23,7 @@
 <header class="top">
   <nav class="pills" aria-label="Main">
     <a class="pill" href="quartet.html">Quartet QE</a>
-    <a class="pill" href="callahan-ci.html">Callahan CI</a>
+    <a class="pill" href="callahan-ci.html">Callahan CI</a><a class="pill" href="crescendo.html">Crescendo</a>
     <a class="pill" href="docs.html">Docs</a>
   </nav>
   <a class="wordmark" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a>
@@ -118,7 +118,7 @@
     <div class="plate o"><span class="t">Kafka</span><span class="s">shop.orders.created</span><pre>{ "orderId": "ORD-1042",
   "status": "RESERVED",
   "schemaValid": true }</pre></div>
-    <div class="plate p"><span class="t">Two agents</span><span class="s">More on the way.</span><img class="mk" src="assets/quartet-mark-orange.svg" alt=""></div>
+    <div class="plate p"><span class="t">Three agents</span><span class="s">Crescendo is on the way.</span><img class="mk" src="assets/quartet-mark-orange.svg" alt=""></div>
   </div>
 </div>
 
@@ -143,6 +143,21 @@
           <span class="layer tag-pill o l3" style="left:8%;top:6%">Build 42</span>
           <div class="layer mini pr l2"><div class="who">Reviewer<span>finding</span></div><p>internal/auth.go:23: password hashed with MD5. Use bcrypt or argon2id.</p></div>
         </div><div class="meta"><span class="ic"><img src="assets/callahan-ci-mark-white.svg" alt=""></span><span><b>Callahan CI</b><small>Agent, CI/CD</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+
+      <a class="work" href="crescendo.html"><div class="art" style="background:#f6b79e" role="img" aria-label="A Crescendo load test chart: arrivals ramp up and hold while p99 stays under the SLO line, with an SLO met verdict">
+          <img class="layer watermark" src="assets/crescendo-mark-white.svg" alt="" style="opacity:.35">
+          <div class="layer sheet l1" style="left:8%;top:10%;width:80%;transform:rotate(-3deg)"><div class="sheet-h">Load test<span>2 injectors</span></div>
+            <svg viewBox="0 0 240 120" style="display:block;width:100%;padding:12px 14px 4px" aria-hidden="true">
+              <line x1="0" y1="34" x2="240" y2="34" stroke="#f25525" stroke-width="1.5" stroke-dasharray="5 4"/>
+              <text x="236" y="28" text-anchor="end" style="font:600 10px 'Hanken Grotesk',sans-serif;fill:#f25525">SLO p99</text>
+              <path d="M0 112 L60 56 L240 56" fill="none" stroke="#222" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M0 104 C30 100 50 80 70 72 S120 66 150 70 S200 64 240 68" fill="none" stroke="#f25525" stroke-width="2.5"/>
+              <text x="4" y="50" style="font:600 10px 'Hanken Grotesk',sans-serif;fill:#222">arrivals</text>
+            </svg>
+            <div class="sheet-r"><i>p99</i>Under the SLO<b>✓</b></div><div class="sheet-r"><i>err</i>Under the abort threshold<b>✓</b></div></div>
+          <span class="layer tag-pill k l3" style="right:8%;bottom:10%">SLO met</span>
+          <span class="layer tag-pill w l2" style="left:8%;bottom:10%">Coming soon</span>
+        </div><div class="meta"><span class="ic"><img src="assets/crescendo-mark-white.svg" alt=""></span><span><b>Crescendo</b><small>Agent, performance</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
 
       <a class="work" href="quartet-docs.html#android"><div class="art" style="background:#f9e2e1" role="img" aria-label="The real Android calculator History screen from a Quartet QE run, with the test code beside it">
           <div class="layer phone l1" style="left:9%;top:7%;transform:rotate(-5deg)"><img src="assets/shots/calc-history.jpg" alt=""></div>
@@ -182,6 +197,30 @@
           <div class="layer stamp l3" style="right:8%;bottom:8%;color:#f25525;background:#fdf8f5">No AI<br>key</div>
           <div class="layer sticker-ic l2" style="left:9%;bottom:10%;background:#fff"><img src="assets/icons-ink/jenkins.svg" alt=""></div>
         </div><div class="meta"><span class="ic"><img src="assets/icons-ink/jenkins.svg" alt="" style="filter:brightness(0) invert(1)"></span><span><b>Replay in CI</b><small>Example, Jenkins</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+
+      <a class="work" href="crescendo.html#injectors"><div class="art" style="background:#111" role="img" aria-label="Four injectors each sending a share of the load, their histograms merged into one true p99">
+          <div class="layer l1" style="left:8%;top:9%;right:8%;display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
+            <div class="mini"><div class="h">Injector 0</div><pre>rate: 1/4 of P</pre></div><div class="mini"><div class="h">Injector 1</div><pre>rate: 1/4 of P</pre></div>
+            <div class="mini"><div class="h">Injector 2</div><pre>rate: 1/4 of P</pre></div><div class="mini"><div class="h">Injector 3</div><pre>rate: 1/4 of P</pre></div></div>
+          <svg class="layer" style="left:0;top:44%;width:100%;height:20%" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M25 0 C25 12 50 8 50 20 M75 0 C75 12 50 8 50 20" fill="none" stroke="#f25525" stroke-width=".8" stroke-dasharray="2 1.5"/></svg>
+          <div class="layer mini l2" style="left:14%;right:14%;bottom:20%;text-align:center"><div class="h" style="justify-content:center"><img src="assets/crescendo-mark-orange.svg" alt="">Coordinator</div><pre>histograms merged every second
+one true p99, never an average</pre></div>
+          <div class="layer l3" style="left:8%;bottom:7%;display:flex;gap:6px;flex-wrap:wrap"><span class="tag-pill o">Local</span><span class="tag-pill w">Docker</span><span class="tag-pill w">Kubernetes</span></div>
+        </div><div class="meta"><span class="ic"><img src="assets/crescendo-mark-white.svg" alt=""></span><span><b>Many injectors</b><small>Crescendo, distributed</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+
+      <a class="work" href="crescendo.html#rules"><div class="art" style="background:#f9e2e1" role="img" aria-label="A stress test aborted by its threshold, stopped by the kill switch">
+          <div class="layer term l1" style="left:7%;top:10%;width:86%;transform:rotate(-2deg)"><div class="bar"><i></i><i></i><i></i></div><pre><span class="p">$</span> ./crescendo run DemoCatalogStressSimulation \
+    --injectors 2 --backend local
+<span class="d">target demo-catalog: allowlisted</span>
+<span class="g">✓</span> smoke run passed
+<span class="g">✓</span> warm-up, ramp to P
+  step 1.5P, step 2P ...
+<span class="p">abort:</span> p99 passed the threshold
+<span class="d">every injector stopped</span></pre></div>
+          <div class="layer stamp l3" style="right:8%;bottom:8%;color:#f25525;background:#fdf8f5">Kill<br>switch</div>
+          <span class="layer tag-pill k l2" style="left:8%;bottom:12%">Allowlisted targets only</span>
+        </div><div class="meta"><span class="ic"><img src="assets/crescendo-mark-white.svg" alt=""></span><span><b>Guard rails</b><small>Crescendo, stress test</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+
     </div>
   </div>
 </section>
@@ -255,6 +294,7 @@
     <div><a class="wordmark" href="index.html"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
     <div><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
     <div><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
+    <div><h3>Crescendo</h3><ul><li><a href="crescendo.html">Overview</a></li><li><a href="crescendo.html#soon">Coming soon</a></li></ul></div>
     <div><h3>Company</h3><ul><li><a href="https://github.com/Callahan-ci">GitHub</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
     <div><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
   </div>
