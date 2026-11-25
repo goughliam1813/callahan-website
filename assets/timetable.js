@@ -99,6 +99,10 @@
         later(function () { set('wait'); phase.textContent = 'Replay, no AI'; phase.classList.remove('ai'); say('Rerun: replaying the recording.'); }, at + 900);
         at = pass(260, at + 1600, 'Replay');
         later(function () { say('Replayed with no AI. Waiting for a person to approve.'); }, at + 200);
+      } else if (kind === 'perf') {
+        later(function () { phase.textContent = 'running'; say('Load test started from a plain-words request.'); }, 0);
+        at = pass(950, at + 600, 'Crescendo');
+        later(function () { phase.textContent = 'demo-catalog'; say('Report ready: the SLO verdict waits for a person to review.'); }, at + 200);
       } else {
         later(function () { phase.textContent = 'running'; say('Build 42 started from a pull request.'); }, 0);
         at = pass(900, at + 600, 'Build 42');
