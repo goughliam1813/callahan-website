@@ -3,138 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Callahan: AI agents that prove their work</title>
+<title>Callahan: a workshop of AI agents that prove their work</title>
 <meta name="description" content="Callahan builds AI agents for engineering teams. Quartet QE writes end-to-end tests from a user story and replays them with no AI. Callahan CI runs your pipelines on your own machine.">
-<meta name="theme-color" content="#ffffff">
-<meta property="og:title" content="Callahan: AI agents that prove their work">
+<meta name="theme-color" content="#15100b">
+<meta property="og:title" content="Callahan: a workshop of AI agents that prove their work">
 <meta property="og:description" content="Quartet QE writes end-to-end tests from a user story and replays them with no AI. Open source.">
 <meta property="og:image" content="https://callahanci.com/assets/callahan-logo.png">
 <link rel="icon" type="image/svg+xml" href="assets/callahan-mark.svg">
 <link rel="alternate icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/timetable.css">
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/photos/hero.jpg">
+<link rel="stylesheet" href="assets/workshop.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="wrap">
-  <a class="brand" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark.svg" alt="" width="36" height="36">Callahan</a>
+  <a class="brand" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark-cream.svg" alt="" width="34" height="34">Callahan</a>
   <nav class="nav-links" aria-label="Main">
     <a href="quartet.html">Quartet QE</a>
     <a href="callahan-ci.html">Callahan CI</a>
-    <a href="#build">Build with us</a>
+    <a href="#commissions">Commissions</a>
     <a href="docs.html">Docs</a>
   </nav>
   <div class="nav-end">
     <a class="gh" href="https://github.com/Callahan-ci">GitHub</a>
-    <a class="btn red sm" href="#install">Install Quartet QE</a>
+    <a class="btn brass sm" href="#install">Install Quartet QE</a>
   </div>
 </div></header>
 
 <main id="main">
-<section class="hero" aria-labelledby="hero-h"><div class="wrap grid">
-  <div class="hero-copy">
-    <h1 id="hero-h">Agents that prove their work.</h1>
-    <p class="sub">Callahan builds AI agents for engineering teams. Quartet QE writes your end-to-end tests from a user story, then replays them with no AI.</p>
-    <div class="acts">
-      <a class="btn red" href="#install">Install Quartet QE</a>
-      <a class="tlink" href="#build">Build an agent with us</a>
+<section class="scene hero" aria-labelledby="hero-h">
+  <div class="photo" style="background-image:url(assets/photos/hero.jpg)" role="img" aria-label="A workshop bench covered in spanners and tools beneath a window"></div>
+  <div class="wrap grid">
+    <div>
+      <span class="plaque"><b>The workshop</b>Callahan</span>
+      <h1 id="hero-h">A workshop of agents that prove their work.</h1>
+      <p class="sub">We build AI agents for engineering teams. On the bench today: Quartet QE, which writes your end-to-end tests from a user story, then replays them with no AI.</p>
+      <div class="acts">
+        <a class="btn brass" href="#install">Install Quartet QE</a>
+        <a class="tlink" href="#bench">See what's on the bench</a>
+      </div>
     </div>
-    <p class="facts"><span>Open source, MIT</span><span>macOS and Linux</span><span>No account</span></p>
-  </div>
 
-  <div class="board-wrap">
-    <div class="board" id="board">
-      <div class="board-head"><h2>Quartet QE runs</h2><span class="clock" id="clock" aria-label="Local time">09:16</span></div>
+    <div class="order" data-live="quartet" aria-label="An example Quartet QE work order, animated">
+      <div class="order-head"><h2><img src="assets/quartet-mark-ink.svg" alt="" width="30" height="30">Work order: checkout</h2><span class="live-phase">Replay, no AI</span></div>
       <table>
-        <caption class="visually-hidden">Example runs: each story's tests, whether the AI or the recording ran them, and their status. Select a row for its evidence.</caption>
-        <thead><tr><th scope="col">Time</th><th scope="col">Story</th><th scope="col" class="col-target">Targets</th><th scope="col" class="col-run">Run</th><th scope="col" class="col-trend">Last 8</th><th scope="col">Status</th></tr></thead>
+        <caption class="visually-hidden">An example run: Quartet QE drives each step of one story, records it, then replays it with no AI.</caption>
+        <thead><tr><th scope="col">Step</th><th scope="col">What it does</th><th scope="col" class="col-target">Target</th><th scope="col">Result</th></tr></thead>
         <tbody>
-          <tr class="row" tabindex="0" aria-expanded="false" aria-controls="d1"><td class="time">09:00</td><td class="story">Checkout total<small>Basket to order<span class="m-chip noai">No AI</span></small></td><td class="col-target"><span class="tg">web</span><span class="tg">api</span><span class="tg">postgres</span></td><td class="mode col-run"><b class="noai">No AI</b></td><td class="col-trend"><span class="trend" aria-label="8 of 8 passed"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></td><td class="status">On time</td></tr>
-          <tr class="detail" id="d1" hidden><td colspan="6"><div class="drawer"><ol><li>Open the shop</li><li>Add the book to the basket</li><li>Check the basket total through the API</li><li>Check the order record in Postgres</li></ol><p>Replayed from the recording. A screenshot for every step, in the report.</p></div></td></tr>
-          <tr class="row" tabindex="0" aria-expanded="false" aria-controls="d2"><td class="time">09:04</td><td class="story">Sign in<small>Single sign-on<span class="m-chip noai">No AI</span></small></td><td class="col-target"><span class="tg">web</span></td><td class="mode col-run"><b class="noai">No AI</b></td><td class="col-trend"><span class="trend" aria-label="7 of 8 passed, one earlier failure"><i></i><i></i><i class="fail"></i><i></i><i></i><i></i><i></i><i></i></span></td><td class="status">On time</td></tr>
-          <tr class="detail" id="d2" hidden><td colspan="6"><div class="drawer"><ol><li>Open the sign-in page</li><li>Sign in with the test account</li><li>Check the account page loads</li></ol><p>Replayed from the recording. The red mark is an earlier run that caught a broken sign-in; its report holds the screenshot.</p></div></td></tr>
-          <tr class="row" tabindex="0" aria-expanded="false" aria-controls="d3"><td class="time">09:10</td><td class="story">Order event<small>Published to Kafka<span class="m-chip noai">No AI</span></small></td><td class="col-target"><span class="tg">kafka</span></td><td class="mode col-run"><b class="noai">No AI</b></td><td class="col-trend"><span class="trend" aria-label="8 of 8 passed"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></td><td class="status">On time</td></tr>
-          <tr class="detail" id="d3" hidden><td colspan="6"><div class="drawer"><ol><li>Place an order</li><li>Consume the order topic</li><li>Check the event's fields</li></ol><p>Replayed from the recording.</p></div></td></tr>
-          <tr class="row" tabindex="0" aria-expanded="false" aria-controls="d4"><td class="time">09:12</td><td class="story">Add to basket<small>Android app<span class="m-chip noai">No AI</span></small></td><td class="col-target"><span class="tg">android</span></td><td class="mode col-run"><b class="noai">No AI</b></td><td class="col-trend"><span class="trend" aria-label="8 of 8 passed"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></td><td class="status">On time</td></tr>
-          <tr class="detail" id="d4" hidden><td colspan="6"><div class="drawer"><ol><li>Open the app</li><li>Search for the book</li><li>Add it to the basket</li><li>Check the basket badge</li></ol><p>Replayed on the native Android app.</p></div></td></tr>
-          <tr class="row" tabindex="0" aria-expanded="false" aria-controls="d5"><td class="time">09:15</td><td class="story">Refund<small>New story<span class="m-chip">AI</span></small></td><td class="col-target"><span class="tg">web</span><span class="tg">api</span></td><td class="mode col-run"><b>AI</b></td><td class="col-trend"><span class="first">First run</span></td><td class="status go">Waiting for your go</td></tr>
-          <tr class="detail" id="d5" hidden><td colspan="6"><div class="drawer"><ol><li>The AI read the story and your API description</li><li>It wrote the tests and recorded them</li><li>An independent review checked them</li></ol><p>A person approves it. Then it replays with no AI, like the rows above.</p></div></td></tr>
+          <tr class="lv" data-say="the browser opens the shop"><td class="n">1</td><td class="story">Open the shop</td><td class="col-target"><span class="tg">web</span></td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="finds the book and adds it to the basket"><td class="n">2</td><td class="story">Add the book to the basket</td><td class="col-target"><span class="tg">web</span></td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="the basket API returns the right total"><td class="n">3</td><td class="story">Check the basket total</td><td class="col-target"><span class="tg">api</span></td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="the order row is RESERVED in Postgres"><td class="n">4</td><td class="story">Check the order record</td><td class="col-target"><span class="tg">postgres</span></td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="the order event on Kafka matches its schema"><td class="n">5</td><td class="story">Check the order event</td><td class="col-target"><span class="tg">kafka</span></td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="the review page is ready for a person"><td class="n">6</td><td class="story">Sign-off</td><td class="col-target"><span class="tg">person</span></td><td class="res"><span class="r-go">Your go</span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
         </tbody>
       </table>
-      <p class="board-foot">Example runs. Select a row to see its evidence.</p>
+      <p class="live-log" aria-live="off">Replayed from the recording, with no AI. An example work order.</p>
     </div>
   </div>
-</div></section>
+  <p class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Railway_workshop_museum_exhibition_in_Ljubljana,_Slovenia.jpg">Petar Milošević</a>, CC BY-SA 4.0</p>
+</section>
 
-<section class="sec" id="watch" aria-labelledby="watch-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="watch-h">Watch it in 49 seconds.</h2><p>A story goes in, tests come out, and every rerun replays with no AI. Then see the <a class="tlink" href="quartet.html#examples">worked examples</a>.</p></div>
-  <div class="sec-b">
-    <div class="film">
-      <video controls preload="metadata" playsinline poster="assets/quartet-qe-overview.jpg" width="1280" height="720">
-        <source src="assets/quartet-qe-overview.mp4" type="video/mp4">
-      </video>
-      <div class="film-foot"><span>The Quartet QE overview, 49 seconds. <a href="assets/quartet-qe-overview.mp4">Download</a></span><span>Music: Sascha Ende, ende.app (CC BY 4.0)</span></div>
+<section class="scene" id="bench" aria-labelledby="bench-h">
+  <div class="photo" style="background-image:url(assets/photos/bench.jpg)"></div>
+  <div class="wrap">
+    <div class="head">
+      <span class="plaque"><b>On the bench</b>Two agents</span>
+      <h2 id="bench-h">Two agents, built to show their work.</h2>
+      <p>Each one runs on your machine, records what it did, and leaves the decision to a person.</p>
+    </div>
+    <div class="tags">
+      <a class="tag" href="quartet.html">
+        <span class="hole" aria-hidden="true"></span>
+        <div class="pic" style="background-image:url(assets/photos/quartet.jpg)" role="img" aria-label="A luthier's hands carving the top of a violin"></div>
+        <div class="body">
+          <div class="name"><img src="assets/quartet-mark-ink.svg" alt="" width="40" height="40"><h3>Quartet QE</h3></div>
+          <p>The AI test framework. Write a user story; it tests websites, phone browsers, native Android apps, APIs, Kafka and databases, then replays with no AI.</p>
+          <span class="go">Visit Quartet's bench</span>
+        </div>
+      </a>
+      <a class="tag" href="callahan-ci.html">
+        <span class="hole" aria-hidden="true"></span>
+        <div class="pic" style="background-image:url(assets/photos/ci.jpg)" role="img" aria-label="A hand holding a soldering iron over a wooden bench"></div>
+        <div class="body">
+          <div class="name"><img src="assets/callahan-ci-mark-ink.svg" alt="" width="40" height="40"><h3>Callahan CI</h3></div>
+          <p>CI/CD on your own machine. One binary runs your pipelines and four agents review every build on your pull requests.</p>
+          <span class="go">Visit Callahan CI's bench</span>
+        </div>
+      </a>
     </div>
   </div>
-</div></section>
+  <p class="credit">Photos: <a href="https://commons.wikimedia.org/wiki/File:Traditional_Hand_Plane,_China.jpg">Rod Waddington</a>, CC BY-SA 2.0; <a href="https://commons.wikimedia.org/wiki/File:A_luthier_at_work_on_a_violin_02.jpg">Kritzolina</a>, CC BY-SA 4.0; <a href="https://commons.wikimedia.org/wiki/File:Scope_soldering_iron_(early_model).jpg">Doug butler</a>, CC BY-SA 4.0</p>
+</section>
 
-<section class="sec" id="how" aria-labelledby="how-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="how-h">One run, four stops.</h2><p>The AI does the thinking once. After that, the recording does the work.</p></div>
-  <div class="sec-b">
-    <div class="route">
-      <div class="stop"><h3>Story</h3><p>Plain English, or a ticket from Jira, Azure DevOps, GitHub or GitLab.</p></div>
-      <div class="stop"><h3>Tests</h3><p>The AI reads your contracts and context, then writes and validates the tests.</p></div>
-      <div class="stop"><h3>Replay</h3><p>The recording is the test. Every rerun, in CI or on a laptop, uses no AI.</p><span class="loop">Every run after</span></div>
-      <div class="stop go"><h3>Go</h3><p>An independent review and a report with screenshots. A person approves; the AI never merges.</p></div>
+<section class="scene right" id="craft" aria-labelledby="craft-h">
+  <div class="photo" style="background-image:url(assets/photos/craft.jpg);background-position:left center"></div>
+  <div class="wrap">
+    <div class="head">
+      <span class="plaque"><b>The craft</b>How it works</span>
+      <h2 id="craft-h">The AI works once. The recording repeats.</h2>
+      <p>Like a good movement, every run after the first goes the same way, with no AI at all.</p>
+    </div>
+    <div class="steps">
+      <div><span class="k">1</span><h3>The story</h3><p>Plain English, or a ticket from Jira, Azure DevOps, GitHub or GitLab.</p></div>
+      <div><span class="k">2</span><h3>The tests</h3><p>The AI reads your contracts and context, then writes and validates the tests.</p></div>
+      <div><span class="k">3</span><h3>The replay</h3><p>The recording is the test. Reruns, in CI or on a laptop, use no AI.</p></div>
+      <div><span class="k">4</span><h3>Your go</h3><p>A review and a report with screenshots. A person approves; the AI never merges.</p></div>
     </div>
   </div>
-</div></section>
+  <p class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Longines_4_Grand_Prix_pocket_watch_-_clockwork_visible_-_enhanced_resolution_DSF3402-PSMS.jpg">Franz van Duns</a>, CC BY-SA 4.0</p>
+</section>
 
-<section class="sec" id="lines" aria-labelledby="lines-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="lines-h">Every line it runs on.</h2><p>One story can cross the app, the services behind it and the data they leave.</p></div>
-  <div class="sec-b">
-    <table class="tt">
-      <thead><tr><th scope="col">Line</th><th scope="col">What it checks</th></tr></thead>
-      <tbody>
-        <tr class="feature"><td><span class="line"><span class="icons"><svg aria-hidden="true" width="24" height="24" fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Android</title><path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z"/></svg></span>Native Android apps</span></td><td class="ex">Taps, types and checks inside the app itself.</td></tr>
-        <tr><td><span class="line"><span class="icons"><img src="assets/icons-ink/googlechrome.svg" alt="" width="24" height="24"></span>Websites</span></td><td class="ex">A real browser, with a screenshot at every step.</td></tr>
-        <tr><td><span class="line"><span class="icons"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M7 1.5h10A1.5 1.5 0 0 1 18.5 3v18a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 21V3A1.5 1.5 0 0 1 7 1.5Zm1 2.5v13h8V4H8Zm2.5 15v1.5h3V19h-3Z"/></svg></span>Phone browsers</span></td><td class="ex">The same story on mobile browsers.</td></tr>
-        <tr><td><span class="line"><span class="icons"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.4 5.3 1.2 12l6.2 6.7 2.1-2L5.2 12l4.3-4.7-2.1-2Zm9.2 0-2.1 2 4.3 4.7-4.3 4.7 2.1 2 6.2-6.7-6.2-6.7ZM13.3 3.5l-4.6 17 2.6.7 4.6-17-2.6-.7Z"/></svg></span>APIs</span></td><td class="ex">Calls checked against your API descriptions.</td></tr>
-        <tr><td><span class="line"><span class="icons"><img src="assets/icons-ink/apachekafka.svg" alt="" width="24" height="24"></span>Kafka</span></td><td class="ex">Publishes, consumes and checks what arrived.</td></tr>
-        <tr><td><span class="line"><span class="icons"><img src="assets/icons-ink/postgresql.svg" alt="" width="24" height="24"><img src="assets/icons-ink/mongodb.svg" alt="" width="24" height="24"></span>Postgres and MongoDB</span></td><td class="ex">The data a feature left behind.</td></tr>
-        <tr><td><span class="line"><span class="icons"><img src="assets/icons-ink/jira.svg" alt="" width="24" height="24"><img src="assets/icons-ink/github.svg" alt="" width="24" height="24"><img src="assets/icons-ink/gitlab.svg" alt="" width="24" height="24"><img src="assets/icons-ink/jenkins.svg" alt="" width="24" height="24"></span>Your tools</span></td><td class="ex">Stories from Jira, Azure DevOps, GitHub and GitLab. Reports into Jenkins.</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div></section>
-
-<section class="sec" id="ci" aria-labelledby="ci-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="ci-h">Callahan CI.</h2><p>Our CI/CD agent. It runs your pipelines on your own machine and reviews every build.</p></div>
-  <div class="sec-b">
-    <div class="roster">
-      <div><b>Architect</b><span>Writes your pipeline YAML.</span></div>
-      <div><b>Debugger</b><span>Explains why a build failed.</span></div>
-      <div><b>Reviewer</b><span>Posts structured findings on every pull request.</span></div>
-      <div><b>Analyst</b><span>Turns Trivy and Semgrep output into plain English.</span></div>
+<section class="scene" id="films" aria-labelledby="films-h">
+  <div class="photo" style="background-image:url(assets/photos/hero.jpg);filter:blur(2px)"></div>
+  <div class="wrap">
+    <div class="head">
+      <span class="plaque"><b>Job tickets</b>Watch them work</span>
+      <h2 id="films-h">See both agents at work.</h2>
     </div>
-    <p class="after"><a class="tlink" href="callahan-ci.html">Read about Callahan CI</a><a class="tlink" href="https://github.com/Callahan-ci/Callahan">Source on GitHub</a></p>
+    <div class="tickets">
+      <div class="ticket">
+        <video controls preload="metadata" playsinline poster="assets/quartet-qe-overview.jpg" width="1280" height="720"><source src="assets/quartet-qe-overview.mp4" type="video/mp4"></video>
+        <div class="stub"><b>Quartet QE</b><span>49 seconds</span></div>
+        <p class="note">Music: Sascha Ende, ende.app (CC BY 4.0)</p>
+      </div>
+      <div class="ticket">
+        <video controls preload="metadata" playsinline poster="assets/callahan-ci-overview.jpg" width="1280" height="720"><source src="assets/callahan-ci-overview.mp4" type="video/mp4"></video>
+        <div class="stub"><b>Callahan CI</b><span>21 seconds</span></div>
+        <p class="note">No sound.</p>
+      </div>
+    </div>
   </div>
-</div></section>
+</section>
 
-<section class="sec services" id="build" aria-labelledby="build-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="build-h">We build agents for your team.</h2></div>
-  <div class="sec-b">
-    <p>Callahan also builds custom AI agents for engineering teams, on the same rules as our own: they run where you run, record what they did, and leave the decision to a person.</p>
-    <a class="btn" href="https://github.com/Callahan-ci">Talk to us on GitHub</a>
+<section class="scene right" id="commissions" aria-labelledby="com-h">
+  <div class="photo" style="background-image:url(assets/photos/commission.jpg)"></div>
+  <div class="wrap">
+    <div class="head">
+      <span class="plaque"><b>Commissions</b>Built for you</span>
+      <h2 id="com-h">We build agents to order.</h2>
+      <p>Callahan builds custom AI agents for engineering teams, on the same rules as our own: they run where you run, record what they did, and leave the decision to a person.</p>
+      <div class="after"><a class="btn brass" href="https://github.com/Callahan-ci">Talk to us on GitHub</a></div>
+    </div>
   </div>
-</div></section>
+  <p class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Traditional_goldsmith_engraving_a_ring,_Goa,_India.jpg">SerChevalerie</a>, CC0</p>
+</section>
 
-<section class="sec" id="evidence" aria-labelledby="ev-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="ev-h">Check every departure.</h2><p>You are letting software act for you, so everything it ships is open to inspection.</p></div>
-  <div class="sec-b">
+<section class="scene" id="open" aria-labelledby="open-h">
+  <div class="photo" style="background-image:url(assets/photos/window.jpg);background-position:right center"></div>
+  <div class="wrap">
+    <div class="head">
+      <span class="plaque"><b>The open door</b>Security</span>
+      <h2 id="open-h">Come in and check our work.</h2>
+      <p>You are letting software act for you, so everything we ship is open to inspection.</p>
+    </div>
     <div class="ledger">
       <div><b>Source</b><span>Open source under the MIT licence.</span></div>
       <div><b>Releases</b><span>SHA-256 checksums, a software bill of materials and GitHub build provenance.</span></div>
@@ -143,28 +169,34 @@
     </div>
     <p class="after"><a class="tlink" href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security review</a><a class="tlink" href="https://github.com/Callahan-ci/quartet-qe/blob/main/PRIVACY.md">Privacy</a></p>
   </div>
-</div></section>
+  <p class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Beilstein_-_Billensbach_-_Stocksberger_Str._14_-_Werkstatt_-_Fenster_mit_Hopfenranken_(1).jpg">Roman Eisele</a>, CC BY-SA 4.0</p>
+</section>
 
-<section class="sec" id="install" aria-labelledby="in-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="in-h">Install Quartet QE.</h2><p>In Claude Code, add the marketplace, then install.</p></div>
-  <div class="sec-b">
+<section class="scene" id="install" aria-labelledby="in-h" style="background:#100c08">
+  <div class="wrap">
+    <div class="head">
+      <span class="plaque"><b>Take one home</b>Install</span>
+      <h2 id="in-h">Install Quartet QE.</h2>
+      <p>In Claude Code, add the marketplace, then install.</p>
+    </div>
     <div class="cmd">
       <div class="cmd-row"><code>/plugin marketplace add Callahan-ci/quartet-qe</code><button class="copy" type="button" data-copy="/plugin marketplace add Callahan-ci/quartet-qe">Copy</button></div>
       <div class="cmd-row"><code>/plugin install quartet-qe@quartet-qe</code><button class="copy" type="button" data-copy="/plugin install quartet-qe@quartet-qe">Copy</button></div>
     </div>
-    <p class="other"><a class="tlink" href="https://github.com/Callahan-ci/quartet-qe/releases/latest">Desktop extension, latest release</a><a class="tlink" href="https://github.com/Callahan-ci/quartet-qe/blob/main/GETTING-STARTED.md">Build from source (Java 21)</a></p>
+    <p class="after"><a class="tlink" href="https://github.com/Callahan-ci/quartet-qe/releases/latest">Desktop extension, latest release</a><a class="tlink" href="quartet-docs.html">Docs and how-tos</a></p>
   </div>
-</div></section>
+</section>
 </main>
 
 <footer class="foot"><div class="wrap">
   <div class="grid">
-    <div class="foot-brand"><a class="brand" href="index.html"><img src="assets/callahan-mark.svg" alt="" width="36" height="36">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
-    <div class="foot-col"><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs and how-tos</a></li><li><a href="quartet.html#install">Install</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
-    <div class="foot-col"><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
-    <div class="foot-col"><h3>Company</h3><ul><li><a href="index.html#build">Build with us</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li></ul></div>
-    <div class="foot-col"><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
+    <div class="foot-brand"><a class="brand" href="index.html"><img src="assets/callahan-mark-cream.svg" alt="" width="34" height="34">Callahan</a><p>A workshop of AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
+    <div><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
+    <div><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="#commissions">Commissions</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li></ul></div>
+    <div><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
   </div>
+  <p class="foot-credits">Photographs from Wikimedia Commons, used under their licences: Petar Milošević (CC BY-SA 4.0), Rod Waddington (CC BY-SA 2.0), Kritzolina (CC BY-SA 4.0), Doug butler (CC BY-SA 4.0), Franz van Duns (CC BY-SA 4.0), SerChevalerie (CC0), Roman Eisele (CC BY-SA 4.0). Each photo links to its source where it appears.</p>
   <div class="foot-legal"><span>Copyright 2026 Callahan</span><span>callahanci.com</span></div>
 </div></footer>
 <script src="assets/timetable.js" defer></script>
