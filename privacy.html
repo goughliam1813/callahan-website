@@ -21,7 +21,8 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
-  <nav class="pills" aria-label="Main"><a class="pill" href="quartet.html">Quartet QE</a><a class="pill" href="callahan-ci.html">Callahan CI</a><a class="pill" href="crescendo.html">Crescendo</a><a class="pill" href="docs.html">Docs</a></nav>
+  <nav class="pills" id="site-nav" aria-label="Main"><a class="pill" href="quartet.html">Quartet QE</a><a class="pill" href="callahan-ci.html">Callahan CI</a><a class="pill" href="crescendo.html">Crescendo</a><a class="pill" href="docs.html">Docs</a></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="visually-hidden">Menu</span><i></i><i></i><i></i></button>
   <a class="wordmark" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a>
   <div class="top-end">
     <small>Open source, MIT<br>macOS and Linux</small>
@@ -53,8 +54,8 @@
       
 
       <div class="meta-grid">
-        <div><div class="k">Data controller</div><div class="v">Callahan CI Contributors</div></div>
-        <div><div class="k">Jurisdiction</div><div class="v">See contact section 7</div></div>
+        <div><div class="k">Data controller</div><div class="v">Liam Gough / Callahan CI Contributors. Contact: <a href="https://github.com/Callahan-ci/quartet-qe/discussions">GitHub Discussions</a></div></div>
+        <div><div class="k">Jurisdiction</div><div class="v">England and Wales, UK</div></div>
         <div><div class="k">Last updated</div><div class="v">April 01, 2026</div></div>
       </div>
 
@@ -96,7 +97,7 @@
 
       <section id="contact">
         <h2 data-n="section 7">Contact</h2>
-        <p>Questions or security reports: open an issue on GitHub, or use the address listed in <code>SECURITY.md</code>. We respond to security reports within 72 hours.</p>
+        <p>Questions: <a href="https://github.com/Callahan-ci/quartet-qe/discussions">GitHub Discussions</a>. Bugs: <a href="https://github.com/Callahan-ci/quartet-qe/issues">open an issue</a>. Security reports: follow <a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">SECURITY.md</a>. We respond to security reports within 72 hours.</p>
       </section>
     </article>
 </div>
@@ -104,15 +105,16 @@
 
 <footer class="foot">
   <div class="grid">
-    <div><a class="wordmark" href="index.html"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
+    <div><a class="wordmark" href="index.html"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p><p class="by">Built by <a href="https://www.linkedin.com/in/liam-gough-04a60a2b">Liam Gough</a> (<a href="https://github.com/goughliam1813">GitHub</a>). Questions? <a href="https://github.com/Callahan-ci/quartet-qe/discussions">Talk to us on GitHub Discussions</a>.</p></div>
     <div><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
     <div><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
-    <div><h3>Crescendo</h3><ul><li><a href="crescendo.html">Overview</a></li><li><a href="crescendo.html#soon">Coming soon</a></li></ul></div>
-    <div><h3>Company</h3><ul><li><a href="https://github.com/Callahan-ci">GitHub</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
+    <div><h3>Crescendo</h3><ul><li><a href="crescendo.html">Overview</a></li><li><a href="crescendo.html#soon">Coming soon — not available yet</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/discussions/17">Join the waitlist</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="index.html#about">About</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/discussions">Contact</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
     <div><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
   </div>
   <div class="foot-legal"><span>Copyright 2026 Callahan</span><span>callahanci.com</span></div>
 </footer>
 <script src="assets/timetable.js" defer></script>
+<script src="assets/menu.js" defer></script>
 </body>
 </html>

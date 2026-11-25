@@ -21,7 +21,8 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
-  <nav class="pills" aria-label="Main"><a class="pill" href="quartet.html" aria-current="page">Quartet QE</a><a class="pill" href="callahan-ci.html">Callahan CI</a><a class="pill" href="crescendo.html">Crescendo</a><a class="pill" href="docs.html">Docs</a></nav>
+  <nav class="pills" id="site-nav" aria-label="Main"><a class="pill" href="quartet.html" aria-current="page">Quartet QE</a><a class="pill" href="callahan-ci.html">Callahan CI</a><a class="pill" href="crescendo.html">Crescendo</a><a class="pill" href="docs.html">Docs</a></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="visually-hidden">Menu</span><i></i><i></i><i></i></button>
   <a class="wordmark" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a>
   <div class="top-end">
     <small>Open source, MIT<br>macOS and Linux</small>
@@ -33,12 +34,14 @@
 <section class="hero phero" aria-labelledby="hero-h"><div class="wrap grid">
   <div class="hero-copy">
     <img class="pmark" src="assets/quartet-mark-orange.svg" alt="" width="64" height="64">
+    <p class="ver-tag">v0.1.0 — released 23 November 2026</p>
     <h1 id="hero-h">Quartet QE.</h1>
     <p class="sub">The AI test framework. Write a user story; get end-to-end tests that replay with no AI and a report a person signs off.</p>
     <div class="acts">
       <a class="btn" href="#install">Install Quartet QE<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a>
       <a class="tlink" href="https://github.com/Callahan-ci/quartet-qe">Source on GitHub</a>
     </div>
+    <p class="early">Early release, working and installable. Expect rapid changes — please <a href="https://github.com/Callahan-ci/quartet-qe/issues">open an issue</a> if you find one.</p>
     <p class="facts"><span>Open source, MIT</span><span>macOS and Linux</span><span>No account</span></p>
   </div>
   <div class="board-wrap">
@@ -68,7 +71,7 @@
       <video controls preload="metadata" playsinline poster="assets/quartet-qe-studio.jpg" width="1280" height="720">
         <source src="assets/quartet-qe-studio.mp4" type="video/mp4">
       </video>
-      <div class="film-foot"><span>The Quartet QE overview, 24 seconds. <a href="assets/quartet-qe-studio.mp4">Download</a></span><span>Music: Mixkit, free licence</span></div>
+      <div class="film-foot"><span>Studio animation, 24 seconds. Not a screen recording. The README has a separate 49-second overview. <a href="assets/quartet-qe-studio.mp4">Download</a></span><span>Music: Mixkit, free licence</span></div>
     </div>
   </div>
 </div></section>
@@ -305,15 +308,16 @@ void customerSeesConfirmationInTheWebShop(TestAgent agent) {
 
 <footer class="foot">
   <div class="grid">
-    <div><a class="wordmark" href="index.html"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
+    <div><a class="wordmark" href="index.html"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p><p class="by">Built by <a href="https://www.linkedin.com/in/liam-gough-04a60a2b">Liam Gough</a> (<a href="https://github.com/goughliam1813">GitHub</a>). Questions? <a href="https://github.com/Callahan-ci/quartet-qe/discussions">Talk to us on GitHub Discussions</a>.</p></div>
     <div><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
     <div><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
-    <div><h3>Crescendo</h3><ul><li><a href="crescendo.html">Overview</a></li><li><a href="crescendo.html#soon">Coming soon</a></li></ul></div>
-    <div><h3>Company</h3><ul><li><a href="https://github.com/Callahan-ci">GitHub</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
+    <div><h3>Crescendo</h3><ul><li><a href="crescendo.html">Overview</a></li><li><a href="crescendo.html#soon">Coming soon — not available yet</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/discussions/17">Join the waitlist</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="index.html#about">About</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/discussions">Contact</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
     <div><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
   </div>
   <div class="foot-legal"><span>Copyright 2026 Callahan</span><span>callahanci.com</span></div>
 </footer>
 <script src="assets/timetable.js" defer></script>
+<script src="assets/menu.js" defer></script>
 </body>
 </html>

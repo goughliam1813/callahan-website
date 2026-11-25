@@ -21,11 +21,12 @@
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="top">
-  <nav class="pills" aria-label="Main">
+  <nav class="pills" id="site-nav" aria-label="Main">
     <a class="pill" href="quartet.html">Quartet QE</a>
     <a class="pill" href="callahan-ci.html">Callahan CI</a><a class="pill" href="crescendo.html">Crescendo</a>
     <a class="pill" href="docs.html">Docs</a>
   </nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="visually-hidden">Menu</span><i></i><i></i><i></i></button>
   <a class="wordmark" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a>
   <div class="top-end">
     <small>Open source, MIT<br>macOS and Linux</small>
@@ -112,11 +113,15 @@
   <div class="wrap">
     <span class="label" id="about-h">A bit about us</span>
     <p class="statement" data-fill>We build AI agents that do the work and prove it. Quartet QE writes and replays your end-to-end tests. Callahan CI runs your pipelines and reviews every diff. Crescendo load tests your services against your SLOs. A person always signs off.</p>
+    <div class="builder">
+      <p><b>Built by <a href="https://www.linkedin.com/in/liam-gough-04a60a2b">Liam Gough</a></b> — Senior Engineering Manager, 15+ years in engineering, 9+ in leadership, SC Cleared to 2028. Previously Head of Engineering at Yodel, Director of Engineering at Egress, and Senior Engineering Manager at InPost UK. I built Callahan because AI agents should prove their work, not just claim it.</p>
+      <p class="builder-links"><a href="https://www.linkedin.com/in/liam-gough-04a60a2b">LinkedIn</a><a href="https://github.com/goughliam1813">GitHub</a><a href="https://github.com/Callahan-ci/quartet-qe/discussions">Talk to us on GitHub Discussions</a></p>
+    </div>
   </div>
   <div class="stickers" aria-hidden="true">
     <span class="sticker" style="left:76%;top:30%;--r:-7deg">Runs on your machine</span>
     <span class="sticker" style="left:6%;top:52%;--r:5deg">Shows its work</span>
-    <span class="sticker" style="left:74%;top:76%;--r:-4deg">A person approves</span>
+    <span class="sticker" style="left:78%;top:58%;--r:-4deg">A person approves</span>
   </div>
 </section>
 
@@ -144,7 +149,7 @@ Use bcrypt or argon2id.</pre></div>
             <div class="sheet-r"><i>1</i>Open the shop<b>✓</b></div><div class="sheet-r"><i>2</i>Add the book<b>✓</b></div><div class="sheet-r"><i>3</i>Basket total via API<b>✓</b></div><div class="sheet-r"><i>4</i>Order row in Postgres<b>✓</b></div><div class="sheet-r"><i>5</i>Sign-off<em>Your go</em></div></div>
           <div class="layer stamp l3" style="right:7%;bottom:9%;color:#fff">0 AI<br>calls</div>
           <span class="layer tag-pill k l2" style="left:8%;bottom:12%">Replay, no AI</span>
-        </div><div class="meta"><span class="ic"><img src="assets/quartet-mark-white.svg" alt=""></span><span><b>Quartet QE</b><small>Agent, testing</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+        </div><div class="meta"><span class="ic"><img src="assets/quartet-mark-white.svg" alt=""></span><span><b>Quartet QE</b><small>Agent, testing · v0.1.0 — released 23 November 2026</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
 
       <a class="work" href="callahan-ci.html"><div class="art" style="background:#111" role="img" aria-label="A Callahan CI pipeline from ingest to post, with a reviewer comment on the pull request">
           <div class="layer pipe l1"><svg viewBox="0 0 300 200" aria-hidden="true">
@@ -158,6 +163,7 @@ Use bcrypt or argon2id.</pre></div>
 
       <a class="work" href="crescendo.html"><div class="art" style="background:#f6b79e" role="img" aria-label="A Crescendo load test chart: arrivals ramp up and hold while p99 stays under the SLO line, with an SLO met verdict">
           <img class="layer watermark" src="assets/crescendo-mark-white.svg" alt="" style="opacity:.35">
+          <div class="layer soon-band">Coming soon — not available yet</div>
           <div class="layer sheet l1" style="left:8%;top:10%;width:80%;transform:rotate(-3deg)"><div class="sheet-h">Load test<span>2 injectors</span></div>
             <svg viewBox="0 0 240 120" style="display:block;width:100%;padding:12px 14px 4px" aria-hidden="true">
               <line x1="0" y1="34" x2="240" y2="34" stroke="#f25525" stroke-width="1.5" stroke-dasharray="5 4"/>
@@ -168,8 +174,8 @@ Use bcrypt or argon2id.</pre></div>
             </svg>
             <div class="sheet-r"><i>p99</i>Under the SLO<b>✓</b></div><div class="sheet-r"><i>err</i>Under the abort threshold<b>✓</b></div></div>
           <span class="layer tag-pill k l3" style="right:8%;bottom:10%">SLO met</span>
-          <span class="layer tag-pill w l2" style="left:8%;bottom:10%">Coming soon</span>
-        </div><div class="meta"><span class="ic"><img src="assets/crescendo-mark-white.svg" alt=""></span><span><b>Crescendo</b><small>Agent, performance</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+          
+        </div><div class="meta"><span class="ic"><img src="assets/crescendo-mark-white.svg" alt=""></span><span><b>Crescendo</b><small>Agent, performance · not available yet</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
 
       <a class="work" href="quartet-docs.html#android"><div class="art" style="background:#f9e2e1" role="img" aria-label="The real Android calculator History screen from a Quartet QE run, with the test code beside it">
           <div class="layer phone l1" style="left:9%;top:7%;transform:rotate(-5deg)"><img src="assets/shots/calc-history.jpg" alt=""></div>
@@ -218,7 +224,7 @@ Use bcrypt or argon2id.</pre></div>
           <div class="layer mini l2" style="left:14%;right:14%;bottom:20%;text-align:center"><div class="h" style="justify-content:center"><img src="assets/crescendo-mark-orange.svg" alt="">Coordinator</div><pre>histograms merged every second
 one true p99, never an average</pre></div>
           <div class="layer l3" style="left:8%;bottom:7%;display:flex;gap:6px;flex-wrap:wrap"><span class="tag-pill o">Local</span><span class="tag-pill w">Docker</span><span class="tag-pill w">Kubernetes</span></div>
-        </div><div class="meta"><span class="ic"><img src="assets/crescendo-mark-white.svg" alt=""></span><span><b>Many injectors</b><small>Crescendo, distributed</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+        </div><div class="meta"><span class="ic"><img src="assets/crescendo-mark-white.svg" alt=""></span><span><b>Many injectors</b><small>Crescendo, coming soon</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
 
       <a class="work" href="crescendo.html#rules"><div class="art" style="background:#f9e2e1" role="img" aria-label="A stress test aborted by its threshold, stopped by the kill switch">
           <div class="layer term l1" style="left:7%;top:10%;width:86%;transform:rotate(-2deg)"><div class="bar"><i></i><i></i><i></i></div><pre><span class="p">$</span> ./crescendo run DemoCatalogStressSimulation \
@@ -231,7 +237,7 @@ one true p99, never an average</pre></div>
 <span class="d">every injector stopped</span></pre></div>
           <div class="layer stamp l3" style="right:8%;bottom:8%;color:#f25525;background:#fdf8f5">Kill<br>switch</div>
           <span class="layer tag-pill k l2" style="left:8%;bottom:12%">Allowlisted targets only</span>
-        </div><div class="meta"><span class="ic"><img src="assets/crescendo-mark-white.svg" alt=""></span><span><b>Guard rails</b><small>Crescendo, stress test</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+        </div><div class="meta"><span class="ic"><img src="assets/crescendo-mark-white.svg" alt=""></span><span><b>Guard rails</b><small>Crescendo, coming soon</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
 
     </div>
   </div>
@@ -268,21 +274,20 @@ one true p99, never an average</pre></div>
   <div class="deck" data-deck>
     <article class="card" data-pos="0"><span class="num">1</span><div><h3>Quartet QE tests it</h3><p>You write the story. The AI writes the end-to-end tests and records the first run. Every rerun replays with no AI: fast, free and the same every time.</p></div></article>
     <article class="card" data-pos="1"><span class="num">2</span><div><h3>Callahan CI ships it</h3><p>One binary runs your pipeline on your own machine, reviews the diff, scans it with Trivy and Semgrep, and posts what it found on the pull request.</p></div></article>
-    <article class="card" data-pos="2"><span class="num">3</span><div><h3>Crescendo loads it</h3><p>Ask "how much can it take?". It writes a Gatling test, runs it across as many injectors as the load needs, and checks the p99 against your SLOs. Coming soon.</p></div></article>
+    <article class="card" data-pos="2"><span class="num">3</span><div><h3>Crescendo loads it</h3><p>Ask "how much can it take?". It writes a Gatling test, runs it across as many injectors as the load needs, and checks the p99 against your SLOs. Coming soon — not available yet.</p></div></article>
     <article class="card" data-pos="3"><span class="num">4</span><div><h3>A person signs off</h3><p>Every agent shows its work and leaves the decision to you. They open pull requests and reports; they never merge.</p></div></article>
   </div>
-  <div class="dots" role="tablist" aria-label="How it works, step">
-    <button type="button" aria-label="Step 1" aria-current="true"></button><button type="button" aria-label="Step 2"></button><button type="button" aria-label="Step 3"></button><button type="button" aria-label="Step 4"></button>
-  </div>
+  <div class="dots" aria-label="How it works, step"><button type="button" aria-current="true"><b>1</b> Quartet QE tests it</button><button type="button" aria-current="false"><b>2</b> Callahan CI ships it</button><button type="button" aria-current="false"><b>3</b> Crescendo loads it</button><button type="button" aria-current="false"><b>4</b> A person signs off</button></div>
 </section>
 
 <section aria-labelledby="watch-h">
   <div class="wrap">
     <div class="title"><span class="label">Videos</span><h2 id="watch-h">Watch<br>them work</h2><span></span></div>
+    <p class="films-note">Short animations of what each agent does. Music: Mixkit, free licence.</p>
     <div class="films">
-      <div class="film"><video controls preload="metadata" playsinline poster="assets/quartet-qe-studio.jpg" width="1280" height="720"><source src="assets/quartet-qe-studio.mp4" type="video/mp4"></video><div class="meta"><b>Quartet QE</b><span>24 seconds. Music: Mixkit, free licence</span></div></div>
-      <div class="film"><video controls preload="metadata" playsinline poster="assets/callahan-ci-studio.jpg" width="1280" height="720"><source src="assets/callahan-ci-studio.mp4" type="video/mp4"></video><div class="meta"><b>Callahan CI</b><span>20 seconds. Music: Mixkit, free licence</span></div></div>
-      <div class="film"><video controls preload="metadata" playsinline poster="assets/crescendo-studio.jpg" width="1280" height="720"><source src="assets/crescendo-studio.mp4" type="video/mp4"></video><div class="meta"><b>Crescendo</b><span>21 seconds. Music: Mixkit, free licence</span></div></div>
+      <div class="film"><video controls preload="metadata" playsinline poster="assets/quartet-qe-studio.jpg" width="1280" height="720"><source src="assets/quartet-qe-studio.mp4" type="video/mp4"></video><div class="meta"><b>Quartet QE</b><span>Studio animation, 24 seconds. Not a screen recording.</span></div></div>
+      <div class="film"><video controls preload="metadata" playsinline poster="assets/callahan-ci-studio.jpg" width="1280" height="720"><source src="assets/callahan-ci-studio.mp4" type="video/mp4"></video><div class="meta"><b>Callahan CI</b><span>Studio animation, 20 seconds. Not a screen recording.</span></div></div>
+      <div class="film"><video controls preload="metadata" playsinline poster="assets/crescendo-studio.jpg" width="1280" height="720"><source src="assets/crescendo-studio.mp4" type="video/mp4"></video><div class="meta"><b>Crescendo</b><span>Preview animation, 21 seconds. Not a recording of the product.</span></div></div>
     </div>
   </div>
 </section>
@@ -291,7 +296,7 @@ one true p99, never an average</pre></div>
   <div class="wrap">
     <h2 id="close-h">Let's build<br><span>your agent</span></h2>
     <div class="acts">
-      <a class="btn" href="https://github.com/Callahan-ci">Talk to us on GitHub<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a>
+      <a class="btn" href="https://github.com/Callahan-ci/quartet-qe/discussions">Talk to us on GitHub<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a>
       <a class="btn ghost" href="docs.html">Docs and how-tos</a>
     </div>
     <div class="starts">
@@ -305,8 +310,8 @@ one true p99, never an average</pre></div>
           <div class="cmd-row"><code>git clone https://github.com/Callahan-ci/Callahan</code><button class="copy" type="button" data-copy="git clone https://github.com/Callahan-ci/Callahan">Copy</button></div>
           <div class="cmd-row"><code>cd Callahan &amp;&amp; docker compose up --build</code><button class="copy" type="button" data-copy="cd Callahan &amp;&amp; docker compose up --build">Copy</button></div>
         </div></div>
-      <div class="start"><h3><img src="assets/crescendo-mark-orange.svg" alt="">Crescendo</h3><p>Coming soon.</p>
-        <a class="soon-card" href="crescendo.html">See how it works<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a></div>
+      <div class="start"><h3><img src="assets/crescendo-mark-orange.svg" alt="">Crescendo</h3><p><b>Coming soon — not available yet.</b> Crescendo is in testing. There is no download, no repo and no release date yet.</p>
+        <a class="soon-card" href="https://github.com/Callahan-ci/quartet-qe/discussions/17">Join the waitlist<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a></div>
     </div>
   </div>
 </section>
@@ -314,11 +319,11 @@ one true p99, never an average</pre></div>
 
 <footer class="foot">
   <div class="grid">
-    <div><a class="wordmark" href="index.html"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
+    <div><a class="wordmark" href="index.html"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p><p class="by">Built by <a href="https://www.linkedin.com/in/liam-gough-04a60a2b">Liam Gough</a> (<a href="https://github.com/goughliam1813">GitHub</a>). Questions? <a href="https://github.com/Callahan-ci/quartet-qe/discussions">Talk to us on GitHub Discussions</a>.</p></div>
     <div><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
     <div><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
-    <div><h3>Crescendo</h3><ul><li><a href="crescendo.html">Overview</a></li><li><a href="crescendo.html#soon">Coming soon</a></li></ul></div>
-    <div><h3>Company</h3><ul><li><a href="https://github.com/Callahan-ci">GitHub</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
+    <div><h3>Crescendo</h3><ul><li><a href="crescendo.html">Overview</a></li><li><a href="crescendo.html#soon">Coming soon — not available yet</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/discussions/17">Join the waitlist</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="index.html#about">About</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/discussions">Contact</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
     <div><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
   </div>
   <div class="foot-legal"><span>Copyright 2026 Callahan</span><span>callahanci.com</span></div>
@@ -326,5 +331,6 @@ one true p99, never an average</pre></div>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
 <script src="assets/studio.js" defer></script>
+<script src="assets/menu.js" defer></script>
 </body>
 </html>
