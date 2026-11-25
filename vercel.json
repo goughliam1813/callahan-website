@@ -3,6 +3,7 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/docs",      "destination": "/docs.html" },
+    { "source": "/guide", "destination": "/quartet-docs.html" },
     { "source": "/changelog", "destination": "/changelog.html" },
     { "source": "/license",   "destination": "/license.html" },
     { "source": "/privacy",   "destination": "/privacy.html" },

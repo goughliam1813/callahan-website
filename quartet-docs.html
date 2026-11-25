@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quartet QE guide and how-tos | Callahan</title>
+<title>Quartet QE docs and how-tos | Callahan</title>
 <meta name="description" content="Install Quartet QE, run your first story, and test websites, phone browsers, native Android apps, APIs, databases and Kafka, with real examples.">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:title" content="Quartet QE guide and how-tos | Callahan">
@@ -25,7 +25,7 @@
     <a href="quartet.html">Quartet QE</a>
     <a href="callahan-ci.html">Callahan CI</a>
     <a href="index.html#build">Build with us</a>
-    <a href="guide.html" aria-current="page">Docs</a>
+    <a href="docs.html" aria-current="page">Docs</a>
   </nav>
   <div class="nav-end">
     <a class="gh" href="https://github.com/Callahan-ci">GitHub</a>
@@ -35,11 +35,11 @@
 
 <main id="main">
 <section class="page-head" aria-labelledby="page-h"><div class="wrap">
-  <h1 id="page-h">Quartet QE guide.</h1>
+  <h1 id="page-h">Quartet QE docs.</h1>
   <p class="lede">From install to a passing, replayable test, with real examples for websites, phone browsers, native Android apps, APIs, databases and Kafka.</p>
 </div></section>
 <div class="wrap grid doc-grid">
-  <nav class="toc" aria-label="In this guide"><h2>Get started</h2><ul><li><a href="#install">Install</a></li><li><a href="#first-run">Your first run</a></li><li><a href="#tests-repo">Create a tests repo for your product</a></li><li><a href="#environment">Tell it what it can reach</a></li><li><a href="#story">Write a story</a></li><li><a href="#write">Write and run the tests</a></li><li><a href="#replay">Review, then replay with no AI</a></li></ul><h2>How to test</h2><ul><li><a href="#website">How to test a website</a></li><li><a href="#phones">How to test phone browsers</a></li><li><a href="#android">How to test a native Android app</a></li><li><a href="#services">How to test APIs, databases and Kafka</a></li></ul><h2>Run and fix</h2><ul><li><a href="#jenkins">Run it in Jenkins</a></li><li><a href="#trouble">When something goes wrong</a></li></ul><h2>Callahan CI</h2><ul><li><a href="docs.html">Callahan CI docs</a></li></ul></nav>
+  <nav class="toc" aria-label="In this guide"><h2>Docs</h2><ul><li><a class="on" href="quartet-docs.html">Quartet QE docs</a></li><li><a href="callahan-ci-docs.html">Callahan CI docs</a></li></ul><h2>Get started</h2><ul><li><a href="#install">Install</a></li><li><a href="#first-run">Your first run</a></li><li><a href="#tests-repo">Create a tests repo for your product</a></li><li><a href="#environment">Tell it what it can reach</a></li><li><a href="#story">Write a story</a></li><li><a href="#write">Write and run the tests</a></li><li><a href="#replay">Review, then replay with no AI</a></li></ul><h2>How to test</h2><ul><li><a href="#website">How to test a website</a></li><li><a href="#phones">How to test phone browsers</a></li><li><a href="#android">How to test a native Android app</a></li><li><a href="#services">How to test APIs, databases and Kafka</a></li></ul><h2>Run and fix</h2><ul><li><a href="#jenkins">Run it in Jenkins</a></li><li><a href="#trouble">When something goes wrong</a></li></ul></nav>
   <article class="doc"><section id="install"><h2>Install</h2><p>Quartet QE needs Java 21 or newer. Pick one way in.</p>
 <h3>In Claude Code</h3><p>Nothing to clone. Run these in Claude Code; it then asks for your tests folder and, if you want them, your Jira, Azure DevOps, GitHub, GitLab and Jenkins details.</p><div class="code"><div class="code-bar"><b>Claude Code</b><span></span></div><pre><code>/plugin marketplace add Callahan-ci/quartet-qe
 /plugin install quartet-qe@quartet-qe</code></pre></div>
@@ -184,8 +184,8 @@ void orderFlowsThroughApiDatabaseAndEvents(TestAgent agent) {
 <footer class="foot"><div class="wrap">
   <div class="grid">
     <div class="foot-brand"><a class="brand" href="index.html"><img src="assets/callahan-mark.svg" alt="" width="36" height="36">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
-    <div class="foot-col"><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="guide.html">Guide and how-tos</a></li><li><a href="quartet.html#install">Install</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
-    <div class="foot-col"><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
+    <div class="foot-col"><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs and how-tos</a></li><li><a href="quartet.html#install">Install</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
+    <div class="foot-col"><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
     <div class="foot-col"><h3>Company</h3><ul><li><a href="index.html#build">Build with us</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li></ul></div>
     <div class="foot-col"><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
   </div>

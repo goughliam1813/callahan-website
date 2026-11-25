@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Callahan CI docs | Callahan</title>
-<meta name="description" content="A practical guide to running Callahan CI: install, pipelines, webhooks, secrets, AI, scanners and the HTTP API.">
+<title>Docs | Callahan</title>
+<meta name="description" content="Documentation for Callahan's agents: Quartet QE and Callahan CI.">
 <meta name="theme-color" content="#ffffff">
-<meta property="og:title" content="Callahan CI docs | Callahan">
-<meta property="og:description" content="A practical guide to running Callahan CI: install, pipelines, webhooks, secrets, AI, scanners and the HTTP API.">
+<meta property="og:title" content="Callahan: AI agents that prove their work">
+<meta property="og:description" content="Quartet QE writes end-to-end tests from a user story and replays them with no AI. Open source.">
 <meta property="og:image" content="https://callahanci.com/assets/callahan-logo.png">
 <link rel="icon" type="image/svg+xml" href="assets/callahan-mark.svg">
 <link rel="alternate icon" type="image/png" href="assets/favicon.png">
@@ -24,242 +24,46 @@
   <nav class="nav-links" aria-label="Main">
     <a href="quartet.html">Quartet QE</a>
     <a href="callahan-ci.html">Callahan CI</a>
-    <a href="index.html#build">Build with us</a>
-    <a href="guide.html">Docs</a>
+    <a href="#build">Build with us</a>
+    <a href="docs.html" aria-current="page">Docs</a>
   </nav>
   <div class="nav-end">
     <a class="gh" href="https://github.com/Callahan-ci">GitHub</a>
-    <a class="btn red sm" href="quartet.html#install">Install Quartet QE</a>
+    <a class="btn red sm" href="#install">Install Quartet QE</a>
   </div>
 </div></header>
 
 <main id="main">
 <section class="page-head" aria-labelledby="page-h"><div class="wrap">
-  <h1 id="page-h">Callahan CI handbook.</h1>
-  <p class="lede">A practical guide to running Callahan. Read top-to-bottom on first install; come back later for the reference sections.</p>
+  <h1 id="page-h">Docs.</h1>
+  <p class="lede">Install, set up and run each of Callahan's agents, with real examples.</p>
 </div></section>
-<div class="wrap grid doc-grid">
-  <nav class="toc" aria-label="On this page">
-      <h2>Get started</h2>
-      <ul>
-        <li><a href="#intro">Introduction</a></li>
-        <li><a href="#install">Installation</a></li>
-        <li><a href="#first-build">Your first build</a></li>
-      </ul>
-      <h2>Pipelines</h2>
-      <ul>
-        <li><a href="#yaml">Callahanfile.yaml</a></li>
-        <li><a href="#webhooks">Webhooks</a></li>
-        <li><a href="#secrets">Secrets</a></li>
-      </ul>
-      <h2>AI</h2>
-      <ul>
-        <li><a href="#ai-config">Configuration</a></li>
-        <li><a href="#ai-providers">Providers</a></li>
-        <li><a href="#ai-offline">Offline mode</a></li>
-      </ul>
-      <h2>Security</h2>
-      <ul>
-        <li><a href="#scanners">Scanners</a></li>
-      </ul>
-      <h2>Reference</h2>
-      <ul>
-        <li><a href="#env">Environment</a></li>
-        <li><a href="#api">HTTP API</a></li>
-      </ul>
-    </nav>
-  <article class="doc">
-      
-      
-      
-
-      <section id="intro">
-        <h2>Introduction</h2>
-        <p>Callahan is a CI/CD tool that runs on your machine. A Go binary handles the API, pipeline execution, and webhook intake. A Next.js dashboard is the UI. State is one SQLite file. Four AI features — <b>Architect</b>, <b>Debugger</b>, <b>Reviewer</b>, <b>Analyst</b> — run on each build.</p>
-
-        <div class="callout"><span class="lbl">Spec</span><p>Go 1.22 backend · Next.js 15 dashboard · SQLite (WAL) · GitHub-Actions-compatible YAML with an <code>ai:</code> extension block.</p></div>
-      </section>
-
-      <section id="install">
-        <h2>Installation</h2>
-
-        <h3>Docker (quickest)</h3>
-        <p>Prerequisites: Docker 24+. Everything runs on a single port — no separate frontend dev server needed.</p>
-        <pre data-lang="shell">git clone https://github.com/Callahan-ci/Callahan
-cd Callahan
-cp .env.example .env
-<span class="c"># Edit .env — set ANTHROPIC_API_KEY or another LLM key</span>
-docker compose up --build</pre>
-        <p>Open <code>http://localhost:8080</code>. The Go binary serves both the API and the bundled Next.js static files.</p>
-
-        <h3>From source</h3>
-        <p>Requires Go 1.22+ and Node 18+. Gives you hot-reload on both processes.</p>
-        <pre data-lang="shell">git clone https://github.com/Callahan-ci/Callahan
-cd Callahan
-
-<span class="c"># start backend (:8080) and dashboard (:3000)</span>
-./start.sh dev</pre>
-        <p>Stop with <kbd>Ctrl+C</kbd> — the script's trap kills both processes. For two-terminal manual mode, run <code>go run ./cmd/callahan</code> in one and <code>npm run dev</code> in <code>frontend/</code> in the other.</p>
-      </section>
-
-      <section id="first-build">
-        <h2>Your first build</h2>
-        <p>Open <code>http://localhost:3000</code>. Click the <b>+</b> in the sidebar, paste your repo URL, and add a personal access token. Callahan auto-detects the language from <code>go.mod</code>, <code>package.json</code>, <code>Cargo.toml</code>, etc., and offers a starter Callahanfile.</p>
-        <p>Click <b>Run Build</b>. Logs stream live over WebSocket. If a step fails, the <em>AI Explain Failure</em> button on the failed job returns a plain-English root cause.</p>
-      </section>
-
-      <section id="yaml">
-        <h2>Callahanfile.yaml</h2>
-        <p>Place a <code>Callahanfile.yaml</code> at the repo root. The schema is GitHub-Actions-compatible — most existing workflows run as-is. The top-level <code>ai:</code> and <code>deploy:</code> blocks are Callahan extensions.</p>
-        <pre data-lang="yaml"><span class="k">name:</span> my-app
-<span class="k">on:</span> [push, pull_request]
-
-<span class="k">jobs:</span>
-  test:
-    <span class="k">runs-on:</span> local
-    <span class="k">steps:</span>
-      - <span class="k">name:</span> Test
-        <span class="k">run:</span> go test ./...
-
-  build:
-    <span class="k">runs-on:</span> local
-    <span class="k">needs:</span> [test]
-    <span class="k">steps:</span>
-      - <span class="k">name:</span> Build
-        <span class="k">run:</span> go build ./cmd/myapp
-
-<span class="k">ai:</span>
-  <span class="k">review:</span> true            <span class="c"># AI code review on every build</span>
-  <span class="k">security-scan:</span> true     <span class="c"># Trivy/Semgrep + AI fallback</span>
-  <span class="k">explain-failures:</span> true  <span class="c"># AI Explain button on failed jobs</span>
-
-<span class="k">deploy:</span>
-  - <span class="k">name:</span> dev
-    <span class="k">auto:</span> true
-    <span class="k">steps:</span>
-      - <span class="k">run:</span> ./scripts/deploy.sh</pre>
-      </section>
-
-      <section id="webhooks">
-        <h2>Webhooks</h2>
-        <p>Trigger builds from GitHub or GitLab by pointing a webhook at:</p>
-        <pre data-lang="shell"><span class="c"># GitHub</span>
-POST https://your-host:8080/api/v1/webhook/github
-
-<span class="c"># GitLab</span>
-POST https://your-host:8080/api/v1/webhook/gitlab</pre>
-        <p>For GitHub, set the secret in the webhook config — Callahan verifies <code>X-Hub-Signature-256</code> with HMAC-SHA256. For GitLab, set the same value as the project's webhook token (it arrives in <code>X-Gitlab-Token</code>). Set <code>CALLAHAN_WEBHOOK_SECRET</code> in <code>.env</code> to enable verification; leave empty for dev.</p>
-        <p><b>push</b> events build the configured branch only. <b>pull_request</b> / <b>merge_request</b> events build the source branch and post a single markdown comment back to the PR with the AI review and the security scan summary.</p>
-      </section>
-
-      <section id="secrets">
-        <h2>Secrets</h2>
-        <p>Add secrets in the dashboard under <b>Project  Secrets</b>. They're XOR-obfuscated at rest in the SQLite file and decrypted in memory only when injected into a step or used for <code>git clone</code>. The <code>GIT_TOKEN</code> secret is special — it's used as the PAT when cloning the repo and when posting PR comments back.</p>
-        <pre data-lang="yaml">- <span class="k">name:</span> Deploy
-  <span class="k">run:</span> flyctl deploy --remote-only
-  <span class="k">env:</span>
-    <span class="k">FLY_API_TOKEN:</span> ${{ secrets.FLY_API_TOKEN }}</pre>
-      </section>
-
-      <section id="ai-config">
-        <h2>AI configuration</h2>
-        <p>Configure the LLM in the <b>Configure AI / LLM</b> page or via environment variables in <code>.env</code>. Settings are stored in SQLite (API keys obfuscated), so the UI selection persists across restarts.</p>
-        <pre data-lang="shell"><span class="c"># pick one provider</span>
-ANTHROPIC_API_KEY=sk-ant-…
-OPENAI_API_KEY=sk-…
-GROQ_API_KEY=gsk_…
-
-<span class="c"># or run Ollama locally — no key needed</span>
-OLLAMA_URL=http://localhost:11434
-
-LLM_PROVIDER=anthropic
-LLM_MODEL=claude-sonnet-4-5</pre>
-      </section>
-
-      <section id="ai-providers">
-        <h2>Providers</h2>
-        <p>Four providers are wired into the LLM client:</p>
-        <ul>
-          <li><b>Anthropic</b> — Claude Opus 4.5, Sonnet 4.5, Haiku 4.5</li>
-          <li><b>OpenAI</b> — GPT-4o, GPT-4o-mini, o1-mini</li>
-          <li><b>Groq</b> — Llama 3.3 70B, Llama 3 8B, Gemma 2 9B</li>
-          <li><b>Ollama</b> — anything you've pulled locally (Llama 3.2, Mistral, CodeLlama, Phi3…)</li>
-        </ul>
-        <p>If no API key is set, Callahan falls back to Ollama on <code>localhost:11434</code>.</p>
-      </section>
-
-      <section id="ai-offline">
-        <h2>Offline mode</h2>
-        <p>Install <a href="https://ollama.ai">Ollama</a>, pull a model (<code>ollama pull llama3.2</code>), and set <code>OLLAMA_URL=http://localhost:11434</code>. Pick Ollama in the settings page. AI features then work with no API key and no outbound network traffic.</p>
-      </section>
-
-      <section id="scanners">
-        <h2>Scanners</h2>
-        <p>Two scanners are run when their binary is on the runner's <code>$PATH</code>. Both are invoked with <code>--format json</code> and the output is parsed into a structured <code>SecurityScanResult</code>:</p>
-        <ul>
-          <li><b>trivy</b> — filesystem and dependency vulnerabilities, plus secret detection</li>
-          <li><b>semgrep</b> — SAST with auto-config rule packs</li>
-        </ul>
-        <p>If neither is installed, the Security Analyst falls back to an LLM-only source review. Findings are reported but do not, by themselves, fail the build — add <code>trivy fs --exit-code 1 --severity CRITICAL</code> as a regular step if you want a critical finding to fail the pipeline.</p>
-      </section>
-
-      <section id="env">
-        <h2>Environment variables</h2>
-        <table class="spec-table">
-          <thead><tr><th>Variable</th><th>Default</th><th>Notes</th></tr></thead>
-          <tbody>
-            <tr><td>PORT</td><td>8080</td><td>API server port</td></tr>
-            <tr><td>DB_PATH</td><td>./callahan.db</td><td>SQLite file</td></tr>
-            <tr><td>DATA_DIR</td><td>./data</td><td>Working dir for clones and artifacts</td></tr>
-            <tr><td>LLM_PROVIDER</td><td>anthropic</td><td>anthropic · openai · groq · ollama</td></tr>
-            <tr><td>LLM_MODEL</td><td>claude-sonnet-4-5</td><td>Default model for the chosen provider</td></tr>
-            <tr><td>ANTHROPIC_API_KEY</td><td>—</td><td>Claude API key</td></tr>
-            <tr><td>OPENAI_API_KEY</td><td>—</td><td>OpenAI API key</td></tr>
-            <tr><td>GROQ_API_KEY</td><td>—</td><td>Groq API key</td></tr>
-            <tr><td>OLLAMA_URL</td><td>http://localhost:11434</td><td>Local Ollama endpoint</td></tr>
-            <tr><td>CALLAHAN_API_TOKEN</td><td>—</td><td>Bearer token for API auth. Empty disables auth (dev).</td></tr>
-            <tr><td>CALLAHAN_WEBHOOK_SECRET</td><td>—</td><td>HMAC secret for inbound webhooks. Empty skips verification.</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section id="api">
-        <h2>HTTP API</h2>
-        <p>JSON over HTTP at <code>http://localhost:8080/api/v1</code>. If <code>CALLAHAN_API_TOKEN</code> is set, send it as <code>Authorization: Bearer &lt;token&gt;</code>.</p>
-        <pre data-lang="shell"><span class="c"># projects</span>
-GET    /api/v1/projects
-POST   /api/v1/projects
-GET    /api/v1/projects/:id
-
-<span class="c"># builds</span>
-POST   /api/v1/projects/:id/builds       <span class="c"># trigger</span>
-GET    /api/v1/builds/:id
-WS     /api/v1/builds/:id/logs           <span class="c"># live stream</span>
-POST   /api/v1/builds/:id/explain        <span class="c"># AI failure analysis</span>
-
-<span class="c"># pipelines</span>
-GET    /api/v1/projects/:id/pipeline
-PUT    /api/v1/projects/:id/pipeline     <span class="c"># commits Callahanfile</span>
-
-<span class="c"># inbound webhooks</span>
-POST   /api/v1/webhook/github
-POST   /api/v1/webhook/gitlab
-
-<span class="c"># LLM</span>
-GET    /api/v1/settings/llm
-PUT    /api/v1/settings/llm
-POST   /api/v1/settings/llm/test</pre>
-        <div class="callout"><span class="lbl">Next</span><p>Missing something? Open a <a href="https://github.com/Callahan-ci/Callahan/discussions">discussion</a> — this handbook follows the code.</p></div>
-      </section>
-    </article>
-</div>
+<section class="docs-hub"><div class="wrap">
+  <div class="hub">
+    <a class="hub-card" href="quartet-docs.html">
+      <img src="assets/quartet-mark.svg" alt="" width="56" height="56">
+      <h2>Quartet QE docs</h2>
+      <p>The AI test framework. Install, your first run, and how to test websites, phone browsers, native Android apps, APIs, databases and Kafka.</p>
+      <ul><li>Install and first run</li><li>Write a story, run it, replay with no AI</li><li>How to test an Android app</li><li>Jenkins and troubleshooting</li></ul>
+      <span class="hub-go">Open the Quartet QE docs</span>
+    </a>
+    <a class="hub-card" href="callahan-ci-docs.html">
+      <img src="assets/callahan-ci-mark.svg" alt="" width="56" height="56">
+      <h2>Callahan CI docs</h2>
+      <p>AI-native CI/CD on your own machine. Installation, Callahanfile.yaml, webhooks, secrets, AI providers, scanners and the HTTP API.</p>
+      <ul><li>Install with Docker or from source</li><li>Your first build</li><li>Callahanfile.yaml and webhooks</li><li>AI configuration and the HTTP API</li></ul>
+      <span class="hub-go">Open the Callahan CI docs</span>
+    </a>
+  </div>
+  <p class="hub-more">Release notes: <a class="tlink" href="https://github.com/Callahan-ci/quartet-qe/releases">Quartet QE releases</a> <a class="tlink" href="changelog.html">Callahan CI changelog</a></p>
+</div></section>
 </main>
 
 <footer class="foot"><div class="wrap">
   <div class="grid">
     <div class="foot-brand"><a class="brand" href="index.html"><img src="assets/callahan-mark.svg" alt="" width="36" height="36">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
-    <div class="foot-col"><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="guide.html">Guide and how-tos</a></li><li><a href="quartet.html#install">Install</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
-    <div class="foot-col"><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
+    <div class="foot-col"><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs and how-tos</a></li><li><a href="quartet.html#install">Install</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
+    <div class="foot-col"><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
     <div class="foot-col"><h3>Company</h3><ul><li><a href="index.html#build">Build with us</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li></ul></div>
     <div class="foot-col"><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
   </div>

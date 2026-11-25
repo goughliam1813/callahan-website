@@ -25,7 +25,7 @@
     <a href="quartet.html" aria-current="page">Quartet QE</a>
     <a href="callahan-ci.html">Callahan CI</a>
     <a href="index.html#build">Build with us</a>
-    <a href="guide.html">Docs</a>
+    <a href="docs.html">Docs</a>
   </nav>
   <div class="nav-end">
     <a class="gh" href="https://github.com/Callahan-ci">GitHub</a>
@@ -36,6 +36,7 @@
 <main id="main">
 <section class="hero" aria-labelledby="hero-h"><div class="wrap grid">
   <div class="hero-copy">
+    <img class="pmark" src="assets/quartet-mark.svg" alt="" width="64" height="64">
     <h1 id="hero-h">Quartet QE.</h1>
     <p class="sub">The AI test framework. Write a user story; get end-to-end tests that replay with no AI and a report a person signs off.</p>
     <div class="acts">
@@ -45,21 +46,21 @@
     <p class="facts"><span>Open source, MIT</span><span>macOS and Linux</span><span>No account</span></p>
   </div>
   <div class="board-wrap">
-    <div class="board sheet">
-      <div class="board-head"><h2>Checkout total</h2><span class="clock">Replay</span></div>
+    <div class="board sheet live" data-live="quartet" aria-label="An example Quartet QE run, animated">
+      <div class="board-head"><h2><img class="bmark" src="assets/quartet-mark-white.svg" alt="" width="28" height="28">Checkout total</h2><span class="clock live-phase">Replay, no AI</span></div>
       <table>
-        <caption class="visually-hidden">An example run sheet: each step of one story, the system it touched and the evidence the report keeps.</caption>
-        <thead><tr><th scope="col">Stop</th><th scope="col">Step</th><th scope="col" class="col-target">Target</th><th scope="col" class="col-trend">Evidence</th><th scope="col">Result</th></tr></thead>
+        <caption class="visually-hidden">An example run: Quartet QE drives each step of one story, records it, then replays it with no AI.</caption>
+        <thead><tr><th scope="col">Step</th><th scope="col">What it does</th><th scope="col" class="col-target">Target</th><th scope="col" class="col-trend">Evidence</th><th scope="col">Result</th></tr></thead>
         <tbody>
-          <tr><td class="n">1</td><td class="story">Open the shop</td><td class="col-target"><span class="tg">web</span></td><td class="ev col-trend">Screenshot</td><td><span class="ok" role="img" aria-label="Passed"></span></td></tr>
-          <tr><td class="n">2</td><td class="story">Add the book to the basket</td><td class="col-target"><span class="tg">web</span></td><td class="ev col-trend">Screenshot</td><td><span class="ok" role="img" aria-label="Passed"></span></td></tr>
-          <tr><td class="n">3</td><td class="story">Check the basket total</td><td class="col-target"><span class="tg">api</span></td><td class="ev col-trend">Response body</td><td><span class="ok" role="img" aria-label="Passed"></span></td></tr>
-          <tr><td class="n">4</td><td class="story">Check the order record</td><td class="col-target"><span class="tg">postgres</span></td><td class="ev col-trend">Matching row</td><td><span class="ok" role="img" aria-label="Passed"></span></td></tr>
-          <tr><td class="n">5</td><td class="story">Check the order event</td><td class="col-target"><span class="tg">kafka</span></td><td class="ev col-trend">Event fields</td><td><span class="ok" role="img" aria-label="Passed"></span></td></tr>
-          <tr><td class="n">6</td><td class="story">Review and sign-off</td><td class="col-target"><span class="tg">person</span></td><td class="ev col-trend">Review page</td><td class="status go">Your go</td></tr>
-        </tbody>
+          <tr class="lv" data-say="browser opens the shop's home page"><td class="n">1</td><td class="story">Open the shop</td><td class="col-target"><span class="tg">web</span></td><td class="ev col-trend">Screenshot</td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="finds the book, presses Add to basket"><td class="n">2</td><td class="story">Add the book to the basket</td><td class="col-target"><span class="tg">web</span></td><td class="ev col-trend">Screenshot</td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="GET /basket returns total 12.99"><td class="n">3</td><td class="story">Check the basket total</td><td class="col-target"><span class="tg">api</span></td><td class="ev col-trend">Response body</td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="orders row has status RESERVED"><td class="n">4</td><td class="story">Check the order record</td><td class="col-target"><span class="tg">postgres</span></td><td class="ev col-trend">Matching row</td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="shop.orders.created matches the schema"><td class="n">5</td><td class="story">Check the order event</td><td class="col-target"><span class="tg">kafka</span></td><td class="ev col-trend">Event fields</td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="review page ready for a person"><td class="n">6</td><td class="story">Review and sign-off</td><td class="col-target"><span class="tg">person</span></td><td class="ev col-trend">Review page</td><td class="res"><span class="r-go">Your go</span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          </tbody>
       </table>
-      <p class="board-foot">Example run sheet. Replayed from the recording, with no AI.</p>
+      <p class="board-foot live-log" aria-live="off">Replayed from the recording, with no AI. Example run.</p>
     </div>
   </div>
 </div></section>
@@ -121,7 +122,7 @@ void aFinishedCalculationAppearsInHistory(TestAgent agent) {
             returns(<span class="s">"text"</span>));
     assertThat(entry.get(<span class="s">"text"</span>)).contains(<span class="s">"12+34"</span>).contains(<span class="s">"46"</span>);
 }</code></pre></div></div>
-        <div class="p-result"><div class="step-label"><span class="no">4</span>You read the result</div><div class="result"><p class="verdict">Ready to merge.</p><ul><li>6 acceptance criteria, 6 tests, 6 passed</li><li>Recorded on an Android emulator, then replayed with no AI</li><li>No selectors, XPath, element IDs or Appium server</li></ul><p class="note">A real run against Fossify Calculator, an open-source Android app.</p></div><p class="howto">Quartet reads the app through the device's accessibility tree over <code>adb</code>, so nothing is installed on the phone. <a class="tlink" href="guide.html#android">How to test an Android app</a></p></div>
+        <div class="p-result"><div class="step-label"><span class="no">4</span>You read the result</div><div class="result"><p class="verdict">Ready to merge.</p><ul><li>6 acceptance criteria, 6 tests, 6 passed</li><li>Recorded on an Android emulator, then replayed with no AI</li><li>No selectors, XPath, element IDs or Appium server</li></ul><p class="note">A real run against Fossify Calculator, an open-source Android app.</p></div><p class="howto">Quartet reads the app through the device's accessibility tree over <code>adb</code>, so nothing is installed on the phone. <a class="tlink" href="quartet-docs.html#android">How to test an Android app</a></p></div>
       </div>
     </div><div class="panel" role="tabpanel" id="ex-web" aria-labelledby="ex-web-tab" hidden>
       <div class="panel-grid">
@@ -154,7 +155,7 @@ void customerSeesConfirmationInTheWebShop(TestAgent agent) {
             why(<span class="s">"Customers need reassurance that the purchase worked"</span>),
             on(<span class="s">"shop-web"</span>));
 }</code></pre></div></div>
-        <div class="p-result"><div class="step-label"><span class="no">4</span>You read the result</div><div class="result"><p class="verdict">Ready to merge.</p><ul><li>A real browser, a screenshot at every step</li><li>agent.verify checks what the customer is told</li><li>The assertion is plain Java: the AI never marks its own work</li></ul><p class="note">From the demo shop that ships with Quartet QE.</p></div><p class="howto"><a class="tlink" href="guide.html#website">How to test a website</a></p></div>
+        <div class="p-result"><div class="step-label"><span class="no">4</span>You read the result</div><div class="result"><p class="verdict">Ready to merge.</p><ul><li>A real browser, a screenshot at every step</li><li>agent.verify checks what the customer is told</li><li>The assertion is plain Java: the AI never marks its own work</li></ul><p class="note">From the demo shop that ships with Quartet QE.</p></div><p class="howto"><a class="tlink" href="quartet-docs.html#website">How to test a website</a></p></div>
       </div>
     </div><div class="panel" role="tabpanel" id="ex-services" aria-labelledby="ex-services-tab" hidden>
       <div class="panel-grid">
@@ -202,7 +203,7 @@ void orderFlowsThroughApiDatabaseAndEvents(TestAgent agent) {
             returns(<span class="s">"found"</span>, <span class="s">"schemaValid"</span>));
     assertThat(event.getBool(<span class="s">"schemaValid"</span>)).isTrue();
 }</code></pre></div></div>
-        <div class="p-result"><div class="step-label"><span class="no">4</span>You read the result</div><div class="result"><p class="verdict">Ready to merge.</p><ul><li>One test follows the order through the API, Postgres and Kafka</li><li>No URLs or SQL in the test: it states intent</li><li>The OpenAPI contract and event schema are read first</li></ul><p class="note">From the demo shop that ships with Quartet QE.</p></div><p class="howto"><a class="tlink" href="guide.html#services">How to test APIs, databases and Kafka</a></p></div>
+        <div class="p-result"><div class="step-label"><span class="no">4</span>You read the result</div><div class="result"><p class="verdict">Ready to merge.</p><ul><li>One test follows the order through the API, Postgres and Kafka</li><li>No URLs or SQL in the test: it states intent</li><li>The OpenAPI contract and event schema are read first</li></ul><p class="note">From the demo shop that ships with Quartet QE.</p></div><p class="howto"><a class="tlink" href="quartet-docs.html#services">How to test APIs, databases and Kafka</a></p></div>
       </div>
     </div><div class="panel" role="tabpanel" id="ex-phones" aria-labelledby="ex-phones-tab" hidden>
       <div class="panel-grid">
@@ -233,7 +234,7 @@ void customerSeesConfirmationInTheWebShop(TestAgent agent) {
             returns(<span class="s">"orderNumber"</span>));
     assertThat(order.get(<span class="s">"orderNumber"</span>)).matches(<span class="s">"ORD-[0-9]+"</span>);
 }</code></pre></div></div>
-        <div class="p-result"><div class="step-label"><span class="no">4</span>You read the result</div><div class="result"><p class="verdict">One test, every device.</p><ul><li>Desktop Chrome, iPhone Safari, Android Chrome and a real Android device</li><li>Phone browsers need nothing extra installed</li><li>Each device gets its own recording</li></ul><p class="note">Example configuration from the getting-started guide.</p></div><p class="howto"><a class="tlink" href="guide.html#phones">How to test phone browsers</a></p></div>
+        <div class="p-result"><div class="step-label"><span class="no">4</span>You read the result</div><div class="result"><p class="verdict">One test, every device.</p><ul><li>Desktop Chrome, iPhone Safari, Android Chrome and a real Android device</li><li>Phone browsers need nothing extra installed</li><li>Each device gets its own recording</li></ul><p class="note">Example configuration from the getting-started guide.</p></div><p class="howto"><a class="tlink" href="quartet-docs.html#phones">How to test phone browsers</a></p></div>
       </div>
     </div>
 </div></section>
@@ -309,8 +310,8 @@ void customerSeesConfirmationInTheWebShop(TestAgent agent) {
 <footer class="foot"><div class="wrap">
   <div class="grid">
     <div class="foot-brand"><a class="brand" href="index.html"><img src="assets/callahan-mark.svg" alt="" width="36" height="36">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
-    <div class="foot-col"><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="guide.html">Guide and how-tos</a></li><li><a href="quartet.html#install">Install</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
-    <div class="foot-col"><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
+    <div class="foot-col"><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs and how-tos</a></li><li><a href="quartet.html#install">Install</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
+    <div class="foot-col"><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
     <div class="foot-col"><h3>Company</h3><ul><li><a href="index.html#build">Build with us</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li></ul></div>
     <div class="foot-col"><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
   </div>

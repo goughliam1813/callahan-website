@@ -25,7 +25,7 @@
     <a href="quartet.html">Quartet QE</a>
     <a href="callahan-ci.html" aria-current="page">Callahan CI</a>
     <a href="index.html#build">Build with us</a>
-    <a href="guide.html">Docs</a>
+    <a href="docs.html">Docs</a>
   </nav>
   <div class="nav-end">
     <a class="gh" href="https://github.com/Callahan-ci">GitHub</a>
@@ -36,6 +36,7 @@
 <main id="main">
 <section class="hero" aria-labelledby="hero-h"><div class="wrap grid">
   <div class="hero-copy">
+    <img class="pmark" src="assets/callahan-ci-mark.svg" alt="" width="64" height="64">
     <h1 id="hero-h">Callahan CI.</h1>
     <p class="sub">CI/CD on your own machine. One Go binary runs your pipelines, reads each diff and posts AI review and security findings to your pull requests.</p>
     <div class="acts">
@@ -45,21 +46,33 @@
     <p class="facts"><span>One binary</span><span>SQLite</span><span>Four LLM providers</span><span>MIT</span></p>
   </div>
   <div class="board-wrap">
-    <div class="board sheet">
-      <div class="board-head"><h2>Build 42</h2><span class="clock">main</span></div>
+    <div class="board sheet live" data-live="ci" aria-label="An example Callahan CI build, animated">
+      <div class="board-head"><h2><img class="bmark" src="assets/callahan-ci-mark-white.svg" alt="" width="28" height="28">Build 42</h2><span class="clock live-phase">main</span></div>
       <table>
-        <caption class="visually-hidden">An example build: each pipeline stage and what it did.</caption>
+        <caption class="visually-hidden">An example build: each pipeline stage runs in turn and reports what it did.</caption>
         <thead><tr><th scope="col">Stage</th><th scope="col">What happened</th><th scope="col">Result</th></tr></thead>
         <tbody>
-          <tr><td class="n">Ingest</td><td class="story">Pull request opened<small>HMAC signature verified</small></td><td><span class="ok" role="img" aria-label="Done"></span></td></tr>
-          <tr><td class="n">Plan</td><td class="story">Callahanfile.yaml parsed</td><td><span class="ok" role="img" aria-label="Done"></span></td></tr>
-          <tr><td class="n">Build</td><td class="story">go test ./... passed</td><td><span class="ok" role="img" aria-label="Done"></span></td></tr>
-          <tr><td class="n">AI</td><td class="story">Diff reviewed<small>Reviewer agent</small></td><td><span class="ok" role="img" aria-label="Done"></span></td></tr>
-          <tr><td class="n">Scan</td><td class="story">Trivy found one critical<small>A token committed in auth.go</small></td><td class="status go">Fix</td></tr>
-          <tr><td class="n">Post</td><td class="story">Review and scan posted to the PR</td><td><span class="ok" role="img" aria-label="Done"></span></td></tr>
-        </tbody>
+          <tr class="lv" data-say="webhook from GitHub, signature checked"><td class="n">Ingest</td><td class="story">Pull request opened<small>HMAC signature verified</small></td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="3 jobs, 7 steps"><td class="n">Plan</td><td class="story">Callahanfile.yaml parsed</td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="shell steps run on this machine"><td class="n">Build</td><td class="story">go test ./... passed</td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="Reviewer reads the diff"><td class="n">AI</td><td class="story">Diff reviewed<small>Reviewer agent</small></td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="Trivy and Semgrep run, findings parsed"><td class="n">Scan</td><td class="story">Trivy found one critical<small>A token committed in auth.go</small></td><td class="res"><span class="r-fix">Fix</span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="one comment on the pull request"><td class="n">Post</td><td class="story">Review and scan posted to the PR</td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          </tbody>
       </table>
-      <p class="board-foot">Example build.</p>
+      <p class="board-foot live-log" aria-live="off">Build finished. Example build.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="watch" aria-labelledby="watch-h"><div class="wrap grid">
+  <div class="sec-h"><h2 id="watch-h">Watch it in 21 seconds.</h2><p>A pull request comes in, the pipeline runs on your machine, and the four agents explain what they found.</p></div>
+  <div class="sec-b">
+    <div class="film">
+      <video controls preload="metadata" playsinline poster="assets/callahan-ci-overview.jpg" width="1280" height="720">
+        <source src="assets/callahan-ci-overview.mp4" type="video/mp4">
+      </video>
+      <div class="film-foot"><span>The Callahan CI overview, 21 seconds. <a href="assets/callahan-ci-overview.mp4">Download</a></span></div>
     </div>
   </div>
 </div></section>
@@ -126,7 +139,7 @@
 </div></section>
 
 <section class="sec" id="install" aria-labelledby="in-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="in-h">Two ways in.</h2><p>macOS, Linux and WSL2. Docker is the quickest if you just want to run it. The <a class="tlink" href="docs.html">docs</a> cover the rest.</p></div>
+  <div class="sec-h"><h2 id="in-h">Two ways in.</h2><p>macOS, Linux and WSL2. Docker is the quickest if you just want to run it. The <a class="tlink" href="callahan-ci-docs.html">docs</a> cover the rest.</p></div>
   <div class="sec-b">
     <div class="tracks">
       <div>
@@ -156,8 +169,8 @@
 <footer class="foot"><div class="wrap">
   <div class="grid">
     <div class="foot-brand"><a class="brand" href="index.html"><img src="assets/callahan-mark.svg" alt="" width="36" height="36">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
-    <div class="foot-col"><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="guide.html">Guide and how-tos</a></li><li><a href="quartet.html#install">Install</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
-    <div class="foot-col"><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
+    <div class="foot-col"><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs and how-tos</a></li><li><a href="quartet.html#install">Install</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
+    <div class="foot-col"><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
     <div class="foot-col"><h3>Company</h3><ul><li><a href="index.html#build">Build with us</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li></ul></div>
     <div class="foot-col"><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
   </div>

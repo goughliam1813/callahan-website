@@ -373,3 +373,41 @@ code { font-size: .9em; }
 .film video a { color: #fff; }
 
 @media (max-width: 600px) { .code pre { font-size: 12.5px; padding: 14px 12px; } }
+
+/* ───────── product marks ───────── */
+.pmark { width: 64px; height: 64px; margin-bottom: 22px; }
+.board-head h2 { display: flex; align-items: center; gap: 12px; }
+.bmark { width: 28px; height: 28px; }
+
+/* ───────── live boards: a run plays out row by row ───────── */
+.res { width: 108px; }
+.res .r-run, .res .r-wait { display: none; }
+.r-ok { display: inline-block; width: 18px; height: 18px; border: 2px solid #fff; position: relative; vertical-align: middle; }
+.r-ok::after { content: ""; position: absolute; left: 4px; top: 0; width: 5px; height: 10px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.r-go, .r-fix { display: inline-block; background: var(--red); color: #fff; font-weight: 600; padding: 4px 8px; }
+.live tr.lv { transition: opacity .25s var(--ease), background-color .25s var(--ease); }
+.live tr.lv.wait { opacity: .38; }
+.live tr.lv.wait .res > *, .live tr.lv.run .res > * { display: none; }
+.live tr.lv.wait .res .r-wait { display: inline; }
+.live tr.lv.wait .res .r-wait::before { content: "Waiting"; color: var(--board-dim); font-size: 14px; }
+.live tr.lv.run { background: var(--board-2); }
+.live tr.lv.run .res .r-run { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--board-dim); border-top-color: #fff; border-radius: 50%; animation: spin .8s linear infinite; vertical-align: middle; }
+.live tr.lv.run td.story::after { content: ""; display: inline-block; width: 7px; height: 7px; margin-left: 10px; background: #fff; vertical-align: middle; animation: blink 1s steps(1) infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes blink { 50% { opacity: 0; } }
+.live .live-phase { transition: color .2s var(--ease); }
+.live .live-phase.ai { color: #ffd2d7; }
+.live-log { min-height: 1.6em; }
+@media (prefers-reduced-motion: reduce) { .live tr.lv.run .res .r-run, .live tr.lv.run td.story::after { animation: none; } }
+
+/* ───────── docs hub ───────── */
+.docs-hub { padding: 64px 0 104px; }
+.hub { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--col-gap); }
+.hub-card { display: flex; flex-direction: column; gap: 14px; padding: 32px; border: 2px solid var(--ink); text-decoration: none; transition: background-color .15s var(--ease); }
+@media (hover: hover) { .hub-card:hover { background: var(--paper-2); } .hub-card:hover .hub-go { text-decoration-color: var(--red); } }
+.hub-card h2 { font-size: clamp(1.8rem, 2.6vw, 2.4rem); }
+.hub-card p { color: var(--ink-2); max-width: 46ch; }
+.hub-card ul { margin: 4px 0 0; padding-left: 20px; color: var(--ink-2); display: grid; gap: 4px; }
+.hub-go { margin-top: auto; padding-top: 12px; font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; text-decoration-color: var(--rule); }
+.hub-more { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px 24px; color: var(--ink-2); }
+@media (max-width: 860px) { .hub { grid-template-columns: 1fr; } }
