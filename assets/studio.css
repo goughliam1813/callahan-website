@@ -319,3 +319,47 @@ code { font-family: var(--mono); font-size: .88em; }
 .soon-card i svg { width: 12px; height: 12px; }
 @media (max-width: 900px) { .starts { grid-template-columns: 1fr; } }
 .start .cmd-row code { white-space: normal; overflow-wrap: anywhere; }
+
+/* ───────── fix guide: header, menu, contrast, deck controls, honesty labels ───────── */
+.top { transition: background-color .25s var(--ease), box-shadow .25s var(--ease); }
+.top.scrolled { background: rgba(248, 238, 232, .94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 1px 0 rgba(34,34,34,.08); }
+.menu-btn { display: none; }
+@media (max-width: 860px) {
+  .top { grid-template-columns: auto 1fr auto; gap: 10px; }
+  .menu-btn { display: inline-grid; align-content: center; gap: 4px; width: 42px; height: 38px; padding: 0 11px; border: 0; border-radius: 999px; background: #fff; cursor: pointer; justify-self: start; order: -1; }
+  .menu-btn i { display: block; width: 20px; height: 2px; transform-origin: 50% 50%; border-radius: 2px; background: var(--ink); transition: transform .2s var(--ease), opacity .2s; }
+  .top.open .menu-btn i { display: none; }
+  .top.open .menu-btn::after { content: "×"; font: 400 28px/1 var(--sans); color: var(--ink); text-align: center; }
+  .top .pills { position: absolute; top: 100%; left: var(--gut); right: var(--gut); display: none; flex-direction: column; gap: 6px; padding: 10px; border-radius: 18px; background: #fff; box-shadow: 0 20px 40px -20px rgba(0,0,0,.35); }
+  .top.open .pills { display: flex; }
+  .top .pills .pill, .pills .pill:not(:first-child) { display: flex; height: 44px; font-size: 16px; }
+  .top.open { background: rgba(248, 238, 232, .98); }
+  .wordmark { justify-self: center; }
+}
+.menu-btn:focus-visible, .dots button:focus-visible, .pill:focus-visible, .btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+/* contrast: no peach text on light backgrounds */
+.roll .rot { color: #9c3410; }
+.js .statement .w { color: #7a6d66; }
+
+/* who built it */
+.builder { max-width: 760px; margin: 48px auto 0; padding: 22px 26px; border-radius: 18px; background: #fff; text-align: left; font: 400 17px/1.55 var(--sans); color: var(--ink); position: relative; z-index: 2; }
+.builder b a, .builder-links a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--orange); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+.builder-links { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px 20px; font-weight: 600; }
+.foot .by { margin-top: 12px; font-size: 14px; }
+.foot .by a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+/* how it works: labelled step buttons */
+.dots { position: static; transform: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 28px auto 0; max-width: 900px; }
+.dots button { width: auto; height: auto; padding: 10px 16px; border: 2px solid rgba(255,255,255,.7); border-radius: 999px; background: transparent; color: #fff; font: 600 14px/1 var(--sans); cursor: pointer; }
+.dots button b { margin-right: 4px; font-weight: 800; }
+.dots button[aria-current="true"] { width: auto; background: #fff; color: var(--orange); border-color: #fff; }
+@media (max-width: 640px) { .dots { padding: 0 12px; } .dots button { font-size: 13px; } }
+
+/* crescendo: not available yet */
+.soon-band { left: 0; right: 0; top: 0; padding: 10px 14px; background: var(--black); color: #fff; font: 800 15px/1.1 var(--display); letter-spacing: .04em; text-transform: uppercase; text-align: center; z-index: 3; }
+.films-note { margin: -6px 0 16px; text-align: center; color: var(--ink-3); font-size: 15px; }
+/* AA contrast for small orange text on light backgrounds; large display type keeps the brand orange */
+:root { --orange-text: #b83a0e; }
+.work small, .tstop p, .board .status.go, .compare td.us { color: var(--orange-text); }
+.js .statement .w { color: #6f625b; }

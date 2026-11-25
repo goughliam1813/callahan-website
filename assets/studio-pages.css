@@ -223,3 +223,16 @@
 /* ───────── crescendo: coming soon ───────── */
 .soon-tag { display: inline-block; margin: 0 0 10px; padding: 6px 12px; border-radius: 999px; background: var(--black); color: #fff; font: 600 13px/1 var(--sans); letter-spacing: .01em; vertical-align: middle; }
 .hub-card .soon-tag { margin: 0 0 0 8px; font-size: 12px; }
+
+/* fix guide: version badge, early-release line, crescendo banner */
+.ver-tag { display: inline-block; margin: 0 0 12px; padding: 7px 14px; border-radius: 999px; background: var(--black); color: #fff; font: 600 14px/1 var(--sans); }
+.phero .early { margin-top: 14px; max-width: 46ch; font-size: 15px; color: var(--ink-2); }
+.phero .early a { color: inherit; text-decoration: underline; text-decoration-color: var(--orange); text-underline-offset: 3px; }
+.soon-banner { margin-top: 70px; background: var(--black); color: #fff; font: 500 17px/1.45 var(--sans); }
+.soon-banner .wrap { padding-top: 18px; padding-bottom: 18px; }
+.soon-banner b { font: 900 22px/1 var(--display); letter-spacing: .03em; margin-right: 6px; color: #ffb08f; }
+.soon-banner a { color: #fff; text-decoration: underline; text-decoration-color: var(--orange); text-underline-offset: 3px; font-weight: 700; }
+.hub-card .soon-tag { white-space: normal; }
+@media (max-width: 700px) { .spec-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; } .change-list code { overflow-wrap: anywhere; } }
+
+.board .status.go, .compare td.us { color: var(--orange-text, #b83a0e); }
