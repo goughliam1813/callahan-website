@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quartet QE changelog | Callahan</title>
+<meta name="description" content="Every public release of Quartet QE.">
+<meta name="theme-color" content="#f8eee8">
+<meta property="og:title" content="Quartet QE changelog | Callahan">
+<meta property="og:description" content="Every public release of Quartet QE.">
+<meta property="og:image" content="https://callahanci.com/assets/callahan-logo.png">
+<link rel="icon" type="image/svg+xml" href="assets/callahan-mark-orange.svg">
+<link rel="alternate icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/studio.css">
+<link rel="stylesheet" href="assets/studio-pages.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <nav class="pills" id="site-nav" aria-label="Main"><a class="pill" href="quartet.html">Quartet QE</a><a class="pill" href="callahan-ci.html">Callahan CI</a><a class="pill" href="crescendo.html">Crescendo</a><a class="pill" href="docs.html" aria-current="page">Docs</a></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="visually-hidden">Menu</span><i></i><i></i><i></i></button>
+  <a class="wordmark" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a>
+  <div class="top-end">
+    <small>Open source, MIT<br>macOS and Linux</small>
+    <a class="talk" href="quartet.html#install">Install<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-head" aria-labelledby="page-h"><div class="wrap">
+  <h1 id="page-h">Quartet QE changelog.</h1>
+  <p class="lede">Every public release of Quartet QE, and what is on main but not yet released. For downloads and checksums, follow the GitHub release link on each entry.</p>
+</div></section>
+<div class="wrap doc-grid changelog">
+  <nav class="toc" aria-label="On this page"><h2>Versions</h2>
+      <ul>
+        <li><a href="#unreleased">Unreleased, on main</a></li>
+        <li><a href="#v0-1-0">v0.1.0, 23 November 2026</a></li>
+      </ul></nav>
+  <article class="doc">
+      <article class="release" id="unreleased">
+        <div class="release-meta">
+          <span class="v word">Unreleased</span>
+          <span class="date">On main since 23 November 2026</span>
+          <span class="tag">Not yet tagged</span>
+        </div>
+        <div class="release-body">
+          <h2>Listings and packaging.</h2>
+          <p>Changes on the main branch since v0.1.0. None of them change how tests are written or run.</p>
+          <ul class="change-list">
+            <li><span class="kind changed">changed</span><div>The Claude Code plugin is pinned to the v0.1.0 release and checks its SHA-256 before unpacking anything.</div></li>
+            <li><span class="kind added">added</span><div>Listed in the official MCP registry as <code>io.github.Callahan-ci/quartet-qe</code> (<code>server.json</code>).</div></li>
+            <li><span class="kind added">added</span><div>Listed on Glama, with <code>glama.json</code> and a listing badge in the README.</div></li>
+            <li><span class="kind added">added</span><div>The README opens with a looping overview of a story becoming tests that replay with no AI.</div></li>
+          </ul>
+          <div class="release-footer">
+            <a href="https://github.com/Callahan-ci/quartet-qe/compare/v0.1.0...main">Changes since v0.1.0 </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="release" id="v0-1-0">
+        <div class="release-meta">
+          <span class="v">0.1.0</span>
+          <span class="date">23 November 2026</span>
+          <span class="tag">Latest release</span>
+        </div>
+        <div class="release-body">
+          <h2>0.1 — the first public release.</h2>
+          <p>Early release, working and installable. Expect rapid changes; please <a href="https://github.com/Callahan-ci/quartet-qe/issues">open an issue</a> if you find one.</p>
+          <ul class="change-list">
+            <li><span class="kind added">added</span><div>Writes end-to-end tests from a user story, read from a file, Jira, Azure DevOps, GitHub or GitLab. Vague stories get questions back, not tests.</div></li>
+            <li><span class="kind added">added</span><div>Record once, replay with no AI: the first run records each verified step to <code>recordings/</code>, and every rerun replays them by default (<code>QUARTET_MODE=replay</code>). A step that stops working is handed back to the AI and re-recorded, never guessed.</div></li>
+            <li><span class="kind added">added</span><div>One test can cover web (Chromium, Firefox and WebKit through Playwright), phone browsers, REST APIs guided by OpenAPI and Pact, Kafka with JSON Schema, PostgreSQL and MongoDB.</div></li>
+            <li><span class="kind added">added</span><div>Native Android apps through <code>adb</code> and the accessibility tree, with nothing installed on the device and no Appium. Native iOS through a small XCTest runner, newer and not yet proven on a real run.</div></li>
+            <li><span class="kind added">added</span><div>An independent review and a review page with screenshots of every screen a test reached. A person approves; the AI never merges.</div></li>
+            <li><span class="kind added">added</span><div>Runs as an MCP server, so the AI in your chat tool can write the tests with no API key. Also works with Anthropic, OpenAI, Azure OpenAI, Gemini or any OpenAI-compatible model.</div></li>
+            <li><span class="kind added">added</span><div>Claude Code plugin: <code>/plugin marketplace add Callahan-ci/quartet-qe</code> then <code>/plugin install quartet-qe@quartet-qe</code>.</div></li>
+            <li><span class="kind added">added</span><div><code>setup-jenkins</code> writes the Jenkinsfile and creates a multibranch job; each build replays with no AI.</div></li>
+            <li><span class="kind security">security</span><div>Release bundles for macOS and Linux (Intel and ARM), a software bill of materials and <code>SHA256SUMS</code>.</div></li>
+          </ul>
+          <div class="release-footer">
+            <span>LICENSE · MIT</span><a href="https://github.com/Callahan-ci/quartet-qe/releases/tag/v0.1.0">GitHub release </a>
+          </div>
+        </div>
+      </article>
+    </article>
+</div>
+</main>
+
+<footer class="foot">
+  <div class="grid">
+    <div><a class="wordmark" href="index.html"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p><p class="by">Built by <a href="https://www.linkedin.com/in/liam-gough-04a60a2b">Liam Gough</a> (<a href="https://github.com/goughliam1813">GitHub</a>). Questions? <a href="https://github.com/Callahan-ci/quartet-qe/discussions">Talk to us on GitHub Discussions</a>.</p></div>
+    <div><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs</a></li><li><a href="quartet-changelog.html">Changelog</a></li></ul></div>
+    <div><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
+    <div><h3>Crescendo</h3><ul><li><a href="crescendo.html">Overview</a></li><li><a href="crescendo.html#soon">Coming soon — not available yet</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/discussions/17">Join the waitlist</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="index.html#about">About</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/discussions">Contact</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
+    <div><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
+  </div>
+  <div class="foot-legal"><span>Copyright 2026 Callahan</span><span>callahanci.com</span></div>
+</footer>
+<script src="assets/timetable.js" defer></script>
+<script src="assets/menu.js" defer></script>
+</body>
+</html>

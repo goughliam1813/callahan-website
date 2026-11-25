@@ -236,3 +236,7 @@
 @media (max-width: 700px) { .spec-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; } .change-list code { overflow-wrap: anywhere; } }
 
 .board .status.go, .compare td.us { color: var(--orange-text, #b83a0e); }
+/* changelog: words like "Unreleased" fit the meta column; space between footer links */
+.release-meta .v { overflow-wrap: anywhere; }
+.release-meta .v.word { font-size: 2.3rem; line-height: .95; }
+.release-footer { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; }
