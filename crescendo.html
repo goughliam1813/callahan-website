@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crescendo: the AI performance-testing agent | Callahan</title>
-<meta name="description" content="Crescendo is an AI performance-testing agent. It writes reviewable Gatling simulations, runs them across many injectors and reports an SLO verdict. Coming soon.">
+<meta name="description" content="Crescendo is an AI performance-testing agent, coming soon. Ask in plain words and it writes a Gatling test you can review, then gives an SLO verdict alongside your metrics, logs and traces. Load only goes to servers you approve.">
 <meta name="theme-color" content="#f8eee8">
 <meta property="og:title" content="Crescendo: the AI performance-testing agent | Callahan">
-<meta property="og:description" content="Crescendo is an AI performance-testing agent. It writes reviewable Gatling simulations, runs them across many injectors and reports an SLO verdict. Coming soon.">
+<meta property="og:description" content="Crescendo is an AI performance-testing agent, coming soon. Ask in plain words and it writes a Gatling test you can review, then gives an SLO verdict alongside your metrics, logs and traces. Load only goes to servers you approve.">
 <meta property="og:image" content="https://callahanci.com/assets/callahan-logo.png">
 <link rel="icon" type="image/svg+xml" href="assets/callahan-mark-orange.svg">
 <link rel="alternate icon" type="image/png" href="assets/favicon.png">
@@ -37,12 +37,12 @@
     <img class="pmark" src="assets/crescendo-mark-orange.svg" alt="" width="64" height="64">
     
     <h1 id="hero-h">Crescendo.</h1>
-    <p class="sub">The performance-testing agent, in testing. When it ships: say "load test the catalog API" and it writes a Gatling simulation you can read, runs it across as many injectors as the load needs, and tells you whether you met your SLOs.</p>
+    <p class="sub">The performance-testing agent, in testing. Ask "load test the catalog API" and it writes a Gatling test you can review, runs it, and tells you whether you met your SLOs, next to the metrics, logs and traces that explain why. Load only goes to servers you have approved, and there is a kill switch.</p>
     <div class="acts">
       <a class="btn" href="#how">How it works<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a>
       <a class="tlink" href="https://github.com/Callahan-ci/quartet-qe/discussions/17">Join the waitlist</a>
     </div>
-    <p class="facts"><span>Gatling is the engine</span><span>Many injectors</span><span>SLO verdict</span><span>A person reviews</span></p>
+    <p class="facts"><span>Writes the Gatling test</span><span>SLO verdict</span><span>Approved targets only</span><span>Kill switch</span></p>
   </div>
   <div class="board-wrap">
     <div class="board sheet live" data-live="perf" aria-label="An example Crescendo load test, animated">
@@ -116,6 +116,44 @@ buyJourney.injectOpen(
   </div>
 </div></section>
 
+<section class="sec" id="report" aria-labelledby="re-h"><div class="wrap grid">
+  <div class="sec-h"><h2 id="re-h">A verdict on your SLOs.</h2><p>Judged on percentiles from every injector combined, after the warm-up, next to the server metrics, logs and slowest traces that moved with latency. A JUnit file lets CI gate on it.</p></div>
+  <div class="sec-b">
+    <div class="ledger">
+      <div><b>SLO verdict</b><span>Judged by percentiles on the steady state after the warm-up. Never averages.</span></div>
+      <div><b>Timeline</b><span>Load, p50, p95, p99, errors and every server metric on one shared time axis.</span></div>
+      <div><b>The knee</b><span>The highest rate where throughput still follows load.</span></div>
+      <div><b>Baseline</b><span>Compared with the last run a person reviewed and saved.</span></div>
+      <div><b>Observability</b><span>Prometheus, Loki, Elasticsearch, OpenSearch, Splunk, Datadog, Tempo, Jaeger and Grafana annotations.</span></div>
+      <div><b>Bottleneck analysis</b><span>The AI's reading of which series moved with latency, for a person to check.</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="rules" aria-labelledby="ru-h"><div class="wrap grid">
+  <div class="sec-h"><h2 id="ru-h">Safe to let an AI send load.</h2><p>Load is a tool you can hurt yourself with. Crescendo is built so the AI cannot: it only reaches servers you approved, never sees a secret, and stops the moment you say so.</p></div>
+  <div class="sec-b">
+    <div class="ledger">
+      <div><b>Allowlisted targets</b><span>Load only goes to hosts you own and listed. Production needs a sign-off file a person wrote.</span></div>
+      <div><b>Kill switch</b><span>One command stops every injector. Runs abort on their own when errors or p99 pass your thresholds.</span></div>
+      <div><b>No secrets for the AI</b><span>You save them with ./crescendo secret NAME. They are redacted from everything the AI sees.</span></div>
+      <div><b>A person reviews</b><span>Nothing is pushed or merged. Context and tool output are data, never instructions.</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="sources" aria-labelledby="so-h"><div class="wrap grid">
+  <div class="sec-h"><h2 id="so-h">APIs, sites and Kafka.</h2><p>Crescendo drafts a simulation from what your team already has, then the AI edits it.</p></div>
+  <div class="sec-b">
+    <div class="roster">
+      <div><b>OpenAPI</b><span>One scenario per journey at its share of the rate, with think time and unique data.</span><p class="ex">browse 60%, search 25%, buy 15%</p></div>
+      <div><b>Recorded journey</b><span>A browser journey recorded as HAR becomes protocol load, while a few real Chromium browsers capture Web Vitals under that load.</span><p class="ex">TTFB, FCP, LCP, CLS and load time</p></div>
+      <div><b>Kafka</b><span>Each arriving user produces one message. Produce latency, end-to-end latency and consumer lag are recorded.</span><p class="ex">order-events through the order enricher</p></div>
+      <div><b>WebSocket and gRPC</b><span>Drafts for both; gRPC uses Gatling's gRPC plugin and your stubs.</span><p class="ex">Same rules, same report</p></div>
+    </div>
+  </div>
+</div></section>
+
 <section class="sec" id="types" aria-labelledby="ty-h"><div class="wrap grid">
   <div class="sec-h"><h2 id="ty-h">Pick the test by the question.</h2><p>Seven test types, each with a default open-model profile built from your traffic model's peak rate. Every new simulation starts with a smoke run.</p></div>
   <div class="sec-b">
@@ -127,18 +165,6 @@ buyJourney.injectOpen(
       <div><b>Soak</b><span>Do we stay healthy for hours? Leaks, pool exhaustion, GC drift.</span></div>
       <div><b>Breakpoint</b><span>At what rate do we stop meeting SLOs? Expect it to abort: that is the answer.</span></div>
       <div><b>Scalability</b><span>Does throughput rise with load, and where is the knee?</span></div>
-    </div>
-  </div>
-</div></section>
-
-<section class="sec" id="sources" aria-labelledby="so-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="so-h">APIs, sites and event streams.</h2><p>Crescendo drafts a simulation from what your team already has, then the AI edits it.</p></div>
-  <div class="sec-b">
-    <div class="roster">
-      <div><b>OpenAPI</b><span>One scenario per journey at its share of the rate, with think time and unique data.</span><p class="ex">browse 60%, search 25%, buy 15%</p></div>
-      <div><b>Recorded journey</b><span>A browser journey recorded as HAR becomes protocol load, while a few real Chromium browsers capture Web Vitals under that load.</span><p class="ex">TTFB, FCP, LCP, CLS and load time</p></div>
-      <div><b>Kafka</b><span>Each arriving user produces one message. Produce latency, end-to-end latency and consumer lag are recorded.</span><p class="ex">order-events through the order enricher</p></div>
-      <div><b>WebSocket and gRPC</b><span>Drafts for both; gRPC uses Gatling's gRPC plugin and your stubs.</span><p class="ex">Same rules, same report</p></div>
     </div>
   </div>
 </div></section>
@@ -156,32 +182,6 @@ buyJourney.injectOpen(
         <tr><td>Cloud Run</td><td>One job execution with N tasks</td><td class="us">In testing. Coming soon</td></tr>
       </tbody>
     </table>
-  </div>
-</div></section>
-
-<section class="sec" id="report" aria-labelledby="re-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="re-h">One page, verdict first.</h2><p>The report correlates the run with your metrics, logs and traces, and writes a JUnit file so CI can gate on the SLOs.</p></div>
-  <div class="sec-b">
-    <div class="ledger">
-      <div><b>SLO verdict</b><span>Judged by percentiles on the steady state after the warm-up. Never averages.</span></div>
-      <div><b>Timeline</b><span>Load, p50, p95, p99, errors and every server metric on one shared time axis.</span></div>
-      <div><b>The knee</b><span>The highest rate where throughput still follows load.</span></div>
-      <div><b>Baseline</b><span>Compared with the last run a person reviewed and saved.</span></div>
-      <div><b>Observability</b><span>Prometheus, Loki, Elasticsearch, OpenSearch, Splunk, Datadog, Tempo, Jaeger and Grafana annotations.</span></div>
-      <div><b>Bottleneck analysis</b><span>The AI's reading of which series moved with latency, for a person to check.</span></div>
-    </div>
-  </div>
-</div></section>
-
-<section class="sec" id="rules" aria-labelledby="ru-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="ru-h">Guard rails, not guesswork.</h2><p>Load is a tool you can hurt yourself with. Crescendo is built so the AI cannot.</p></div>
-  <div class="sec-b">
-    <div class="ledger">
-      <div><b>Allowlisted targets</b><span>Load only goes to hosts you own and listed. Production needs a sign-off file a person wrote.</span></div>
-      <div><b>Kill switch</b><span>One command stops every injector. Runs abort on their own when errors or p99 pass your thresholds.</span></div>
-      <div><b>No secrets for the AI</b><span>You save them with ./crescendo secret NAME. They are redacted from everything the AI sees.</span></div>
-      <div><b>A person reviews</b><span>Nothing is pushed or merged. Context and tool output are data, never instructions.</span></div>
-    </div>
   </div>
 </div></section>
 
