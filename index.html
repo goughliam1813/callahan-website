@@ -126,24 +126,62 @@
   <div class="wrap">
     <div class="title"><span class="label">Agents and examples</span><h2 id="works-h">On the<br>bench</h2><span></span></div>
     <div class="works">
-      <a class="work" href="quartet.html"><div class="art" style="background:#f25525"><div class="mock"><h4>Take 1: checkout</h4><div class="r">Open the shop<em>✓</em></div><div class="r">Check the basket total<em>✓</em></div><div class="r">Check the order event<em>✓</em></div><div class="r">Sign-off<em>Your go</em></div></div></div>
-        <div class="meta"><span class="ic"><img src="assets/quartet-mark-white.svg" alt=""></span><span><b>Quartet QE</b><small>Agent, testing</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
-      <a class="work" href="callahan-ci.html"><div class="art" style="background:#111"><div class="mock"><h4>Build 42</h4><div class="r">Ingest, plan, build<em>✓</em></div><div class="r">Reviewer agent<em>✓</em></div><div class="r">Trivy scan<em>Fix</em></div><div class="r">Posted to the PR<em>✓</em></div></div></div>
-        <div class="meta"><span class="ic"><img src="assets/callahan-ci-mark-white.svg" alt=""></span><span><b>Callahan CI</b><small>Agent, CI/CD</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
-      <a class="work" href="quartet-docs.html#android"><div class="art" style="background:#f9e2e1"><div class="mock"><h4>Android calculator</h4><pre>agent.act("Open the calculator,
- calculate 12 + 34, open History
- and read the newest entry",
- on("calculator-app"));
-// → "12+34 = 46"</pre></div></div>
-        <div class="meta"><span class="ic"><img src="assets/icons-ink/android.svg" alt="" style="filter:invert(1)"></span><span><b>Native Android app</b><small>Example, real run</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
-      <a class="work" href="quartet.html#examples"><div class="art" style="background:#1a54e4"><div class="mock"><h4>Web shop</h4><div class="r">Order through the shop<em>ORD-1042</em></div><div class="r">Page says it's reserved<em>✓</em></div><div class="r">Screenshot per step<em>✓</em></div></div></div>
-        <div class="meta"><span class="ic"><img src="assets/icons-ink/googlechrome.svg" alt="" style="filter:invert(1)"></span><span><b>Website</b><small>Example, demo shop</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
-      <a class="work" href="quartet-docs.html#services"><div class="art" style="background:#fdf8f5"><div class="mock"><h4>API, Postgres, Kafka</h4><div class="r">POST /orders<em>RESERVED</em></div><div class="r">orders row<em>✓</em></div><div class="r">shop.orders.created<em>✓</em></div></div></div>
-        <div class="meta"><span class="ic"><img src="assets/icons-ink/apachekafka.svg" alt="" style="filter:invert(1)"></span><span><b>Services</b><small>Example, one test</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
-      <a class="work" href="quartet-docs.html#jenkins"><div class="art" style="background:#f6b79e"><div class="mock"><h4>Jenkins</h4><pre>[quartet] Recordings: 8 replayed,
- 0 handed off, 0 missed
- | AI: 0 model calls</pre></div></div>
-        <div class="meta"><span class="ic"><img src="assets/icons-ink/jenkins.svg" alt="" style="filter:invert(1)"></span><span><b>Replay in CI</b><small>Example, no AI key</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+      <a class="work" href="quartet.html"><div class="art" style="background:#f25525" role="img" aria-label="A Quartet QE run sheet with every step ticked, and a 0 AI calls stamp">
+          <img class="layer watermark" src="assets/quartet-mark-white.svg" alt="">
+          <div class="layer sheet l1" style="left:9%;top:12%;width:76%;transform:rotate(-4deg)"><div class="sheet-h">Take 1: checkout<span>AI recording</span></div>
+            <div class="sheet-r"><i>1</i>Open the shop<b>✓</b></div><div class="sheet-r"><i>2</i>Add the book<b>✓</b></div><div class="sheet-r"><i>3</i>Basket total via API<b>✓</b></div><div class="sheet-r"><i>4</i>Order row in Postgres<b>✓</b></div><div class="sheet-r"><i>5</i>Sign-off<em>Your go</em></div></div>
+          <div class="layer stamp l3" style="right:7%;bottom:9%;color:#fff">0 AI<br>calls</div>
+          <span class="layer tag-pill k l2" style="left:8%;bottom:12%">Replay, no AI</span>
+        </div><div class="meta"><span class="ic"><img src="assets/quartet-mark-white.svg" alt=""></span><span><b>Quartet QE</b><small>Agent, testing</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+
+      <a class="work" href="callahan-ci.html"><div class="art" style="background:#111" role="img" aria-label="A Callahan CI pipeline from ingest to post, with a reviewer comment on the pull request">
+          <div class="layer pipe l1"><svg viewBox="0 0 300 200" aria-hidden="true">
+            <path d="M20 40 C 120 10, 200 70, 280 40 S 140 120, 30 140 S 200 200, 280 170" fill="none" stroke="#f25525" stroke-width="5" stroke-linecap="round"/>
+            <g fill="#111" stroke="#f25525" stroke-width="4"><circle cx="20" cy="40" r="9"/><circle cx="150" cy="42" r="9"/><circle cx="280" cy="40" r="9"/><circle cx="160" cy="112" r="9"/><circle cx="30" cy="140" r="9"/><circle cx="280" cy="170" r="9"/></g>
+            <g fill="#f25525"><circle cx="20" cy="40" r="4"/><circle cx="150" cy="42" r="4"/><circle cx="280" cy="40" r="4"/><circle cx="160" cy="112" r="4"/><circle cx="30" cy="140" r="4"/><circle cx="280" cy="170" r="4"/></g>
+            <text x="6" y="24">Ingest</text><text x="134" y="26">Plan</text><text x="252" y="24">Build</text><text x="172" y="106">AI review</text><text x="44" y="146">Scan</text><text x="246" y="196">Post</text></svg></div>
+          <span class="layer tag-pill o l3" style="left:8%;top:6%">Build 42</span>
+          <div class="layer mini pr l2"><div class="who">Reviewer<span>finding</span></div><p>internal/auth.go:23: password hashed with MD5. Use bcrypt or argon2id.</p></div>
+        </div><div class="meta"><span class="ic"><img src="assets/callahan-ci-mark-white.svg" alt=""></span><span><b>Callahan CI</b><small>Agent, CI/CD</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+
+      <a class="work" href="quartet-docs.html#android"><div class="art" style="background:#f9e2e1" role="img" aria-label="The real Android calculator History screen from a Quartet QE run, with the test code beside it">
+          <div class="layer phone l1" style="left:9%;top:7%;transform:rotate(-5deg)"><img src="assets/shots/calc-history.jpg" alt=""></div>
+          <div class="layer bubble-code l2" style="right:6%;top:38%">agent.act(<span class="s">"Open the calculator,
+ calculate 12 + 34, open
+ History and read the
+ newest entry"</span>,
+ on(<span class="s">"calculator-app"</span>));
+<span class="ok">✓ "12+34" "46"</span></div>
+          <div class="layer sticker-ic l3" style="right:10%;top:10%;background:#f25525"><img src="assets/icons-ink/android.svg" alt="" style="filter:brightness(0) invert(1)"></div>
+          <span class="layer tag-pill k" style="right:8%;bottom:8%">Real run, 6 of 6 passed</span>
+        </div><div class="meta"><span class="ic"><img src="assets/icons-ink/android.svg" alt="" style="filter:brightness(0) invert(1)"></span><span><b>Native Android app</b><small>Example, real run</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+
+      <a class="work" href="quartet.html#examples"><div class="art" style="background:#1a54e4" role="img" aria-label="The Books to Scrape test shop in a desktop browser and on an iPhone">
+          <div class="layer browser l1" style="left:6%;top:9%;width:82%;transform:rotate(-3deg)"><div class="bar"><i></i><i></i><i></i><span>books.toscrape.com</span></div><img src="assets/shots/books-chromium.jpg" alt=""></div>
+          <div class="layer phone l2" style="right:7%;bottom:6%;width:34%;transform:rotate(5deg)"><img src="assets/shots/books-iphone.jpg" alt=""></div>
+          <div class="layer l3" style="left:7%;bottom:10%;display:grid;gap:6px"><span class="tag-pill w">Chromium</span><span class="tag-pill w">Firefox</span><span class="tag-pill w">WebKit</span><span class="tag-pill o">iPhone</span></div>
+        </div><div class="meta"><span class="ic"><img src="assets/icons-ink/googlechrome.svg" alt="" style="filter:brightness(0) invert(1)"></span><span><b>Websites</b><small>Example, every browser</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+
+      <a class="work" href="quartet-docs.html#services"><div class="art" style="background:#fdf8f5" role="img" aria-label="One test checking an API response, a Postgres row and a Kafka event">
+          <svg class="layer" style="inset:0;width:100%;height:100%" viewBox="0 0 100 125" preserveAspectRatio="none" aria-hidden="true"><path d="M30 26 C 70 30, 80 50, 60 62 S 20 80, 40 98" fill="none" stroke="#f25525" stroke-width=".8" stroke-dasharray="2 2"/></svg>
+          <div class="layer mini l1" style="left:7%;top:7%;width:66%"><div class="h">POST /orders <span class="tag-pill o" style="padding:3px 8px;font-size:11px;margin-left:auto">201</span></div><pre>{ <span class="s">"orderId"</span>: "ORD-1042",
+  <span class="s">"status"</span>: "RESERVED" }</pre></div>
+          <div class="layer mini l2" style="right:6%;top:39%;width:62%"><div class="h"><img src="assets/icons-ink/postgresql.svg" alt="">orders</div><table><tr><th>id</th><th>status</th><th>customer</th></tr><tr><td>ORD-1042</td><td>RESERVED</td><td>C-42</td></tr></table></div>
+          <div class="layer mini l3" style="left:9%;bottom:7%;width:68%"><div class="h"><img src="assets/icons-ink/apachekafka.svg" alt="">shop.orders.created</div><pre>found: <span class="s">true</span>   schemaValid: <span class="s">true</span></pre></div>
+        </div><div class="meta"><span class="ic"><img src="assets/icons-ink/apachekafka.svg" alt="" style="filter:brightness(0) invert(1)"></span><span><b>Services</b><small>Example, one test</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+
+      <a class="work" href="quartet-docs.html#jenkins"><div class="art" style="background:#f6b79e" role="img" aria-label="A Jenkins build replaying recordings with zero AI model calls">
+          <div class="layer term l1" style="left:7%;top:10%;width:86%;transform:rotate(-2deg)"><div class="bar"><i></i><i></i><i></i></div><pre><span class="p">$</span> ./gradlew test
+<span class="d">CheckoutReservesStockTest</span>
+  <span class="g">✓</span> orderFlowsThroughApiDatabaseAndEvents
+  <span class="g">✓</span> orderReducesStockByOrderedQuantity
+  <span class="g">✓</span> customerSeesConfirmationInTheWebShop
+[quartet] Recordings: 8 replayed,
+  0 handed off, 0 missed | AI: 0 model calls
+<span class="g">BUILD SUCCESSFUL</span></pre></div>
+          <div class="layer stamp l3" style="right:8%;bottom:8%;color:#f25525;background:#fdf8f5">No AI<br>key</div>
+          <div class="layer sticker-ic l2" style="left:9%;bottom:10%;background:#fff"><img src="assets/icons-ink/jenkins.svg" alt=""></div>
+        </div><div class="meta"><span class="ic"><img src="assets/icons-ink/jenkins.svg" alt="" style="filter:brightness(0) invert(1)"></span><span><b>Replay in CI</b><small>Example, Jenkins</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
     </div>
   </div>
 </section>
