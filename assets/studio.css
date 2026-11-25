@@ -302,3 +302,20 @@ code { font-family: var(--mono); font-size: .88em; }
 /* crescendo robot: gauge needle swings, level bars pulse */
 .bot .needle { transform-box: view-box; transform-origin: 120px 112px; animation: needle 1.8s ease-in-out infinite alternate; }
 @keyframes needle { from { transform: rotate(-50deg); } to { transform: rotate(50deg); } }
+
+/* ───────── evened-out home: three agents ───────── */
+.plate .mks { margin-top: auto; display: flex; gap: 10px; }
+.plate .mks img { width: 56px; height: 56px; }
+.tstop p b { font-weight: 800; }
+.starts { margin: 40px auto 0; max-width: 1180px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; text-align: left; }
+.start { display: flex; flex-direction: column; padding: 22px; border-radius: 18px; background: #fff; }
+.start h3 { display: flex; align-items: center; gap: 10px; font: 900 2rem/1 var(--display); text-transform: uppercase; }
+.start h3 img { width: 34px; height: 34px; }
+.start > p { margin: 8px 0 0; color: var(--ink-3); font-size: 15px; }
+.start .cmd { margin: 14px 0 0; max-width: none; }
+.start .cmd-row { font-size: 12.5px; }
+.soon-card { margin-top: 14px; display: inline-flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 6px 14px 18px; border-radius: 16px; background: var(--black); color: #fff; font: 600 15px/1 var(--sans); text-decoration: none; flex: 1; max-height: 56px; }
+.soon-card i { width: 30px; height: 30px; border-radius: 50%; background: var(--orange); display: grid; place-items: center; }
+.soon-card i svg { width: 12px; height: 12px; }
+@media (max-width: 900px) { .starts { grid-template-columns: 1fr; } }
+.start .cmd-row code { white-space: normal; overflow-wrap: anywhere; }
