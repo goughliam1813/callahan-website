@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Callahan: a workshop of AI agents that prove their work</title>
+<title>Callahan: AI agents that prove their work</title>
 <meta name="description" content="Callahan builds AI agents for engineering teams. Quartet QE writes end-to-end tests from a user story and replays them with no AI. Callahan CI runs your pipelines on your own machine.">
 <meta name="theme-color" content="#15100b">
-<meta property="og:title" content="Callahan: a workshop of AI agents that prove their work">
+<meta property="og:title" content="Callahan: AI agents that prove their work">
 <meta property="og:description" content="Quartet QE writes end-to-end tests from a user story and replays them with no AI. Open source.">
 <meta property="og:image" content="https://callahanci.com/assets/callahan-logo.png">
 <link rel="icon" type="image/svg+xml" href="assets/callahan-mark.svg">
@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/photos/hero.jpg">
+<link rel="preload" as="image" href="assets/photos/m-hero.jpg">
 <link rel="stylesheet" href="assets/workshop.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -36,20 +36,20 @@
 
 <main id="main">
 <section class="scene hero" aria-labelledby="hero-h">
-  <div class="photo" style="background-image:url(assets/photos/hero.jpg)" role="img" aria-label="A workshop bench covered in spanners and tools beneath a window"></div>
+  <div class="photo" style="background-image:url(assets/photos/m-hero.jpg)" role="img" aria-label="A string quartet on a wide concert stage"></div>
   <div class="wrap grid">
     <div>
-      <span class="plaque"><b>The workshop</b>Callahan</span>
-      <h1 id="hero-h">A workshop of agents that prove their work.</h1>
-      <p class="sub">We build AI agents for engineering teams. On the bench today: Quartet QE, which writes your end-to-end tests from a user story, then replays them with no AI.</p>
+      <span class="plaque"><b>Track 01</b>The session</span>
+      <h1 id="hero-h">Agents that prove their work.</h1>
+      <p class="sub">Callahan builds AI agents for engineering teams. Quartet QE writes your end-to-end tests from a user story. The AI plays it once; every rerun is the recording, with no AI.</p>
       <div class="acts">
         <a class="btn brass" href="#install">Install Quartet QE</a>
-        <a class="tlink" href="#bench">See what's on the bench</a>
+        <a class="tlink" href="#bench">Meet the ensemble</a>
       </div>
     </div>
 
-    <div class="order" data-live="quartet" aria-label="An example Quartet QE work order, animated">
-      <div class="order-head"><h2><img src="assets/quartet-mark-ink.svg" alt="" width="30" height="30">Work order: checkout</h2><span class="live-phase">Replay, no AI</span></div>
+    <div class="order" data-live="quartet" aria-label="An example Quartet QE recording session, animated">
+      <div class="order-head"><h2><img src="assets/quartet-mark-ink.svg" alt="" width="30" height="30">Take 1: checkout</h2><span class="live-phase">Replay, no AI</span></div>
       <table>
         <caption class="visually-hidden">An example run: Quartet QE drives each step of one story, records it, then replays it with no AI.</caption>
         <thead><tr><th scope="col">Step</th><th scope="col">What it does</th><th scope="col" class="col-target">Target</th><th scope="col">Result</th></tr></thead>
@@ -62,51 +62,51 @@
           <tr class="lv" data-say="the review page is ready for a person"><td class="n">6</td><td class="story">Sign-off</td><td class="col-target"><span class="tg">person</span></td><td class="res"><span class="r-go">Your go</span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
         </tbody>
       </table>
-      <p class="live-log" aria-live="off">Replayed from the recording, with no AI. An example work order.</p>
+      <p class="live-log" aria-live="off">Replayed from the recording, with no AI. An example session.</p>
     </div>
   </div>
-  <p class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Railway_workshop_museum_exhibition_in_Ljubljana,_Slovenia.jpg">Petar Milošević</a>, CC BY-SA 4.0</p>
+  <p class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Casals_Forum,_Dvo%C5%99%C3%A1k_string_quartet.jpg">Gerda Arendt</a>, CC BY-SA 4.0</p>
 </section>
 
 <section class="scene" id="bench" aria-labelledby="bench-h">
-  <div class="photo" style="background-image:url(assets/photos/bench.jpg)"></div>
+  <div class="photo" style="background-image:url(assets/photos/m-open.jpg)"></div>
   <div class="wrap">
     <div class="head">
-      <span class="plaque"><b>On the bench</b>Two agents</span>
+      <span class="plaque"><b>Track 02</b>The ensemble</span>
       <h2 id="bench-h">Two agents, built to show their work.</h2>
       <p>Each one runs on your machine, records what it did, and leaves the decision to a person.</p>
     </div>
     <div class="tags">
       <a class="tag" href="quartet.html">
         <span class="hole" aria-hidden="true"></span>
-        <div class="pic" style="background-image:url(assets/photos/quartet.jpg)" role="img" aria-label="A luthier's hands carving the top of a violin"></div>
+        <div class="pic" style="background-image:url(assets/photos/m-quartet.jpg)" role="img" aria-label="The bridge and strings of a cello, close up"></div>
         <div class="body">
           <div class="name"><img src="assets/quartet-mark-ink.svg" alt="" width="40" height="40"><h3>Quartet QE</h3></div>
           <p>The AI test framework. Write a user story; it tests websites, phone browsers, native Android apps, APIs, Kafka and databases, then replays with no AI.</p>
-          <span class="go">Visit Quartet's bench</span>
+          <span class="go">Meet Quartet QE</span>
         </div>
       </a>
       <a class="tag" href="callahan-ci.html">
         <span class="hole" aria-hidden="true"></span>
-        <div class="pic" style="background-image:url(assets/photos/ci.jpg)" role="img" aria-label="A hand holding a soldering iron over a wooden bench"></div>
+        <div class="pic" style="background-image:url(assets/photos/m-ci.jpg)" role="img" aria-label="Painted organ pipes in a row"></div>
         <div class="body">
           <div class="name"><img src="assets/callahan-ci-mark-ink.svg" alt="" width="40" height="40"><h3>Callahan CI</h3></div>
           <p>CI/CD on your own machine. One binary runs your pipelines and four agents review every build on your pull requests.</p>
-          <span class="go">Visit Callahan CI's bench</span>
+          <span class="go">Meet Callahan CI</span>
         </div>
       </a>
     </div>
   </div>
-  <p class="credit">Photos: <a href="https://commons.wikimedia.org/wiki/File:Traditional_Hand_Plane,_China.jpg">Rod Waddington</a>, CC BY-SA 2.0; <a href="https://commons.wikimedia.org/wiki/File:A_luthier_at_work_on_a_violin_02.jpg">Kritzolina</a>, CC BY-SA 4.0; <a href="https://commons.wikimedia.org/wiki/File:Scope_soldering_iron_(early_model).jpg">Doug butler</a>, CC BY-SA 4.0</p>
+  <p class="credit">Photos: <a href="https://commons.wikimedia.org/wiki/File:Chamber_music_concert_at_Wigmore_Hall_-_geograph.org.uk_-_5681152.jpg">David Hawgood</a>, CC BY-SA 2.0; <a href="https://commons.wikimedia.org/wiki/File:Cello_bridge.jpg">Turidoth</a>, CC BY-SA 2.5; <a href="https://commons.wikimedia.org/wiki/File:Organ_Pipes_-_St._Peter%27s_Church,_Shorwell_(photo_by_Garry_Knight).jpg">Garry Knight</a>, CC BY-SA 2.0</p>
 </section>
 
 <section class="scene right" id="craft" aria-labelledby="craft-h">
-  <div class="photo" style="background-image:url(assets/photos/craft.jpg);background-position:left center"></div>
+  <div class="photo" style="background-image:url(assets/photos/m-craft.jpg);background-position:left center"></div>
   <div class="wrap">
     <div class="head">
-      <span class="plaque"><b>The craft</b>How it works</span>
+      <span class="plaque"><b>Track 03</b>The recording</span>
       <h2 id="craft-h">The AI works once. The recording repeats.</h2>
-      <p>Like a good movement, every run after the first goes the same way, with no AI at all.</p>
+      <p>Like a master tape, every run after the first plays back the same way, with no AI at all.</p>
     </div>
     <div class="steps">
       <div><span class="k">1</span><h3>The story</h3><p>Plain English, or a ticket from Jira, Azure DevOps, GitHub or GitLab.</p></div>
@@ -115,14 +115,14 @@
       <div><span class="k">4</span><h3>Your go</h3><p>A review and a report with screenshots. A person approves; the AI never merges.</p></div>
     </div>
   </div>
-  <p class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Longines_4_Grand_Prix_pocket_watch_-_clockwork_visible_-_enhanced_resolution_DSF3402-PSMS.jpg">Franz van Duns</a>, CC BY-SA 4.0</p>
+  <p class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Active_2%22_tape_machine_in_Studio_2_(53720843350).jpg">Steve Knight</a>, CC BY 2.0</p>
 </section>
 
 <section class="scene" id="films" aria-labelledby="films-h">
-  <div class="photo" style="background-image:url(assets/photos/hero.jpg);filter:blur(2px)"></div>
+  <div class="photo" style="background-image:url(assets/photos/m-listen.jpg)"></div>
   <div class="wrap">
     <div class="head">
-      <span class="plaque"><b>Job tickets</b>Watch them work</span>
+      <span class="plaque"><b>Track 04</b>Listen in</span>
       <h2 id="films-h">See both agents at work.</h2>
     </div>
     <div class="tickets">
@@ -138,27 +138,28 @@
       </div>
     </div>
   </div>
+  <p class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Neumann_U87_Condenser_Microphone_-_Studio_A,_In_Your_Ear_Studios.jpg">Will Fisher</a>, CC BY-SA 2.0</p>
 </section>
 
 <section class="scene right" id="commissions" aria-labelledby="com-h">
-  <div class="photo" style="background-image:url(assets/photos/commission.jpg)"></div>
+  <div class="photo" style="background-image:url(assets/photos/m-commission.jpg)"></div>
   <div class="wrap">
     <div class="head">
-      <span class="plaque"><b>Commissions</b>Built for you</span>
+      <span class="plaque"><b>Track 05</b>Commissions</span>
       <h2 id="com-h">We build agents to order.</h2>
       <p>Callahan builds custom AI agents for engineering teams, on the same rules as our own: they run where you run, record what they did, and leave the decision to a person.</p>
       <div class="after"><a class="btn brass" href="https://github.com/Callahan-ci">Talk to us on GitHub</a></div>
     </div>
   </div>
-  <p class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Traditional_goldsmith_engraving_a_ring,_Goa,_India.jpg">SerChevalerie</a>, CC0</p>
+  <p class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:A_luthier_at_work_on_a_violin_02.jpg">Kritzolina</a>, CC BY-SA 4.0</p>
 </section>
 
 <section class="scene" id="open" aria-labelledby="open-h">
-  <div class="photo" style="background-image:url(assets/photos/window.jpg);background-position:right center"></div>
+  <div class="photo" style="background-image:url(assets/photos/m-open.jpg);background-position:center 30%"></div>
   <div class="wrap">
     <div class="head">
-      <span class="plaque"><b>The open door</b>Security</span>
-      <h2 id="open-h">Come in and check our work.</h2>
+      <span class="plaque"><b>Track 06</b>Liner notes</span>
+      <h2 id="open-h">Open to everyone to check.</h2>
       <p>You are letting software act for you, so everything we ship is open to inspection.</p>
     </div>
     <div class="ledger">
@@ -169,13 +170,13 @@
     </div>
     <p class="after"><a class="tlink" href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security review</a><a class="tlink" href="https://github.com/Callahan-ci/quartet-qe/blob/main/PRIVACY.md">Privacy</a></p>
   </div>
-  <p class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Beilstein_-_Billensbach_-_Stocksberger_Str._14_-_Werkstatt_-_Fenster_mit_Hopfenranken_(1).jpg">Roman Eisele</a>, CC BY-SA 4.0</p>
+  <p class="credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Chamber_music_concert_at_Wigmore_Hall_-_geograph.org.uk_-_5681152.jpg">David Hawgood</a>, CC BY-SA 2.0</p>
 </section>
 
 <section class="scene" id="install" aria-labelledby="in-h" style="background:#100c08">
   <div class="wrap">
     <div class="head">
-      <span class="plaque"><b>Take one home</b>Install</span>
+      <span class="plaque"><b>Track 07</b>Take it home</span>
       <h2 id="in-h">Install Quartet QE.</h2>
       <p>In Claude Code, add the marketplace, then install.</p>
     </div>
@@ -190,13 +191,13 @@
 
 <footer class="foot"><div class="wrap">
   <div class="grid">
-    <div class="foot-brand"><a class="brand" href="index.html"><img src="assets/callahan-mark-cream.svg" alt="" width="34" height="34">Callahan</a><p>A workshop of AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
+    <div class="foot-brand"><a class="brand" href="index.html"><img src="assets/callahan-mark-cream.svg" alt="" width="34" height="34">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
     <div><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
     <div><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
     <div><h3>Company</h3><ul><li><a href="#commissions">Commissions</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li></ul></div>
     <div><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
   </div>
-  <p class="foot-credits">Photographs from Wikimedia Commons, used under their licences: Petar Milošević (CC BY-SA 4.0), Rod Waddington (CC BY-SA 2.0), Kritzolina (CC BY-SA 4.0), Doug butler (CC BY-SA 4.0), Franz van Duns (CC BY-SA 4.0), SerChevalerie (CC0), Roman Eisele (CC BY-SA 4.0). Each photo links to its source where it appears.</p>
+  <p class="foot-credits">Photographs from Wikimedia Commons, used under their licences: Gerda Arendt (CC BY-SA 4.0), David Hawgood (CC BY-SA 2.0), Turidoth (CC BY-SA 2.5), Garry Knight (CC BY-SA 2.0), Steve Knight (CC BY 2.0), Will Fisher (CC BY-SA 2.0), Kritzolina (CC BY-SA 4.0). Each photo links to its source where it appears.</p>
   <div class="foot-legal"><span>Copyright 2026 Callahan</span><span>callahanci.com</span></div>
 </div></footer>
 <script src="assets/timetable.js" defer></script>
