@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quartet QE docs and how-tos | Callahan</title>
+<meta name="description" content="Install Quartet QE, run your first story, and test websites, phone browsers, native Android apps, APIs, databases and Kafka, with real examples.">
+<meta name="theme-color" content="#f8eee8">
+<meta property="og:title" content="Quartet QE guide and how-tos | Callahan">
+<meta property="og:description" content="Install Quartet QE, run your first story, and test websites, phone browsers, native Android apps, APIs, databases and Kafka, with real examples.">
+<meta property="og:image" content="https://callahanci.com/assets/callahan-logo.png">
+<link rel="icon" type="image/svg+xml" href="assets/callahan-mark-orange.svg">
+<link rel="alternate icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/studio.css">
+<link rel="stylesheet" href="assets/studio-pages.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <nav class="pills" aria-label="Main"><a class="pill" href="quartet.html">Quartet QE</a><a class="pill" href="callahan-ci.html">Callahan CI</a><a class="pill" href="docs.html" aria-current="page">Docs</a></nav>
+  <a class="wordmark" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a>
+  <div class="top-end">
+    <small>Open source, MIT<br>macOS and Linux</small>
+    <a class="talk" href="quartet.html#install">Install<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-head" aria-labelledby="page-h"><div class="wrap">
+  <h1 id="page-h">Quartet QE docs.</h1>
+  <p class="lede">From install to a passing, replayable test, with real examples for websites, phone browsers, native Android apps, APIs, databases and Kafka.</p>
+</div></section>
+<div class="wrap doc-grid">
+  <nav class="toc" aria-label="In this guide"><h2>Docs</h2><ul><li><a class="on" href="quartet-docs.html">Quartet QE docs</a></li><li><a href="callahan-ci-docs.html">Callahan CI docs</a></li></ul><h2>Get started</h2><ul><li><a href="#install">Install</a></li><li><a href="#first-run">Your first run</a></li><li><a href="#tests-repo">Create a tests repo for your product</a></li><li><a href="#environment">Tell it what it can reach</a></li><li><a href="#story">Write a story</a></li><li><a href="#write">Write and run the tests</a></li><li><a href="#replay">Review, then replay with no AI</a></li></ul><h2>How to test</h2><ul><li><a href="#website">How to test a website</a></li><li><a href="#phones">How to test phone browsers</a></li><li><a href="#android">How to test a native Android app</a></li><li><a href="#services">How to test APIs, databases and Kafka</a></li></ul><h2>Run and fix</h2><ul><li><a href="#jenkins">Run it in Jenkins</a></li><li><a href="#trouble">When something goes wrong</a></li></ul></nav>
+  <article class="doc"><section id="install"><h2>Install</h2><p>Quartet QE needs Java 21 or newer. Pick one way in.</p>
+<h3>In Claude Code</h3><p>Nothing to clone. Run these in Claude Code; it then asks for your tests folder and, if you want them, your Jira, Azure DevOps, GitHub, GitLab and Jenkins details.</p><div class="code"><div class="code-bar"><b>Claude Code</b><span></span></div><pre><code>/plugin marketplace add Callahan-ci/quartet-qe
+/plugin install quartet-qe@quartet-qe</code></pre></div>
+<h3>In the Claude desktop app</h3><p>Download the <code>.mcpb</code> file for your computer from the <a href="https://github.com/Callahan-ci/quartet-qe/releases/latest">latest release</a> (<code>mac-arm64</code> for Apple silicon, <code>mac</code> for Intel, <code>linux</code> or <code>linux-arm64</code>), double-click it and fill in the settings.</p>
+<h3>From source</h3><div class="code"><div class="code-bar"><b>terminal</b><span></span></div><pre><code>git clone https://github.com/Callahan-ci/quartet-qe.git
+cd quartet-qe
+./get-started.sh</code></pre></div><p><code>get-started.sh</code> checks your machine, builds the tool and offers a menu: watch the demo, connect your chat tool, or set up tests for your own product.</p></section><section id="first-run"><h2>Your first run</h2><p>The fastest way to see it work is the demo shop that ships with Quartet. In one terminal start the shop and leave it running; in another, run a story.</p><div class="code"><div class="code-bar"><b>terminal 1</b><span></span></div><pre><code>./demo-shop.sh</code></pre></div><div class="code"><div class="code-bar"><b>terminal 2</b><span></span></div><pre><code>./quartet-qe run --story stories/SHOP-142.md</code></pre></div><p>It ends with a summary like this, and a review page to open:</p><div class="code"><div class="code-bar"><b>output</b><span></span></div><pre><code>Context  26 files, 12 engineering principles
+Story    SHOP-142: Checkout reserves stock and confirms the order (7 acceptance criteria)
+Tests    6 written: 6 passed, 0 failed, 0 skipped
+Review   reports/SHOP-142/review.html (ready to merge)</code></pre></div></section><section id="tests-repo"><h2>Create a tests repo for your product</h2><p>Tests live in their own repo, one per product or team.</p><div class="code"><div class="code-bar"><b>terminal</b><span></span></div><pre><code>./new-tests-repo.sh ../my-product-tests
+cd ../my-product-tests</code></pre></div><p>You get <code>quartet.yaml</code>, a <code>context/</code> folder for your environment, and space for tests, recordings and reports. Quartet itself is installed once per machine, so nothing else is copied in.</p>
+<p>In a chat tool, the quickest start is to say <b>"Help me set up Quartet QE for my product."</b> It asks what it needs, writes the files and checks each connection. When it needs a token it names the variable and you run <code>./quartet-qe secret NAME</code> in a terminal, so secrets never go through the chat.</p></section><section id="environment"><h2>Tell it what it can reach</h2><p>One file lists every system the tests may touch, and a guard that keeps them off anything else. Target types are <code>api</code>, <code>screen</code> (web and mobile), <code>kafka</code>, <code>postgres</code> and <code>mongo</code>. Databases are read-only unless a target says otherwise, and secrets come from environment variables, never from the file.</p><div class="code"><div class="code-bar"><b>context/environments/default.yaml</b><span></span></div><pre><code>name: default
+guard:
+  production: false
+  allowHosts: [localhost, staging.example.com]   <span class="c"># tests can only reach these hosts</span>
+targets:
+  orders-api:
+    type: api
+    description: Orders REST API.
+    baseUrl: <span class="s">"${ORDERS_API_URL:-http://localhost:8080}"</span>
+    context: [contracts/openapi/orders-service.yaml]
+  orders-db:
+    type: postgres
+    description: Orders database, read-only for tests.
+    url: <span class="s">"${ORDERS_DB_URL:-jdbc:postgresql://localhost:5432/orders}"</span></code></pre></div><p>Put OpenAPI specs, Pact files and event schemas under <code>context/contracts/</code> and point targets at them with <code>context:</code>. The AI reads them before it writes a test, which is the single biggest improvement you can make.</p></section><section id="story"><h2>Write a story</h2><p>A story is a markdown file in <code>stories/</code>. Write acceptance criteria a person could check: a number, a status, a screen, an event. Vague criteria get questions back, not tests.</p><div class="code"><div class="code-bar"><b>stories/SHOP-142.md</b><span></span></div><pre><code># SHOP-142: Checkout reserves stock and confirms the order
+
+As a customer I want my items reserved when I check out, so that I am never sold something that is out of stock.
+
+## Acceptance criteria
+
+- AC1: A valid order for in-stock items returns 201 with status RESERVED and is persisted in the orders database.
+- AC2: An order exceeding available stock is rejected with 409 INSUFFICIENT_STOCK and stock does not change.</code></pre></div><p>Check a story before you spend any AI on it, from a file or straight from your tracker:</p><div class="code"><div class="code-bar"><b>terminal</b><span></span></div><pre><code>./quartet-qe check-story --story stories/SHOP-142.md
+./quartet-qe check-story --story jira:SHOP-142     <span class="c"># also ado:123, github:45, gitlab:7</span></code></pre></div></section><section id="write"><h2>Write and run the tests</h2><p>In a chat tool, say <b>"Write tests for stories/SHOP-142.md using Quartet QE."</b> With an API key instead, run:</p><div class="code"><div class="code-bar"><b>terminal</b><span></span></div><pre><code>./quartet-qe run --story stories/SHOP-142.md</code></pre></div><p>This is the one step that uses the AI. It reads your context and the story, writes the tests, checks them against your engineering principles, asks for an independent second opinion, runs them, records each verified step, and writes <code>reports/SHOP-142/review.html</code>.</p>
+<p>Add <code>--prove</code> to plant bugs in a test build and check the tests catch them. It is slower, and worth doing before you trust a suite.</p></section><section id="replay"><h2>Review, then replay with no AI</h2><p>Open the review page: anything that needs your attention is at the top. Read the tests like any other code, then commit the tests and the <code>recordings/</code> folder together. From then on:</p><div class="code"><div class="code-bar"><b>terminal</b><span></span></div><pre><code>./gradlew test            <span class="c"># replays from recordings, no AI</span>
+./gradlew test -Pwatch    <span class="c"># the same, in a visible browser you can follow</span></code></pre></div><div class="code"><div class="code-bar"><b>output</b><span></span></div><pre><code>[quartet] Recordings: 8 replayed, 0 handed off, 0 missed | AI: 0 model calls</code></pre></div><p>If a step breaks after a redesign, <code>./quartet-qe repair</code> records it again. It can change how a step is done, never what the test must prove; if the product itself is wrong, you get a bug report instead.</p></section><section id="website"><h2>How to test a website</h2><p>Add a <code>screen</code> target with a desktop browser, then write the story as you would explain it to a colleague. The test names the target and says what the user does; the AI works out the clicks the first time.</p><div class="code"><div class="code-bar"><b>context/environments/default.yaml</b><span></span></div><pre><code>targets:
+  shop-web:
+    type: screen
+    description: The customer web shop, served at /.
+    baseUrl: <span class="s">"${SHOP_WEB_URL:-http://localhost:18080}"</span>
+    devices:
+      desktop: {kind: web, engine: chromium}</code></pre></div><div class="code"><div class="code-bar"><b>CheckoutReservesStockTest.java</b><span></span></div><pre><code><span class="a">@Test</span>
+<span class="a">@AcceptanceCriteria</span>(<span class="s">"AC6"</span>)
+void customerSeesConfirmationInTheWebShop(TestAgent agent) {
+    ActResult order = agent.act(<span class="s">"Order 1 unit of SKU-1001 as customer C-7 through the web shop"</span>,
+            why(<span class="s">"Most customers place their orders through the web shop"</span>),
+            on(<span class="s">"shop-web"</span>),
+            returns(<span class="s">"orderNumber"</span>));
+    assertThat(order.get(<span class="s">"orderNumber"</span>)).matches(<span class="s">"ORD-[0-9]+"</span>);
+
+    agent.verify(<span class="s">"The page tells the customer their order is reserved"</span>,
+            why(<span class="s">"Customers need reassurance that the purchase worked"</span>),
+            on(<span class="s">"shop-web"</span>));
+}</code></pre></div><p>To test a public site with no setup at all, say <b>"Test my site https://www.example.com using Quartet QE"</b> in your chat tool. Quartet creates the environment for that site (desktop, iPhone and Android phone, allowing only that site) and drafts the story with you.</p></section><section id="phones"><h2>How to test phone browsers</h2><p>Phone browsers need nothing extra. Add devices to the same target and mark the test with <code>@OnEverySurface</code>; it runs once per device, each with its own recording.</p><div class="code"><div class="code-bar"><b>context/environments/default.yaml</b><span></span></div><pre><code>targets:
+  shop-web:
+    type: screen
+    baseUrl: <span class="s">"https://staging.example.com"</span>
+    devices:
+      desktop: {kind: web, engine: chromium}
+      iphone: {kind: web, engine: webkit, preset: iphone}
+      android-phone: {kind: web, engine: chromium, preset: android}
+      android-device: {kind: android}   <span class="c"># an emulator or phone listed by adb</span></code></pre></div><div class="code"><div class="code-bar"><b>CheckoutReservesStockTest.java</b><span></span></div><pre><code><span class="a">@OnEverySurface</span>(<span class="s">"shop-web"</span>)   <span class="c">// runs once per device above</span>
+<span class="a">@AcceptanceCriteria</span>(<span class="s">"AC6"</span>)
+void customerSeesConfirmationInTheWebShop(TestAgent agent) {
+    ActResult order = agent.act(<span class="s">"Order 1 unit of SKU-1001 as customer C-7 through the web shop"</span>,
+            why(<span class="s">"Most customers place their orders through the web shop"</span>),
+            on(<span class="s">"shop-web"</span>),
+            returns(<span class="s">"orderNumber"</span>));
+    assertThat(order.get(<span class="s">"orderNumber"</span>)).matches(<span class="s">"ORD-[0-9]+"</span>);
+}</code></pre></div></section><section id="android"><h2>How to test a native Android app</h2><p>Quartet drives a native app through <code>adb</code> and the app's accessibility tree, the way a screen reader does. Nothing is installed on the device; there is no Appium server to run.</p>
+<ol><li>Install the Android SDK platform tools and set <code>ANDROID_HOME</code>.</li><li>Start an emulator or plug in a phone with the app installed, and check <code>adb devices</code> lists it.</li><li>Add a <code>screen</code> target with the app's package name and an <code>android</code> device.</li><li>Write the story, then run it as usual.</li></ol><div class="code"><div class="code-bar"><b>context/environments/default.yaml</b><span></span></div><pre><code>targets:
+  calculator-app:
+    type: <span class="s">"screen"</span>
+    description: <span class="s">"The Fossify Calculator Android app"</span>
+    app:
+      android: <span class="s">"org.fossify.math"</span>
+    devices:
+      android:
+        kind: <span class="s">"android"</span>   <span class="c"># an emulator or phone listed by adb</span></code></pre></div><div class="code"><div class="code-bar"><b>terminal</b><span></span></div><pre><code>adb devices                 <span class="c"># the emulator or phone must be listed</span>
+./quartet-qe observe --target calculator-app --device android   <span class="c"># see what the agent sees</span></code></pre></div><div class="code"><div class="code-bar"><b>CalculatorTest.java</b><span></span></div><pre><code><span class="a">@Test</span>
+<span class="a">@AcceptanceCriteria</span>(<span class="s">"AC1"</span>)
+void addingTwoNumbersShowsTheirSum(TestAgent agent) {
+    ActResult shown = agent.act(<span class="s">"Open the calculator, enter 7 + 8, press equals and read the result shown"</span>,
+            why(<span class="s">"A user adding two numbers must get the right answer"</span>),
+            on(<span class="s">"calculator-app"</span>),
+            returns(<span class="s">"text"</span>));
+    assertThat(shown.get(<span class="s">"text"</span>)).isEqualTo(<span class="s">"15"</span>);
+}
+
+<span class="a">@Test</span>
+<span class="a">@AcceptanceCriteria</span>(<span class="s">"AC6"</span>)
+void aFinishedCalculationAppearsInHistory(TestAgent agent) {
+    ActResult entry = agent.act(<span class="s">"Open the calculator, calculate 12 + 34, open History and read the newest entry"</span>,
+            why(<span class="s">"A user must be able to find an earlier calculation"</span>),
+            on(<span class="s">"calculator-app"</span>),
+            returns(<span class="s">"text"</span>));
+    assertThat(entry.get(<span class="s">"text"</span>)).contains(<span class="s">"12+34"</span>).contains(<span class="s">"46"</span>);
+}</code></pre></div><p>This is from a real run against <a href="https://github.com/FossifyOrg/Calculator">Fossify Calculator</a> on an emulator. The story had six acceptance criteria; the AI wrote six tests; all six passed and the review said <b>ready to merge</b>. Each test starts the app cold, and once recorded they replay with no AI.</p>
+<p>iOS apps use a small XCTest runner in <code>native/ios</code> and need Xcode. It is newer and has not yet been proven on a real run.</p></section><section id="services"><h2>How to test APIs, databases and Kafka</h2><p>One test can follow a piece of work through every system it touches. Each <code>act</code> names its target; the test holds no URLs, SQL or topic names, only intent.</p><div class="code"><div class="code-bar"><b>context/environments/demo.yaml</b><span></span></div><pre><code>targets:
+  orders-api:
+    type: api
+    baseUrl: <span class="s">"${ORDERS_API_URL:-http://localhost:18080}"</span>
+    context: [contracts/openapi/orders-service.yaml]
+  orders-db:
+    type: postgres
+    url: <span class="s">"${ORDERS_DB_URL:-jdbc:postgresql://localhost:15432/postgres}"</span>
+  order-events:
+    type: kafka
+    brokers: <span class="s">"${KAFKA_BROKERS:-localhost:19092}"</span>
+    schemas:
+      shop.orders.created: contracts/events/order-created.schema.json</code></pre></div><div class="code"><div class="code-bar"><b>CheckoutReservesStockTest.java</b><span></span></div><pre><code><span class="a">@Test</span>
+<span class="a">@AcceptanceCriteria</span>({<span class="s">"AC1"</span>, <span class="s">"AC2"</span>})
+void orderFlowsThroughApiDatabaseAndEvents(TestAgent agent) {
+    ActResult order = agent.act(<span class="s">"Place an order for 2 units of SKU-1001 for customer C-42"</span>,
+            why(<span class="s">"A customer checking out is the start of the reservation journey"</span>),
+            on(<span class="s">"orders-api"</span>),
+            returns(<span class="s">"orderId"</span>, <span class="s">"status"</span>));
+    assertThat(order.get(<span class="s">"status"</span>)).isEqualTo(<span class="s">"RESERVED"</span>);
+
+    ActResult saved = agent.act(<span class="s">"Find order {{orderId}} in the orders database"</span>,
+            with(<span class="s">"orderId"</span>, order.get(<span class="s">"orderId"</span>)),
+            why(<span class="s">"A reserved order must survive beyond the request"</span>),
+            on(<span class="s">"orders-db"</span>),
+            returns(<span class="s">"status"</span>, <span class="s">"customer_id"</span>));
+    assertThat(saved.get(<span class="s">"status"</span>)).isEqualTo(<span class="s">"RESERVED"</span>);
+
+    ActResult event = agent.act(<span class="s">"Find the order created event for order {{orderId}}"</span>,
+            with(<span class="s">"orderId"</span>, order.get(<span class="s">"orderId"</span>)),
+            why(<span class="s">"Downstream teams rely on this event to fulfil the order"</span>),
+            on(<span class="s">"order-events"</span>),
+            returns(<span class="s">"found"</span>, <span class="s">"schemaValid"</span>));
+    assertThat(event.getBool(<span class="s">"schemaValid"</span>)).isTrue();
+}</code></pre></div><p>Use <code>agent.verify(claim, on(target))</code> to check a claim against a system, such as a row in a database or an event on Kafka. MongoDB works the same way with a <code>mongo</code> target.</p></section><section id="jenkins"><h2>Run it in Jenkins</h2><p>Put your Jenkins address, user and API token in <code>connectors.yaml</code>, then:</p><div class="code"><div class="code-bar"><b>terminal</b><span></span></div><pre><code>./quartet-qe setup-jenkins</code></pre></div><p>It writes the <code>Jenkinsfile</code> if the repo has none and creates a multibranch pipeline job pointed at your repo. Every build replays the recorded steps with no AI, so the pipeline needs no AI key. To open a pull request with the review as its description:</p><div class="code"><div class="code-bar"><b>terminal</b><span></span></div><pre><code>./quartet-qe publish --story jira:SHOP-142 --code github</code></pre></div></section><section id="trouble"><h2>When something goes wrong</h2><table><thead><tr><th>What you see</th><th>What to do</th></tr></thead><tbody>
+<tr><td><code>No AI configured</code></td><td>Use your chat AI, or run <code>./quartet-qe ai-key</code>.</td></tr>
+<tr><td>A test fails with <code>no recording</code></td><td>Run <code>./quartet-qe run</code> once, or use <code>QUARTET_MODE=auto</code>.</td></tr>
+<tr><td>A step fails after a UI change</td><td>Run <code>./quartet-qe repair --file &lt;Test.java&gt; --selector '&lt;package&gt;.*'</code>.</td></tr>
+<tr><td>A host is blocked</td><td>Add it to <code>allowHosts</code> in your environment file, if you really mean to test it.</td></tr>
+<tr><td>Anything else</td><td>Run <code>./quartet-qe doctor</code>; it checks your setup and says what to fix.</td></tr>
+</tbody></table><p>The full guide is <a href="https://github.com/Callahan-ci/quartet-qe/blob/main/GETTING-STARTED.md">GETTING-STARTED.md</a> in the repository.</p></section></article>
+</div>
+</main>
+
+<footer class="foot">
+  <div class="grid">
+    <div><a class="wordmark" href="index.html"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
+    <div><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
+    <div><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="https://github.com/Callahan-ci">GitHub</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
+    <div><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
+  </div>
+  <div class="foot-legal"><span>Copyright 2026 Callahan</span><span>callahanci.com</span></div>
+</footer>
+<script src="assets/timetable.js" defer></script>
+</body>
+</html>

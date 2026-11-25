@@ -5,156 +5,225 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Callahan: AI agents that prove their work</title>
 <meta name="description" content="Callahan builds AI agents for engineering teams. Quartet QE writes end-to-end tests from a user story and replays them with no AI. Callahan CI runs your pipelines on your own machine.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#f9e2e1">
 <meta property="og:title" content="Callahan: AI agents that prove their work">
 <meta property="og:description" content="Quartet QE writes end-to-end tests from a user story and replays them with no AI. Open source.">
 <meta property="og:image" content="https://callahanci.com/assets/callahan-logo.png">
-<link rel="icon" type="image/svg+xml" href="assets/callahan-mark.svg">
+<link rel="icon" type="image/svg+xml" href="assets/callahan-mark-orange.svg">
 <link rel="alternate icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/timetable.css">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/studio.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav"><div class="wrap">
-  <a class="brand" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark.svg" alt="" width="36" height="36">Callahan</a>
-  <nav class="nav-links" aria-label="Main">
-    <a href="quartet.html">Quartet QE</a>
-    <a href="callahan-ci.html">Callahan CI</a>
-    <a href="#build">Build with us</a>
-    <a href="docs.html">Docs</a>
+
+<header class="top">
+  <nav class="pills" aria-label="Main">
+    <a class="pill" href="quartet.html">Quartet QE</a>
+    <a class="pill" href="callahan-ci.html">Callahan CI</a>
+    <a class="pill" href="docs.html">Docs</a>
   </nav>
-  <div class="nav-end">
-    <a class="gh" href="https://github.com/Callahan-ci">GitHub</a>
-    <a class="btn red sm" href="#install">Install Quartet QE</a>
+  <a class="wordmark" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a>
+  <div class="top-end">
+    <small>Open source, MIT<br>macOS and Linux</small>
+    <a class="talk" href="#install">Install<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a>
   </div>
-</div></header>
+</header>
 
 <main id="main">
-<section class="hero" aria-labelledby="hero-h"><div class="wrap grid">
-  <div class="hero-copy">
-    <h1 id="hero-h">Agents that prove their work.</h1>
-    <p class="sub">Callahan builds AI agents for engineering teams. Quartet QE writes your end-to-end tests from a user story, then replays them with no AI.</p>
+<section class="hero" aria-labelledby="hero-h">
+  <div class="roll">
+    <h1 id="hero-h">Agents that</h1>
+    <span class="rot" aria-label="prove their work">
+      <span class="on">Prove their work</span>
+      <span aria-hidden="true">Test your apps</span>
+      <span aria-hidden="true">Replay with no AI</span>
+      <span aria-hidden="true">Run your pipelines</span>
+    </span>
+  </div>
+  <p class="hero-sub">Callahan builds AI agents for engineering teams. They run on your machine, record what they did, and leave the decision to a person.</p>
+  <div class="hero-acts">
+    <a class="btn" href="#install">Install Quartet QE<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a>
+    <a class="btn ghost" href="#works">See the agents</a>
+  </div>
+
+  <div class="parade" aria-hidden="true">
+    <div class="drone l"><svg viewBox="0 0 120 70"><g stroke="#222" stroke-width="3" stroke-linecap="round"><ellipse class="rotor" cx="22" cy="12" rx="20" ry="4" fill="#fff"/><ellipse class="rotor" cx="98" cy="12" rx="20" ry="4" fill="#fff"/><path d="M22 14v10M98 14v10" /></g><rect x="22" y="22" width="76" height="30" rx="12" fill="#f25525" stroke="#222" stroke-width="3"/><circle cx="60" cy="37" r="8" fill="#fff" stroke="#222" stroke-width="3"/><circle cx="60" cy="37" r="3" fill="#222"/></svg></div>
+    <div class="drone r"><svg viewBox="0 0 120 70"><g stroke="#222" stroke-width="3" stroke-linecap="round"><ellipse class="rotor" cx="22" cy="12" rx="20" ry="4" fill="#fff"/><ellipse class="rotor" cx="98" cy="12" rx="20" ry="4" fill="#fff"/><path d="M22 14v10M98 14v10" /></g><rect x="22" y="22" width="76" height="30" rx="12" fill="#fff" stroke="#222" stroke-width="3"/><circle cx="60" cy="37" r="8" fill="#f25525" stroke="#222" stroke-width="3"/><circle cx="60" cy="37" r="3" fill="#222"/></svg></div>
+
+    <div class="bot a"><svg viewBox="0 0 240 420">
+      <g class="leg-l"><rect x="86" y="268" width="26" height="118" rx="10" fill="#fff" stroke="#222" stroke-width="3"/><path d="M74 384h46a10 10 0 0 1 10 10v8H70v-8a4 4 0 0 1 4-4z" fill="#222"/></g>
+      <g class="leg-r"><rect x="128" y="268" width="26" height="118" rx="10" fill="#fff" stroke="#222" stroke-width="3"/><path d="M118 384h46a10 10 0 0 1 10 10v8h-60v-8a4 4 0 0 1 4-4z" fill="#222"/></g>
+      <g class="body-bob">
+        <path d="M120 60V36" stroke="#222" stroke-width="3"/><circle cx="120" cy="30" r="8" fill="#f25525" stroke="#222" stroke-width="3"/>
+        <rect x="74" y="58" width="92" height="74" rx="22" fill="#fff" stroke="#222" stroke-width="3"/>
+        <rect x="86" y="78" width="68" height="30" rx="14" fill="#222"/>
+        <g class="blink"><circle cx="106" cy="93" r="5" fill="#f25525"/><circle cx="134" cy="93" r="5" fill="#f25525"/></g>
+        <rect x="70" y="140" width="100" height="136" rx="26" fill="#f25525" stroke="#222" stroke-width="3"/>
+        <path d="M70 168 36 214M170 168l34 46" stroke="#222" stroke-width="3" stroke-linecap="round"/>
+        <g transform="rotate(-5 120 230)"><rect x="18" y="190" width="204" height="92" rx="4" fill="#fff" stroke="#222" stroke-width="3"/><text x="120" y="248" text-anchor="middle" font-family="Big Shoulders Display, Arial Narrow, sans-serif" font-weight="900" font-size="40" fill="#f25525">QUARTET QE</text></g>
+      </g>
+    </svg></div>
+
+    <div class="bot b"><svg viewBox="0 0 240 420">
+      <g class="leg-l"><rect x="86" y="268" width="26" height="118" rx="10" fill="#f25525" stroke="#222" stroke-width="3"/><path d="M74 384h46a10 10 0 0 1 10 10v8H70v-8a4 4 0 0 1 4-4z" fill="#222"/></g>
+      <g class="leg-r"><rect x="128" y="268" width="26" height="118" rx="10" fill="#f25525" stroke="#222" stroke-width="3"/><path d="M118 384h46a10 10 0 0 1 10 10v8h-60v-8a4 4 0 0 1 4-4z" fill="#222"/></g>
+      <g class="body-bob">
+        <path d="M108 60V40M132 60V40" stroke="#222" stroke-width="3"/><circle cx="108" cy="36" r="6" fill="#222"/><circle cx="132" cy="36" r="6" fill="#222"/>
+        <rect x="72" y="58" width="96" height="76" rx="38" fill="#f25525" stroke="#222" stroke-width="3"/>
+        <rect x="88" y="80" width="64" height="28" rx="14" fill="#fff" stroke="#222" stroke-width="3"/>
+        <g class="blink"><circle cx="108" cy="94" r="5" fill="#222"/><circle cx="132" cy="94" r="5" fill="#222"/></g>
+        <rect x="70" y="140" width="100" height="136" rx="26" fill="#fff" stroke="#222" stroke-width="3"/>
+        <path d="M70 168 36 214M170 168l34 46" stroke="#222" stroke-width="3" stroke-linecap="round"/>
+        <g transform="rotate(4 120 230)"><rect x="18" y="190" width="204" height="92" rx="4" fill="#fff" stroke="#222" stroke-width="3"/><text x="120" y="248" text-anchor="middle" font-family="Big Shoulders Display, Arial Narrow, sans-serif" font-weight="900" font-size="40" fill="#f25525">CALLAHAN CI</text></g>
+      </g>
+    </svg></div>
+    <div class="floor"></div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true">
+  <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
+    <path id="bandpath" d="M-60 190 C 380 40, 980 20, 1520 90" fill="none" stroke="#f25525" stroke-width="96"/>
+    <text dy="18"><textPath id="bandtext" href="#bandpath" startOffset="0">Proves its work • Replays with no AI • A person signs off • Proves its work • Replays with no AI • A person signs off • Proves its work • Replays with no AI • A person signs off •</textPath></text>
+  </svg>
+</div>
+
+<section class="about" id="about" aria-labelledby="about-h">
+  <div class="wrap">
+    <span class="label" id="about-h">A bit about us</span>
+    <p class="statement" data-fill>We build AI agents that do the work and prove it. Quartet QE writes your end-to-end tests from a user story, every rerun replays with no AI, and a person always signs off.</p>
+  </div>
+  <div class="stickers" aria-hidden="true">
+    <span class="sticker" style="left:66%;top:34%;--r:-7deg">Record once</span>
+    <span class="sticker" style="left:14%;top:56%;--r:5deg">No AI on replay</span>
+    <span class="sticker" style="left:60%;top:70%;--r:-4deg">A person approves</span>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true">
+  <div class="strip-track" data-strip>
+    <div class="plate o"><span class="t">Take 1: checkout</span><span class="s">The AI drives it once.</span><div class="chk"><span><b>✓</b>Open the shop</span><span><b>✓</b>Add the book</span><span><b>✓</b>Check the total</span><span><b>✓</b>Order in Postgres</span></div></div>
+    <div class="plate k"><span class="t">CalculatorTest</span><span class="s">Native Android, plain English.</span><pre>agent.act("Open the calculator,
+  enter 7 + 8, press equals
+  and read the result shown",
+  on("calculator-app"));
+// → "15"</pre></div>
+    <div class="plate p"><span class="t">Replay</span><span class="s">Every run after the first.</span><span class="big">0 AI<br>calls</span></div>
+    <div class="plate w"><span class="t">Review</span><span class="s">CALC-1, six acceptance criteria.</span><div class="chk"><span><b>✓</b>Ready to merge</span><span><b>✓</b>6 tests, 6 passed</span><span><b>✓</b>Nothing needs you</span></div></div>
+    <div class="plate v"><span class="t">Build 42</span><span class="s">Callahan CI on your machine.</span><div class="chk"><span><b>✓</b>Ingest, plan, build</span><span><b>✓</b>Diff reviewed</span><span><b>✓</b>Posted to the PR</span></div></div>
+    <div class="plate o"><span class="t">Kafka</span><span class="s">shop.orders.created</span><pre>{ "orderId": "ORD-1042",
+  "status": "RESERVED",
+  "schemaValid": true }</pre></div>
+    <div class="plate p"><span class="t">Two agents</span><span class="s">More on the way.</span><img class="mk" src="assets/quartet-mark-orange.svg" alt=""></div>
+  </div>
+</div>
+
+<section id="works" aria-labelledby="works-h">
+  <div class="wrap">
+    <div class="title"><span class="label">Agents and examples</span><h2 id="works-h">On the<br>bench</h2><span></span></div>
+    <div class="works">
+      <a class="work" href="quartet.html"><div class="art" style="background:#f25525"><div class="mock"><h4>Take 1: checkout</h4><div class="r">Open the shop<em>✓</em></div><div class="r">Check the basket total<em>✓</em></div><div class="r">Check the order event<em>✓</em></div><div class="r">Sign-off<em>Your go</em></div></div></div>
+        <div class="meta"><span class="ic"><img src="assets/quartet-mark-white.svg" alt=""></span><span><b>Quartet QE</b><small>Agent, testing</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+      <a class="work" href="callahan-ci.html"><div class="art" style="background:#111"><div class="mock"><h4>Build 42</h4><div class="r">Ingest, plan, build<em>✓</em></div><div class="r">Reviewer agent<em>✓</em></div><div class="r">Trivy scan<em>Fix</em></div><div class="r">Posted to the PR<em>✓</em></div></div></div>
+        <div class="meta"><span class="ic"><img src="assets/callahan-ci-mark-white.svg" alt=""></span><span><b>Callahan CI</b><small>Agent, CI/CD</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+      <a class="work" href="quartet-docs.html#android"><div class="art" style="background:#f9e2e1"><div class="mock"><h4>Android calculator</h4><pre>agent.act("Open the calculator,
+ calculate 12 + 34, open History
+ and read the newest entry",
+ on("calculator-app"));
+// → "12+34 = 46"</pre></div></div>
+        <div class="meta"><span class="ic"><img src="assets/icons-ink/android.svg" alt="" style="filter:invert(1)"></span><span><b>Native Android app</b><small>Example, real run</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+      <a class="work" href="quartet.html#examples"><div class="art" style="background:#1a54e4"><div class="mock"><h4>Web shop</h4><div class="r">Order through the shop<em>ORD-1042</em></div><div class="r">Page says it's reserved<em>✓</em></div><div class="r">Screenshot per step<em>✓</em></div></div></div>
+        <div class="meta"><span class="ic"><img src="assets/icons-ink/googlechrome.svg" alt="" style="filter:invert(1)"></span><span><b>Website</b><small>Example, demo shop</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+      <a class="work" href="quartet-docs.html#services"><div class="art" style="background:#fdf8f5"><div class="mock"><h4>API, Postgres, Kafka</h4><div class="r">POST /orders<em>RESERVED</em></div><div class="r">orders row<em>✓</em></div><div class="r">shop.orders.created<em>✓</em></div></div></div>
+        <div class="meta"><span class="ic"><img src="assets/icons-ink/apachekafka.svg" alt="" style="filter:invert(1)"></span><span><b>Services</b><small>Example, one test</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+      <a class="work" href="quartet-docs.html#jenkins"><div class="art" style="background:#f6b79e"><div class="mock"><h4>Jenkins</h4><pre>[quartet] Recordings: 8 replayed,
+ 0 handed off, 0 missed
+ | AI: 0 model calls</pre></div></div>
+        <div class="meta"><span class="ic"><img src="assets/icons-ink/jenkins.svg" alt="" style="filter:invert(1)"></span><span><b>Replay in CI</b><small>Example, no AI key</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="keep" aria-labelledby="keep-h">
+  <h2 id="keep-h">We could keep<br>testing, but<br>there's a guide</h2>
+  <span class="bubble" style="left:22%;top:24%">Spoiler: it's free</span>
+  <span class="bubble" style="left:63%;top:52%">Open source, MIT</span>
+  <div><a class="btn" href="docs.html">Read the docs<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a></div>
+</section>
+
+<section class="thing" aria-labelledby="thing-h">
+  <div class="wrap">
+    <div class="title"><span class="label">What it tests</span><h2 id="thing-h">One story,<br>every line</h2><span></span></div>
+    <div class="trail" data-trail>
+      <svg class="path" viewBox="0 0 1320 2050" preserveAspectRatio="none" aria-hidden="true">
+        <path class="ghost" d="M1300 0 C 1100 60, 820 40, 760 170 C 690 330, 260 260, 210 430 C 160 600, 760 560, 790 720 C 820 900, 300 860, 250 1020 C 200 1190, 860 1150, 900 1300 C 940 1460, 300 1440, 240 1590 C 180 1750, 720 1720, 740 1880 C 760 2000, 300 2030, 60 2050" fill="none" stroke-width="16" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+        <path class="draw" d="M1300 0 C 1100 60, 820 40, 760 170 C 690 330, 260 260, 210 430 C 160 600, 760 560, 790 720 C 820 900, 300 860, 250 1020 C 200 1190, 860 1150, 900 1300 C 940 1460, 300 1440, 240 1590 C 180 1750, 720 1720, 740 1880 C 760 2000, 300 2030, 60 2050" fill="none" stroke="#f25525" stroke-width="16" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <div class="tstop" style="left:52%;top:70px"><h3>Websites</h3><span class="chip"><img src="assets/icons-ink/googlechrome.svg" alt=""></span><p>A real browser, with a screenshot at every step.</p></div>
+      <div class="tstop" style="left:4%;top:350px"><h3>Phone browsers</h3><span class="chip"><svg viewBox="0 0 24 24" fill="#222"><path fill-rule="evenodd" d="M7 1.5h10A1.5 1.5 0 0 1 18.5 3v18a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 21V3A1.5 1.5 0 0 1 7 1.5Zm1 2.5v13h8V4H8Zm2.5 15v1.5h3V19h-3Z"/></svg></span><p>The same story on iPhone and Android browsers.</p></div>
+      <div class="tstop" style="left:56%;top:640px"><h3>Native Android</h3><span class="chip"><img src="assets/icons-ink/android.svg" alt=""></span><p>Taps, types and checks inside the app itself. No Appium server.</p></div>
+      <div class="tstop" style="left:8%;top:930px"><h3>APIs</h3><span class="chip"><svg viewBox="0 0 24 24" fill="#222"><path d="M7.4 5.3 1.2 12l6.2 6.7 2.1-2L5.2 12l4.3-4.7-2.1-2Zm9.2 0-2.1 2 4.3 4.7-4.3 4.7 2.1 2 6.2-6.7-6.2-6.7ZM13.3 3.5l-4.6 17 2.6.7 4.6-17-2.6-.7Z"/></svg></span><p>Calls checked against your API descriptions.</p></div>
+      <div class="tstop" style="left:60%;top:1210px"><h3>Kafka</h3><span class="chip"><img src="assets/icons-ink/apachekafka.svg" alt=""></span><p>Publishes, consumes and checks what arrived.</p></div>
+      <div class="tstop" style="left:6%;top:1500px"><h3>Databases</h3><span class="chip"><img src="assets/icons-ink/postgresql.svg" alt=""></span><p>Postgres and MongoDB, checked after the fact.</p></div>
+      <div class="tstop" style="left:52%;top:1790px"><h3>Your tools</h3><span class="chip"><img src="assets/icons-ink/jenkins.svg" alt=""></span><p>Stories from Jira, Azure DevOps, GitHub and GitLab. Reports into Jenkins.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="opanel" aria-labelledby="how-h">
+  <h2 id="how-h" class="visually-hidden">How it works</h2>
+  <div class="deck" data-deck>
+    <article class="card" data-pos="0"><span class="num">1</span><div><h3>You write the story</h3><p>Plain English, or a ticket from Jira, Azure DevOps, GitHub or GitLab. Vague criteria get questions back, not tests.</p></div></article>
+    <article class="card" data-pos="1"><span class="num">2</span><div><h3>The AI writes the tests</h3><p>It reads your contracts and context first, writes the tests, checks them against your principles, and asks for a second opinion.</p></div></article>
+    <article class="card" data-pos="2"><span class="num">3</span><div><h3>The recording replays</h3><p>Commit the tests and <code>recordings/</code> together. From then on <code>./gradlew test</code> replays with no AI: fast, free and the same every time.</p></div></article>
+    <article class="card" data-pos="3"><span class="num">4</span><div><h3>A person signs off</h3><p>One review page, with anything that needs you at the top. The agent opens a pull request; it never merges.</p></div></article>
+  </div>
+  <div class="dots" role="tablist" aria-label="How it works, step">
+    <button type="button" aria-label="Step 1" aria-current="true"></button><button type="button" aria-label="Step 2"></button><button type="button" aria-label="Step 3"></button><button type="button" aria-label="Step 4"></button>
+  </div>
+</section>
+
+<section aria-labelledby="watch-h">
+  <div class="wrap">
+    <div class="title"><span class="label">Videos</span><h2 id="watch-h">Watch<br>them work</h2><span></span></div>
+    <div class="films">
+      <div class="film"><video controls preload="metadata" playsinline poster="assets/quartet-qe-studio.jpg" width="1280" height="720"><source src="assets/quartet-qe-studio.mp4" type="video/mp4"></video><div class="meta"><b>Quartet QE</b><span>24 seconds. Music: Mixkit, free licence</span></div></div>
+      <div class="film"><video controls preload="metadata" playsinline poster="assets/callahan-ci-studio.jpg" width="1280" height="720"><source src="assets/callahan-ci-studio.mp4" type="video/mp4"></video><div class="meta"><b>Callahan CI</b><span>20 seconds. Music: Mixkit, free licence</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="closing" id="install" aria-labelledby="close-h">
+  <div class="wrap">
+    <h2 id="close-h">Let's build<br><span>your agent</span></h2>
     <div class="acts">
-      <a class="btn red" href="#install">Install Quartet QE</a>
-      <a class="tlink" href="#build">Build an agent with us</a>
+      <a class="btn" href="https://github.com/Callahan-ci">Talk to us on GitHub<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a>
+      <a class="btn ghost" href="quartet-docs.html">Docs and how-tos</a>
     </div>
-    <p class="facts"><span>Open source, MIT</span><span>macOS and Linux</span><span>No account</span></p>
-  </div>
-
-  <div class="board-wrap">
-    <div class="board" id="board">
-      <div class="board-head"><h2>Quartet QE runs</h2><span class="clock" id="clock" aria-label="Local time">09:16</span></div>
-      <table>
-        <caption class="visually-hidden">Example runs: each story's tests, whether the AI or the recording ran them, and their status. Select a row for its evidence.</caption>
-        <thead><tr><th scope="col">Time</th><th scope="col">Story</th><th scope="col" class="col-target">Targets</th><th scope="col" class="col-run">Run</th><th scope="col" class="col-trend">Last 8</th><th scope="col">Status</th></tr></thead>
-        <tbody>
-          <tr class="row" tabindex="0" aria-expanded="false" aria-controls="d1"><td class="time">09:00</td><td class="story">Checkout total<small>Basket to order<span class="m-chip noai">No AI</span></small></td><td class="col-target"><span class="tg">web</span><span class="tg">api</span><span class="tg">postgres</span></td><td class="mode col-run"><b class="noai">No AI</b></td><td class="col-trend"><span class="trend" aria-label="8 of 8 passed"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></td><td class="status">On time</td></tr>
-          <tr class="detail" id="d1" hidden><td colspan="6"><div class="drawer"><ol><li>Open the shop</li><li>Add the book to the basket</li><li>Check the basket total through the API</li><li>Check the order record in Postgres</li></ol><p>Replayed from the recording. A screenshot for every step, in the report.</p></div></td></tr>
-          <tr class="row" tabindex="0" aria-expanded="false" aria-controls="d2"><td class="time">09:04</td><td class="story">Sign in<small>Single sign-on<span class="m-chip noai">No AI</span></small></td><td class="col-target"><span class="tg">web</span></td><td class="mode col-run"><b class="noai">No AI</b></td><td class="col-trend"><span class="trend" aria-label="7 of 8 passed, one earlier failure"><i></i><i></i><i class="fail"></i><i></i><i></i><i></i><i></i><i></i></span></td><td class="status">On time</td></tr>
-          <tr class="detail" id="d2" hidden><td colspan="6"><div class="drawer"><ol><li>Open the sign-in page</li><li>Sign in with the test account</li><li>Check the account page loads</li></ol><p>Replayed from the recording. The red mark is an earlier run that caught a broken sign-in; its report holds the screenshot.</p></div></td></tr>
-          <tr class="row" tabindex="0" aria-expanded="false" aria-controls="d3"><td class="time">09:10</td><td class="story">Order event<small>Published to Kafka<span class="m-chip noai">No AI</span></small></td><td class="col-target"><span class="tg">kafka</span></td><td class="mode col-run"><b class="noai">No AI</b></td><td class="col-trend"><span class="trend" aria-label="8 of 8 passed"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></td><td class="status">On time</td></tr>
-          <tr class="detail" id="d3" hidden><td colspan="6"><div class="drawer"><ol><li>Place an order</li><li>Consume the order topic</li><li>Check the event's fields</li></ol><p>Replayed from the recording.</p></div></td></tr>
-          <tr class="row" tabindex="0" aria-expanded="false" aria-controls="d4"><td class="time">09:12</td><td class="story">Add to basket<small>Android app<span class="m-chip noai">No AI</span></small></td><td class="col-target"><span class="tg">android</span></td><td class="mode col-run"><b class="noai">No AI</b></td><td class="col-trend"><span class="trend" aria-label="8 of 8 passed"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></td><td class="status">On time</td></tr>
-          <tr class="detail" id="d4" hidden><td colspan="6"><div class="drawer"><ol><li>Open the app</li><li>Search for the book</li><li>Add it to the basket</li><li>Check the basket badge</li></ol><p>Replayed on the native Android app.</p></div></td></tr>
-          <tr class="row" tabindex="0" aria-expanded="false" aria-controls="d5"><td class="time">09:15</td><td class="story">Refund<small>New story<span class="m-chip">AI</span></small></td><td class="col-target"><span class="tg">web</span><span class="tg">api</span></td><td class="mode col-run"><b>AI</b></td><td class="col-trend"><span class="first">First run</span></td><td class="status go">Waiting for your go</td></tr>
-          <tr class="detail" id="d5" hidden><td colspan="6"><div class="drawer"><ol><li>The AI read the story and your API description</li><li>It wrote the tests and recorded them</li><li>An independent review checked them</li></ol><p>A person approves it. Then it replays with no AI, like the rows above.</p></div></td></tr>
-        </tbody>
-      </table>
-      <p class="board-foot">Example runs. Select a row to see its evidence.</p>
-    </div>
-  </div>
-</div></section>
-
-<section class="sec" id="how" aria-labelledby="how-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="how-h">One run, four stops.</h2><p>The AI does the thinking once. After that, the recording does the work.</p></div>
-  <div class="sec-b">
-    <div class="route">
-      <div class="stop"><h3>Story</h3><p>Plain English, or a ticket from Jira, Azure DevOps, GitHub or GitLab.</p></div>
-      <div class="stop"><h3>Tests</h3><p>The AI reads your contracts and context, then writes and validates the tests.</p></div>
-      <div class="stop"><h3>Replay</h3><p>The recording is the test. Every rerun, in CI or on a laptop, uses no AI.</p><span class="loop">Every run after</span></div>
-      <div class="stop go"><h3>Go</h3><p>An independent review and a report with screenshots. A person approves; the AI never merges.</p></div>
-    </div>
-  </div>
-</div></section>
-
-<section class="sec" id="lines" aria-labelledby="lines-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="lines-h">Every line it runs on.</h2><p>One story can cross the app, the services behind it and the data they leave.</p></div>
-  <div class="sec-b">
-    <table class="tt">
-      <thead><tr><th scope="col">Line</th><th scope="col">What it checks</th></tr></thead>
-      <tbody>
-        <tr class="feature"><td><span class="line"><span class="icons"><svg aria-hidden="true" width="24" height="24" fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Android</title><path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z"/></svg></span>Native Android apps</span></td><td class="ex">Taps, types and checks inside the app itself.</td></tr>
-        <tr><td><span class="line"><span class="icons"><img src="assets/icons-ink/googlechrome.svg" alt="" width="24" height="24"></span>Websites</span></td><td class="ex">A real browser, with a screenshot at every step.</td></tr>
-        <tr><td><span class="line"><span class="icons"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M7 1.5h10A1.5 1.5 0 0 1 18.5 3v18a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 21V3A1.5 1.5 0 0 1 7 1.5Zm1 2.5v13h8V4H8Zm2.5 15v1.5h3V19h-3Z"/></svg></span>Phone browsers</span></td><td class="ex">The same story on mobile browsers.</td></tr>
-        <tr><td><span class="line"><span class="icons"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.4 5.3 1.2 12l6.2 6.7 2.1-2L5.2 12l4.3-4.7-2.1-2Zm9.2 0-2.1 2 4.3 4.7-4.3 4.7 2.1 2 6.2-6.7-6.2-6.7ZM13.3 3.5l-4.6 17 2.6.7 4.6-17-2.6-.7Z"/></svg></span>APIs</span></td><td class="ex">Calls checked against your API descriptions.</td></tr>
-        <tr><td><span class="line"><span class="icons"><img src="assets/icons-ink/apachekafka.svg" alt="" width="24" height="24"></span>Kafka</span></td><td class="ex">Publishes, consumes and checks what arrived.</td></tr>
-        <tr><td><span class="line"><span class="icons"><img src="assets/icons-ink/postgresql.svg" alt="" width="24" height="24"><img src="assets/icons-ink/mongodb.svg" alt="" width="24" height="24"></span>Postgres and MongoDB</span></td><td class="ex">The data a feature left behind.</td></tr>
-        <tr><td><span class="line"><span class="icons"><img src="assets/icons-ink/jira.svg" alt="" width="24" height="24"><img src="assets/icons-ink/github.svg" alt="" width="24" height="24"><img src="assets/icons-ink/gitlab.svg" alt="" width="24" height="24"><img src="assets/icons-ink/jenkins.svg" alt="" width="24" height="24"></span>Your tools</span></td><td class="ex">Stories from Jira, Azure DevOps, GitHub and GitLab. Reports into Jenkins.</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div></section>
-
-<section class="sec" id="ci" aria-labelledby="ci-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="ci-h">Callahan CI.</h2><p>Our CI/CD agent. It runs your pipelines on your own machine and reviews every build.</p></div>
-  <div class="sec-b">
-    <div class="roster">
-      <div><b>Architect</b><span>Writes your pipeline YAML.</span></div>
-      <div><b>Debugger</b><span>Explains why a build failed.</span></div>
-      <div><b>Reviewer</b><span>Posts structured findings on every pull request.</span></div>
-      <div><b>Analyst</b><span>Turns Trivy and Semgrep output into plain English.</span></div>
-    </div>
-    <p class="after"><a class="tlink" href="callahan-ci.html">Read about Callahan CI</a><a class="tlink" href="https://github.com/Callahan-ci/Callahan">Source on GitHub</a></p>
-  </div>
-</div></section>
-
-<section class="sec services" id="build" aria-labelledby="build-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="build-h">We build agents for your team.</h2></div>
-  <div class="sec-b">
-    <p>Callahan also builds custom AI agents for engineering teams, on the same rules as our own: they run where you run, record what they did, and leave the decision to a person.</p>
-    <a class="btn" href="https://github.com/Callahan-ci">Talk to us on GitHub</a>
-  </div>
-</div></section>
-
-<section class="sec" id="evidence" aria-labelledby="ev-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="ev-h">Check every departure.</h2><p>You are letting software act for you, so everything it ships is open to inspection.</p></div>
-  <div class="sec-b">
-    <div class="ledger">
-      <div><b>Source</b><span>Open source under the MIT licence.</span></div>
-      <div><b>Releases</b><span>SHA-256 checksums, a software bill of materials and GitHub build provenance.</span></div>
-      <div><b>Runs</b><span>On your machine. No account, no telemetry.</span></div>
-      <div><b>Files</b><span>Access is confined and credential files are refused.</span></div>
-    </div>
-    <p class="after"><a class="tlink" href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security review</a><a class="tlink" href="https://github.com/Callahan-ci/quartet-qe/blob/main/PRIVACY.md">Privacy</a></p>
-  </div>
-</div></section>
-
-<section class="sec" id="install" aria-labelledby="in-h"><div class="wrap grid">
-  <div class="sec-h"><h2 id="in-h">Install Quartet QE.</h2><p>In Claude Code, add the marketplace, then install.</p></div>
-  <div class="sec-b">
-    <div class="cmd">
+    <div class="cmd" aria-label="Install Quartet QE in Claude Code">
       <div class="cmd-row"><code>/plugin marketplace add Callahan-ci/quartet-qe</code><button class="copy" type="button" data-copy="/plugin marketplace add Callahan-ci/quartet-qe">Copy</button></div>
       <div class="cmd-row"><code>/plugin install quartet-qe@quartet-qe</code><button class="copy" type="button" data-copy="/plugin install quartet-qe@quartet-qe">Copy</button></div>
     </div>
-    <p class="other"><a class="tlink" href="https://github.com/Callahan-ci/quartet-qe/releases/latest">Desktop extension, latest release</a><a class="tlink" href="https://github.com/Callahan-ci/quartet-qe/blob/main/GETTING-STARTED.md">Build from source (Java 21)</a></p>
   </div>
-</div></section>
+</section>
 </main>
 
-<footer class="foot"><div class="wrap">
+<footer class="foot">
   <div class="grid">
-    <div class="foot-brand"><a class="brand" href="index.html"><img src="assets/callahan-mark.svg" alt="" width="36" height="36">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
-    <div class="foot-col"><h3>Products</h3><ul><li><a href="quartet.html">Quartet QE</a></li><li><a href="callahan-ci.html">Callahan CI</a></li><li><a href="docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
-    <div class="foot-col"><h3>Quartet QE</h3><ul><li><a href="#install">Install</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
-    <div class="foot-col"><h3>Company</h3><ul><li><a href="#build">Build with us</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li></ul></div>
-    <div class="foot-col"><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
+    <div><a class="wordmark" href="index.html"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
+    <div><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
+    <div><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="https://github.com/Callahan-ci">GitHub</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
+    <div><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
   </div>
   <div class="foot-legal"><span>Copyright 2026 Callahan</span><span>callahanci.com</span></div>
-</div></footer>
-<script src="assets/timetable.js" defer></script>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
+<script src="assets/studio.js" defer></script>
 </body>
 </html>

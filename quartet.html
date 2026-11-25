@@ -5,68 +5,234 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Quartet QE: the AI test framework | Callahan</title>
 <meta name="description" content="Quartet QE turns a user story into end-to-end tests for websites, phone browsers, native Android apps, APIs, Kafka and databases. The AI records each test once and every rerun replays it with no AI.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#f8eee8">
 <meta property="og:title" content="Quartet QE: the AI test framework | Callahan">
 <meta property="og:description" content="Quartet QE turns a user story into end-to-end tests for websites, phone browsers, native Android apps, APIs, Kafka and databases. The AI records each test once and every rerun replays it with no AI.">
 <meta property="og:image" content="https://callahanci.com/assets/callahan-logo.png">
-<link rel="icon" type="image/svg+xml" href="assets/callahan-mark.svg">
+<link rel="icon" type="image/svg+xml" href="assets/callahan-mark-orange.svg">
 <link rel="alternate icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/timetable.css">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/studio.css">
+<link rel="stylesheet" href="assets/studio-pages.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav"><div class="wrap">
-  <a class="brand" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark.svg" alt="" width="36" height="36">Callahan</a>
-  <nav class="nav-links" aria-label="Main">
-    <a href="quartet.html" aria-current="page">Quartet QE</a>
-    <a href="callahan-ci.html">Callahan CI</a>
-    <a href="index.html#build">Build with us</a>
-    <a href="docs.html">Docs</a>
-  </nav>
-  <div class="nav-end">
-    <a class="gh" href="https://github.com/Callahan-ci">GitHub</a>
-    <a class="btn red sm" href="quartet.html#install">Install Quartet QE</a>
+<header class="top">
+  <nav class="pills" aria-label="Main"><a class="pill" href="quartet.html" aria-current="page">Quartet QE</a><a class="pill" href="callahan-ci.html">Callahan CI</a><a class="pill" href="docs.html">Docs</a></nav>
+  <a class="wordmark" href="index.html" aria-label="Callahan home"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a>
+  <div class="top-end">
+    <small>Open source, MIT<br>macOS and Linux</small>
+    <a class="talk" href="quartet.html#install">Install<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a>
   </div>
-</div></header>
+</header>
 
 <main id="main">
-<section class="hero" aria-labelledby="hero-h"><div class="wrap grid">
+<section class="hero phero" aria-labelledby="hero-h"><div class="wrap grid">
   <div class="hero-copy">
+    <img class="pmark" src="assets/quartet-mark-orange.svg" alt="" width="64" height="64">
     <h1 id="hero-h">Quartet QE.</h1>
     <p class="sub">The AI test framework. Write a user story; get end-to-end tests that replay with no AI and a report a person signs off.</p>
     <div class="acts">
-      <a class="btn red" href="#install">Install Quartet QE</a>
+      <a class="btn" href="#install">Install Quartet QE<i><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></i></a>
       <a class="tlink" href="https://github.com/Callahan-ci/quartet-qe">Source on GitHub</a>
     </div>
     <p class="facts"><span>Open source, MIT</span><span>macOS and Linux</span><span>No account</span></p>
   </div>
   <div class="board-wrap">
-    <div class="board sheet">
-      <div class="board-head"><h2>Checkout total</h2><span class="clock">Replay</span></div>
+    <div class="board sheet live" data-live="quartet" aria-label="An example Quartet QE run, animated">
+      <div class="board-head"><h2><img class="bmark" src="assets/quartet-mark-white.svg" alt="" width="28" height="28">Checkout total</h2><span class="clock live-phase">Replay, no AI</span></div>
       <table>
-        <caption class="visually-hidden">An example run sheet: each step of one story, the system it touched and the evidence the report keeps.</caption>
-        <thead><tr><th scope="col">Stop</th><th scope="col">Step</th><th scope="col" class="col-target">Target</th><th scope="col" class="col-trend">Evidence</th><th scope="col">Result</th></tr></thead>
+        <caption class="visually-hidden">An example run: Quartet QE drives each step of one story, records it, then replays it with no AI.</caption>
+        <thead><tr><th scope="col">Step</th><th scope="col">What it does</th><th scope="col" class="col-target">Target</th><th scope="col" class="col-trend">Evidence</th><th scope="col">Result</th></tr></thead>
         <tbody>
-          <tr><td class="n">1</td><td class="story">Open the shop</td><td class="col-target"><span class="tg">web</span></td><td class="ev col-trend">Screenshot</td><td><span class="ok" role="img" aria-label="Passed"></span></td></tr>
-          <tr><td class="n">2</td><td class="story">Add the book to the basket</td><td class="col-target"><span class="tg">web</span></td><td class="ev col-trend">Screenshot</td><td><span class="ok" role="img" aria-label="Passed"></span></td></tr>
-          <tr><td class="n">3</td><td class="story">Check the basket total</td><td class="col-target"><span class="tg">api</span></td><td class="ev col-trend">Response body</td><td><span class="ok" role="img" aria-label="Passed"></span></td></tr>
-          <tr><td class="n">4</td><td class="story">Check the order record</td><td class="col-target"><span class="tg">postgres</span></td><td class="ev col-trend">Matching row</td><td><span class="ok" role="img" aria-label="Passed"></span></td></tr>
-          <tr><td class="n">5</td><td class="story">Check the order event</td><td class="col-target"><span class="tg">kafka</span></td><td class="ev col-trend">Event fields</td><td><span class="ok" role="img" aria-label="Passed"></span></td></tr>
-          <tr><td class="n">6</td><td class="story">Review and sign-off</td><td class="col-target"><span class="tg">person</span></td><td class="ev col-trend">Review page</td><td class="status go">Your go</td></tr>
-        </tbody>
+          <tr class="lv" data-say="browser opens the shop's home page"><td class="n">1</td><td class="story">Open the shop</td><td class="col-target"><span class="tg">web</span></td><td class="ev col-trend">Screenshot</td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="finds the book, presses Add to basket"><td class="n">2</td><td class="story">Add the book to the basket</td><td class="col-target"><span class="tg">web</span></td><td class="ev col-trend">Screenshot</td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="GET /basket returns total 12.99"><td class="n">3</td><td class="story">Check the basket total</td><td class="col-target"><span class="tg">api</span></td><td class="ev col-trend">Response body</td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="orders row has status RESERVED"><td class="n">4</td><td class="story">Check the order record</td><td class="col-target"><span class="tg">postgres</span></td><td class="ev col-trend">Matching row</td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="shop.orders.created matches the schema"><td class="n">5</td><td class="story">Check the order event</td><td class="col-target"><span class="tg">kafka</span></td><td class="ev col-trend">Event fields</td><td class="res"><span class="r-ok" role="img" aria-label="Passed"></span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          <tr class="lv" data-say="review page ready for a person"><td class="n">6</td><td class="story">Review and sign-off</td><td class="col-target"><span class="tg">person</span></td><td class="ev col-trend">Review page</td><td class="res"><span class="r-go">Your go</span><span class="r-run" aria-hidden="true"></span><span class="r-wait" aria-hidden="true"></span></td></tr>
+          </tbody>
       </table>
-      <p class="board-foot">Example run sheet. Replayed from the recording, with no AI.</p>
+      <p class="board-foot live-log" aria-live="off">Replayed from the recording, with no AI. Example run.</p>
     </div>
   </div>
 </div></section>
 
-<section class="big-statement" aria-labelledby="native-h"><div class="wrap grid">
-  <h2 id="native-h">Native Android apps, not just websites.</h2>
-  <p>Quartet QE drives native Android apps as well as websites and phone browsers, from the same plain-English story. One story can also check the APIs, queues and databases behind the screen.</p>
+<section class="sec" id="watch" aria-labelledby="watch-h"><div class="wrap grid">
+  <div class="sec-h"><h2 id="watch-h">Watch it in 24 seconds.</h2><p>A story goes in, tests come out, and every rerun replays with no AI.</p></div>
+  <div class="sec-b">
+    <div class="film">
+      <video controls preload="metadata" playsinline poster="assets/quartet-qe-studio.jpg" width="1280" height="720">
+        <source src="assets/quartet-qe-studio.mp4" type="video/mp4">
+      </video>
+      <div class="film-foot"><span>The Quartet QE overview, 24 seconds. <a href="assets/quartet-qe-studio.mp4">Download</a></span><span>Music: Mixkit, free licence</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="examples" id="examples" aria-labelledby="ex-h"><div class="wrap">
+  <div class="head"><h2 id="ex-h">See exactly how it works.</h2><p>Four worked examples, taken from real Quartet QE repos: the story, the one file you edit, the test the AI wrote, and what you get back.</p></div>
+  <div class="tabs" role="tablist" aria-label="Worked examples"><button class="tab" role="tab" id="ex-android-tab" aria-controls="ex-android" aria-selected="true" tabindex="0">Native Android app</button><button class="tab" role="tab" id="ex-web-tab" aria-controls="ex-web" aria-selected="false" tabindex="-1">Website</button><button class="tab" role="tab" id="ex-services-tab" aria-controls="ex-services" aria-selected="false" tabindex="-1">API, database and Kafka</button><button class="tab" role="tab" id="ex-phones-tab" aria-controls="ex-phones" aria-selected="false" tabindex="-1">Phone browsers</button></div>
+  <div class="panel" role="tabpanel" id="ex-android" aria-labelledby="ex-android-tab">
+      <div class="panel-grid">
+        <div class="p-story"><div class="step-label"><span class="no">1</span>You write the story</div><div class="code"><div class="code-bar"><b>stories/CALC-1.md</b><span></span></div><pre><code># CALC-1: A user can do everyday sums and look them up again
+
+As a user of the Fossify Calculator app on my Android phone,
+I want quick, correct arithmetic and a record of what I calculated.
+
+## Acceptance criteria
+
+- AC1: Entering 7 + 8 and pressing equals shows the result 15.
+- AC4: Pressing C once after entering 1234 removes only
+  the last digit, leaving 123.
+- AC6: After calculating 12 + 34, the History screen
+  lists 12+34 with its result 46.</code></pre></div></div>
+        <div class="p-target"><div class="step-label"><span class="no">2</span>You say what it can reach</div><div class="code"><div class="code-bar"><b>context/environments/default.yaml</b><span></span></div><pre><code>targets:
+  calculator-app:
+    type: <span class="s">"screen"</span>
+    description: <span class="s">"The Fossify Calculator Android app"</span>
+    app:
+      android: <span class="s">"org.fossify.math"</span>
+    devices:
+      android:
+        kind: <span class="s">"android"</span>   <span class="c"># an emulator or phone listed by adb</span></code></pre></div></div>
+        <div class="p-test"><div class="step-label"><span class="no">3</span>The AI writes the test</div><div class="code"><div class="code-bar"><b>CalculatorTest.java (2 of 6 tests)</b><span></span></div><pre><code><span class="a">@Test</span>
+<span class="a">@AcceptanceCriteria</span>(<span class="s">"AC1"</span>)
+void addingTwoNumbersShowsTheirSum(TestAgent agent) {
+    ActResult shown = agent.act(<span class="s">"Open the calculator, enter 7 + 8, press equals and read the result shown"</span>,
+            why(<span class="s">"A user adding two numbers must get the right answer"</span>),
+            on(<span class="s">"calculator-app"</span>),
+            returns(<span class="s">"text"</span>));
+    assertThat(shown.get(<span class="s">"text"</span>)).isEqualTo(<span class="s">"15"</span>);
+}
+
+<span class="a">@Test</span>
+<span class="a">@AcceptanceCriteria</span>(<span class="s">"AC6"</span>)
+void aFinishedCalculationAppearsInHistory(TestAgent agent) {
+    ActResult entry = agent.act(<span class="s">"Open the calculator, calculate 12 + 34, open History and read the newest entry"</span>,
+            why(<span class="s">"A user must be able to find an earlier calculation"</span>),
+            on(<span class="s">"calculator-app"</span>),
+            returns(<span class="s">"text"</span>));
+    assertThat(entry.get(<span class="s">"text"</span>)).contains(<span class="s">"12+34"</span>).contains(<span class="s">"46"</span>);
+}</code></pre></div></div>
+        <div class="p-result"><div class="step-label"><span class="no">4</span>You read the result</div><div class="result"><p class="verdict">Ready to merge.</p><ul><li>6 acceptance criteria, 6 tests, 6 passed</li><li>Recorded on an Android emulator, then replayed with no AI</li><li>No selectors, XPath, element IDs or Appium server</li></ul><p class="note">A real run against Fossify Calculator, an open-source Android app.</p></div><p class="howto">Quartet reads the app through the device's accessibility tree over <code>adb</code>, so nothing is installed on the phone. <a class="tlink" href="quartet-docs.html#android">How to test an Android app</a></p></div>
+      </div>
+    </div><div class="panel" role="tabpanel" id="ex-web" aria-labelledby="ex-web-tab" hidden>
+      <div class="panel-grid">
+        <div class="p-story"><div class="step-label"><span class="no">1</span>You write the story</div><div class="code"><div class="code-bar"><b>stories/SHOP-142.md</b><span></span></div><pre><code># SHOP-142: Checkout reserves stock and confirms the order
+
+As a customer I want my items reserved when I check out,
+so that I am never sold something that is out of stock.
+
+## Acceptance criteria
+
+- AC6: A customer ordering in the web shop is shown
+  a confirmation with the order number.</code></pre></div></div>
+        <div class="p-target"><div class="step-label"><span class="no">2</span>You say what it can reach</div><div class="code"><div class="code-bar"><b>context/environments/demo.yaml</b><span></span></div><pre><code>targets:
+  shop-web:
+    type: screen
+    description: The customer web shop, served at /.
+    baseUrl: <span class="s">"${SHOP_WEB_URL:-http://localhost:18080}"</span>
+    devices:
+      desktop: {kind: web, engine: chromium}</code></pre></div></div>
+        <div class="p-test"><div class="step-label"><span class="no">3</span>The AI writes the test</div><div class="code"><div class="code-bar"><b>CheckoutReservesStockTest.java</b><span></span></div><pre><code><span class="a">@Test</span>
+<span class="a">@AcceptanceCriteria</span>(<span class="s">"AC6"</span>)
+void customerSeesConfirmationInTheWebShop(TestAgent agent) {
+    ActResult order = agent.act(<span class="s">"Order 1 unit of SKU-1001 as customer C-7 through the web shop"</span>,
+            why(<span class="s">"Most customers place their orders through the web shop"</span>),
+            on(<span class="s">"shop-web"</span>),
+            returns(<span class="s">"orderNumber"</span>));
+    assertThat(order.get(<span class="s">"orderNumber"</span>)).matches(<span class="s">"ORD-[0-9]+"</span>);
+
+    agent.verify(<span class="s">"The page tells the customer their order is reserved"</span>,
+            why(<span class="s">"Customers need reassurance that the purchase worked"</span>),
+            on(<span class="s">"shop-web"</span>));
+}</code></pre></div></div>
+        <div class="p-result"><div class="step-label"><span class="no">4</span>You read the result</div><div class="result"><p class="verdict">Ready to merge.</p><ul><li>A real browser, a screenshot at every step</li><li>agent.verify checks what the customer is told</li><li>The assertion is plain Java: the AI never marks its own work</li></ul><p class="note">From the demo shop that ships with Quartet QE.</p></div><p class="howto"><a class="tlink" href="quartet-docs.html#website">How to test a website</a></p></div>
+      </div>
+    </div><div class="panel" role="tabpanel" id="ex-services" aria-labelledby="ex-services-tab" hidden>
+      <div class="panel-grid">
+        <div class="p-story"><div class="step-label"><span class="no">1</span>You write the story</div><div class="code"><div class="code-bar"><b>stories/SHOP-142.md</b><span></span></div><pre><code># SHOP-142: Checkout reserves stock and confirms the order
+
+## Acceptance criteria
+
+- AC1: A valid order for in-stock items returns 201 with
+  status RESERVED and is persisted in the orders database.
+- AC2: The order is published on shop.orders.created with
+  the matching orderId and conforms to the event schema.</code></pre></div></div>
+        <div class="p-target"><div class="step-label"><span class="no">2</span>You say what it can reach</div><div class="code"><div class="code-bar"><b>context/environments/demo.yaml</b><span></span></div><pre><code>targets:
+  orders-api:
+    type: api
+    baseUrl: <span class="s">"${ORDERS_API_URL:-http://localhost:18080}"</span>
+    context: [contracts/openapi/orders-service.yaml]
+  orders-db:
+    type: postgres
+    url: <span class="s">"${ORDERS_DB_URL:-jdbc:postgresql://localhost:15432/postgres}"</span>
+  order-events:
+    type: kafka
+    brokers: <span class="s">"${KAFKA_BROKERS:-localhost:19092}"</span>
+    schemas:
+      shop.orders.created: contracts/events/order-created.schema.json</code></pre></div></div>
+        <div class="p-test"><div class="step-label"><span class="no">3</span>The AI writes the test</div><div class="code"><div class="code-bar"><b>CheckoutReservesStockTest.java</b><span></span></div><pre><code><span class="a">@Test</span>
+<span class="a">@AcceptanceCriteria</span>({<span class="s">"AC1"</span>, <span class="s">"AC2"</span>})
+void orderFlowsThroughApiDatabaseAndEvents(TestAgent agent) {
+    ActResult order = agent.act(<span class="s">"Place an order for 2 units of SKU-1001 for customer C-42"</span>,
+            why(<span class="s">"A customer checking out is the start of the reservation journey"</span>),
+            on(<span class="s">"orders-api"</span>),
+            returns(<span class="s">"orderId"</span>, <span class="s">"status"</span>));
+    assertThat(order.get(<span class="s">"status"</span>)).isEqualTo(<span class="s">"RESERVED"</span>);
+
+    ActResult saved = agent.act(<span class="s">"Find order {{orderId}} in the orders database"</span>,
+            with(<span class="s">"orderId"</span>, order.get(<span class="s">"orderId"</span>)),
+            why(<span class="s">"A reserved order must survive beyond the request"</span>),
+            on(<span class="s">"orders-db"</span>),
+            returns(<span class="s">"status"</span>, <span class="s">"customer_id"</span>));
+    assertThat(saved.get(<span class="s">"status"</span>)).isEqualTo(<span class="s">"RESERVED"</span>);
+
+    ActResult event = agent.act(<span class="s">"Find the order created event for order {{orderId}}"</span>,
+            with(<span class="s">"orderId"</span>, order.get(<span class="s">"orderId"</span>)),
+            why(<span class="s">"Downstream teams rely on this event to fulfil the order"</span>),
+            on(<span class="s">"order-events"</span>),
+            returns(<span class="s">"found"</span>, <span class="s">"schemaValid"</span>));
+    assertThat(event.getBool(<span class="s">"schemaValid"</span>)).isTrue();
+}</code></pre></div></div>
+        <div class="p-result"><div class="step-label"><span class="no">4</span>You read the result</div><div class="result"><p class="verdict">Ready to merge.</p><ul><li>One test follows the order through the API, Postgres and Kafka</li><li>No URLs or SQL in the test: it states intent</li><li>The OpenAPI contract and event schema are read first</li></ul><p class="note">From the demo shop that ships with Quartet QE.</p></div><p class="howto"><a class="tlink" href="quartet-docs.html#services">How to test APIs, databases and Kafka</a></p></div>
+      </div>
+    </div><div class="panel" role="tabpanel" id="ex-phones" aria-labelledby="ex-phones-tab" hidden>
+      <div class="panel-grid">
+        <div class="p-story"><div class="step-label"><span class="no">1</span>You write the story</div><div class="code"><div class="code-bar"><b>stories/SHOP-142.md</b><span></span></div><pre><code># SHOP-142: Checkout reserves stock and confirms the order
+
+As a customer I want my items reserved when I check out,
+so that I am never sold something that is out of stock.
+
+## Acceptance criteria
+
+- AC6: A customer ordering in the web shop is shown
+  a confirmation with the order number.</code></pre></div></div>
+        <div class="p-target"><div class="step-label"><span class="no">2</span>You say what it can reach</div><div class="code"><div class="code-bar"><b>context/environments/default.yaml</b><span></span></div><pre><code>targets:
+  shop-web:
+    type: screen
+    baseUrl: <span class="s">"https://staging.example.com"</span>
+    devices:
+      desktop: {kind: web, engine: chromium}
+      iphone: {kind: web, engine: webkit, preset: iphone}
+      android-phone: {kind: web, engine: chromium, preset: android}
+      android-device: {kind: android}   <span class="c"># an emulator or phone listed by adb</span></code></pre></div></div>
+        <div class="p-test"><div class="step-label"><span class="no">3</span>The AI writes the test</div><div class="code"><div class="code-bar"><b>CheckoutReservesStockTest.java</b><span></span></div><pre><code><span class="a">@OnEverySurface</span>(<span class="s">"shop-web"</span>)   <span class="c">// runs once per device above</span>
+<span class="a">@AcceptanceCriteria</span>(<span class="s">"AC6"</span>)
+void customerSeesConfirmationInTheWebShop(TestAgent agent) {
+    ActResult order = agent.act(<span class="s">"Order 1 unit of SKU-1001 as customer C-7 through the web shop"</span>,
+            why(<span class="s">"Most customers place their orders through the web shop"</span>),
+            on(<span class="s">"shop-web"</span>),
+            returns(<span class="s">"orderNumber"</span>));
+    assertThat(order.get(<span class="s">"orderNumber"</span>)).matches(<span class="s">"ORD-[0-9]+"</span>);
+}</code></pre></div></div>
+        <div class="p-result"><div class="step-label"><span class="no">4</span>You read the result</div><div class="result"><p class="verdict">One test, every device.</p><ul><li>Desktop Chrome, iPhone Safari, Android Chrome and a real Android device</li><li>Phone browsers need nothing extra installed</li><li>Each device gets its own recording</li></ul><p class="note">Example configuration from the getting-started guide.</p></div><p class="howto"><a class="tlink" href="quartet-docs.html#phones">How to test phone browsers</a></p></div>
+      </div>
+    </div>
 </div></section>
 
 <section class="sec" id="how" aria-labelledby="how-h"><div class="wrap grid">
@@ -137,16 +303,16 @@
 </div></section>
 </main>
 
-<footer class="foot"><div class="wrap">
+<footer class="foot">
   <div class="grid">
-    <div class="foot-brand"><a class="brand" href="index.html"><img src="assets/callahan-mark.svg" alt="" width="36" height="36">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
-    <div class="foot-col"><h3>Products</h3><ul><li><a href="quartet.html">Quartet QE</a></li><li><a href="callahan-ci.html">Callahan CI</a></li><li><a href="docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
-    <div class="foot-col"><h3>Quartet QE</h3><ul><li><a href="quartet.html#install">Install</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
-    <div class="foot-col"><h3>Company</h3><ul><li><a href="index.html#build">Build with us</a></li><li><a href="https://github.com/Callahan-ci">GitHub</a></li></ul></div>
-    <div class="foot-col"><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
+    <div><a class="wordmark" href="index.html"><img src="assets/callahan-mark-orange.svg" alt="" width="30" height="30">Callahan</a><p>AI agents for engineering teams. They run on your machine, show their work and leave the decision to a person.</p></div>
+    <div><h3>Quartet QE</h3><ul><li><a href="quartet.html">Overview</a></li><li><a href="quartet-docs.html">Docs</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/releases">Releases</a></li></ul></div>
+    <div><h3>Callahan CI</h3><ul><li><a href="callahan-ci.html">Overview</a></li><li><a href="callahan-ci-docs.html">Docs</a></li><li><a href="changelog.html">Changelog</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="https://github.com/Callahan-ci">GitHub</a></li><li><a href="https://github.com/Callahan-ci/quartet-qe/blob/main/SECURITY.md">Security</a></li></ul></div>
+    <div><h3>Legal</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="license.html">MIT licence</a></li></ul></div>
   </div>
   <div class="foot-legal"><span>Copyright 2026 Callahan</span><span>callahanci.com</span></div>
-</div></footer>
+</footer>
 <script src="assets/timetable.js" defer></script>
 </body>
 </html>
