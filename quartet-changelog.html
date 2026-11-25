@@ -33,32 +33,33 @@
 <main id="main">
 <section class="page-head" aria-labelledby="page-h"><div class="wrap">
   <h1 id="page-h">Quartet QE changelog.</h1>
-  <p class="lede">Every public release of Quartet QE, and what is on main but not yet released. For downloads and checksums, follow the GitHub release link on each entry.</p>
+  <p class="lede">Every public release of Quartet QE. For downloads and checksums, follow the GitHub release link on each entry.</p>
 </div></section>
 <div class="wrap doc-grid changelog">
   <nav class="toc" aria-label="On this page"><h2>Versions</h2>
       <ul>
-        <li><a href="#unreleased">Unreleased, on main</a></li>
+        <li><a href="#v0-2-0">v0.2.0, 25 November 2026</a></li>
         <li><a href="#v0-1-0">v0.1.0, 23 November 2026</a></li>
       </ul></nav>
   <article class="doc">
-      <article class="release" id="unreleased">
+      <article class="release" id="v0-2-0">
         <div class="release-meta">
-          <span class="v word">Unreleased</span>
-          <span class="date">On main since 23 November 2026</span>
-          <span class="tag">Not yet tagged</span>
+          <span class="v">0.2.0</span>
+          <span class="date">25 November 2026</span>
+          <span class="tag">Latest release</span>
         </div>
         <div class="release-body">
-          <h2>Listings and packaging.</h2>
-          <p>Changes on the main branch since v0.1.0. None of them change how tests are written or run.</p>
+          <h2>0.2 — follow one transaction through every system.</h2>
+          <p>One test can now prove a transaction went through the API, the database and Kafka, and that the services linked it themselves.</p>
           <ul class="change-list">
-            <li><span class="kind changed">changed</span><div>The Claude Code plugin is pinned to the v0.1.0 release and checks its SHA-256 before unpacking anything.</div></li>
-            <li><span class="kind added">added</span><div>Listed in the official MCP registry as <code>io.github.Callahan-ci/quartet-qe</code> (<code>server.json</code>).</div></li>
-            <li><span class="kind added">added</span><div>Listed on Glama, with <code>glama.json</code> and a listing badge in the README.</div></li>
-            <li><span class="kind added">added</span><div>The README opens with a looping overview of a story becoming tests that replay with no AI.</div></li>
+            <li><span class="kind added">added</span><div>Follow one transaction through every system. Every API request, page request to the app under test and Kafka event Quartet sends carries a W3C <code>traceparent</code> with the test's trace id. Quartet adds it, not the AI, so recordings do not change and replays carry it too.</div></li>
+            <li><span class="kind added">added</span><div>Kafka events Quartet finds report the trace they carried. A test can prove a service passed the transaction on: <code>assertThat(agent.trace().reached("order-events")).isTrue()</code>.</div></li>
+            <li><span class="kind added">added</span><div>The run report draws each transaction: the value threaded with <code>with(...)</code>, the systems in order, and each hop as trace sent, same trace, linked by value or no trace, with the trace id to search for in Jaeger, Tempo or Grafana.</div></li>
+            <li><span class="kind added">added</span><div>The demo shop passes the trace on like an OpenTelemetry service, and <code>--prove</code> plants a <code>drop-trace</code> bug that the checkout test catches.</div></li>
+            <li><span class="kind changed">changed</span><div>Listed in the official MCP registry as <code>io.github.Callahan-ci/quartet-qe</code> and on Glama; the README opens with a looping overview.</div></li>
           </ul>
           <div class="release-footer">
-            <a href="https://github.com/Callahan-ci/quartet-qe/compare/v0.1.0...main">Changes since v0.1.0 </a>
+            <span>LICENSE · MIT</span><a href="https://github.com/Callahan-ci/quartet-qe/releases/tag/v0.2.0">GitHub release </a>
           </div>
         </div>
       </article>
@@ -67,7 +68,7 @@
         <div class="release-meta">
           <span class="v">0.1.0</span>
           <span class="date">23 November 2026</span>
-          <span class="tag">Latest release</span>
+          <span class="tag">First release</span>
         </div>
         <div class="release-body">
           <h2>0.1 — the first public release.</h2>
