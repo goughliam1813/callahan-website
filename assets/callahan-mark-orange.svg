@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#F25525" stroke-linejoin="round" stroke-linecap="round" role="img" aria-label="Callahan">
+  <path d="M62 12 L47 7 L16 21 L10 46 L18 70 L37 86 L57 88" stroke-width="4"/>
+  <path d="M45 73 L84 61 L71 81 L57 88 Z" stroke-width="3.2"/>
+  <path d="M16 21 L31 37 M47 7 L31 37 M10 46 L31 37 M31 37 L18 70 M31 37 L41 59 M18 70 L41 59 M37 86 L41 59 M45 73 L71 81" stroke-width="2"/>
+  <path d="M22 88 L84 18" stroke-width="5"/>
+  <path d="M93 8 L72 13 L88 29 Z" fill="#F25525" stroke-width="1.5"/>
+  <path d="M72 36 L80 41 L76 47 M80 29 L88 34 L84 40" stroke-width="2.6"/>
+  <g fill="#F25525" stroke="none"><circle cx="47" cy="7" r="3.4"/><circle cx="16" cy="21" r="3.4"/><circle cx="10" cy="46" r="3.4"/><circle cx="18" cy="70" r="3.4"/><circle cx="31" cy="37" r="3.4"/><circle cx="41" cy="59" r="3.4"/><circle cx="37" cy="86" r="3.4"/></g>
+</svg>
