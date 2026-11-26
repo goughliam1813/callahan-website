@@ -38,15 +38,38 @@
 <div class="wrap doc-grid changelog">
   <nav class="toc" aria-label="On this page"><h2>Versions</h2>
       <ul>
+        <li><a href="#v0-2-1">v0.2.1, 26 November 2026</a></li>
         <li><a href="#v0-2-0">v0.2.0, 25 November 2026</a></li>
         <li><a href="#v0-1-0">v0.1.0, 23 November 2026</a></li>
       </ul></nav>
   <article class="doc">
+      <article class="release" id="v0-2-1">
+        <div class="release-meta">
+          <span class="v">0.2.1</span>
+          <span class="date">26 November 2026</span>
+          <span class="tag">Latest release</span>
+        </div>
+        <div class="release-body">
+          <h2>0.2.1 — a smoother first run.</h2>
+          <p>Fixes from a fresh install by someone who had never seen Quartet QE.</p>
+          <ul class="change-list">
+            <li><span class="kind fixed">fixed</span><div>Installing from a second copy no longer switches every tests repo on the machine without asking. The installer asks, or keeps the copy in use and says how to switch with <code>--switch</code>.</div></li>
+            <li><span class="kind fixed">fixed</span><div>A new site is no longer added silently to a tests repo chosen earlier that already has tests: Quartet asks whether to start a new tests repo. Every start now names the repo it is working in.</div></li>
+            <li><span class="kind fixed">fixed</span><div>The review page lists findings that do not block merging under "Needs your attention" as "Worth a look", instead of hiding them in a collapsed table.</div></li>
+            <li><span class="kind fixed">fixed</span><div>On the chat path the review says your chat tool counts the tokens, instead of showing 0 tokens.</div></li>
+            <li><span class="kind fixed">fixed</span><div>Demos end with the review page link, and the README and guide wording is corrected.</div></li>
+          </ul>
+          <div class="release-footer">
+            <span>LICENSE · MIT</span><a href="https://github.com/Callahan-ci/quartet-qe/releases/tag/v0.2.1">GitHub release </a>
+          </div>
+        </div>
+      </article>
+
       <article class="release" id="v0-2-0">
         <div class="release-meta">
           <span class="v">0.2.0</span>
           <span class="date">25 November 2026</span>
-          <span class="tag">Latest release</span>
+          <span class="tag">Transaction tracing</span>
         </div>
         <div class="release-body">
           <h2>0.2 — follow one transaction through every system.</h2>
