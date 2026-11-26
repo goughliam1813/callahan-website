@@ -38,16 +38,38 @@
 <div class="wrap doc-grid changelog">
   <nav class="toc" aria-label="On this page"><h2>Versions</h2>
       <ul>
+        <li><a href="#v0-2-2">v0.2.2, 26 November 2026</a></li>
         <li><a href="#v0-2-1">v0.2.1, 26 November 2026</a></li>
         <li><a href="#v0-2-0">v0.2.0, 25 November 2026</a></li>
         <li><a href="#v0-1-0">v0.1.0, 23 November 2026</a></li>
       </ul></nav>
   <article class="doc">
+      <article class="release" id="v0-2-2">
+        <div class="release-meta">
+          <span class="v">0.2.2</span>
+          <span class="date">26 November 2026</span>
+          <span class="tag">Latest release</span>
+        </div>
+        <div class="release-body">
+          <h2>0.2.2 — a found bug stays found.</h2>
+          <p>A test that catches a real bug now fails the same way on every replay until the bug is fixed, then passes on its own.</p>
+          <ul class="change-list">
+            <li><span class="kind added">added</span><div>When a test fails, usually because it found a real bug, its steps are kept in <code>recordings/_unproven/</code> with why it failed, instead of being dropped.</div></li>
+            <li><span class="kind added">added</span><div>Every replay, in CI too, runs those steps with no AI and shows the real failure, rather than "No recording".</div></li>
+            <li><span class="kind added">added</span><div>Once the bug is fixed, the next replay passes and the steps become an ordinary recording, with no AI and no re-recording. Unproven steps can never make a test pass on their own.</div></li>
+            <li><span class="kind fixed">fixed</span><div>A replay that stops on unproven steps names the failed run they came from and what failed.</div></li>
+          </ul>
+          <div class="release-footer">
+            <span>LICENSE · MIT</span><a href="https://github.com/Callahan-ci/quartet-qe/releases/tag/v0.2.2">GitHub release </a>
+          </div>
+        </div>
+      </article>
+
       <article class="release" id="v0-2-1">
         <div class="release-meta">
           <span class="v">0.2.1</span>
           <span class="date">26 November 2026</span>
-          <span class="tag">Latest release</span>
+          <span class="tag">First-run fixes</span>
         </div>
         <div class="release-body">
           <h2>0.2.1 — a smoother first run.</h2>
